@@ -1,5 +1,5 @@
 hash: 1621e28076b47fa1f9f7bec662334188c9b8b45ff7734af55fdf3a700880c97b
-updated: 2016-03-08T19:56:25.644722621-08:00
+updated: 2016-03-09T23:26:46.197543341-08:00
 imports:
 - name: github.com/daaku/go.zipexe
   version: a5fe2436ffcb3236e175e5149162b41cd28bd27d
@@ -27,7 +27,7 @@ imports:
 - name: github.com/kardianos/osext
   version: 29ae4ffbc9a6fe9fb2bc5029050ce6996ea1d3bc
 - name: github.com/labstack/echo
-  version: 34e964851f4442dae0a5b3b3db5167087cfa8c79
+  version: 38d010090f869d367623a3db7bcf68bd1b5825d0
   subpackages:
   - middleware
   - engine/standard
@@ -48,7 +48,7 @@ imports:
 - name: github.com/thoas/stats
   version: 54ed61c2b47e263ae2f01b86837b0c4bd1da28e8
 - name: github.com/tylerb/graceful
-  version: 7116c7a8115899e80197cd9e0b97998c0f97ed8e
+  version: c78c8d9dded2ad16ad81b1fa526a81b2bb8049f6
 - name: golang.org/x/net
   version: 3e5cd1ed149001198e582f9d3f5bfd564cde2896
   subpackages:

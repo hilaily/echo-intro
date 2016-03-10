@@ -9,7 +9,6 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
 	"github.com/labstack/echo/middleware"
-	"github.com/rs/cors"
 	"github.com/thoas/stats"
 )
 
@@ -30,7 +29,7 @@ var (
 )
 
 // Render HTML
-func (t *Template) Render(w io.Writer, name string, data interface{}) error {
+func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
 	return t.templates.ExecuteTemplate(w, name, data)
 }
 
@@ -66,45 +65,38 @@ func getUser() echo.HandlerFunc {
 		return c.JSON(http.StatusOK, users[c.P(0)])
 	}
 }
+
 func main() {
 	e := echo.New()
 
 	// Middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
-	e.Use(middelware.Gzip())
+	e.Use(middleware.Gzip())
+	e.Use(middleware.Static("public"))
 
 	//------------------------
 	// Third-party middleware
 	//------------------------
 
 	// https://github.com/rs/cors
-	e.Use(cors.Default().Handler)
+	// e.Use(standard.WrapMiddleware(cors.Default().Handler))
 
 	// https://github.com/thoas/stats
 	s := stats.New()
-	e.Use(s.Handler)
-	// Route
+	e.Use(standard.WrapMiddleware(s.Handler))
 	e.Get("/stats", echo.HandlerFunc(func(c echo.Context) error {
-		return c.JSON(http.StatusOK, s.Data())
+		println(5)
+		return c.JSON(300, s.Data())
 	}))
-
-	// Serve index file
-	e.Index("public/index.html")
-
-	// Serve favicon
-	e.Favicon("public/favicon.ico")
-
-	// Serve static files
-	e.Static("/scripts", "public/scripts")
 
 	//--------
 	// Routes
 	//--------
 
-	e.Post("/users", createUser)
-	e.Get("/users", getUsers)
-	e.Get("/users/:id", getUser)
+	e.Post("/users", createUser())
+	e.Get("/users", getUsers())
+	e.Get("/users/:id", getUser())
 
 	//-----------
 	// Templates
@@ -115,29 +107,19 @@ func main() {
 		templates: template.Must(template.ParseFiles("public/views/welcome.html")),
 	}
 	e.SetRenderer(t)
-	e.Get("/welcome", welcome)
+	e.Get("/welcome", welcome())
 
 	//-------
 	// Group
 	//-------
 
-	// Group with parent middleware
 	a := e.Group("/admin")
-	a.Use(func(c *echo.Context) error {
+	a.Use(echo.WrapMiddleware(echo.HandlerFunc(func(c echo.Context) error {
 		// Security middleware
 		return nil
-	})
+	})))
 	a.Get("", echo.HandlerFunc(func(c echo.Context) error {
 		return c.String(http.StatusOK, "Welcome admin!")
-	}))
-
-	// Group with no parent middleware
-	g := e.Group("/files", echo.HandlerFunc(func(c echo.Context) error {
-		// Security middleware
-		return nil
-	}))
-	g.Get("", echo.HandlerFunc(func(c echo.Context) error {
-		return c.String(http.StatusOK, "Your files!")
 	}))
 
 	// Start server
