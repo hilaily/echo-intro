@@ -19,13 +19,13 @@ func init() {
 		templates: template.Must(template.ParseFiles("templates/welcome.html")),
 	}
 	e.SetRenderer(t)
-	e.Get("/welcome", welcome)
+	e.Get("/welcome", echo.HandlerFunc(welcome))
 }
 
-func (t *Template) Render(w io.Writer, name string, data interface{}) error {
+func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
 	return t.templates.ExecuteTemplate(w, name, data)
 }
 
-func welcome(c *echo.Context) error {
+func welcome(c echo.Context) error {
 	return c.Render(http.StatusOK, "welcome", "Joe")
 }
