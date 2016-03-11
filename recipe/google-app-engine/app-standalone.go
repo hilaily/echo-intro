@@ -4,6 +4,7 @@ package main
 
 import (
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/engine/standard"
 	"github.com/labstack/echo/middleware"
 )
 
@@ -14,12 +15,11 @@ func createMux() *echo.Echo {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Gzip())
 
-	e.Index("public/index.html")
-	e.Static("/public", "public")
+	e.Use(middleware.Static("public"))
 
 	return e
 }
 
 func main() {
-	e.Run(":8080")
+	e.Run(standard.New(":8080"))
 }

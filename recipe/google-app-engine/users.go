@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/engine/standard"
 	"github.com/rs/cors"
 )
 
@@ -29,14 +30,14 @@ func init() {
 	// hook into the echo instance to create an endpoint group
 	// and add specific middleware to it plus handlers
 	g := e.Group("/users")
-	g.Use(cors.Default().Handler)
+	g.Use(standard.WrapMiddleware(cors.Default().Handler))
 
-	g.Post("", createUser)
-	g.Get("", getUsers)
-	g.Get("/:id", getUser)
+	g.Post("", echo.HandlerFunc(createUser))
+	g.Get("", echo.HandlerFunc(getUsers))
+	g.Get("/:id", echo.HandlerFunc(getUser))
 }
 
-func createUser(c *echo.Context) error {
+func createUser(c echo.Context) error {
 	u := new(user)
 	if err := c.Bind(u); err != nil {
 		return err
@@ -45,10 +46,10 @@ func createUser(c *echo.Context) error {
 	return c.JSON(http.StatusCreated, u)
 }
 
-func getUsers(c *echo.Context) error {
+func getUsers(c echo.Context) error {
 	return c.JSON(http.StatusOK, users)
 }
 
-func getUser(c *echo.Context) error {
+func getUser(c echo.Context) error {
 	return c.JSON(http.StatusOK, users[c.P(0)])
 }
