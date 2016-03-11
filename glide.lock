@@ -1,5 +1,5 @@
-hash: 1621e28076b47fa1f9f7bec662334188c9b8b45ff7734af55fdf3a700880c97b
-updated: 2016-03-09T23:26:46.197543341-08:00
+hash: d7d2b4b7f2d2d1ecd5eeee6f32436f3734dc9c6d64b0bcdf07185c8514905550
+updated: 2016-03-10T16:35:52.238475026-08:00
 imports:
 - name: github.com/daaku/go.zipexe
   version: a5fe2436ffcb3236e175e5149162b41cd28bd27d
@@ -21,16 +21,16 @@ imports:
   subpackages:
   - embedded
 - name: github.com/golang/protobuf
-  version: b9504f23731d0b61ccfff7370a161d6c857ca00d
+  version: 0fd8c908d872c921af513ef5091964bbd2e0d904
   subpackages:
   - proto
 - name: github.com/kardianos/osext
   version: 29ae4ffbc9a6fe9fb2bc5029050ce6996ea1d3bc
 - name: github.com/labstack/echo
-  version: 38d010090f869d367623a3db7bcf68bd1b5825d0
+  version: 25e72d623e44806303a8691b1240215d6ee3853d
   subpackages:
-  - middleware
   - engine/standard
+  - middleware
   - engine
 - name: github.com/labstack/gommon
   version: c7a42f4800da9d39225ce15411f48288d622e517
@@ -50,7 +50,7 @@ imports:
 - name: github.com/tylerb/graceful
   version: c78c8d9dded2ad16ad81b1fa526a81b2bb8049f6
 - name: golang.org/x/net
-  version: 3e5cd1ed149001198e582f9d3f5bfd564cde2896
+  version: e7da8edaa52631091740908acaf2c2d4c9b3ce90
   subpackages:
   - websocket
   - context

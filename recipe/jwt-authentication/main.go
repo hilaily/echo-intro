@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
 	"github.com/labstack/echo/middleware"
@@ -18,12 +19,6 @@ const (
 func JWTAuth(key string) echo.MiddlewareFunc {
 	return func(next echo.Handler) echo.Handler {
 		return echo.HandlerFunc(func(c echo.Context) error {
-
-			// Skip WebSocket
-			if (c.Request().Header().Get(echo.Upgrade)) == echo.WebSocket {
-				return nil
-			}
-
 			auth := c.Request().Header().Get("Authorization")
 			l := len(Bearer)
 			he := echo.NewHTTPError(http.StatusUnauthorized)

@@ -39,6 +39,7 @@ func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Con
 
 func welcome() echo.HandlerFunc {
 	return func(c echo.Context) error {
+		panic("welcome")
 		return c.Render(http.StatusOK, "welcome", "Joe")
 	}
 }
@@ -86,8 +87,7 @@ func main() {
 	s := stats.New()
 	e.Use(standard.WrapMiddleware(s.Handler))
 	e.Get("/stats", echo.HandlerFunc(func(c echo.Context) error {
-		println(5)
-		return c.JSON(300, s.Data())
+		return c.JSON(222, s.Data())
 	}))
 
 	//--------

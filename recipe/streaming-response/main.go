@@ -37,7 +37,7 @@ func main() {
 			if err := json.NewEncoder(c.Response()).Encode(l); err != nil {
 				return err
 			}
-			c.Response().Flush()
+			c.Response().(http.Flusher).Flush()
 			time.Sleep(1 * time.Second)
 		}
 		return nil

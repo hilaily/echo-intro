@@ -15,7 +15,8 @@ import (
 
 func upload() echo.HandlerFunc {
 	return func(c echo.Context) error {
-		mr, err := c.Request().MultipartReader()
+		req := c.Request().(*standard.Request)
+		mr, err := req.MultipartReader()
 		if err != nil {
 			return err
 		}

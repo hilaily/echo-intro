@@ -11,10 +11,12 @@ import (
 )
 
 func main() {
-	// Setup
 	e := echo.New()
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
 	e.Use(middleware.Static("public"))
 
+	// JSONP
 	e.Get("/jsonp", echo.HandlerFunc(func(c echo.Context) error {
 		callback := c.Query("callback")
 		var content struct {
