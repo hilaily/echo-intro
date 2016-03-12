@@ -16,5 +16,6 @@ menu:
 ### Maintainers
 
 - [caarlos0](https://github.com/caarlos0)
+- [maddie](https://github.com/maddie)
 
 ### [Source Code]({{< source "embed-resources" >}})
