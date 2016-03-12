@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        Echo - Golang micro web framework, High performance, Minimalistic and Fast. - JSONP 
+    </title>
+    <meta name="description" content="Golang micro web framework, High performance, Minimalistic and Fast.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    <link rel="stylesheet" href="//storage.googleapis.com/code.getmdl.io/1.0.5/material.blue-pink.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="https://labstack.com/echo/styles/prism.css">
+    <link rel="stylesheet" href="https://labstack.com/echo/styles/echo.css">
+    <script src="//storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
+</head>
+
+<body>
+    
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+        <a href="https://labstack.com/echo" class="mdl-navigation__link mdl-layout-title">
+            <img src="https://labstack.com/echo/images/logo.svg" alt="LabStack">
+        </a>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a href="https://github.com/labstack/echo" class="mdl-navigation__link">
+                <i class="fa fa-github fa-2x"></i>
+            </a>
+        </nav>
+    </div>
+</header>
+<div style="padding: 4px; text-align: center; background: #ff851b; color: #fff;">
+    This is Echo v2 website. If you are looking for v1 docs, they can be found <a style=
+"color: #fff;" href="https://github.com/labstack/echo/tree/v1/website/content"><b>here</b>.</a>
+</div>
+
+        <main class="mdl-layout__content">
+            <div class="page-content single">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--3-col">
+                        <aside class="menu">
+    <div>
+        
+            
+                <h4>
+                    <i class='fa fa-book'></i>
+                    Guide
+                </h4>
+                
+                    <a href="https://labstack.com/echo/guide/installation/">
+                        Installation
+                    </a>
+                
+                    <a href="https://labstack.com/echo/guide/migrating/">
+                        Migrating
+                    </a>
+                
+                    <a href="https://labstack.com/echo/guide/customization/">
+                        Customization
+                    </a>
+                
+                    <a href="https://labstack.com/echo/guide/routing/">
+                        Routing
+                    </a>
+                
+                    <a href="https://labstack.com/echo/guide/middleware/">
+                        Middleware
+                    </a>
+                
+                    <a href="https://labstack.com/echo/guide/request/">
+                        Request
+                    </a>
+                
+                    <a href="https://labstack.com/echo/guide/response/">
+                        Response
+                    </a>
+                
+                    <a href="https://labstack.com/echo/guide/error-handling/">
+                        Error Handling
+                    </a>
+                
+            
+        
+            
+                <h4>
+                    <i class='fa fa-code'></i>
+                    Recipes
+                </h4>
+                
+                    <a href="https://labstack.com/echo/recipes/hello-world/">
+                        Hello World
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/crud/">
+                        CRUD
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/cors/">
+                        CORS
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/middleware/">
+                        Middleware
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/websocket/">
+                        WebSocket
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/jsonp/">
+                        JSONP
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/file-upload/">
+                        File Upload
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/streaming-file-upload/">
+                        Streaming File Upload
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/streaming-response/">
+                        Streaming Response
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/subdomains/">
+                        Subdomains
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/jwt-authentication/">
+                        JWT Authentication
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/google-app-engine/">
+                        Google App Engine
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/graceful-shutdown/">
+                        Graceful Shutdown
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/embed-resources/">
+                        Embed Resources
+                    </a>
+                
+            
+        
+    </div>
+</aside>
+
+                    </div>
+                    <div class="mdl-cell mdl-cell--9-col">
+                        <article>
+                            <header>
+                                <h2>JSONP</h2>
+                            </header>
+                            <section class="content">
+                                
+
+<p>JSONP is a method that allows cross-domain server calls. You can read more about it at the JSON versus JSONP Tutorial.</p>
+
+<h3 id="server:51dfbda7fbfd65fd59e6c425747ca897">Server</h3>
+
+<p><code>main.go</code></p>
+
+<pre data-src="https://raw.githubusercontent.com/labstack/echox/master/recipe/jsonp/main.go">
+</pre>
+
+
+<h3 id="client:51dfbda7fbfd65fd59e6c425747ca897">Client</h3>
+
+<p><code>index.html</code></p>
+
+<pre data-src="https://raw.githubusercontent.com/labstack/echox/master/recipe/jsonp/public/index.html">
+</pre>
+
+
+<h3 id="maintainers:51dfbda7fbfd65fd59e6c425747ca897">Maintainers</h3>
+
+<ul>
+<li><a href="https://github.com/willf">willf</a></li>
+</ul>
+
+<h3 id="source-code-hugoshortcode-3:51dfbda7fbfd65fd59e6c425747ca897"><a href="https://github.com/labstack/echox/tree/master/recipe/jsonp
+">Source Code</a></h3>
+
+                            </section>
+                            <footer style="margin-top: 80px;">
+                                <div id="disqus_thread"></div>
+                                <script type="text/javascript">
+                                     
+                                    var disqus_shortname = 'labstack';
+
+                                     
+                                    (function() {
+                                        var dsq = document.createElement('script');
+                                        dsq.type = 'text/javascript';
+                                        dsq.async = true;
+                                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                    })();
+                                </script>
+                            </footer>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+        <span class="mdl-typography__font-light">© 2015 LabStack</span>
+    </div>
+    <div class="mdl-mini-footer__right-section">
+        <ul class="mdl-mini-footer__link-list">
+            <li class="github">
+                <a href="https://github.com/labstack" target="_blank">
+                    <i class="fa fa-github fa-2x"></i>
+                </a>
+            </li>
+            <li class="facebook">
+                <a href="https://facebook.com/labstack" target="_blank">
+                    <i class="fa fa-facebook fa-2x"></i>
+                </a>
+            </li>
+            <li class="twitter">
+                <a href="https://twitter.com/labstack" target="_blank">
+                    <i class="fa fa-twitter-square fa-2x"></i>
+                </a>
+            </li>
+            <li class="google">
+                <a href="https://plus.google.com/+labstack" target="_blank">
+                    <i class="fa fa-google-plus-square fa-2x"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+<script src="https://labstack.com/echo/scripts/prism.js"></script>
+<script src="https://labstack.com/echo/scripts/echo.js"></script>
+
+<script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-51208124-3', 'auto');
+    ga('send', 'pageview');
+</script>
+
+        </main>
+    </div>
+</body>
+
+</html>

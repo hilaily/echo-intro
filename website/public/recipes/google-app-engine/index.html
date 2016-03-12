@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        Echo - Golang micro web framework, High performance, Minimalistic and Fast. - Google App Engine 
+    </title>
+    <meta name="description" content="Golang micro web framework, High performance, Minimalistic and Fast.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    <link rel="stylesheet" href="//storage.googleapis.com/code.getmdl.io/1.0.5/material.blue-pink.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="https://labstack.com/echo/styles/prism.css">
+    <link rel="stylesheet" href="https://labstack.com/echo/styles/echo.css">
+    <script src="//storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
+</head>
+
+<body>
+    
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+        <a href="https://labstack.com/echo" class="mdl-navigation__link mdl-layout-title">
+            <img src="https://labstack.com/echo/images/logo.svg" alt="LabStack">
+        </a>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a href="https://github.com/labstack/echo" class="mdl-navigation__link">
+                <i class="fa fa-github fa-2x"></i>
+            </a>
+        </nav>
+    </div>
+</header>
+<div style="padding: 4px; text-align: center; background: #ff851b; color: #fff;">
+    This is Echo v2 website. If you are looking for v1 docs, they can be found <a style=
+"color: #fff;" href="https://github.com/labstack/echo/tree/v1/website/content"><b>here</b>.</a>
+</div>
+
+        <main class="mdl-layout__content">
+            <div class="page-content single">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--3-col">
+                        <aside class="menu">
+    <div>
+        
+            
+                <h4>
+                    <i class='fa fa-book'></i>
+                    Guide
+                </h4>
+                
+                    <a href="https://labstack.com/echo/guide/installation/">
+                        Installation
+                    </a>
+                
+                    <a href="https://labstack.com/echo/guide/migrating/">
+                        Migrating
+                    </a>
+                
+                    <a href="https://labstack.com/echo/guide/customization/">
+                        Customization
+                    </a>
+                
+                    <a href="https://labstack.com/echo/guide/routing/">
+                        Routing
+                    </a>
+                
+                    <a href="https://labstack.com/echo/guide/middleware/">
+                        Middleware
+                    </a>
+                
+                    <a href="https://labstack.com/echo/guide/request/">
+                        Request
+                    </a>
+                
+                    <a href="https://labstack.com/echo/guide/response/">
+                        Response
+                    </a>
+                
+                    <a href="https://labstack.com/echo/guide/error-handling/">
+                        Error Handling
+                    </a>
+                
+            
+        
+            
+                <h4>
+                    <i class='fa fa-code'></i>
+                    Recipes
+                </h4>
+                
+                    <a href="https://labstack.com/echo/recipes/hello-world/">
+                        Hello World
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/crud/">
+                        CRUD
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/cors/">
+                        CORS
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/middleware/">
+                        Middleware
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/websocket/">
+                        WebSocket
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/jsonp/">
+                        JSONP
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/file-upload/">
+                        File Upload
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/streaming-file-upload/">
+                        Streaming File Upload
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/streaming-response/">
+                        Streaming Response
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/subdomains/">
+                        Subdomains
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/jwt-authentication/">
+                        JWT Authentication
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/google-app-engine/">
+                        Google App Engine
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/graceful-shutdown/">
+                        Graceful Shutdown
+                    </a>
+                
+                    <a href="https://labstack.com/echo/recipes/embed-resources/">
+                        Embed Resources
+                    </a>
+                
+            
+        
+    </div>
+</aside>
+
+                    </div>
+                    <div class="mdl-cell mdl-cell--9-col">
+                        <article>
+                            <header>
+                                <h2>Google App Engine</h2>
+                            </header>
+                            <section class="content">
+                                
+
+<p>Google App Engine (GAE) provides a range of hosting options from pure PaaS (App Engine Classic)
+through Managed VMs to fully self-managed or container-driven Compute Engine instances. Echo
+works great with all of these but requires a few changes to the usual examples to run on the
+AppEngine Classic and Managed VM options. With a small amount of effort though it&rsquo;s possible
+to produce a codebase that will run on these and also non-managed platforms automatically.</p>
+
+<p>We&rsquo;ll walk through the changes needed to support each option.</p>
+
+<h3 id="standalone:c1d8683ee4950db0bb4125a71922c046">Standalone</h3>
+
+<p>Wait? What? I thought this was about AppEngine! Bear with me - the easiest way to show the changes
+required is to start with a setup for standalone and work from there plus there&rsquo;s no reason we
+wouldn&rsquo;t want to retain the ability to run our app anywhere, right?</p>
+
+<p>We take advantage of the go <a href="http://golang.org/pkg/go/build/">build constraints or tags</a> to change
+how we create and run the Echo server for each platform while keeping the rest of the application
+(e.g. handler wireup) the same across all of them.</p>
+
+<p>First, we have the normal setup based on the examples but we split it into two files - <code>app.go</code> will
+be common to all variations and holds the Echo instance variable. We initialise it from a function
+and because it is a <code>var</code> this will happen <em>before</em> any <code>init()</code> functions run - a feature that we&rsquo;ll
+use to connect our handlers later.</p>
+
+<p><code>app.go</code></p>
+
+<pre data-src="https://raw.githubusercontent.com/labstack/echox/master/recipe/google-app-engine/app.go">
+</pre>
+
+
+<p>A separate source file contains the function to create the Echo instance and add the static
+file handlers and middleware. Note the build tag on the first line which says to use this when <em>not</em>
+bulding with appengine or appenginevm tags (which thoese platforms automatically add for us). We also
+have the <code>main()</code> function to start serving our app as normal. This should all be very familiar.</p>
+
+<p><code>app-standalone.go</code></p>
+
+<pre data-src="https://raw.githubusercontent.com/labstack/echox/master/recipe/google-app-engine/app-standalone.go">
+</pre>
+
+
+<p>The handler-wireup that would normally also be a part of this Echo setup moves to separate files which
+take advantage of the ability to have multiple <code>init()</code> functions which run <em>after</em> the <code>e</code> Echo var is
+initialised but <em>before</em> the <code>main()</code> function is executed. These allow additional handlers to attach
+themselves to the instance - I&rsquo;ve found the <code>Group</code> feature naturally fits into this pattern with a file
+per REST endpoint, often with a higher-level <code>api</code> group created that they attach to instead of the root
+Echo instance directly (so things like CORS middleware can be added at this higher common-level).</p>
+
+<p><code>users.go</code></p>
+
+<pre data-src="https://raw.githubusercontent.com/labstack/echox/master/recipe/google-app-engine/users.go">
+</pre>
+
+
+<p>If we run our app it should execute as it did before when everything was in one file although we have
+at least gained the ability to organize our handlers a little more cleanly.</p>
+
+<h3 id="appengine-classic-and-managed-vms:c1d8683ee4950db0bb4125a71922c046">AppEngine Classic and Managed VMs</h3>
+
+<p>So far we&rsquo;ve seen how to split apart the Echo creation and setup but still have the same app that
+still only runs standalone. Now we&rsquo;ll see hwo those changes allow us to add support for AppEngine
+hosting.</p>
+
+<p>Refer to the <a href="https://cloud.google.com/appengine/docs/go/">AppEngine site</a> for full configuration
+and deployment information.</p>
+
+<h4 id="app-yaml-configuration-file:c1d8683ee4950db0bb4125a71922c046">app.yaml configuration file</h4>
+
+<p>Both of these are Platform as as Service options running on either sandboxed micro-containers
+or managed Compute Engine instances. Both require an <code>app.yaml</code> file to describe the app to
+the service. While the app <em>could</em> still serve all it&rsquo;s static files itself, one of the benefits
+of the platform is having Google&rsquo;s infrastructure handle that for us so it can be offloaded and
+the app only has to deal with dynamic requests. The platform also handles logging and http gzip
+compression so these can be removed from the codebase as well.</p>
+
+<p>The yaml file also contains other options to control instance size and auto-scaling so for true
+deployment freedom you would likely have separate <code>app-classic.yaml</code> and <code>app-vm.yaml</code> files and
+this can help when making the transition from AppEngine Classic to Managed VMs.</p>
+
+<p><code>app-engine.yaml</code></p>
+
+<pre data-src="https://raw.githubusercontent.com/labstack/echox/master/recipe/google-app-engine/app-engine.yaml">
+</pre>
+
+
+<h4 id="router-configuration:c1d8683ee4950db0bb4125a71922c046">Router configuration</h4>
+
+<p>We&rsquo;ll now use the <a href="http://golang.org/pkg/go/build/">build constraints</a> again like we did when creating
+our <code>app-standalone.go</code> instance but this time with the opposite tags to use this file <em>if</em> the build has
+the appengine or appenginevm tags (added automatically when deploying to these platforms).</p>
+
+<p>This allows us to replace the <code>createMux()</code> function to create our Echo server <em>without</em> any of the
+static file handling and logging + gzip middleware which is no longer required. Also worth nothing is
+that GAE classic provides a wrapper to handle serving the app so instead of a <code>main()</code> function where
+we run the server, we instead wire up the router to the default <code>http.Handler</code> instead.</p>
+
+<p><code>app-engine.go</code></p>
+
+<pre data-src="https://raw.githubusercontent.com/labstack/echox/master/recipe/google-app-engine/app-engine.go">
+</pre>
+
+
+<p>Managed VMs are slightly different. They are expected to respond to requests on port 8080 as well
+as special health-check requests used by the service to detect if an instance is still running in
+order to provide automated failover and instance replacement. The <code>google.golang.org/appengine</code>
+package provides this for us so we have a slightly different version for Managed VMs:</p>
+
+<p><code>app-managed.go</code></p>
+
+<pre data-src="https://raw.githubusercontent.com/labstack/echox/master/recipe/google-app-engine/app-managed.go">
+</pre>
+
+
+<p>So now we have three different configurations. We can build and run our app as normal so it can
+be executed locally, on a full Compute Engine instance or any other traditional hosting provider
+(including EC2, Docker etc&hellip;). This build will ignore the code in appengine and appenginevm tagged
+files and the <code>app.yaml</code> file is meaningless to anything other than the AppEngine platform.</p>
+
+<p>We can also run locally using the <a href="https://cloud.google.com/appengine/downloads">Google AppEngine SDK for Go</a>
+either emulating <a href="https://cloud.google.com/appengine/docs/go/tools/devserver">AppEngine Classic</a>:</p>
+
+<pre><code>goapp serve
+</code></pre>
+
+<p>Or <a href="https://cloud.google.com/appengine/docs/managed-vms/sdk#run-local">Managed VMs</a>:</p>
+
+<pre><code>gcloud config set project [your project id]
+gcloud preview app run .
+</code></pre>
+
+<p>And of course we can deploy our app to both of these platforms for easy and inexpensive auto-scaling joy.</p>
+
+<p>Depending on what your app actually does it&rsquo;s possible you may need to make other changes to allow
+switching between AppEngine provided service such as Datastore and alternative storage implementations
+such as MongoDB. A combination of go interfaces and build constraints can make this fairly straightforward
+but is outside the scope of this recipe.</p>
+
+<h3 id="maintainers:c1d8683ee4950db0bb4125a71922c046">Maintainers</h3>
+
+<ul>
+<li><a href="https://github.com/CaptainCodeman">CaptainCodeman</a></li>
+</ul>
+
+<h3 id="source-code-hugoshortcode-7:c1d8683ee4950db0bb4125a71922c046"><a href="https://github.com/labstack/echox/tree/master/recipe/google-app-engine
+">Source Code</a></h3>
+
+                            </section>
+                            <footer style="margin-top: 80px;">
+                                <div id="disqus_thread"></div>
+                                <script type="text/javascript">
+                                     
+                                    var disqus_shortname = 'labstack';
+
+                                     
+                                    (function() {
+                                        var dsq = document.createElement('script');
+                                        dsq.type = 'text/javascript';
+                                        dsq.async = true;
+                                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                    })();
+                                </script>
+                            </footer>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+        <span class="mdl-typography__font-light">© 2015 LabStack</span>
+    </div>
+    <div class="mdl-mini-footer__right-section">
+        <ul class="mdl-mini-footer__link-list">
+            <li class="github">
+                <a href="https://github.com/labstack" target="_blank">
+                    <i class="fa fa-github fa-2x"></i>
+                </a>
+            </li>
+            <li class="facebook">
+                <a href="https://facebook.com/labstack" target="_blank">
+                    <i class="fa fa-facebook fa-2x"></i>
+                </a>
+            </li>
+            <li class="twitter">
+                <a href="https://twitter.com/labstack" target="_blank">
+                    <i class="fa fa-twitter-square fa-2x"></i>
+                </a>
+            </li>
+            <li class="google">
+                <a href="https://plus.google.com/+labstack" target="_blank">
+                    <i class="fa fa-google-plus-square fa-2x"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+<script src="https://labstack.com/echo/scripts/prism.js"></script>
+<script src="https://labstack.com/echo/scripts/echo.js"></script>
+
+<script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-51208124-3', 'auto');
+    ga('send', 'pageview');
+</script>
+
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://labstack.com/echo/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/recipes/cors/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/recipes/crud/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/guide/customization/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/recipes/embed-resources/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/guide/error-handling/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/recipes/file-upload/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/recipes/google-app-engine/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/recipes/graceful-shutdown/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/recipes/hello-world/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/guide/installation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/recipes/jsonp/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/recipes/jwt-authentication/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/guide/middleware/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/recipes/middleware/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/guide/migrating/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/guide/request/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/guide/response/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/guide/routing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/recipes/streaming-file-upload/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/recipes/streaming-response/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/recipes/subdomains/</loc>
+  </url>
+  
+  <url>
+    <loc>https://labstack.com/echo/recipes/websocket/</loc>
+  </url>
+  
+</urlset>
