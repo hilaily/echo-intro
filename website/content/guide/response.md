@@ -96,9 +96,9 @@ Sends a response with the content of the file.
 
 ### Attachment
 
-`Context#Attachment(file string) error`
+`Context#Attachment(r io.Reader, name string) error`
 
-Sends a response as file attachment, prompting client to save the file.
+Sends a response from `io.Reader` as attachment, prompting client to save the file.
 
 ### Static Files
 
