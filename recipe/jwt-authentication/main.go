@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
 	"github.com/labstack/echo/middleware"
@@ -21,7 +20,7 @@ func JWTAuth(key string) echo.MiddlewareFunc {
 		return echo.HandlerFunc(func(c echo.Context) error {
 			auth := c.Request().Header().Get("Authorization")
 			l := len(Bearer)
-			he := echo.NewHTTPError(http.StatusUnauthorized)
+			he := echo.ErrUnauthorized
 
 			if len(auth) > l+1 && auth[:l] == Bearer {
 				t, err := jwt.Parse(auth[l+1:], func(token *jwt.Token) (interface{}, error) {
@@ -37,7 +36,7 @@ func JWTAuth(key string) echo.MiddlewareFunc {
 				if err == nil && t.Valid {
 					// Store token claims in echo.Context
 					c.Set("claims", t.Claims)
-					return nil
+					return next.Handle(c)
 				}
 			}
 			return he

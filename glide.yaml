@@ -6,7 +6,6 @@ import:
   subpackages:
   - gracehttp
 - package: github.com/labstack/echo
-  version: v2
   subpackages:
   - engine/standard
   - middleware

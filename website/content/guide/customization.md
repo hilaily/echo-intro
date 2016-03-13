@@ -43,7 +43,7 @@ To completely disable logs use `Echo#SetLogOutput(io.Discard)`
 
 `Echo#SetLogLevel(l log.Level)`
 
-SetLogLevel sets the log level for the logger. Default value is `log.ERROR`.
+SetLogLevel sets the log level for the logger. Default value is `log.FATAL`.
 
 ### Engine
 
