@@ -1,5 +1,5 @@
-hash: 5c9630de3fdd605fadf06a82e3639564f7a2e9bec0d421f930ecf334f9686467
-updated: 2016-03-13T08:52:47.672339213-07:00
+hash: ab5308063bdd5c4110420876eb25eb23f55cfbbf3c590275e4cde314d4801c3e
+updated: 2016-03-13T13:08:06.991605386-07:00
 imports:
 - name: github.com/daaku/go.zipexe
   version: a5fe2436ffcb3236e175e5149162b41cd28bd27d
@@ -27,7 +27,7 @@ imports:
 - name: github.com/kardianos/osext
   version: 29ae4ffbc9a6fe9fb2bc5029050ce6996ea1d3bc
 - name: github.com/labstack/echo
-  version: 7942e4a77b10a37918bcfdd3733f8943283abdce
+  version: cc6b31d0efab221ea7a1748659e3b2f2e4347463
   subpackages:
   - engine/standard
   - middleware

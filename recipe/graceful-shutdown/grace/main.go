@@ -15,5 +15,5 @@ func main() {
 	}))
 	std := standard.New(":1323")
 	std.SetHandler(e)
-	gracehttp.Serve(std.Server())
+	gracehttp.Serve(std.Server)
 }

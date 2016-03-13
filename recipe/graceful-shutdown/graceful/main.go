@@ -17,5 +17,5 @@ func main() {
 	}))
 	std := standard.New(":1323")
 	std.SetHandler(e)
-	graceful.ListenAndServe(std.Server(), 5*time.Second)
+	graceful.ListenAndServe(std.Server, 5*time.Second)
 }

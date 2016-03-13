@@ -10,9 +10,9 @@ import:
   - engine/standard
   - middleware
 - package: github.com/rs/cors
+- package: github.com/thoas/stats
 - package: github.com/tylerb/graceful
 - package: golang.org/x/net
   subpackages:
   - websocket
 - package: google.golang.org/appengine
-- package: github.com/thoas/stats
