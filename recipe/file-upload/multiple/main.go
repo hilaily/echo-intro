@@ -14,36 +14,46 @@ import (
 
 func upload() echo.HandlerFunc {
 	return func(c echo.Context) error {
-		req := c.Request().(*standard.Request)
-		req.ParseMultipartForm(16 << 20) // Max memory 16 MiB
+		req := c.Request()
 
 		// Read form fields
 		name := c.Form("name")
 		email := c.Form("email")
 
+		//------------
 		// Read files
-		files := req.MultipartForm.File["files"]
-		for _, f := range files {
-			// Source file
-			src, err := f.Open()
+		//------------
+
+		// Multipart form
+		form, err := req.MultipartForm()
+		if err != nil {
+			return err
+		}
+		files := form.File["files"]
+
+		for _, file := range files {
+			// Source
+			src, err := file.Open()
 			if err != nil {
 				return err
 			}
 			defer src.Close()
 
-			// Destination file
-			dst, err := os.Create(f.Filename)
+			// Destination
+			dst, err := os.Create(file.Filename)
 			if err != nil {
 				return err
 			}
 			defer dst.Close()
 
+			// Copy
 			if _, err = io.Copy(dst, src); err != nil {
 				return err
 			}
+
 		}
-		return c.String(http.StatusOK, fmt.Sprintf("Thank You! %s <%s>, %d files uploaded successfully.",
-			name, email, len(files)))
+
+		return c.HTML(http.StatusOK, fmt.Sprintf("<p>Uploaded successfully %d files with fields name=%s and email=%s.</p>", len(files), name, email))
 	}
 }
 
