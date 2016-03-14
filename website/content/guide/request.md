@@ -25,17 +25,17 @@ e.Get("/users/:name", func(c echo.Context) error) {
 
 ### golang.org/x/net/context
 
-`echo.Context` embeds `context.Context` interface, so all it's properties
+`echo.Context` embeds `context.Context` interface, so all it's functions
 are available right from `echo.Context`.
 
 *Example*
 
 ```go
 e.Get("/users/:name", func(c echo.Context) error) {
-    c.Context = context.WithValue(nil, "key", "val")
+    c.SetNetContext(context.WithValue(nil, "key", "val"))
     // Pass it down...
     // Use it...
-    println(c.Value("key"))
+    val := c.Value("key").(string)
     return c.String(http.StatusOK, name)
 })
 ```
