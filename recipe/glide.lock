@@ -1,5 +1,5 @@
 hash: ab5308063bdd5c4110420876eb25eb23f55cfbbf3c590275e4cde314d4801c3e
-updated: 2016-03-13T22:25:29.589129595-07:00
+updated: 2016-03-19T08:40:38.064368931-07:00
 imports:
 - name: github.com/daaku/go.zipexe
   version: a5fe2436ffcb3236e175e5149162b41cd28bd27d
@@ -21,19 +21,19 @@ imports:
   subpackages:
   - embedded
 - name: github.com/golang/protobuf
-  version: 99511271042a09d1e01baea8781caa5210fec66e
+  version: 62e4364d64b32762febb61f2c88c0a29bc49a225
   subpackages:
   - proto
 - name: github.com/kardianos/osext
   version: 29ae4ffbc9a6fe9fb2bc5029050ce6996ea1d3bc
 - name: github.com/labstack/echo
-  version: b9ac79d9d49ebf2ac128cba81e44f80b2732ecf5
+  version: d01e856db6c173b34f875b0fba153f9b3ddc2cf1
   subpackages:
   - engine/standard
   - middleware
   - engine
 - name: github.com/labstack/gommon
-  version: c7a42f4800da9d39225ce15411f48288d622e517
+  version: 9c0a60557b6840125c331d8c8075119770aa2805
   subpackages:
   - log
   - color
@@ -46,17 +46,19 @@ imports:
 - name: github.com/rs/xhandler
   version: d9d9599b6aaf6a058cb7b1f48291ded2cbd13390
 - name: github.com/thoas/stats
-  version: 54ed61c2b47e263ae2f01b86837b0c4bd1da28e8
+  version: 7f7735fe9a9da3aadbc1b7fc6e59012a137dd516
 - name: github.com/tylerb/graceful
   version: c78c8d9dded2ad16ad81b1fa526a81b2bb8049f6
+- name: github.com/valyala/fasttemplate
+  version: 3b874956e03f1636d171bda64b130f9135f42cff
 - name: golang.org/x/net
-  version: e7da8edaa52631091740908acaf2c2d4c9b3ce90
+  version: 35b06af0720201bc2f326773a80767387544f8c4
   subpackages:
   - websocket
   - context
   - netutil
 - name: golang.org/x/sys
-  version: 7a56174f0086b32866ebd746a794417edbc678a1
+  version: 9d4e42a20653790449273b3c85e67d6d8bae6e2e
   subpackages:
   - unix
 - name: google.golang.org/appengine
