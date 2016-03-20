@@ -11,7 +11,7 @@ A fast and unfancy micro web framework for Go.
 ## Features
 
 - Fast HTTP router which smartly prioritize routes.
-- Run with standard HTTP server or FastHTTP server.
+- Run with standard HTTP server or [FastHTTP](https://github.com/valyala/fasthttp) server.
 - Extensible middleware framework.
 - Router groups with nesting.
 - Handy functions to send variety of HTTP responses.
