@@ -8,7 +8,7 @@ menu:
 
 ### Migrating from v1
 
-#### Change log
+#### Change Log
 
 - Good news, 85% of the API remains the same.
 - `Engine` interface to abstract `HTTP` server implementation, allowing
@@ -25,8 +25,35 @@ it can be achieved via middleware.
 - Ability to define middleware at route level.
 - `Echo#HTTPError` exposed it's fields `Code` and `Message`.
 
-#### How?
+##### API
 
-Quite easy
+v1 | v2
+--- | ---
+`Context#Query()` | `Context#QueryParam()`
+`Context#Form()` | `Context#FormValue()`
+
+Q. How to access original objects from interfaces?
+
+A. Only if you need to...
+
+```go
+// `*http.Request`
+c.Request().(*standard.Request).Request
+
+// `*http.URL`
+c.Request().(*standard.URL).URL
+
+// Request `http.Header`
+c.Request().(*standard.Header).Header
+
+// `http.ResponseWriter`
+c.Response().(*standard.Response).ResponseWriter
+
+// Response `http.Header`
+c.Response().(*standard.Header).Header
+```
+
+#### Next?
+
 - Browse through [recipes](/recipes/hello-world) freshly converted to v2.
 - Read documentation and dig into test cases.
