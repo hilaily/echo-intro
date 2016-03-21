@@ -1,5 +1,5 @@
 hash: ab5308063bdd5c4110420876eb25eb23f55cfbbf3c590275e4cde314d4801c3e
-updated: 2016-03-19T08:40:38.064368931-07:00
+updated: 2016-03-21T14:29:39.044055502-07:00
 imports:
 - name: github.com/daaku/go.zipexe
   version: a5fe2436ffcb3236e175e5149162b41cd28bd27d
@@ -21,19 +21,19 @@ imports:
   subpackages:
   - embedded
 - name: github.com/golang/protobuf
-  version: 62e4364d64b32762febb61f2c88c0a29bc49a225
+  version: d120e2f9573fd13ef964982b1d1f118cee00e4d0
   subpackages:
   - proto
 - name: github.com/kardianos/osext
   version: 29ae4ffbc9a6fe9fb2bc5029050ce6996ea1d3bc
 - name: github.com/labstack/echo
-  version: d01e856db6c173b34f875b0fba153f9b3ddc2cf1
+  version: 703174e58f3f730ca139df65f83ad1c4210b3739
   subpackages:
   - engine/standard
   - middleware
   - engine
 - name: github.com/labstack/gommon
-  version: 9c0a60557b6840125c331d8c8075119770aa2805
+  version: be79218249567a224268f14d7bb09fc9fb7c64f9
   subpackages:
   - log
   - color
@@ -48,11 +48,11 @@ imports:
 - name: github.com/thoas/stats
   version: 7f7735fe9a9da3aadbc1b7fc6e59012a137dd516
 - name: github.com/tylerb/graceful
-  version: c78c8d9dded2ad16ad81b1fa526a81b2bb8049f6
+  version: 9a3d4236b03bb5d26f7951134d248f9d5510d599
 - name: github.com/valyala/fasttemplate
   version: 3b874956e03f1636d171bda64b130f9135f42cff
 - name: golang.org/x/net
-  version: 35b06af0720201bc2f326773a80767387544f8c4
+  version: 9d8ef8d73b53840886e4a772c72f2b7d396cb37c
   subpackages:
   - websocket
   - context

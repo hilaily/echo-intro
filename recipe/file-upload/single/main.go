@@ -14,18 +14,16 @@ import (
 
 func upload() echo.HandlerFunc {
 	return func(c echo.Context) error {
-		req := c.Request()
-
 		// Read form fields
-		name := c.Form("name")
-		email := c.Form("email")
+		name := c.FormValue("name")
+		email := c.FormValue("email")
 
 		//-----------
 		// Read file
 		//-----------
 
 		// Source
-		file, err := req.FormFile("file")
+		file, err := c.FormFile("file")
 		if err != nil {
 			return err
 		}
