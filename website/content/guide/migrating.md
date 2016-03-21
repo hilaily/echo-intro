@@ -30,7 +30,9 @@ it can be achieved via middleware.
 v1 | v2
 --- | ---
 `Context#Query()` | `Context#QueryParam()`
-`Context#Form()` | `Context#FormValue()`
+`Context#Form()`  | `Context#FormValue()`
+
+#### FAQ
 
 Q. How to access original objects from interfaces?
 
