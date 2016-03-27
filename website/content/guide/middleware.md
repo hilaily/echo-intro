@@ -76,7 +76,6 @@ Logger middleware logs the information about each HTTP request.
 LoggerConfig struct {
 	// Format is the log format which can be constructed using the following tags:
 	//
-	// Available tags:
 	// - time_rfc3339
 	// - remote_ip
 	// - uri
@@ -251,7 +250,7 @@ e.Use(middleware.BasicAuth(func(username, password string) bool {
 
 #### Static
 
-Gzip middleware compresses HTTP response using gzip compression scheme.
+Static middleware serves static content from the provided root directory.
 
 ##### Configuration
 
@@ -296,8 +295,8 @@ e.Use(middleware.StaticFromConfig(middleware.StaticConfig{
 }))
 ```
 
-Example above uses `Root` as public to serve static files and sets `Browse` to true,
-enabling directory browsing.
+Example above uses `Root` as public directory to serve static files and sets `Browse`
+to true, enabling directory browsing.
 
 ### Writing middleware
 

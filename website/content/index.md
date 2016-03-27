@@ -27,7 +27,7 @@ A fast and unfancy micro web framework for Go.
 ### Installation
 
 ```sh
-$ go get github.com/labstack/echo
+$ go get github.com/labstack/echo/...
 ```
 
 ### Hello, World!
