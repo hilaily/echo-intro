@@ -16,3 +16,9 @@
     t.classList.add('mdl-data-table');
   }
 })();
+
+function search(e) {
+  if (e.which === 13) {
+    google.search.cse.element.getElement('standard0').execute(e.target.value);
+  }
+}

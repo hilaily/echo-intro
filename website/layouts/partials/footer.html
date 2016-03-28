@@ -48,3 +48,15 @@
   ga('create', '{{ .Site.Params.googleAnayticsId }}', 'auto');
   ga('send', 'pageview');
 </script>
+<script>
+  (function() {
+    var cx = '000118537352387123882:em6h4defadg';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
