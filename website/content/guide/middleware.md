@@ -246,7 +246,7 @@ e.Use(middleware.BasicAuth(func(username, password string) bool {
 }))
 ```
 
-### [Static Middleware]({{< relref "guide/static-files.md">}})
+### [Static Middleware]({{< relref "guide/static-files.md#using-static-middleware">}})
 
 ### Writing a custom middleware
 

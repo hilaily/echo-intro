@@ -12,6 +12,16 @@ Images, JavaScript, CSS, PDF, Fonts and so on...
 
 Static middleware can be used to serve static files from the provided root directory.
 
+#### From Default Configuration
+
+```go
+DefaultStaticConfig = StaticConfig{
+  Root:   "",
+  Index:  []string{"index.html"},
+  Browse: false,
+}
+```
+
 ##### Usage
 
 ```go
@@ -28,7 +38,7 @@ With this setup, each and every request goes through this middleware which might
 affect the performance. To overcome that, you can use `Echo#Group()` or [`Echo#Static()`]({{< relref "#using-echo-static">}})
 APIs.
 
-#### Using `Echo#Group()`
+##### Using `Echo#Group()`
 
 ```go
 e := echo.New()
@@ -71,33 +81,44 @@ StaticConfig struct {
 }
 ```
 
-##### Default Configuration
-
-```go
-DefaultStaticConfig = StaticConfig{
-  Root:   "",
-  Index:  []string{"index.html"},
-  Browse: false,
-}
-```
-
 ### Using `Echo#Static()`
 
-`Echo#Use(middleware.Static(root string))`
+`Echo#Static(prefix, root string)` serves static files from the provided `root` directory for path `/prefix*`.
 
-Serves static files from the provided `root` directory.
+##### Example 2
 
-`Echo#Static(prefix, root string)`
+```go
+e.Static("/static", "assets")
+```
 
-Serves files from provided `root` directory for `/<prefix>*` HTTP path.
+This will serve any file from the assets directory for path `/static/*`. For example,
+a request `/static/js/main.js` will fetch and serve `assets/js/main.js` file.
 
-`Echo#File(path, file string)`
+##### Example 2
 
-Serves provided `file` for `/<path>` HTTP path.
+```go
+e.Static("/", "assets")
+```
 
-*Examples*
+This will serve any file from the assets directory for path `/*`. For example,
+a request `/js/main.js` will fetch and serve `assets/js/main.js` file.
 
-- Serving static files with no prefix `e.Use(middleware.Static("public"))`
-- Serving static files with a prefix `e.Static("/static", "assets")`
-- Serving an index page `e.File("/", "public/index.html")`
-- Serving a favicon `e.File("/favicon.ico", "images/facicon.ico")`
+### Using `Echo#File()`
+
+`Echo#File(path, file string)` serves static file from the provided `file` for `/path`.
+
+##### Example 1
+
+Serving an index page from `public/index.html`
+
+```go
+e.File("/", "public/index.html")
+```
+
+##### Example 2
+
+Serving a favicon from `images/facivonindex.html`
+
+```go
+e.File("/favicon.ico", "images/facicon.ico")
+```
