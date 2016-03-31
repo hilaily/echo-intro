@@ -11,7 +11,7 @@ A fast and unfancy micro web framework for Go.
 ## Features
 
 - Fast HTTP router which smartly prioritize routes.
-- Run with standard HTTP server or [FastHTTP](https://github.com/valyala/fasthttp) server.
+- Run with standard HTTP server or [fasthttp](https://github.com/valyala/fasthttp) server.
 - Extensible middleware framework.
 - Router groups with nesting.
 - Handy functions to send variety of HTTP responses.
@@ -77,26 +77,34 @@ $ go run main.go
 Browse to [http://localhost:1323](http://localhost:1323) and you should see
 Hello, World! on the page.
 
-### Next?
+### Next
 
-- Browse [recipes](/recipes/hello-world)
-- Head over to [guide](/guide/installation)
+- Browse [recipes](https://labstack.com/echo/recipes/hello-world)
+- Head over to [guide](https://labstack.com/echo/guide/installation)
 
-### Support
+### Need help?
 
 - [Hop on to chat](https://gitter.im/labstack/echo)
 - [Open an issue](https://github.com/labstack/echo/issues/new)
+
+## Want to support us?
+
+- Star the project
+- [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JD5R56K84A8G4&lc=US&item_name=LabStack&item_number=echo&currency_code=USD&bn=PP-DonationsBF:btn_donate_LG.gif:NonHosted)
+- Spread the word
+- [Contribute](#contribute:d680e8a854a7cbad6d490c445cba2eba) to the project
 
 ## Contribute
 
 **Use issues for everything**
 
 - Report issues
-- Discuss before sending pull request
-- Suggest new features
+- Discuss on chat before sending a pull request
+- Suggest new features or enhancements
 - Improve/fix documentation
 
 ## Credits
+
 - [Vishal Rana](https://github.com/vishr) - Author
 - [Nitin Rana](https://github.com/nr17) - Consultant
 - [Contributors](https://github.com/labstack/echo/graphs/contributors)

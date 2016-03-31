@@ -12,7 +12,7 @@ menu:
 
 - Good news, 85% of the API remains the same.
 - `Engine` interface to abstract `HTTP` server implementation, allowing
-us to use HTTP servers beyond Go standard library. It currently supports standard HTTP server and [FastHTTP](https://github.com/valyala/fasthttp).
+us to use HTTP servers beyond Go standard library. It currently supports standard and [fasthttp](https://github.com/valyala/fasthttp) server.
 - Context, Request and Response are converted to interfaces. [More...](https://github.com/labstack/echo/issues/146)
 - Handler signature is changed to `func (c echo.Context) error`.
 - Dropped auto wrapping of handler and middleware to enforce compile time check.
