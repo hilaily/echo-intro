@@ -14,7 +14,7 @@ Echo is developed and tested using Go `1.5.x` and `1.6.x`
 $ go get github.com/labstack/echo/...
 ```
 
-#### Update
+#### To update Echo
 
 ```sh
 $ go get -u github.com/labstack/echo/...

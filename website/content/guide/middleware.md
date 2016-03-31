@@ -6,15 +6,15 @@ menu:
     weight: 5
 ---
 
-**Middleware** is a function which is chained in the HTTP request-response cycle with
-access to `Echo#Context` which it utilizes to perform a specific action, for example,
-logging every request or limiting the number of requests.
+**Middleware** is a function chained in the HTTP request-response cycle with access
+to `Echo#Context` which it uses to perform a specific action, for example, logging
+every request or limiting the number of requests.
 
 Handler is processed in the end after all middleware are finished executing.
 
-### Middleware Level
+### Middleware Levels
 
-#### Before router
+#### Root Level (Before router)
 
 `Echo#Pre()` can be used to register a middleware which is executed before router
 processes the request. It is helpful to make any changes to the request properties,
@@ -24,7 +24,7 @@ route.
 *Note*: As router has not processed the request, middleware at this level won't
 have access to any path related API from `echo.Context`.
 
-#### After router
+#### Root Level (After router)
 
 Most of the time you will register a middleware at this level using `Echo#Use()`.
 This middleware is executed after router processes the request and has full access
@@ -38,7 +38,7 @@ The following built-in middleware should be registered at this level:
 - BasicAuth
 - Static
 
-#### Group
+#### Group Level
 
 When creating a new group, you can register middleware just for that group. For
 example, you can have an admin group which is secured by registering a BasicAuth
@@ -53,7 +53,7 @@ admin := e.Group("/admin", middleware.BasicAuth())
 
 You can also add a middleware after creating a group via `admin.Use()`.
 
-#### Route
+#### Route Level
 
 When defining a new route, you can optionally register middleware just for it.
 
@@ -64,13 +64,11 @@ e := echo.New()
 e.Get("/", <Handler>, <Middleware...>)
 ```
 
-### Built-in Middleware
-
-#### Logger
+### Logger Middleware
 
 Logger middleware logs the information about each HTTP request.
 
-##### Configuration
+#### Configuration
 
 ```go
 LoggerConfig struct {
@@ -93,7 +91,7 @@ LoggerConfig struct {
 }
 ```
 
-##### Default Configuration
+#### Default Configuration
 
 ```go
 DefaultLoggerConfig = LoggerConfig{
@@ -104,17 +102,17 @@ DefaultLoggerConfig = LoggerConfig{
 }
 ```
 
-###### Usage
+##### Usage
 
 `e.Use(middleware.Logger())`
 
-###### Sample Output
+##### Sample Output
 
 `time=2016-03-22T10:33:59-07:00, remote_ip=::1, method=GET, uri=/hello, status=200, took=54.957µs, sent=20 bytes`
 
-##### Custom Configuration
+#### Custom Configuration
 
-###### Usage
+##### Usage
 
 ```go
 e := echo.New()
@@ -127,17 +125,17 @@ e.Use(middleware.LoggerFromConfig(middleware.LoggerConfig{
 Example above uses a `Format` which logs request method and request URI. For `Output`
 it uses the default value.
 
-###### Sample Output
+##### Sample Output
 
 `method=GET, uri=/hello, status=200`
 
-#### Recover
+### Recover Middleware
 
 Recover middleware recovers from panics anywhere in the chain, prints stack trace
 and handles the control to the centralized
 [HTTPErrorHandler]({{< relref "guide/customization.md#http-error-handler">}}).
 
-##### Configuration
+#### Configuration
 
 ```go
 RecoverConfig struct {
@@ -153,7 +151,7 @@ RecoverConfig struct {
 }
 ```
 
-##### Default Configuration
+#### Default Configuration
 
 ```go
 DefaultRecoverConfig = RecoverConfig{
@@ -163,13 +161,13 @@ DefaultRecoverConfig = RecoverConfig{
 }
 ```
 
-###### Usage
+##### Usage
 
 `e.Use(middleware.Recover())`
 
-##### Custom Configuration
+#### Custom Configuration
 
-###### Usage
+##### Usage
 
 ```go
 e := echo.New()
@@ -183,11 +181,11 @@ e.Use(middleware.RecoverFromConfig(middleware.RecoverConfig{
 Example above uses a `StackSize` of 1 KB and sets StackAll to false. For `PrintStack`
 it uses the default value.
 
-#### Gzip
+### Gzip Middleware
 
 Gzip middleware compresses HTTP response using gzip compression scheme.
 
-##### Configuration
+#### Configuration
 
 ```go
 GzipConfig struct {
@@ -196,7 +194,7 @@ GzipConfig struct {
 }
 ```
 
-##### Default Configuration
+#### Default Configuration
 
 ```go
 DefaultGzipConfig = GzipConfig{
@@ -204,13 +202,13 @@ DefaultGzipConfig = GzipConfig{
 }
 ```
 
-###### Usage
+##### Usage
 
 `e.Use(middleware.Gzip())`
 
-##### Custom Configuration
+#### Custom Configuration
 
-###### Usage
+##### Usage
 
 ```go
 e := echo.New()
@@ -221,13 +219,13 @@ e.Use(middleware.GzipFromConfig(middleware.GzipConfig{
 
 Example above uses a `Level` 5 for gzip compression.
 
-#### BasicAuth
+### BasicAuth Middleware
 
 BasicAuth middleware provides an HTTP basic authentication.
 For valid credentials it calls the next handler.
 For invalid credentials, it sends "401 - Unauthorized" response.
 
-##### Configuration
+#### Configuration
 
 ```go
 BasicAuthConfig struct {
@@ -236,7 +234,7 @@ BasicAuthConfig struct {
 }
 ```
 
-###### Usage
+##### Usage
 
 ```go
 e := echo.New()
@@ -248,82 +246,8 @@ e.Use(middleware.BasicAuth(func(username, password string) bool {
 }))
 ```
 
-#### Static
+### [Static Middleware]({{< relref "guide/static-files.md">}})
 
-Static middleware serves static content from the provided root directory.
-
-##### Configuration
-
-```go
-StaticConfig struct {
-  // Root is the directory from where the static content is served.
-  Root string `json:"root"`
-
-  // Index is the index file to be used while serving a directory.
-  // Default is `index.html`.
-  Index string `json:"index"`
-
-  // Browse is a flag to list directory or not.
-  Browse bool `json:"browse"`
-}
-```
-
-##### Default Configuration
-
-```go
-DefaultStaticConfig = StaticConfig{
-  Root: "",
-  Index:  "index.html",
-  Browse: false,
-}
-```
-
-###### Usage
-
-`e.Use(middleware.Static("public"))`
-
-##### Custom Configuration
-
-###### Usage
-
-```go
-e := echo.New()
-e.Use(middleware.StaticFromConfig(middleware.StaticConfig{
-  Root:   "public",
-  Browse: true,
-  Index:  middleware.DefaultStaticConfig.Index,
-}))
-```
-
-Example above uses `Root` as public directory to serve static files and sets `Browse`
-to true, enabling directory browsing.
-
-### Writing middleware
+### Writing a custom middleware
 
 *TBD*...
-
-#### Testing
-
-*TBD*...
-
-<!-- ### BasicAuth
-
-BasicAuth middleware provides an HTTP basic authentication.
-
-- For valid credentials it calls the next handler in the chain.
-- For invalid Authorization header it sends "404 - Bad Request" response.
-- For invalid credentials, it sends "401 - Unauthorized" response.
-
-*Example*
-
-```go
-g := e.Group("/admin")
-e.Use(middleware.BasicAuth(func(username, password string) bool {
-	if username == "joe" && password == "secret" {
-		return true
-	}
-	return false
-}))
-```
-
-### [Recipes](https://github.com/labstack/echox/tree/master/recipe/middleware) -->
