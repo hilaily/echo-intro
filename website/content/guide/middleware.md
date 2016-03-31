@@ -72,22 +72,25 @@ Logger middleware logs the information about each HTTP request.
 
 ```go
 LoggerConfig struct {
-	// Format is the log format which can be constructed using the following tags:
-	//
-	// - time_rfc3339
-	// - remote_ip
-	// - uri
-	// - method
-	// - path
-	// - status
-	// - response_time
-	// - response_size
-	//
-	// Example "${remote_id} ${status}"
-	Format string
+  // Format is the log format which can be constructed using the following tags:
+  //
+  // - time_rfc3339
+  // - remote_ip
+  // - uri
+  // - method
+  // - path
+  // - status
+  // - response_time
+  // - response_size
+  //
+  // Example "${remote_id} ${status}"
+  //
+  // Optional with default value as `DefaultLoggerConfig.Format`.
+  Format string
 
-	// Output is the writer where logs are written.
-	Output io.Writer
+  // Output is the writer where logs are written.
+  // Optional with default value as `DefaultLoggerConfig.Output`.
+  Output io.Writer
 }
 ```
 
@@ -118,12 +121,10 @@ DefaultLoggerConfig = LoggerConfig{
 e := echo.New()
 e.Use(middleware.LoggerFromConfig(middleware.LoggerConfig{
   Format: "method=${method}, uri=${uri}, status=${status}\n",
-  Output: middleware.DefaultLoggerConfig.Output,
 }))
 ```
 
-Example above uses a `Format` which logs request method and request URI. For `Output`
-it uses the default value.
+Example above uses a `Format` which logs request method and request URI.
 
 ##### Sample Output
 
@@ -139,15 +140,18 @@ and handles the control to the centralized
 
 ```go
 RecoverConfig struct {
-	// StackSize is the stack size to be printed.
-	StackSize int
+  // StackSize is the stack size to be printed.
+  // Optional with default value as `DefaultRecoverConfig.StackSize`.
+  StackSize int
 
-	// StackAll is a flag to format stack traces of all other goroutines into
-	// buffer after the trace for the current goroutine, or not.
-	StackAll bool
+  // StackAll is a flag to format stack traces of all other goroutines into
+  // buffer after the trace for the current goroutine, or not.
+  // Required.
+  StackAll bool
 
-	// PrintStack is a flag to print stack or not.
-	PrintStack bool
+  // PrintStack is a flag to print stack or not.
+  // Required.
+  PrintStack bool
 }
 ```
 
@@ -173,7 +177,7 @@ DefaultRecoverConfig = RecoverConfig{
 e := echo.New()
 e.Use(middleware.RecoverFromConfig(middleware.RecoverConfig{
   StackSize:  1 << 10, // 1 KB
-  StackAll:   false,
+  StackAll:   middleware.DefaultRecoverConfig.StackAll,
   PrintStack: middleware.DefaultRecoverConfig.PrintStack,
 }))
 ```
@@ -190,6 +194,7 @@ Gzip middleware compresses HTTP response using gzip compression scheme.
 ```go
 GzipConfig struct {
   // Level is the gzip level.
+  // Optional with default value as `DefaultGzipConfig.Level`.
   Level int
 }
 ```
@@ -247,6 +252,28 @@ e.Use(middleware.BasicAuth(func(username, password string) bool {
 ```
 
 ### [Static Middleware]({{< relref "guide/static-files.md#using-static-middleware">}})
+
+### AddTrailingSlash Middleware
+
+AddTrailingSlash add a trailing slash to the request URL path.
+
+##### Usage
+
+```go
+e := echo.New()
+e.Pre(middleware.AddTrailingSlash())
+```
+
+### RemoveTrailingSlash Middleware
+
+RemoveTrailingSlash removes a trailing slash from the request URL path.
+
+##### Usage
+
+```go
+e := echo.New()
+e.Pre(middleware.RequestTrailingSlash())
+```
 
 ### Writing a custom middleware
 

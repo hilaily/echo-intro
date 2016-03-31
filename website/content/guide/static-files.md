@@ -57,7 +57,6 @@ e := echo.New()
 e.Use(middleware.StaticFromConfig(middleware.StaticConfig{
   Root:   "public",
   Browse: true,
-  Index:  middleware.DefaultStaticConfig.Index,
 }))
 ```
 
@@ -67,16 +66,19 @@ to true, enabling directory browsing.
 ##### Configuration
 
 ```go
+// StaticConfig defines the config for static middleware.
 StaticConfig struct {
   // Root is the directory from where the static content is served.
+  // Optional with default value as `DefaultStaticConfig.Root`.
   Root string `json:"root"`
 
   // Index is the list of index files to be searched and used when serving
   // a directory.
-  // Default value is `[]string{"index.html"}`.
+  // Optional with default value as `DefaultStaticConfig.Index`.
   Index []string `json:"index"`
 
   // Browse is a flag to enable/disable directory browsing.
+  // Required.
   Browse bool `json:"browse"`
 }
 ```
@@ -117,7 +119,7 @@ e.File("/", "public/index.html")
 
 ##### Example 2
 
-Serving a favicon from `images/facivonindex.html`
+Serving a favicon from `images/facicon.ico`
 
 ```go
 e.File("/favicon.ico", "images/facicon.ico")
