@@ -17,14 +17,12 @@ handler which sends `Hello, World!` HTTP response.
 
 ```go
 // Handler
-func hello() echo.HandlerFunc {
-  return func(c echo.Context) error {
+func hello(c echo.Context) error {
   	return c.String(http.StatusOK, "Hello, World!")
-  }
 }
 
 // Route
-e.Get("/hello", hello())
+e.Get("/hello", hello)
 ```
 
 You can use `Echo.Any(path string, h Handler)` to register a handler for all HTTP methods.

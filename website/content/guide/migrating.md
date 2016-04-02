@@ -16,10 +16,6 @@ us to use HTTP servers beyond Go standard library. It currently supports standar
 - Context, Request and Response are converted to interfaces. [More...](https://github.com/labstack/echo/issues/146)
 - Handler signature is changed to `func (c echo.Context) error`.
 - Dropped auto wrapping of handler and middleware to enforce compile time check.
-- Handler only accepts `Echo#Handler` interface.
-- Middleware only accepts `Echo#Middleware` interface.
-- `Echo#HandlerFunc` adapter to use ordinary functions as handlers.
-- `Echo#MiddlewareFunc` adapter to use ordinary functions as middleware.
 - Middleware is run before hitting the router, which doesn't require `Echo#Hook` API as
 it can be achieved via middleware.
 - Ability to define middleware at route level.
