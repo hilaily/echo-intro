@@ -42,7 +42,7 @@ APIs.
 
 ```go
 e := echo.New()
-static := e.Group("/static/*", middleware.Static("public"))
+e.Group("/static*", middleware.Static("public"))
 ```
 
 This will serve any file from the public directory. For example, a request `/static/js/main.js`
