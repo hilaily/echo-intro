@@ -6,14 +6,11 @@ menu:
     weight: 8
 ---
 
-Echo advocates centralized HTTP error handling by returning `error` from middleware
-and handlers.
+Echo advocates centralized HTTP error handling by returning error from middleware
+or handlers.
 
-It allows you to:
-
-- Debug by writing stack trace to the HTTP response.
-- Customize HTTP responses.
-- Recover from panics inside middleware or handlers.
+- Log errors from a unified location
+- Send customized HTTP responses
 
 For example, when basic auth middleware finds invalid credentials it returns
 `401 - Unauthorized` error, aborting the current HTTP request.
