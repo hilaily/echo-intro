@@ -89,7 +89,7 @@ LoggerConfig struct {
   Format string
 
   // Output is the writer where logs are written.
-  // Optional with default value as `DefaultLoggerConfig.Output`.
+  // Optional with default value as os.Stdout.
   Output io.Writer
 }
 ```
@@ -141,17 +141,17 @@ and handles the control to the centralized
 ```go
 RecoverConfig struct {
   // StackSize is the stack size to be printed.
-  // Optional with default value as `DefaultRecoverConfig.StackSize`.
+  // Optional with default value as 4 KB.
   StackSize int
 
-  // StackAll is a flag to format stack traces of all other goroutines into
-  // buffer after the trace for the current goroutine, or not.
-  // Required.
-  StackAll bool
+  // DisableStackAll disables formatting stack traces of all other goroutines
+  // into buffer after the trace for the current goroutine.
+  // Optional with default value as false.
+  DisableStackAll bool
 
-  // PrintStack is a flag to print stack or not.
-  // Required.
-  PrintStack bool
+  // DisablePrintStack disables printing stack trace.
+  // Optional with default value as false.
+  DisablePrintStack bool
 }
 ```
 
@@ -177,13 +177,11 @@ DefaultRecoverConfig = RecoverConfig{
 e := echo.New()
 e.Use(middleware.RecoverFromConfig(middleware.RecoverConfig{
   StackSize:  1 << 10, // 1 KB
-  StackAll:   middleware.DefaultRecoverConfig.StackAll,
-  PrintStack: middleware.DefaultRecoverConfig.PrintStack,
 }))
 ```
 
-Example above uses a `StackSize` of 1 KB and sets StackAll to false. For `PrintStack`
-it uses the default value.
+Example above uses a `StackSize` of 1 KB and default values for `DisableStackAll`
+and `DisablePrintStack`.
 
 ### Gzip Middleware
 
@@ -194,7 +192,7 @@ Gzip middleware compresses HTTP response using gzip compression scheme.
 ```go
 GzipConfig struct {
   // Level is the gzip level.
-  // Optional with default value as `DefaultGzipConfig.Level`.
+  // Optional with default value as -1.
   Level int
 }
 ```
@@ -272,7 +270,7 @@ RemoveTrailingSlash removes a trailing slash from the request URL path.
 
 ```go
 e := echo.New()
-e.Pre(middleware.RequestTrailingSlash())
+e.Pre(middleware.RemoveTrailingSlash())
 ```
 
 ### Writing a custom middleware
