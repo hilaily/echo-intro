@@ -6,7 +6,6 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
 	"github.com/labstack/echo/middleware"
-	"github.com/rs/cors"
 )
 
 var (
@@ -22,10 +21,17 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	// CORS
-	e.Use(standard.WrapMiddleware(cors.New(cors.Options{
-		AllowedOrigins: []string{"http://localhost"},
-	}).Handler))
+	// CORS default
+	// Allows requests from any origin wth GET, HEAD, PUT, POST or DELETE method.
+	// e.Use(middleware.CORS())
+
+	// CORS restricted
+	// Allows requests from any `https://labstack.com` or `https://labstack.net` origin
+	// wth GET, PUT, POST or DELETE method.
+	e.Use(middleware.CORSFromConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"https://labstack.com", "https://labstack.net"},
+		AllowMethods: []string{echo.GET, echo.PUT, echo.POST, echo.DELETE},
+	}))
 
 	e.Get("/api/users", getUsers)
 	e.Run(standard.New(":1323"))
