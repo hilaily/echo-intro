@@ -54,7 +54,7 @@ will fetch and serve `public/js/main.js` file.
 
 ```go
 e := echo.New()
-e.Use(middleware.StaticFromConfig(middleware.StaticConfig{
+e.Use(middleware.StaticWithConfig(middleware.StaticConfig{
   Root:   "public",
   Browse: true,
 }))

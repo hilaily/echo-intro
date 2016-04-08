@@ -125,7 +125,7 @@ DefaultLoggerConfig = LoggerConfig{
 
 ```go
 e := echo.New()
-e.Use(middleware.LoggerFromConfig(middleware.LoggerConfig{
+e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
   Format: "method=${method}, uri=${uri}, status=${status}\n",
 }))
 ```
@@ -181,7 +181,7 @@ DefaultRecoverConfig = RecoverConfig{
 
 ```go
 e := echo.New()
-e.Use(middleware.RecoverFromConfig(middleware.RecoverConfig{
+e.Use(middleware.RecoverWithConfig(middleware.RecoverConfig{
   StackSize:  1 << 10, // 1 KB
 }))
 ```
@@ -221,7 +221,7 @@ DefaultGzipConfig = GzipConfig{
 
 ```go
 e := echo.New()
-e.Use(middleware.GzipFromConfig(middleware.GzipConfig{
+e.Use(middleware.GzipWithConfig(middleware.GzipConfig{
   Level: 5
 }))
 ```
@@ -317,7 +317,7 @@ DefaultCORSConfig = CORSConfig{
 
 ```go
 e := echo.New()
-e.Use(middleware.CORSFromConfig(middleware.CORSConfig{
+e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
   AllowOrigins: []string{"https://labstack.com", "https://labstack.net"},
   AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
 }))

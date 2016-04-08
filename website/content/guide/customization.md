@@ -54,13 +54,13 @@ your preference.
 
 `e.Run(fasthttp.New(":1323"))`
 
-#### Running a server from TLS configuration
+#### Running a server with TLS configuration
 
-`e.Run(<engine>.NewFromTLS(":1323", "<certfile>", "<keyfile>"))`
+`e.Run(<engine>.WithTLS(":1323", "<certfile>", "<keyfile>"))`
 
-#### Running a server from engine configuration
+#### Running a server with engine configuration
 
-`e.Run(<engine>.NewFromConfig(<config>))`
+`e.Run(<engine>.WithConfig(<config>))`
 
 #### Configuration
 
