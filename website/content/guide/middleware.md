@@ -21,6 +21,11 @@ processes the request. It is helpful to make any changes to the request properti
 for example, adding or removing a trailing slash from the path so it matches the
 route.
 
+The following built-in middleware should be registered at this level:
+
+- AddTrailingSlash
+- RemoveTrailingSlash
+
 *Note*: As router has not processed the request, middleware at this level won't
 have access to any path related API from `echo.Context`.
 
@@ -36,6 +41,7 @@ The following built-in middleware should be registered at this level:
 - Gzip
 - Recover
 - BasicAuth
+- CORS
 - Static
 
 #### Group Level
