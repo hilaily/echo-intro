@@ -8,68 +8,40 @@ menu:
 
 Images, JavaScript, CSS, PDF, Fonts and so on...
 
-### Using Static Middleware
+### Using `Echo#Static()`
 
-Static middleware can be used to serve static files from the provided root directory.
+`Echo#Static(path, root string)` serves static files from the provided `root`
+directory for path `/<path>*`.
 
-#### From Default Configuration
-
-```go
-DefaultStaticConfig = StaticConfig{
-  Root:   "",
-  Index:  []string{"index.html"},
-  Browse: false,
-}
-```
-
-##### Usage
+#### Example 1
 
 ```go
 e := echo.New()
-e.Use(middleware.Static("public"))
+e.Static("/static", "assets")
 ```
 
-This will serve any file from the public directory. For example, a request `/js/main.js`
-will fetch and serve `public/js/main.js` file.
+This will serve any file from the assets directory for path `/static/*`. For example,
+a request to `/static/js/main.js` will fetch and serve `assets/js/main.js` file.
 
-##### Caveat
-
-With this setup, each and every request goes through this middleware which might
-affect the performance. To overcome that, you can use `Echo#Group()` or [`Echo#Static()`]({{< relref "#using-echo-static">}})
-APIs.
-
-##### Using `Echo#Group()`
+#### Example 2
 
 ```go
 e := echo.New()
-e.Group("/static*", middleware.Static("public"))
+e.Static("/", "assets")
 ```
 
-This will serve any file from the public directory. For example, a request `/static/js/main.js`
-will fetch and serve `public/js/main.js` file.
+This will serve any file from the assets directory for path `/*`. For example,
+a request to `/js/main.js` will fetch and serve `assets/js/main.js` file.
 
-#### Custom Configuration
+### Using `Echo#StaticWithConfig()`
 
-##### Usage
-
-```go
-e := echo.New()
-e.Use(middleware.StaticWithConfig(middleware.StaticConfig{
-  Root:   "public",
-  Browse: true,
-}))
-```
-
-This uses `Root` as public directory to serve the static files and sets `Browse`
-to true, enabling directory browsing.
-
-##### Configuration
+#### Configuration
 
 ```go
 // StaticConfig defines the config for static middleware.
 StaticConfig struct {
   // Root is the directory from where the static content is served.
-  // Optional with default value as "".
+	// Required.
   Root string `json:"root"`
 
   // Index is the list of index files to be searched and used when serving
@@ -83,27 +55,27 @@ StaticConfig struct {
 }
 ```
 
-### Using `Echo#Static()`
-
-`Echo#Static(prefix, root string)` serves static files from the provided `root` directory for path `/prefix*`.
-
-##### Example 2
+#### Default Configuration
 
 ```go
-e.Static("/static", "assets")
+DefaultStaticConfig = StaticConfig{
+  Index:  []string{"index.html"},
+  Browse: false,
+}
 ```
 
-This will serve any file from the assets directory for path `/static/*`. For example,
-a request `/static/js/main.js` will fetch and serve `assets/js/main.js` file.
-
-##### Example 2
+##### Example
 
 ```go
-e.Static("/", "assets")
+e := echo.New()
+e.StaticWithConfig("", echo.StaticConfig{
+  Root:   "public",
+  Browse: true,
+})
 ```
 
-This will serve any file from the assets directory for path `/*`. For example,
-a request `/js/main.js` will fetch and serve `assets/js/main.js` file.
+This uses `Root` as public directory to serve the static files and sets `Browse`
+to true, enabling directory browsing.
 
 ### Using `Echo#File()`
 

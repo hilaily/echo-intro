@@ -42,7 +42,6 @@ The following built-in middleware should be registered at this level:
 - Recover
 - BasicAuth
 - CORS
-- Static
 
 #### Group Level
 
@@ -322,8 +321,6 @@ e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
   AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
 }))
 ```
-
-### [Static Middleware]({{< relref "guide/static-files.md#using-static-middleware">}})
 
 ### AddTrailingSlash Middleware
 
