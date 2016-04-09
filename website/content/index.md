@@ -148,11 +148,11 @@ func save(c echo.Context) error {
 	defer src.Close()
 
 	// Destination
-	file, err := os.Create(file.Filename)
+	dst, err := os.Create(avatar.Filename)
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer dst.Close()
 
 	// Copy
 	if _, err = io.Copy(dst, src); err != nil {
