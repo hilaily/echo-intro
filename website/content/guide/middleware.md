@@ -42,6 +42,7 @@ The following built-in middleware should be registered at this level:
 - Recover
 - BasicAuth
 - CORS
+- Static
 
 #### Group Level
 
@@ -49,7 +50,7 @@ When creating a new group, you can register middleware just for that group. For
 example, you can have an admin group which is secured by registering a BasicAuth
 middleware for it.
 
-*Example*:
+*Usage*
 
 ```go
 e := echo.New()
@@ -62,7 +63,7 @@ You can also add a middleware after creating a group via `admin.Use()`.
 
 When defining a new route, you can optionally register middleware just for it.
 
-*Example*:
+*Usage*
 
 ```go
 e := echo.New()
@@ -110,17 +111,17 @@ DefaultLoggerConfig = LoggerConfig{
 }
 ```
 
-##### Usage
+*Usage*
 
 `e.Use(middleware.Logger())`
 
-##### Sample Output
+*Sample Output*
 
 `time=2016-03-22T10:33:59-07:00, remote_ip=::1, method=GET, uri=/hello, status=200, took=54.957µs, sent=20 bytes`
 
 #### Custom Configuration
 
-##### Usage
+*Usage*
 
 ```go
 e := echo.New()
@@ -131,7 +132,7 @@ e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
 
 Example above uses a `Format` which logs request method and request URI.
 
-##### Sample Output
+*Sample Output*
 
 `method=GET, uri=/hello, status=200`
 
@@ -170,13 +171,13 @@ DefaultRecoverConfig = RecoverConfig{
 }
 ```
 
-##### Usage
+*Usage*
 
 `e.Use(middleware.Recover())`
 
 #### Custom Configuration
 
-##### Usage
+*Usage*
 
 ```go
 e := echo.New()
@@ -210,13 +211,13 @@ DefaultGzipConfig = GzipConfig{
 }
 ```
 
-##### Usage
+*Usage*
 
 `e.Use(middleware.Gzip())`
 
 #### Custom Configuration
 
-##### Usage
+*Usage*
 
 ```go
 e := echo.New()
@@ -242,7 +243,7 @@ BasicAuthConfig struct {
 }
 ```
 
-##### Usage
+*Usage*
 
 ```go
 e := echo.New()
@@ -306,13 +307,13 @@ DefaultCORSConfig = CORSConfig{
 }
 ```
 
-##### Usage
+*Usage*
 
 `e.Use(middleware.CORS())`
 
 #### Custom Configuration
 
-##### Usage
+*Usage*
 
 ```go
 e := echo.New()
@@ -322,11 +323,13 @@ e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 }))
 ```
 
+### [Static Middleware]({{< relref "guide/static-files.md#using-static-middleware">}})
+
 ### AddTrailingSlash Middleware
 
 AddTrailingSlash add a trailing slash to the request URL path.
 
-##### Usage
+*Usage*
 
 ```go
 e := echo.New()
@@ -337,7 +340,7 @@ e.Pre(middleware.AddTrailingSlash())
 
 RemoveTrailingSlash removes a trailing slash from the request URL path.
 
-##### Usage
+*Usage*
 
 ```go
 e := echo.New()

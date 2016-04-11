@@ -8,32 +8,9 @@ menu:
 
 Images, JavaScript, CSS, PDF, Fonts and so on...
 
-### Using `Echo#Static()`
+### Using Static Middleware
 
-`Echo#Static(path, root string)` serves static files from the provided `root`
-directory for path `/<path>*`.
-
-#### Example 1
-
-```go
-e := echo.New()
-e.Static("/static", "assets")
-```
-
-This will serve any file from the assets directory for path `/static/*`. For example,
-a request to `/static/js/main.js` will fetch and serve `assets/js/main.js` file.
-
-#### Example 2
-
-```go
-e := echo.New()
-e.Static("/", "assets")
-```
-
-This will serve any file from the assets directory for path `/*`. For example,
-a request to `/js/main.js` will fetch and serve `assets/js/main.js` file.
-
-### Using `Echo#StaticWithConfig()`
+Static middleware can be used to serve static files from the provided root directory.
 
 #### Configuration
 
@@ -64,24 +41,61 @@ DefaultStaticConfig = StaticConfig{
 }
 ```
 
-##### Example
+*Usage*
 
 ```go
 e := echo.New()
-e.StaticWithConfig("", echo.StaticConfig{
-  Root:   "public",
-  Browse: true,
-})
+e.Use(middleware.Static("/static"))
 ```
 
-This uses `Root` as public directory to serve the static files and sets `Browse`
-to true, enabling directory browsing.
+This serves static files from `static` directory. For example, a request to `/js/main.js`
+will fetch and serve `static/js/main.js` file.
+
+#### Custom Configuration
+
+*Usage*
+
+```go
+e := echo.New()
+e.Use(middleware.StaticWithConfig(middleware.StaticConfig{
+  Root:   "static",
+  Browse: true,
+}))
+```
+
+This serves static files from `static` directory and enables directory browsing.
+
+### Using `Echo#Static()`
+
+`Echo#Static(prefix, root string)` registers a new route with path prefix to serve
+static files from the provided root directory.
+
+*Usage 1*
+
+```go
+e := echo.New()
+e.Static("/static", "assets")
+```
+
+This will serve any file from the assets directory for path `/static/*`. For example,
+a request to `/static/js/main.js` will fetch and serve `assets/js/main.js` file.
+
+*Usage 2*
+
+```go
+e := echo.New()
+e.Static("/", "assets")
+```
+
+This will serve any file from the assets directory for path `/*`. For example,
+a request to `/js/main.js` will fetch and serve `assets/js/main.js` file.
 
 ### Using `Echo#File()`
 
-`Echo#File(path, file string)` serves static file from the provided `file` for `/path`.
+`Echo#File(path, file string)` registers a new route with path to serve a static
+file.
 
-##### Example 1
+*Usage 1*
 
 Serving an index page from `public/index.html`
 
@@ -89,7 +103,7 @@ Serving an index page from `public/index.html`
 e.File("/", "public/index.html")
 ```
 
-##### Example 2
+*Usage 2*
 
 Serving a favicon from `images/facicon.ico`
 
