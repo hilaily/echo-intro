@@ -193,9 +193,9 @@ Server any file from static directory for path `/static/*`.
 e.Static("/static", "static")
 ```
 
-##### [More...](https://labstack.com/echo/guide/static-files/)
+##### [More...](https://labstack.com/echo/guide/static-files)
 
-### [Template Rendering](https://labstack.com/echo/guide/templates/)
+### [Template Rendering](https://labstack.com/echo/guide/templates)
 
 ### Middleware
 
@@ -229,21 +229,21 @@ e.Get("/users", func(c echo.Context) error {
 
 Middleware | Description
 :--- | :---
-[Logger](https://labstack.com/echo/guide/middleware/#logger-middleware:37ab2f15ff048f67959bcac0a6032f32) | Log HTTP requests
-[Recover](https://labstack.com/echo/guide/middleware/#recover-middleware:37ab2f15ff048f67959bcac0a6032f32) | Recover from panics
-[Gzip](https://labstack.com/echo/guide/middleware/#gzip-middleware:37ab2f15ff048f67959bcac0a6032f32) | Send gzip HTTP response
-[BasicAuth](https://labstack.com/echo/guide/middleware/#basicauth-middleware:37ab2f15ff048f67959bcac0a6032f32) | HTTP basic authentication
-[CORS](https://labstack.com/echo/guide/middleware/#cors-middleware:37ab2f15ff048f67959bcac0a6032f32) | Cross-Origin Resource Sharing
-[Static](https://labstack.com/echo/guide/static-files/#using-static-middleware:123f9d1043075fe4874616541b409e4d) | Serve static files
-[AddTrailingSlash](https://labstack.com/echo/guide/middleware/#addtrailingslash-middleware:37ab2f15ff048f67959bcac0a6032f32) | Add trailing slash to the request URI
-[RemoveTrailingSlash](https://labstack.com/echo/guide/middleware/#removetrailingslash-middleware:37ab2f15ff048f67959bcac0a6032f32) | Remove trailing slash from the request URI
+[Logger]({{< ref "guide/middleware.md#logger-middleware">}}) | Log HTTP requests
+[Recover]({{< ref "guide/middleware.md#recover-middleware">}}) | Recover from panics
+[Gzip]({{< ref "guide/middleware.md#gzip-middleware">}}) | Send gzip HTTP response
+[BasicAuth]({{< ref "guide/middleware.md#basicauth-middleware">}}) | HTTP basic authentication
+[CORS]({{< ref "guide/middleware.md#cors-middleware">}}) | Cross-Origin Resource Sharing
+[Static]({{< ref "guide/static-files.md#using-static-middleware">}}) | Serve static files
+[AddTrailingSlash]({{< ref "guide/middleware.md#addtrailingslash-middleware">}}) | Add trailing slash to the request URI
+[RemoveTrailingSlash]({{< ref "guide/middleware.md#removetrailingslash-middleware">}}) | Remove trailing slash from the request URI
 
-##### [More...](https://labstack.com/echo/guide/middleware/)
+##### [More...](https://labstack.com/echo/guide/middleware)
 
 ### Next
 
-- Head over to [guide](https://labstack.com/echo/guide/installation/)
-- Browse [recipes](https://labstack.com/echo/recipes/hello-world/)
+- Head over to [guide](https://labstack.com/echo/guide/installation)
+- Browse [recipes](https://labstack.com/echo/recipes/hello-world)
 
 ### Need help?
 

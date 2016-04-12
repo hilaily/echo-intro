@@ -3,6 +3,10 @@
   "languageCode": "en-us",
   "title": "Echo",
   "canonifyurls": true,
+  "permalinks": {
+    "guide": "/guide/:title",
+    "recipes": "/recipes/:title"
+  },
 
   "menu": {
     "side": [{
@@ -18,11 +22,11 @@
       "identifier": "godoc",
       "url": "godoc"
     }, {
-      "Name": "Recipes",
-      "Pre": "<i class='fa fa-code'></i>",
-      "Weight": 3,
-      "Identifier": "recipes",
-      "URL": "recipes"
+      "name": "Recipes",
+      "pre": "<i class='fa fa-code'></i>",
+      "weight": 3,
+      "identifier": "recipes",
+      "url": "recipes"
     }]
   },
 

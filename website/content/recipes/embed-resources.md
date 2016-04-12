@@ -2,7 +2,6 @@
 title: Embed Resources
 menu:
   side:
-    identifier: "embed-resources"
     parent: recipes
     weight: 14
 ---

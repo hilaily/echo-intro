@@ -3,7 +3,7 @@ body, p, ol, ul {
 }
 footer {
     background-color: inherit !important;
-    border-top: 2px solid #e0e0e0;
+    border-top: 2px solid #E0E0E0;
 }
 .facebook a:hover {
     color: #3B5998;
@@ -19,11 +19,11 @@ footer {
 }
 :not(pre) > code {
     padding: 0 4px;
-    background: #eee;
+    background: #EEE;
     color: #424242;
     font-size: .95em;
     font-family: Source Code Pro, Monaco, Menlo, Consolas, monospace;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #E0E0E0;
     border-radius: 2px;
 }
 a:link {
@@ -55,4 +55,14 @@ a:link {
 }
 .search-box {
   margin-right: 8px;
+}
+
+/* Gitter */
+.gitter-open-chat-button {
+	background-color: #2196F3;
+	transition: all .2s ease;
+}
+
+.gitter-open-chat-button:hover {
+	background-color: #E91E63;
 }

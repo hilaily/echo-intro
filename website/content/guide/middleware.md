@@ -140,7 +140,7 @@ Example above uses a `Format` which logs request method and request URI.
 
 Recover middleware recovers from panics anywhere in the chain, prints stack trace
 and handles the control to the centralized
-[HTTPErrorHandler]({{< relref "guide/customization.md#http-error-handler">}}).
+[HTTPErrorHandler]({{< ref "guide/customization.md#http-error-handler">}}).
 
 #### Configuration
 
@@ -323,7 +323,7 @@ e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 }))
 ```
 
-### [Static Middleware]({{< relref "guide/static-files.md#using-static-middleware">}})
+### [Static Middleware]({{< ref "guide/static-files.md#using-static-middleware">}})
 
 ### AddTrailingSlash Middleware
 
