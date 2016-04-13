@@ -4,7 +4,7 @@ title: Index
 
 # ![Echo](/images/echo.svg)
 
-**Echo is a fast and unfancy web framework for Go (Golang). Up to 10x faster than the rest.**
+**Echo is a fast and unfancy HTTP server framework for Go (Golang). Up to 10x faster than the rest.**
 
 ---
 
