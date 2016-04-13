@@ -327,7 +327,7 @@ e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 
 ### AddTrailingSlash Middleware
 
-AddTrailingSlash add a trailing slash to the request URL path.
+AddTrailingSlash adds a trailing slash to the request URI.
 
 *Usage*
 
@@ -336,9 +336,22 @@ e := echo.New()
 e.Pre(middleware.AddTrailingSlash())
 ```
 
+#### Custom Configuration
+
+*Usage*
+
+```go
+e := echo.New()
+e.Use(middleware.AddTrailingSlashWithConfig(TrailingSlashConfig{
+  RedirectCode: http.StatusMovedPermanently,
+}))
+```
+
+This will add a trailing slash to the request URI and redirect with `StatusMovedPermanently`.
+
 ### RemoveTrailingSlash Middleware
 
-RemoveTrailingSlash removes a trailing slash from the request URL path.
+RemoveTrailingSlash removes a trailing slash from the request URI.
 
 *Usage*
 
@@ -347,6 +360,19 @@ e := echo.New()
 e.Pre(middleware.RemoveTrailingSlash())
 ```
 
-### Writing a custom middleware
+#### Custom Configuration
 
-*TBD*...
+*Usage*
+
+```go
+e := echo.New()
+e.Use(middleware.RemoveTrailingSlashWithConfig(TrailingSlashConfig{
+  RedirectCode: http.StatusMovedPermanently,
+}))
+```
+
+This will remove a trailing slash from the request URI and redirect with `StatusMovedPermanently`.
+
+### Writing Custom Middleware
+
+*TBD*
