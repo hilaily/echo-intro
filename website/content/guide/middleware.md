@@ -373,6 +373,4 @@ e.Use(middleware.RemoveTrailingSlashWithConfig(TrailingSlashConfig{
 
 This will remove a trailing slash from the request URI and redirect with `StatusMovedPermanently`.
 
-### Writing Custom Middleware
-
-*TBD*
+### [Writing Custom Middleware]({{< ref "recipes/middleware.md">}})

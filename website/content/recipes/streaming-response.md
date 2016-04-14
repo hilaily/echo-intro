@@ -21,7 +21,7 @@ menu:
 $ curl localhost:1323
 ```
 
-## Output
+### Output
 
 ```sh
 {"Altitude":-97,"Latitude":37.819929,"Longitude":-122.478255}
