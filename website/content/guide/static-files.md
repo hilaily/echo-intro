@@ -105,8 +105,8 @@ e.File("/", "public/index.html")
 
 *Usage 2*
 
-Serving a favicon from `images/facicon.ico`
+Serving a favicon from `images/favicon.ico`
 
 ```go
-e.File("/favicon.ico", "images/facicon.ico")
+e.File("/favicon.ico", "images/favicon.ico")
 ```
