@@ -1,0 +1,73 @@
+---
+title: Testing
+menu:
+  side:
+    parent: guide
+    weight: 9
+---
+
+### Testing Handler
+
+`GET` `/users/:id`
+
+Handler below retrieves user by ID from the database. If user is not found it returns
+`404` error with a message.
+
+- ID comes from path parameter.
+- DB comes from `net.context`.
+
+```go
+func getUser(c echo.Context) error {
+	id := c.Param("id")
+	db := c.NetContext().Value("db").(map[string]string)
+	user := db[id]
+	if user == "" {
+		return echo.NewHTTPError(http.StatusNotFound, "user not found")
+	}
+	return c.String(http.StatusOK, db[id])
+}
+```
+
+Let's write a test case (positive and negative) for our handler by creating a mock
+context using `Echo#NewContext()` and load it with the following properties:
+
+- Path parameters.
+- Mock DB using `net.context`.
+
+The negative test is accomplished by setting the user ID to a invalid value.
+
+```go
+var (
+	mockDB = map[string]string{
+		"1": "walle",
+		"2": "bolt",
+		"3": "tintin",
+	}
+)
+
+func TestGet(t *testing.T) {
+	// Setup
+	e := echo.New()
+	rq := new(http.Request)
+	rc := httptest.NewRecorder()
+	c := e.NewContext(standard.NewRequest(rq, e.Logger()), standard.NewResponse(rc, e.Logger()))
+	c.SetParamNames([]string{"id"})
+	c.SetParamValues([]string{"1"})
+	c.SetNetContext(context.WithValue(context.Background(), "db", mockDB))
+
+	// Positive test
+	if err := getUser(c); err != nil {
+		t.Error(err)
+	}
+
+	// Negative test
+	c.SetParamValues([]string{"4"})
+	if err := getUser(c); err == nil {
+		t.Error(err)
+	}
+}
+```
+
+### Testing Middleware
+
+*TBD*
