@@ -66,7 +66,7 @@ $ curl http://localhost:1323/users/joe
 
 ### Query parameter
 
-Query parameter can be retrieved by name using `Context#Query(name string)`.
+Query parameter can be retrieved by name using `Context#QueryParam(name string)`.
 
 *Example*
 
