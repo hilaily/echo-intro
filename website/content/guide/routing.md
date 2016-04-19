@@ -84,8 +84,8 @@ In the code below, we create an admin group which requires basic HTTP authentica
 for routes `/admin/*`.
 
 ```go
-e.Group("/admin")
-e.Use(middleware.BasicAuth(func(username, password string) bool {
+g := e.Group("/admin")
+g.Use(middleware.BasicAuth(func(username, password string) bool {
 	if username == "joe" && password == "secret" {
 		return true
 	}
