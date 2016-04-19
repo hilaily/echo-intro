@@ -45,7 +45,7 @@ Example below shows how to use Go `html/template`:
     ```go
     e := echo.New()
     e.SetRenderer(t)
-    e.Get("/hello", Hello)
+    e.GET("/hello", Hello)
     ```
 
 4. Render a template inside your handler

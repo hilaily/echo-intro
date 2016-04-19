@@ -18,11 +18,11 @@ expects the token to be present in an Authorization HTTP header using the method
 or even the request body. We will use the HS236 signing method, note that several
 other algorithms are available.
 
-`main.go`
+`server.go`
 
-{{< embed "jwt-authentication/main.go" >}}
+{{< embed "jwt-authentication/server.go" >}}
 
-Run `main.go` and making a request to the root path `/` returns a 200 OK response,
+Run `server.go` and making a request to the root path `/` returns a 200 OK response,
 as this route does not use our JWT authentication middleware. Sending requests to
 `/restricted` (our authenticated route) with either no Authorization header or invalid
 Authorization headers / tokens will return 401 Unauthorized.

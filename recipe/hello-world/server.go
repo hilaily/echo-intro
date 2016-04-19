@@ -17,7 +17,7 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// Route => handler
-	e.Get("/", func(c echo.Context) error {
+	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, World!\n")
 	})
 

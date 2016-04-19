@@ -6,9 +6,9 @@ menu:
     weight: 10
 ---
 
-`main.go`
+`server.go`
 
-{{< embed "subdomains/main.go" >}}
+{{< embed "subdomains/server.go" >}}
 
 ### Maintainers
 

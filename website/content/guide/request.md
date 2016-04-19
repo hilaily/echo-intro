@@ -18,7 +18,7 @@ e.Use(func(c echo.Context) error {
     println(c.Path()) // Prints `/users/:name`
     return nil
 })
-e.Get("/users/:name", func(c echo.Context) error) {
+e.GET("/users/:name", func(c echo.Context) error) {
     return c.String(http.StatusOK, name)
 })
 ```
@@ -31,7 +31,7 @@ are available right from `echo.Context`.
 *Example*
 
 ```go
-e.Get("/users/:name", func(c echo.Context) error) {
+e.GET("/users/:name", func(c echo.Context) error) {
     c.SetNetContext(context.WithValue(nil, "key", "val"))
     // Pass it down...
     // Use it...
@@ -49,7 +49,7 @@ better performance.
 *Example*
 
 ```go
-e.Get("/users/:name", func(c echo.Context) error {
+e.GET("/users/:name", func(c echo.Context) error {
 	// By name
 	name := c.Param("name")
 
@@ -71,7 +71,7 @@ Query parameter can be retrieved by name using `Context#Query(name string)`.
 *Example*
 
 ```go
-e.Get("/users", func(c echo.Context) error {
+e.GET("/users", func(c echo.Context) error {
 	name := c.QueryParam("name")
 	return c.String(http.StatusOK, name)
 })
@@ -88,7 +88,7 @@ Form parameter can be retrieved by name using `Context#FormValue(name string)`.
 *Example*
 
 ```go
-e.Post("/users", func(c echo.Context) error {
+e.POST("/users", func(c echo.Context) error {
 	name := c.FormValue("name")
 	return c.String(http.StatusOK, name)
 })

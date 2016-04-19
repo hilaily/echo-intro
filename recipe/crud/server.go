@@ -66,10 +66,10 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// Routes
-	e.Post("/users", createUser)
-	e.Get("/users/:id", getUser)
-	e.Patch("/users/:id", updateUser)
-	e.Delete("/users/:id", deleteUser)
+	e.POST("/users", createUser)
+	e.GET("/users/:id", getUser)
+	e.PATCH("/users/:id", updateUser)
+	e.DELETE("/users/:id", deleteUser)
 
 	// Start server
 	e.Run(standard.New(":1323"))

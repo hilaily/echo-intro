@@ -10,9 +10,9 @@ menu:
 
 #### Server
 
-`main.go`
+`server.go`
 
-{{< embed "file-upload/single/main.go" >}}
+{{< embed "file-upload/single/server.go" >}}
 
 #### Client
 
@@ -24,9 +24,9 @@ menu:
 
 #### Server
 
-`main.go`
+`server.go`
 
-{{< embed "file-upload/multiple/main.go" >}}
+{{< embed "file-upload/multiple/server.go" >}}
 
 #### Client
 

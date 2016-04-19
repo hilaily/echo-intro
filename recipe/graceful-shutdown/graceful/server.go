@@ -12,7 +12,7 @@ import (
 func main() {
 	// Setup
 	e := echo.New()
-	e.Get("/", func(c echo.Context) error {
+	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Sue sews rose on slow joe crows nose")
 	})
 	std := standard.New(":1323")

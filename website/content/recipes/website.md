@@ -11,7 +11,7 @@ menu:
 
 `server.go`
 
-{{< embed "website/main.go" >}}
+{{< embed "website/server.go" >}}
 
 ### Client
 

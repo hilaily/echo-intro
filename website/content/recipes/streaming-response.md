@@ -11,9 +11,9 @@ menu:
 
 ### Server
 
-`main.go`
+`server.go`
 
-{{< embed "streaming-response/main.go" >}}
+{{< embed "streaming-response/server.go" >}}
 
 ### Client
 

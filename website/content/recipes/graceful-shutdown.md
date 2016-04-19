@@ -8,15 +8,15 @@ menu:
 
 ### With [grace](https://github.com/facebookgo/grace)
 
-`main.go`
+`server.go`
 
-{{< embed "graceful-shutdown/grace/main.go" >}}
+{{< embed "graceful-shutdown/grace/server.go" >}}
 
 ### With [graceful](https://github.com/tylerb/graceful)
 
-`main.go`
+`server.go`
 
-{{< embed "graceful-shutdown/graceful/main.go" >}}
+{{< embed "graceful-shutdown/graceful/server.go" >}}
 
 ### Maintainers
 

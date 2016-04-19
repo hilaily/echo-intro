@@ -22,7 +22,7 @@ func hello(c echo.Context) error {
 }
 
 // Route
-e.Get("/hello", hello)
+e.GET("/hello", hello)
 ```
 
 You can use `Echo.Any(path string, h Handler)` to register a handler for all HTTP methods.
@@ -50,15 +50,15 @@ match:
 #### Example
 
 ```go
-e.Get("/users/:id", func(c echo.Context) error {
+e.GET("/users/:id", func(c echo.Context) error {
 	return c.String(http.StatusOK, "/users/:id")
 })
 
-e.Get("/users/new", func(c echo.Context) error {
+e.GET("/users/new", func(c echo.Context) error {
 	return c.String(http.StatusOK, "/users/new")
 })
 
-e.Get("/users/1/files/*", func(c echo.Context) error {
+e.GET("/users/1/files/*", func(c echo.Context) error {
 	return c.String(http.StatusOK, "/users/1/files/*")
 })
 ```
@@ -108,5 +108,5 @@ h := func(c echo.Context) error {
 }
 
 // Route
-e.Get("/users/:id", h)
+e.GET("/users/:id", h)
 ```

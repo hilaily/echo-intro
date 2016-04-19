@@ -33,6 +33,6 @@ func main() {
 		AllowMethods: []string{echo.GET, echo.PUT, echo.POST, echo.DELETE},
 	}))
 
-	e.Get("/api/users", getUsers)
+	e.GET("/api/users", getUsers)
 	e.Run(standard.New(":1323"))
 }

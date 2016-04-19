@@ -10,7 +10,7 @@ menu:
 
 `server.go`
 
-{{< embed "websocket/main.go" >}}
+{{< embed "websocket/server.go" >}}
 
 ### Client
 

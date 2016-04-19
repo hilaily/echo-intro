@@ -8,9 +8,9 @@ menu:
 
 ### Server
 
-`main.go`
+`server.go`
 
-{{< embed "crud/main.go" >}}
+{{< embed "crud/server.go" >}}
 
 ### Maintainers
 

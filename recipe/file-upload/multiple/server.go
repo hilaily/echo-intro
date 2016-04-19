@@ -60,7 +60,7 @@ func main() {
 	e.Use(middleware.Recover())
 	e.Use(middleware.Static("public"))
 
-	e.Post("/upload", upload)
+	e.POST("/upload", upload)
 
 	e.Run(standard.New(":1323"))
 }

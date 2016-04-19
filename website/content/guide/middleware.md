@@ -67,7 +67,7 @@ When defining a new route, you can optionally register middleware just for it.
 
 ```go
 e := echo.New()
-e.Get("/", <Handler>, <Middleware...>)
+e.GET("/", <Handler>, <Middleware...>)
 ```
 
 ### Logger Middleware

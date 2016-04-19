@@ -8,9 +8,9 @@ menu:
 
 ### Server
 
-`main.go`
+`server.go`
 
-{{< embed "hello-world/main.go" >}}
+{{< embed "hello-world/server.go" >}}
 
 ### Maintainers
 

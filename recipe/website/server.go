@@ -77,7 +77,7 @@ func main() {
 	// https://github.com/thoas/stats
 	s := stats.New()
 	e.Use(standard.WrapMiddleware(s.Handler))
-	e.Get("/stats", echo.HandlerFunc(func(c echo.Context) error {
+	e.GET("/stats", echo.HandlerFunc(func(c echo.Context) error {
 		return c.JSON(222, s.Data())
 	}))
 
@@ -85,9 +85,9 @@ func main() {
 	// Routes
 	//--------
 
-	e.Post("/users", createUser)
-	e.Get("/users", getUsers)
-	e.Get("/users/:id", getUser)
+	e.POST("/users", createUser)
+	e.GET("/users", getUsers)
+	e.GET("/users/:id", getUser)
 
 	//-----------
 	// Templates
@@ -98,7 +98,7 @@ func main() {
 		templates: template.Must(template.ParseFiles("public/views/welcome.html")),
 	}
 	e.SetRenderer(t)
-	e.Get("/welcome", welcome)
+	e.GET("/welcome", welcome)
 
 	//-------
 	// Group

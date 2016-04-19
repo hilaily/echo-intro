@@ -68,13 +68,13 @@ func main() {
 	// Stats
 	s := NewStats()
 	e.Use(s.Process)
-	e.Get("/stats", s.Handle) // Endpoint to get stats
+	e.GET("/stats", s.Handle) // Endpoint to get stats
 
 	// Server header
 	e.Use(ServerHeader)
 
 	// Handler
-	e.Get("/", func(c echo.Context) error {
+	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
 

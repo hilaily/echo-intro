@@ -16,7 +16,17 @@ Handler below retrieves user by ID from the database. If user is not found it re
 - ID comes from path parameter.
 - DB comes from `net.context`.
 
+`handler.go`
+
 ```go
+package handler
+
+import (
+	"net/http"
+
+	"github.com/labstack/echo"
+)
+
 func getUser(c echo.Context) error {
 	id := c.Param("id")
 	db := c.NetContext().Value("db").(map[string]string)
@@ -36,7 +46,22 @@ context using `Echo#NewContext()` and load it with the following properties:
 
 The negative test is accomplished by setting the user ID to a invalid value.
 
+`handler_test.go`
+
 ```go
+package handler
+
+import (
+	"net/http"
+	"net/http/httptest"
+	"testing"
+
+	"golang.org/x/net/context"
+
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/engine/standard"
+)
+
 var (
 	mockDB = map[string]string{
 		"1": "walle",
@@ -51,8 +76,8 @@ func TestGet(t *testing.T) {
 	rq := new(http.Request)
 	rc := httptest.NewRecorder()
 	c := e.NewContext(standard.NewRequest(rq, e.Logger()), standard.NewResponse(rc, e.Logger()))
-	c.SetParamNames([]string{"id"})
-	c.SetParamValues([]string{"1"})
+	c.SetParamNames("id")
+	c.SetParamValues("1")
 	c.SetNetContext(context.WithValue(context.Background(), "db", mockDB))
 
 	// Positive test
@@ -61,7 +86,7 @@ func TestGet(t *testing.T) {
 	}
 
 	// Negative test
-	c.SetParamValues([]string{"4"})
+	c.SetParamValues("4")
 	if err := getUser(c); err == nil {
 		t.Error(err)
 	}

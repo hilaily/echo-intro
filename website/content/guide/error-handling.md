@@ -33,7 +33,7 @@ func main() {
 		// For invalid credentials
 		return echo.NewHTTPError(http.StatusUnauthorized)
 	})
-	e.Get("/welcome", welcome)
+	e.GET("/welcome", welcome)
 	e.Run(":1323")
 }
 

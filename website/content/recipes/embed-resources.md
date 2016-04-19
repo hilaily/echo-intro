@@ -8,9 +8,9 @@ menu:
 
 ### With go.rice
 
-`main.go`
+`server.go`
 
-{{< embed "embed-resources/main.go" >}}
+{{< embed "embed-resources/server.go" >}}
 
 ### Maintainers
 

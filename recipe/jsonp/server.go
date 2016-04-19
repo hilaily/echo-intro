@@ -17,7 +17,7 @@ func main() {
 	e.Use(middleware.Static("public"))
 
 	// JSONP
-	e.Get("/jsonp", func(c echo.Context) error {
+	e.GET("/jsonp", func(c echo.Context) error {
 		callback := c.QueryParam("callback")
 		var content struct {
 			Response  string    `json:"response"`

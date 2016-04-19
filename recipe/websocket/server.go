@@ -14,7 +14,7 @@ func main() {
 	e.Use(middleware.Recover())
 	e.Use(middleware.Static("public"))
 
-	e.Get("/ws", standard.WrapHandler(websocket.Handler(func(ws *websocket.Conn) {
+	e.GET("/ws", standard.WrapHandler(websocket.Handler(func(ws *websocket.Conn) {
 		for {
 			websocket.Message.Send(ws, "Hello, Client!")
 			msg := ""

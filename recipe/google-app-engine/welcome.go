@@ -19,7 +19,7 @@ func init() {
 		templates: template.Must(template.ParseFiles("templates/welcome.html")),
 	}
 	e.SetRenderer(t)
-	e.Get("/welcome", welcome)
+	e.GET("/welcome", welcome)
 }
 
 func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {

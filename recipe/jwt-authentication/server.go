@@ -61,7 +61,7 @@ func main() {
 	e.Use(middleware.Logger())
 
 	// Unauthenticated route
-	e.Get("/", accessible)
+	e.GET("/", accessible)
 
 	// Restricted group
 	r := e.Group("/restricted")

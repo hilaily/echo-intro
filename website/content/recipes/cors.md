@@ -8,9 +8,9 @@ menu:
 
 ### Server
 
-`main.go`
+`server.go`
 
-{{< embed "cors/main.go" >}}
+{{< embed "cors/server.go" >}}
 
 ### Maintainers
 
