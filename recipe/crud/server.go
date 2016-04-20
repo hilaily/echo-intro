@@ -11,8 +11,8 @@ import (
 
 type (
 	user struct {
-		ID   int
-		Name string
+		ID   int    `json:"id"`
+		Name string `json:"name"`
 	}
 )
 
@@ -68,7 +68,7 @@ func main() {
 	// Routes
 	e.POST("/users", createUser)
 	e.GET("/users/:id", getUser)
-	e.PATCH("/users/:id", updateUser)
+	e.PUT("/users/:id", updateUser)
 	e.DELETE("/users/:id", deleteUser)
 
 	// Start server

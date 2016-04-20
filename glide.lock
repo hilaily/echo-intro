@@ -1,5 +1,5 @@
-hash: b0cc57d70a91559b88da90444fbca1d6818d40492a93742f18f9a8750e1b1798
-updated: 2016-04-18T19:49:47.819998671-07:00
+hash: ab5308063bdd5c4110420876eb25eb23f55cfbbf3c590275e4cde314d4801c3e
+updated: 2016-04-20T07:37:49.74952253-07:00
 imports:
 - name: github.com/daaku/go.zipexe
   version: a5fe2436ffcb3236e175e5149162b41cd28bd27d
@@ -21,13 +21,13 @@ imports:
   subpackages:
   - embedded
 - name: github.com/golang/protobuf
-  version: 2ebff28ac76fb19e2d25e5ddd4885708dfdd5611
+  version: bf531ff1a004f24ee53329dfd5ce0b41bfdc17df
   subpackages:
   - proto
 - name: github.com/kardianos/osext
   version: 29ae4ffbc9a6fe9fb2bc5029050ce6996ea1d3bc
 - name: github.com/labstack/echo
-  version: 1c2d6341ba2e3027dc4f2371b48f4e2e9fda4790
+  version: 1247552c9bc0334a9da8df9bb2d6070c2ccbce0a
   subpackages:
   - engine/standard
   - middleware

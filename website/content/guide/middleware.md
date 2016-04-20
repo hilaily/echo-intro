@@ -91,11 +91,11 @@ LoggerConfig struct {
   //
   // Example "${remote_id} ${status}"
   //
-  // Optional with default value as `DefaultLoggerConfig.Format`.
+  // Optional, with default value as `DefaultLoggerConfig.Format`.
   Format string
 
   // Output is the writer where logs are written.
-  // Optional with default value as os.Stdout.
+  // Optional, with default value as os.Stdout.
   Output io.Writer
 }
 ```
@@ -147,16 +147,16 @@ and handles the control to the centralized
 ```go
 RecoverConfig struct {
   // StackSize is the stack size to be printed.
-  // Optional with default value as 4 KB.
+  // Optional, with default value as 4 KB.
   StackSize int
 
   // DisableStackAll disables formatting stack traces of all other goroutines
   // into buffer after the trace for the current goroutine.
-  // Optional with default value as false.
+  // Optional, with default value as false.
   DisableStackAll bool
 
   // DisablePrintStack disables printing stack trace.
-  // Optional with default value as false.
+  // Optional, with default value as false.
   DisablePrintStack bool
 }
 ```
@@ -198,7 +198,7 @@ Gzip middleware compresses HTTP response using gzip compression scheme.
 ```go
 GzipConfig struct {
   // Level is the gzip level.
-  // Optional with default value as -1.
+  // Optional, with default value as -1.
   Level int
 }
 ```
@@ -266,34 +266,34 @@ data transfers.
 ```go
 CORSConfig struct {
 	// AllowOrigin defines a list of origins that may access the resource.
-	// Optional with default value as []string{"*"}.
+	// Optional, with default value as []string{"*"}.
 	AllowOrigins []string
 
 	// AllowMethods defines a list methods allowed when accessing the resource.
 	// This is used in response to a preflight request.
-	// Optional with default value as `DefaultCORSConfig.AllowMethods`.
+	// Optional, with default value as `DefaultCORSConfig.AllowMethods`.
 	AllowMethods []string
 
 	// AllowHeaders defines a list of request headers that can be used when
 	// making the actual request. This in response to a preflight request.
-	// Optional with default value as []string{}.
+	// Optional, with default value as []string{}.
 	AllowHeaders []string
 
 	// AllowCredentials indicates whether or not the response to the request
 	// can be exposed when the credentials flag is true. When used as part of
 	// a response to a preflight request, this indicates whether or not the
 	// actual request can be made using credentials.
-	// Optional with default value as false.
+	// Optional, with default value as false.
 	AllowCredentials bool
 
 	// ExposeHeaders defines a whitelist headers that clients are allowed to
 	// access.
-	// Optional with default value as []string{}.
+	// Optional, with default value as []string{}.
 	ExposeHeaders []string
 
 	// MaxAge indicates how long (in seconds) the results of a preflight request
 	// can be cached.
-	// Optional with default value as 0.
+	// Optional, with default value as 0.
 	MaxAge int
 }
 ```
