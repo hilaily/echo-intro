@@ -73,9 +73,9 @@ var (
 func TestGet(t *testing.T) {
 	// Setup
 	e := echo.New()
-	rq := new(http.Request)
-	rc := httptest.NewRecorder()
-	c := e.NewContext(standard.NewRequest(rq, e.Logger()), standard.NewResponse(rc, e.Logger()))
+	req := new(http.Request)
+	rec := httptest.NewRecorder()
+	c := e.NewContext(standard.NewRequest(req, e.Logger()), standard.NewResponse(rec, e.Logger()))
 	c.SetParamNames("id")
 	c.SetParamValues("1")
 	c.SetNetContext(context.WithValue(context.Background(), "db", mockDB))
