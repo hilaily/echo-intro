@@ -1,5 +1,5 @@
 hash: ab5308063bdd5c4110420876eb25eb23f55cfbbf3c590275e4cde314d4801c3e
-updated: 2016-04-20T07:37:49.74952253-07:00
+updated: 2016-04-26T02:11:40.19238414-07:00
 imports:
 - name: github.com/daaku/go.zipexe
   version: a5fe2436ffcb3236e175e5149162b41cd28bd27d
@@ -21,24 +21,24 @@ imports:
   subpackages:
   - embedded
 - name: github.com/golang/protobuf
-  version: bf531ff1a004f24ee53329dfd5ce0b41bfdc17df
+  version: 7cc19b78d562895b13596ddce7aafb59dd789318
   subpackages:
   - proto
 - name: github.com/kardianos/osext
   version: 29ae4ffbc9a6fe9fb2bc5029050ce6996ea1d3bc
 - name: github.com/labstack/echo
-  version: 1247552c9bc0334a9da8df9bb2d6070c2ccbce0a
+  version: fb8690d42bcb3a44f35c3483dc90e778e385a823
   subpackages:
   - engine/standard
   - middleware
   - engine
 - name: github.com/labstack/gommon
-  version: f8343700e8769e645b5f9949ec2e3a69f9fd71eb
+  version: 4fae226dd67b1100622ab213e798e5ee4c5d4230
   subpackages:
   - log
   - color
 - name: github.com/mattn/go-colorable
-  version: 9cbef7c35391cca05f15f8181dc0b18bc9736dbb
+  version: bc69d6cebca8dd5675346a34a1c545b67dc74d5e
 - name: github.com/mattn/go-isatty
   version: 56b76bdf51f7708750eac80fa38b952bb9f32639
 - name: github.com/rs/cors
@@ -52,7 +52,7 @@ imports:
 - name: github.com/valyala/fasttemplate
   version: 3b874956e03f1636d171bda64b130f9135f42cff
 - name: golang.org/x/net
-  version: fb93926129b8ec0056f2f458b1f519654814edf0
+  version: b797637b7aeeed133049c7281bfa31dcc9ca42d6
   subpackages:
   - websocket
   - context

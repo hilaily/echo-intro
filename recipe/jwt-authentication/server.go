@@ -1,73 +1,68 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
+	"time"
 
-	jwt "github.com/dgrijalva/jwt-go"
+	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
 	"github.com/labstack/echo/middleware"
 )
 
-const (
-	Bearer     = "Bearer"
-	SigningKey = "somethingsupersecret"
-)
+func login(c echo.Context) error {
+	username := c.FormValue("username")
+	password := c.FormValue("password")
 
-// A JSON Web Token middleware
-func JWTAuth(key string) echo.MiddlewareFunc {
-	return func(next echo.HandlerFunc) echo.HandlerFunc {
-		return func(c echo.Context) error {
-			auth := c.Request().Header().Get("Authorization")
-			l := len(Bearer)
-			he := echo.ErrUnauthorized
+	if username == "jon" && password == "shhh!" {
+		// Create token
+		token := jwt.New(jwt.SigningMethodHS256)
 
-			if len(auth) > l+1 && auth[:l] == Bearer {
-				t, err := jwt.Parse(auth[l+1:], func(token *jwt.Token) (interface{}, error) {
+		// Set claims
+		token.Claims["name"] = "Jon Snow"
+		token.Claims["admin"] = true
+		token.Claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
 
-					// Always check the signing method
-					if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-						return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
-					}
-
-					// Return the key for validation
-					return []byte(key), nil
-				})
-				if err == nil && t.Valid {
-					// Store token claims in echo.Context
-					c.Set("claims", t.Claims)
-					return next(c)
-				}
-			}
-			return he
+		// Generate encoded token and send it as response.
+		t, err := token.SignedString([]byte("secret"))
+		if err != nil {
+			return err
 		}
+		return c.JSON(http.StatusOK, map[string]string{
+			"token": t,
+		})
 	}
+
+	return echo.ErrUnauthorized
 }
 
 func accessible(c echo.Context) error {
-	return c.String(http.StatusOK, "No auth required for this route.\n")
+	return c.String(http.StatusOK, "Accessible")
 }
 
 func restricted(c echo.Context) error {
-	return c.String(http.StatusOK, "Access granted with JWT.\n")
+	user := c.Get("user").(*jwt.Token)
+	name := user.Claims["name"].(string)
+	return c.String(http.StatusOK, "Welcome "+name+"!")
 }
 
 func main() {
-	// Echo instance
 	e := echo.New()
 
-	// Logger
+	// Middleware
 	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+
+	// Login route
+	e.POST("/login", login)
 
 	// Unauthenticated route
 	e.GET("/", accessible)
 
 	// Restricted group
 	r := e.Group("/restricted")
-	r.Use(JWTAuth(SigningKey))
-	r.Get("", restricted)
+	r.Use(middleware.JWTAuth([]byte("secret")))
+	r.GET("", restricted)
 
-	// Start server
 	e.Run(standard.New(":1323"))
 }
