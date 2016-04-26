@@ -61,7 +61,7 @@ func main() {
 
 	// Restricted group
 	r := e.Group("/restricted")
-	r.Use(middleware.JWTAuth("secret"))
+	r.Use(middleware.JWTAuth([]byte("secret")))
 	r.GET("", restricted)
 
 	e.Run(standard.New(":1323"))

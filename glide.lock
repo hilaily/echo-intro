@@ -1,5 +1,5 @@
 hash: ab5308063bdd5c4110420876eb25eb23f55cfbbf3c590275e4cde314d4801c3e
-updated: 2016-04-25T11:57:13.592734109-07:00
+updated: 2016-04-26T02:11:40.19238414-07:00
 imports:
 - name: github.com/daaku/go.zipexe
   version: a5fe2436ffcb3236e175e5149162b41cd28bd27d
@@ -21,13 +21,13 @@ imports:
   subpackages:
   - embedded
 - name: github.com/golang/protobuf
-  version: bf531ff1a004f24ee53329dfd5ce0b41bfdc17df
+  version: 7cc19b78d562895b13596ddce7aafb59dd789318
   subpackages:
   - proto
 - name: github.com/kardianos/osext
   version: 29ae4ffbc9a6fe9fb2bc5029050ce6996ea1d3bc
 - name: github.com/labstack/echo
-  version: 02676bdb446eac0e6fd775ac9e3c14b00cb62b65
+  version: fb8690d42bcb3a44f35c3483dc90e778e385a823
   subpackages:
   - engine/standard
   - middleware
@@ -52,17 +52,17 @@ imports:
 - name: github.com/valyala/fasttemplate
   version: 3b874956e03f1636d171bda64b130f9135f42cff
 - name: golang.org/x/net
-  version: 8cdd13cc62a36bb8e43a4228968d571273ab9271
+  version: b797637b7aeeed133049c7281bfa31dcc9ca42d6
   subpackages:
   - websocket
   - context
   - netutil
 - name: golang.org/x/sys
-  version: 8cdd13cc62a36bb8e43a4228968d571273ab9271
+  version: f64b50fbea64174967a8882830d621a18ee1548e
   subpackages:
   - unix
 - name: google.golang.org/appengine
-  version: 8cdd13cc62a36bb8e43a4228968d571273ab9271
+  version: e234e71924d4aa52444bc76f2f831f13fa1eca60
   subpackages:
   - internal
   - internal/app_identity

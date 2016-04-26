@@ -56,7 +56,7 @@ your preference.
 
 #### Running a server with TLS configuration
 
-`e.Run(<engine>.WithTLS(":1323", "<certfile>", "<keyfile>"))`
+`e.Run(<engine>.WithTLS(":1323", "<certFile>", "<keyFile>"))`
 
 #### Running a server with engine configuration
 

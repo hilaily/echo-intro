@@ -272,7 +272,7 @@ JWTAuth provides a JSON Web Token (JWT) authentication middleware.
 JWTAuthConfig struct {
 	// SigningKey is the key to validate token.
 	// Required.
-	SigningKey string
+	SigningKey []byte
 
 	// SigningMethod is used to check token signing method.
 	// Optional, with default value as `HS256`.
@@ -301,7 +301,7 @@ DefaultJWTAuthConfig = JWTAuthConfig{
 
 *Usage*
 
-`e.Use(middleware.JWTAuth("secret"))`
+`e.Use(middleware.JWTAuth([]byte("secret"))`
 
 #### Custom Configuration
 
@@ -310,7 +310,7 @@ DefaultJWTAuthConfig = JWTAuthConfig{
 ```go
 e := echo.New()
 e.Use(middleware.JWTAuthWithConfig(middleware.JWTAuthConfig{
-  SigningKey: "secret",
+  SigningKey: []byte("secret"),
   Extractor: JWTFromQuery,
 }))
 ```
