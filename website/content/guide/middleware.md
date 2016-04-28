@@ -241,8 +241,8 @@ BasicAuth middleware provides an HTTP basic authentication.
 
 ```go
 BasicAuthConfig struct {
-  // AuthFunc is the function to validate basic auth credentials.
-  AuthFunc BasicAuthFunc
+  // Validator is the function to validate basic auth credentials.
+  Validator BasicAuthValidator
 }
 ```
 
@@ -434,5 +434,44 @@ e.Use(middleware.RemoveTrailingSlashWithConfig(TrailingSlashConfig{
 ```
 
 This will remove a trailing slash from the request URI and redirect with `StatusMovedPermanently`.
+
+### Method Override Middleware
+
+Method override middleware checks for the overridden method from the request and
+uses it instead of the original method.
+
+For security reasons, only `POST` method can be overridden.
+
+#### Configuration
+
+```go
+MethodOverrideConfig struct {
+  // Getter is a function that gets overridden method from the request.
+  Getter MethodOverrideGetter
+}
+```
+
+#### Default Configuration
+
+```go
+DefaultMethodOverrideConfig = MethodOverrideConfig{
+  Getter: MethodFromHeader(echo.HeaderXHTTPMethodOverride),
+}
+```
+
+*Usage*
+
+`e.Pre(middleware.MethodOverride())`
+
+#### Custom Configuration
+
+*Usage*
+
+```go
+e := echo.New()
+e.Pre(middleware.MethodOverrideWithConfig(middleware.MethodOverrideConfig{
+  Getter: middleware.MethodFromForm("_method"),
+}))
+```
 
 ### [Writing Custom Middleware]({{< ref "recipes/middleware.md">}})

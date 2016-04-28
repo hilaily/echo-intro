@@ -28,7 +28,7 @@ a:link {
 }
 .page-content {
     padding: 20px 0;
-    max-width: 960px;
+    max-width: 1200px;
     margin: auto;
 }
 .page-content header {
@@ -62,4 +62,8 @@ a:link {
 
 .gitter-open-chat-button:hover {
 	background-color: #E91E63;
+}
+ul {
+    padding: 8px;
+    list-style-type: none;
 }

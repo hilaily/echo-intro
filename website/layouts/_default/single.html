@@ -9,7 +9,7 @@
                     <div class="mdl-cell mdl-cell--3-col">
                         {{ partial "menu.html" . }}
                     </div>
-                    <div class="mdl-cell mdl-cell--9-col">
+                    <div class="mdl-cell mdl-cell--6-col">
                         <article>
                             <header>
                                 <h2>{{ .Title }}</h2>
@@ -34,6 +34,9 @@
                                 </script>
                             </footer>
                         </article>
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col">
+                        {{ .TableOfContents }}
                     </div>
                 </div>
             </div>
