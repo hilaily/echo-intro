@@ -25,6 +25,7 @@ The following built-in middleware should be registered at this level:
 
 - AddTrailingSlash
 - RemoveTrailingSlash
+- MethodOverride
 
 *Note*: As router has not processed the request, middleware at this level won't
 have access to any path related API from `echo.Context`.
