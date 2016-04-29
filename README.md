@@ -9,4 +9,4 @@ Echo Extra
 ### Running Website Locally
 
 - If you don't have hugo, get it [`hugo`](https://gohugo.io).
-- From terminal, go to website folder and run `hugo server`.
+- From terminal, go to website folder and run `hugo serve`.
