@@ -38,6 +38,7 @@ to `echo.Context` API.
 
 The following built-in middleware should be registered at this level:
 
+- BodyLimit
 - Logger
 - Gzip
 - Recover
@@ -70,6 +71,21 @@ When defining a new route, you can optionally register middleware just for it.
 ```go
 e := echo.New()
 e.GET("/", <Handler>, <Middleware...>)
+```
+
+### BodyLimit Middleware
+
+BodyLimit middleware sets the maximum allowed size for a request body, if the
+size exceeds the configured limit, it sends "413 - Request Entity Too Large"
+response. The body limit is determined based on the actually read and not `Content-Length`
+request header, which makes it super secure. Limit can be specified as `4x` or `4xB`,
+where x is one of the multiple from K, M, G, T or P.
+
+*Usage*
+
+```go
+e := echo.New()
+e.Use(middleware.BodyLimit("2M"))
 ```
 
 ### Logger Middleware
@@ -237,15 +253,6 @@ BasicAuth middleware provides an HTTP basic authentication.
 - For valid credentials it calls the next handler.
 - For invalid credentials, it sends "401 - Unauthorized" response.
 - For empty or invalid `Authorization` header, it sends "400 - Bad Request" response.
-
-#### Configuration
-
-```go
-BasicAuthConfig struct {
-  // Validator is the function to validate basic auth credentials.
-  Validator BasicAuthValidator
-}
-```
 
 *Usage*
 
