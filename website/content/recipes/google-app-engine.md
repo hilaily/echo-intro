@@ -6,6 +6,8 @@ menu:
     weight: 12
 ---
 
+## Google App Engine Recipe
+
 Google App Engine (GAE) provides a range of hosting options from pure PaaS (App Engine Classic)
 through Managed VMs to fully self-managed or container-driven Compute Engine instances. Echo
 works great with all of these but requires a few changes to the usual examples to run on the

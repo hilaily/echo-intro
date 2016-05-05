@@ -6,6 +6,8 @@ menu:
     weight: 9
 ---
 
+## Streaming Response Recipe
+
 - Send data as it is produced
 - Streaming JSON response with chunked transfer encoding
 

@@ -1,21 +1,30 @@
-<header class="mdl-layout__header">
-  <div class="mdl-layout__header-row">
-    <a href="{{ .Site.BaseURL }}" class="mdl-navigation__link mdl-layout-title">
-      <img src="/images/logo.svg" alt="LabStack">
-    </a>
-    <div style="height: 0; width: 0; overflow:hidden;">
-      <gcse:search></gcse:search>
+<header class="header">
+  <div class="container">
+    <!-- Left side -->
+    <div class="header-left">
+      <a class="header-item" href="{{ .Site.BaseURL }}">
+        <img src="/images/echo.svg" alt="Echo">
+      </a>
     </div>
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-          mdl-textfield--floating-label mdl-textfield--align-right">
-      <label class="mdl-button mdl-js-button mdl-button--icon" for="search-box">
-        <i class="material-icons">search</i>
-      </label>
-      <div class="mdl-textfield__expandable-holder">
-        <input id="search-box" class="mdl-textfield__input" type="text" name="sample" onkeypress="search(event)">
-      </div>
+
+    <!-- Hamburger menu (on mobile) -->
+    <span class="header-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+
+    <!-- Right side -->
+    <div class="header-right header-menu">
+      <span class="header-item">
+        <p class="control has-icon">
+          <input id="search-box" class="input" type="text" placeholder="Search">
+          <i class="fa fa-search"></i>
+        </p>
+      </span>
+      <span class="header-item">
+        <a class="github-button" href="https://github.com/labstack/echo" data-icon="octicon-star" data-style="mega" data-count-href="/labstack/echo/stargazers" data-count-api="/repos/labstack/echo#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star labstack/echo on GitHub">Star</a>
+      </span>
     </div>
-    <div class="mdl-layout-spacer"></div>
-    <a class="github-button" href="https://github.com/labstack/echo" data-style="mega" data-count-href="/labstack/echo/stargazers" data-count-api="/repos/labstack/echo#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star labstack/echo on GitHub">Star</a>
   </div>
 </header>

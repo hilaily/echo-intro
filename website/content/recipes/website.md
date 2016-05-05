@@ -7,6 +7,8 @@ menu:
     weight: 4
 ---
 
+## Website Recipe
+
 ### Server
 
 `server.go`

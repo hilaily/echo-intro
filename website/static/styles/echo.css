@@ -1,4 +1,4 @@
-footer {
+/*footer {
     background-color: inherit !important;
     border-top: 2px solid #E0E0E0;
 }
@@ -41,7 +41,7 @@ a:link {
     display: block;
     color: #757575;
     padding: 5px;
-    border-left:4px #F06292 solid;
+    border-left: 4px #F06292 solid;
 }
 .menu a:hover:not(.active) {
     background-color: #E0E0E0;
@@ -51,19 +51,90 @@ a:link {
     background-color: #F06292;
 }
 .search-box {
-  margin-right: 8px;
-}
+    margin-right: 8px;
+}*/
 
 /* Gitter */
 .gitter-open-chat-button {
-	background-color: #2196F3;
-	transition: all .2s ease;
+    background-color: #2196F3;
+    transition: all .2s ease;
 }
-
 .gitter-open-chat-button:hover {
-	background-color: #E91E63;
+    background-color: #1E88E5;
 }
 ul {
     padding: 8px;
     list-style-type: none;
+}
+
+/* Algolia */
+/*http://vuejs.org/css/page.css*/
+.aa-dropdown-menu {
+  border-color: #999;
+}
+.algolia-docsearch-footer {
+  border-color: #DDD;
+}
+.algolia-docsearch-suggestion--subcategory-column {
+  border-color: #DDD;
+}
+.algolia-docsearch-suggestion--category-header {
+    background-color: #2196F3;
+}
+.algolia-docsearch-suggestion--highlight {
+    color: #1E88E5;
+}
+.algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--highlight {
+    background-color: #64B5F6;
+}
+.aa-cursor .algolia-docsearch-suggestion--content {
+    color: #E91E63;
+}
+.aa-cursor .algolia-docsearch-suggestion {
+    background: #F5F5F5;
+}
+
+/*#TableOfContents {
+  font-size: .8em;
+}
+
+#TableOfContents .menu-list a {
+  padding: 2px 4px;
+}
+
+#TableOfContents .menu-list li ul {
+
+}*/
+
+/* Bulma */
+.menu-list a.is-active {
+  background-color: #2196F3;
+}
+
+html  {
+  background-color: #FFF;
+}
+.header {
+  background-color: #282C37;
+}
+.section {
+  margin-top: 40px;
+}
+.footer {
+  margin-top: 40px;
+}
+/*Conflict with prism*/
+code[class*="language-"] .tag {
+  display: inline;
+  padding: 0;
+  vertical-align: baseline;
+  background: none;
+  border-radius: 0;
+}
+code[class*="language-"] .token.number {
+  background: none;
+  border-radius: 0;
+  display: inline-block;
+  font-size: 1em;
+  vertical-align: top;
 }

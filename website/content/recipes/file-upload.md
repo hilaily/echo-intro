@@ -6,6 +6,8 @@ menu:
     weight: 7
 ---
 
+## File Upload Recipe
+
 ### How to upload single file with fields?
 
 #### Server

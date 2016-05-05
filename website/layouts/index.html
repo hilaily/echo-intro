@@ -1,24 +1,24 @@
 {{ partial "head.html" . }}
 
 <body>
-	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-		{{ partial "header.html" . }}
-		<main class="mdl-layout__content">
-			<div class="page-content">
-				<div class="mdl-grid">
-					<div class="mdl-cell mdl-cell--3-col">
-						{{ partial "menu.html" . }}
-					</div>
-					<div class="mdl-cell mdl-cell--9-col">
+	{{ partial "header.html" . }}
+	<section style="margin-top: 40px;">
+		<div class="container">
+			<div class="columns">
+				<div class="column is-3">
+					{{ partial "menu.html" . }}
+				</div>
+				<div class="column is-9">
+					<div class="content">
 						{{ range where .Data.Pages "Title" "Index" }}
 							{{ .Content }}
 						{{ end }}
 					</div>
 				</div>
 			</div>
-			{{ partial "footer.html" . }}
-		</main>
-	</div>
+		</div>
+	</section>
+	{{ partial "footer.html" . }}
 </body>
 
 </html>

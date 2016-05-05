@@ -6,6 +6,8 @@ menu:
     weight: 8
 ---
 
+## Error Handling
+
 Echo advocates centralized HTTP error handling by returning error from middleware
 or handlers.
 

@@ -1,10 +1,12 @@
 ---
-title: HTTP Request
+title: Request
 menu:
   side:
     parent: guide
     weight: 6
 ---
+
+## HTTP Request
 
 ### Handler path
 

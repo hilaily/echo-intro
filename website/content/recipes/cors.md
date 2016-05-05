@@ -2,9 +2,12 @@
 title: CORS
 menu:
   side:
+    identifier: cors-middleware
     parent: recipes
     weight: 3
 ---
+
+## CORS Recipe
 
 ### Server
 

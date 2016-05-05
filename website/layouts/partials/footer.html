@@ -1,68 +1,47 @@
-<footer class="mdl-mini-footer">
-  <div class="mdl-mini-footer__left-section">
-    <span class="mdl-typography__font-light">© 2016 LabStack</span>
-  </div>
-  <div class="mdl-mini-footer__right-section">
-    <ul class="mdl-mini-footer__link-list">
-      <li class="github">
-        <a href="https://github.com/labstack" target="_blank">
-          <i class="fa fa-github fa-2x"></i>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Echo</strong> by <a href="http://labstack.com">LabStack</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0">CC ANS 4.0</a>.
+      </p>
+      <p>
+        <a class="icon" href="https://github.com/labstack">
+          <i class="fa fa-github"></i>
         </a>
-      </li>
-      <li class="facebook">
-        <a href="https://facebook.com/labstack" target="_blank">
-          <i class="fa fa-facebook fa-2x"></i>
+        <a class="icon" href="https://facebook.com/labstack">
+          <i class="fa fa-facebook"></i>
         </a>
-      </li>
-      <li class="twitter">
-        <a href="https://twitter.com/labstack" target="_blank">
-          <i class="fa fa-twitter-square fa-2x"></i>
+        <a class="icon" href="https://twitter.com/labstack">
+          <i class="fa fa-twitter-square"></i>
         </a>
-      </li>
-      <li class="google">
-        <a href="https://plus.google.com/+labstack" target="_blank">
-          <i class="fa fa-google-plus-square fa-2x"></i>
+        <a class="icon" href="https://plus.google.com/+labstack">
+          <i class="fa fa-google-plus-square"></i>
         </a>
-      </li>
-    </ul>
+      </p>
+    </div>
   </div>
 </footer>
-<!-- <script src="/scripts/highlight.pack.min.js"></script> -->
-<script src="/scripts/prism.js"></script>
-<script src="/scripts/echo.js"></script>
-<!-- <script>hljs.initHighlightingOnLoad();</script> -->
-<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
-<script>
-  (function(i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function() {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-  ga('create', '{{ .Site.Params.googleAnayticsId }}', 'auto');
-  ga('send', 'pageview');
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+<script type="text/javascript">
+  docsearch({
+    apiKey: '69dfc65b57ccba29ec34b68aa5b274ed',
+    indexName: 'labstack',
+    inputSelector: '#search-box'
+  });
 </script>
-<script>
-  (function() {
-    var cx = '000118537352387123882:em6h4defadg';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 <script>
   ((window.gitter = {}).chat = {}).options = {
     room: 'labstack/echo'
   };
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+<script>
+  window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+  ga('create','{{ .Site.Params.googleAnayticsId }}','auto');ga('send','pageview')
+</script>
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+<script src="/scripts/prism.js"></script>
+<script src="/scripts/echo.js"></script>

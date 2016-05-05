@@ -6,6 +6,8 @@ menu:
     weight: 14
 ---
 
+## Embed Resources Recipe
+
 ### With go.rice
 
 `server.go`

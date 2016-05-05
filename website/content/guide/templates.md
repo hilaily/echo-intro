@@ -3,8 +3,10 @@ title: Templates
 menu:
   side:
     parent: guide
-    weight: 3 
+    weight: 3
 ---
+
+## Templates
 
 ### Template Rendering
 

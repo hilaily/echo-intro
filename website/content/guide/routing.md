@@ -6,6 +6,8 @@ menu:
     weight: 4
 ---
 
+## Routing
+
 Echo's router is [fast, optimized]({{< ref "index.md#performance">}}) and
 flexible. It's based on [radix tree](http://en.wikipedia.org/wiki/Radix_tree) data
 structure which makes route lookup really fast. Router leverages [sync pool](https://golang.org/pkg/sync/#Pool)

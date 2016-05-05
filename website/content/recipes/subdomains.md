@@ -6,6 +6,8 @@ menu:
     weight: 10
 ---
 
+## Subdomains Recipe
+
 `server.go`
 
 {{< embed "subdomains/server.go" >}}

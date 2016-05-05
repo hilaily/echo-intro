@@ -6,6 +6,8 @@ menu:
     weight: 11
 ---
 
+## JWT Authentication Recipe
+
 - JWT authentication using HS256 algorithm.
 - JWT is retrieved from `Authorization` request header.
 

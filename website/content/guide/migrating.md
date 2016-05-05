@@ -6,9 +6,9 @@ menu:
     weight: 2
 ---
 
-### Migrating from v1
+## Migrating from v1
 
-#### Change Log
+### Change Log
 
 - Good news, 85% of the API remains the same.
 - `Engine` interface to abstract `HTTP` server implementation, allowing
@@ -21,14 +21,14 @@ us to use HTTP servers beyond Go standard library. It currently supports standar
 - `Echo#HTTPError` exposed it's fields `Code` and `Message`.
 - Option to specify log format in logger middleware and default logger.
 
-##### API
+#### API
 
 v1 | v2
 --- | ---
 `Context#Query()` | `Context#QueryParam()`
 `Context#Form()`  | `Context#FormValue()`
 
-#### FAQ
+### FAQ
 
 Q. How to access original objects from interfaces?
 
@@ -51,7 +51,7 @@ c.Response().(*standard.Response).ResponseWriter
 c.Response().(*standard.Header).Header
 ```
 
-#### Next?
+### Next?
 
 - Browse through [recipes](/recipes/hello-world) freshly converted to v2.
 - Read documentation and dig into test cases.

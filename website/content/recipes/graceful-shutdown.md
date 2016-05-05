@@ -6,6 +6,8 @@ menu:
     weight: 13
 ---
 
+## Graceful Shutdown Recipe
+
 ### With [grace](https://github.com/facebookgo/grace)
 
 `server.go`

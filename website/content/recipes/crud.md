@@ -6,6 +6,8 @@ menu:
     weight: 2
 ---
 
+## CRUD Recipe
+
 ### Server
 
 `server.go`

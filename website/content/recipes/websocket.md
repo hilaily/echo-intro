@@ -6,6 +6,8 @@ menu:
     weight: 5
 ---
 
+## WebSocket Recipe
+
 ### Server
 
 `server.go`

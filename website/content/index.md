@@ -2,11 +2,7 @@
 title: Index
 ---
 
-# ![Echo](/images/echo.svg)
-
-**Echo is a fast and unfancy HTTP server framework for Go (Golang). Up to 10x faster than the rest.**
-
----
+## Echo is a fast and unfancy HTTP server framework for Go (Golang). Up to 10x faster than the rest.
 
 ## Features
 
@@ -16,6 +12,7 @@ title: Index
 - Group APIs.
 - Extensible middleware framework.
 - Define middleware at root, group or route level.
+- Data binding for JSON, XML and form payload.
 - Handy functions to send variety of HTTP responses.
 - Centralized HTTP error handling.
 - Template rendering with any template engine.
@@ -165,13 +162,13 @@ func save(c echo.Context) error {
 
 ### Handling Request
 
-- Bind `JSON` or `XML` payload into Go struct based on `Content-Type` request header.
+- Bind `JSON` or `XML` or `form` payload into Go struct based on `Content-Type` request header.
 - Render response as `JSON` or `XML` with status code.
 
 ```go
 type User struct {
-	Name  string `json:"name" xml:"name"`
-	Email string `json:"email" xml:"email"`
+	Name  string `json:"name" xml:"name" form:"name"`
+	Email string `json:"email" xml:"email" form:"email"`
 }
 
 e.POST("/users", func(c echo.Context) error {
@@ -229,14 +226,24 @@ e.GET("/users", func(c echo.Context) error {
 
 Middleware | Description
 :--- | :---
-[Logger]({{< ref "guide/middleware.md#logger-middleware">}}) | Log HTTP requests
-[Recover]({{< ref "guide/middleware.md#recover-middleware">}}) | Recover from panics
-[Gzip]({{< ref "guide/middleware.md#gzip-middleware">}}) | Send gzip HTTP response
-[BasicAuth]({{< ref "guide/middleware.md#basicauth-middleware">}}) | HTTP basic authentication
-[CORS]({{< ref "guide/middleware.md#cors-middleware">}}) | Cross-Origin Resource Sharing
-[Static]({{< ref "guide/static-files.md#using-static-middleware">}}) | Serve static files
-[AddTrailingSlash]({{< ref "guide/middleware.md#addtrailingslash-middleware">}}) | Add trailing slash to the request URI
-[RemoveTrailingSlash]({{< ref "guide/middleware.md#removetrailingslash-middleware">}}) | Remove trailing slash from the request URI
+[BodyLimit]({{< ref "guide/body-limit-middleware.md">}}) | Limit request body
+[Logger]({{< ref "guide/logger-middleware.md">}}) | Log HTTP requests
+[Recover]({{< ref "guide/recover-middleware.md">}}) | Recover from panics
+[Gzip]({{< ref "guide/gzip-middleware.md">}}) | Send gzip HTTP response
+[BasicAuth]({{< ref "guide/basic-auth-middleware.md">}}) | HTTP basic authentication
+[JWTAuth]({{< ref "guide/jwt-auth-middleware.md">}}) | JWT authentication
+[Secure]({{< ref "guide/secure-middleware.md">}}) | Protection against attacks
+[CORS]({{< ref "guide/cors-middleware.md">}}) | Cross-Origin Resource Sharing
+[Static]({{< ref "guide/static-middleware.md">}}) | Serve static files
+[AddTrailingSlash]({{< ref "guide/add-trailing-slash-middleware.md">}}) | Add trailing slash to the request URI
+[RemoveTrailingSlash]({{< ref "guide/remove-trailing-slash-middleware.md">}}) | Remove trailing slash from the request URI
+[MethodOverride]({{< ref "guide/method-override-middleware.md">}}) | Override request method
+
+#### Third-party Middleware
+
+Middleware | Description
+:--- | :---
+[echoperm](https://github.com/xyproto/echoperm) | Keeping track of users, login states and permissions.
 
 ##### [More...](https://labstack.com/echo/guide/middleware)
 

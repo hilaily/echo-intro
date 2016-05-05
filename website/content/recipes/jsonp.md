@@ -6,6 +6,8 @@ menu:
     weight: 6
 ---
 
+## JSONP Recipe
+
 JSONP is a method that allows cross-domain server calls. You can read more about it at the JSON versus JSONP Tutorial.
 
 ### Server

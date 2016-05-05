@@ -2,10 +2,12 @@
 title: Middleware
 menu:
   side:
-    identifier: "recipe-miiddleware"
+    identifier: "recipes-middleware"
     parent: recipes
     weight: 3
 ---
+
+## Middleware Recipe
 
 ### How to write a custom middleware?
 

@@ -6,6 +6,8 @@ menu:
     weight: 1
 ---
 
+## Hello World Recipe
+
 ### Server
 
 `server.go`

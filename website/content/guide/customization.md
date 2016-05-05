@@ -6,6 +6,8 @@ menu:
     weight: 3
 ---
 
+## Customization
+
 ### HTTP Error Handler
 
 `Echo#SetHTTPErrorHandler(h HTTPErrorHandler)` registers a custom `Echo#HTTPErrorHandler`.
