@@ -70,6 +70,7 @@ ul {
 /* Algolia */
 /*http://vuejs.org/css/page.css*/
 .aa-dropdown-menu {
+  margin-top: 40px;
   border-color: #999;
 }
 .algolia-docsearch-footer {
@@ -123,7 +124,7 @@ html  {
 .footer {
   margin-top: 40px;
 }
-/*Conflict with prism*/
+/* Resolve conflict with prism */
 code[class*="language-"] .tag {
   display: inline;
   padding: 0;

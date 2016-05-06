@@ -28,7 +28,10 @@
   docsearch({
     apiKey: '69dfc65b57ccba29ec34b68aa5b274ed',
     indexName: 'labstack',
-    inputSelector: '#search-box'
+    inputSelector: '#search-box',
+    autocompleteOptions: {
+      dropdownMenuContainer: '#search-menu'
+    }
   });
 </script>
 <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
