@@ -1,14 +1,14 @@
 +++
-title = "JWT Auth Middleware"
+title = "JWT Middleware"
 [menu.side]
-  name = "JWTAuth"
+  name = "JWT"
   parent = "middleware"
   weight = 5
 +++
 
-## JWTAuth Middleware
+## JWT Middleware
 
-JWTAuth provides a JSON Web Token (JWT) authentication middleware.
+JWT provides a JSON Web Token (JWT) authentication middleware.
 
 - For valid token, it sets the user in context and calls next handler.
 - For invalid token, it sends "401 - Unauthorized" response.
@@ -17,7 +17,7 @@ JWTAuth provides a JSON Web Token (JWT) authentication middleware.
 ### Configuration
 
 ```go
-JWTAuthConfig struct {
+JWTConfig struct {
 	// SigningKey is the key to validate token.
 	// Required.
 	SigningKey []byte
@@ -40,7 +40,7 @@ JWTAuthConfig struct {
 ### Default Configuration
 
 ```go
-DefaultJWTAuthConfig = JWTAuthConfig{
+DefaultJWTConfig = JWTConfig{
 	SigningMethod: AlgorithmHS256,
 	ContextKey:    "user",
 	Extractor:     JWTFromHeader,
@@ -49,7 +49,7 @@ DefaultJWTAuthConfig = JWTAuthConfig{
 
 *Usage*
 
-`e.Use(middleware.JWTAuth([]byte("secret"))`
+`e.Use(middleware.JWT([]byte("secret"))`
 
 ### Custom Configuration
 
@@ -57,10 +57,10 @@ DefaultJWTAuthConfig = JWTAuthConfig{
 
 ```go
 e := echo.New()
-e.Use(middleware.JWTAuthWithConfig(middleware.JWTAuthConfig{
+e.Use(middleware.JWTWithConfig(middleware.JWTConfig{
   SigningKey: []byte("secret"),
   Extractor: JWTFromQuery,
 }))
 ```
 
-### [Recipe]({{< ref "recipes/jwt-authentication.md">}})
+### [Recipe]({{< ref "recipes/jwt.md">}})

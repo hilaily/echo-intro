@@ -231,7 +231,7 @@ Middleware | Description
 [Recover]({{< ref "guide/recover-middleware.md">}}) | Recover from panics
 [Gzip]({{< ref "guide/gzip-middleware.md">}}) | Send gzip HTTP response
 [BasicAuth]({{< ref "guide/basic-auth-middleware.md">}}) | HTTP basic authentication
-[JWTAuth]({{< ref "guide/jwt-auth-middleware.md">}}) | JWT authentication
+[JWTAuth]({{< ref "guide/jwt-middleware.md">}}) | JWT authentication
 [Secure]({{< ref "guide/secure-middleware.md">}}) | Protection against attacks
 [CORS]({{< ref "guide/cors-middleware.md">}}) | Cross-Origin Resource Sharing
 [Static]({{< ref "guide/static-middleware.md">}}) | Serve static files
