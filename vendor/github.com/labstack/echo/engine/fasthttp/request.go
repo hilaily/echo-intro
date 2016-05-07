@@ -7,6 +7,7 @@ import (
 	"io"
 	"mime/multipart"
 
+	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine"
 	"github.com/labstack/gommon/log"
 	"github.com/valyala/fasthttp"
@@ -16,8 +17,8 @@ type (
 	// Request implements `engine.Request`.
 	Request struct {
 		*fasthttp.RequestCtx
-		url    engine.URL
 		header engine.Header
+		url    engine.URL
 		logger *log.Logger
 	}
 )
@@ -94,7 +95,12 @@ func (r *Request) SetURI(uri string) {
 
 // Body implements `engine.Request#Body` function.
 func (r *Request) Body() io.Reader {
-	return bytes.NewBuffer(r.PostBody())
+	return bytes.NewBuffer(r.Request.Body())
+}
+
+// SetBody implements `engine.Request#SetBody` function.
+func (r *Request) SetBody(reader io.Reader) {
+	r.Request.SetBodyStream(reader, 0)
 }
 
 // FormValue implements `engine.Request#FormValue` function.
@@ -120,6 +126,31 @@ func (r *Request) FormFile(name string) (*multipart.FileHeader, error) {
 // MultipartForm implements `engine.Request#MultipartForm` function.
 func (r *Request) MultipartForm() (*multipart.Form, error) {
 	return r.RequestCtx.MultipartForm()
+}
+
+// Cookie implements `engine.Request#Cookie` function.
+func (r *Request) Cookie(name string) (engine.Cookie, error) {
+	c := new(fasthttp.Cookie)
+	c.SetKey(name)
+	b := r.Request.Header.Cookie(name)
+	if b == nil {
+		return nil, echo.ErrCookieNotFound
+	}
+	c.ParseBytes(b)
+	return &Cookie{c}, nil
+}
+
+// Cookies implements `engine.Request#Cookies` function.
+func (r *Request) Cookies() []engine.Cookie {
+	var cookies []engine.Cookie
+	i := 0
+	r.Request.Header.VisitAllCookie(func(name, value []byte) {
+		c := new(fasthttp.Cookie)
+		c.SetKey(string(name))
+		c.ParseBytes(value)
+		cookies[i] = &Cookie{c}
+	})
+	return cookies
 }
 
 func (r *Request) reset(c *fasthttp.RequestCtx, h engine.Header, u engine.URL) {

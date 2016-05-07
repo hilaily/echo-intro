@@ -19,6 +19,7 @@
 - Group APIs.
 - Extensible middleware framework.
 - Define middleware at root, group or route level.
+- Data binding for JSON, XML and form payload.
 - Handy functions to send variety of HTTP responses.
 - Centralized HTTP error handling.
 - Template rendering with any template engine.
@@ -169,13 +170,13 @@ func save(c echo.Context) error {
 
 ### Handling Request
 
-- Bind `JSON` or `XML` payload into Go struct based on `Content-Type` request header.
+- Bind `JSON` or `XML` or `form` payload into Go struct based on `Content-Type` request header.
 - Render response as `JSON` or `XML` with status code.
 
 ```go
 type User struct {
-	Name  string `json:"name" xml:"name"`
-	Email string `json:"email" xml:"email"`
+	Name  string `json:"name" xml:"name" form:"name"`
+	Email string `json:"email" xml:"email" form:"email"`
 }
 
 e.POST("/users", func(c echo.Context) error {
@@ -233,15 +234,18 @@ e.GET("/users", func(c echo.Context) error {
 
 Middleware | Description
 :--- | :---
-[Logger](https://labstack.com/echo/guide/middleware#logger-middleware:37ab2f15ff048f67959bcac0a6032f32) | Log HTTP requests
-[Recover](https://labstack.com/echo/guide/middleware#recover-middleware:37ab2f15ff048f67959bcac0a6032f32) | Recover from panics
-[Gzip](https://labstack.com/echo/guide/middleware#gzip-middleware:37ab2f15ff048f67959bcac0a6032f32) | Send gzip HTTP response
-[BasicAuth](https://labstack.com/echo/guide/middleware#basicauth-middleware:37ab2f15ff048f67959bcac0a6032f32) | HTTP basic authentication
-[JWTAuth](https://labstack.com/echo/guide/middleware#jwtauth-middleware:37ab2f15ff048f67959bcac0a6032f32) | JWT authentication
-[CORS](https://labstack.com/echo/guide/middleware#cors-middleware:37ab2f15ff048f67959bcac0a6032f32) | Cross-Origin Resource Sharing
-[Static](https://labstack.com/echo/guide/static-files#using-static-middleware:123f9d1043075fe4874616541b409e4d) | Serve static files
-[AddTrailingSlash](https://labstack.com/echo/guide/middleware#addtrailingslash-middleware:37ab2f15ff048f67959bcac0a6032f32) | Add trailing slash to the request URI
-[RemoveTrailingSlash](https://labstack.com/echo/guide/middleware#removetrailingslash-middleware:37ab2f15ff048f67959bcac0a6032f32) | Remove trailing slash from the request URI
+[BodyLimit](https://labstack.com/echo/guide/body-limit-middleware) | Limit request body
+[Logger](https://labstack.com/echo/guide/logger-middleware) | Log HTTP requests
+[Recover](https://labstack.com/echo/guide/recover-middleware) | Recover from panics
+[Gzip](https://labstack.com/echo/guide/gzip-middleware) | Send gzip HTTP response
+[BasicAuth](https://labstack.com/echo/guide/basic-auth-middleware) | HTTP basic authentication
+[JWTAuth](https://labstack.com/echo/guide/jwt-middleware) | JWT authentication
+[Secure](https://labstack.com/echo/guide/secure-middleware) | Protection against attacks
+[CORS](https://labstack.com/echo/guide/cors-middleware) | Cross-Origin Resource Sharing
+[Static](https://labstack.com/echo/guide/static-middleware) | Serve static files
+[AddTrailingSlash](https://labstack.com/echo/guide/add-trailing-slash-middleware) | Add trailing slash to the request URI
+[RemoveTrailingSlash](https://labstack.com/echo/guide/remove-trailing-slash-middleware) | Remove trailing slash from the request URI
+[MethodOverride](https://labstack.com/echo/guide/method-override-middleware) | Override request method
 
 ##### [More...](https://labstack.com/echo/guide/middleware)
 

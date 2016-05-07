@@ -2,9 +2,12 @@ package standard
 
 import (
 	"io"
+	"io/ioutil"
 	"mime/multipart"
 	"net/http"
+	"strings"
 
+	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine"
 	"github.com/labstack/gommon/log"
 )
@@ -13,10 +16,14 @@ type (
 	// Request implements `engine.Request`.
 	Request struct {
 		*http.Request
-		url    engine.URL
 		header engine.Header
+		url    engine.URL
 		logger *log.Logger
 	}
+)
+
+const (
+	defaultMemory = 32 << 20 // 32 MB
 )
 
 // NewRequest returns `Request` instance.
@@ -109,6 +116,11 @@ func (r *Request) Body() io.Reader {
 	return r.Request.Body
 }
 
+// SetBody implements `engine.Request#SetBody` function.
+func (r *Request) SetBody(reader io.Reader) {
+	r.Request.Body = ioutil.NopCloser(reader)
+}
+
 // FormValue implements `engine.Request#FormValue` function.
 func (r *Request) FormValue(name string) string {
 	return r.Request.FormValue(name)
@@ -116,10 +128,16 @@ func (r *Request) FormValue(name string) string {
 
 // FormParams implements `engine.Request#FormParams` function.
 func (r *Request) FormParams() map[string][]string {
-	if err := r.ParseForm(); err != nil {
-		r.logger.Error(err)
+	if strings.HasPrefix(r.header.Get(echo.HeaderContentType), echo.MIMEMultipartForm) {
+		if err := r.ParseMultipartForm(defaultMemory); err != nil {
+			r.logger.Error(err)
+		}
+	} else {
+		if err := r.ParseForm(); err != nil {
+			r.logger.Error(err)
+		}
 	}
-	return map[string][]string(r.Request.PostForm)
+	return map[string][]string(r.Request.Form)
 }
 
 // FormFile implements `engine.Request#FormFile` function.
@@ -130,8 +148,27 @@ func (r *Request) FormFile(name string) (*multipart.FileHeader, error) {
 
 // MultipartForm implements `engine.Request#MultipartForm` function.
 func (r *Request) MultipartForm() (*multipart.Form, error) {
-	err := r.ParseMultipartForm(32 << 20) // 32 MB
+	err := r.ParseMultipartForm(defaultMemory)
 	return r.Request.MultipartForm, err
+}
+
+// Cookie implements `engine.Request#Cookie` function.
+func (r *Request) Cookie(name string) (engine.Cookie, error) {
+	c, err := r.Request.Cookie(name)
+	if err != nil {
+		return nil, echo.ErrCookieNotFound
+	}
+	return &Cookie{c}, nil
+}
+
+// Cookies implements `engine.Request#Cookies` function.
+func (r *Request) Cookies() []engine.Cookie {
+	cs := r.Request.Cookies()
+	cookies := make([]engine.Cookie, len(cs))
+	for i, c := range cs {
+		cookies[i] = &Cookie{c}
+	}
+	return cookies
 }
 
 func (r *Request) reset(req *http.Request, h engine.Header, u engine.URL) {

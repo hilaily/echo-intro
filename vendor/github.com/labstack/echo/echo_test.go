@@ -17,9 +17,16 @@ import (
 
 type (
 	user struct {
-		ID   string `json:"id" xml:"id"`
-		Name string `json:"name" xml:"name"`
+		ID   int    `json:"id" xml:"id" form:"id"`
+		Name string `json:"name" xml:"name" form:"name"`
 	}
+)
+
+const (
+	userJSON       = `{"id":1,"name":"Jon Snow"}`
+	userXML        = `<user><id>1</id><name>Jon Snow</name></user>`
+	userForm       = `id=1&name=Jon Snow`
+	invalidContent = "invalid content"
 )
 
 func TestEcho(t *testing.T) {
@@ -332,4 +339,11 @@ func request(method, path string, e *Echo) (int, string) {
 	rec := test.NewResponseRecorder()
 	e.ServeHTTP(req, rec)
 	return rec.Status(), rec.Body.String()
+}
+
+func TestEchoBinder(t *testing.T) {
+	e := New()
+	b := &binder{}
+	e.SetBinder(b)
+	assert.Equal(t, b, e.Binder())
 }

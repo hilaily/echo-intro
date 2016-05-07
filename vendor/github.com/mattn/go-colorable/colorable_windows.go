@@ -52,6 +52,11 @@ type consoleScreenBufferInfo struct {
 	maximumWindowSize coord
 }
 
+type consoleCursorInfo struct {
+	size    dword
+	visible int32
+}
+
 var (
 	kernel32                       = syscall.NewLazyDLL("kernel32.dll")
 	procGetConsoleScreenBufferInfo = kernel32.NewProc("GetConsoleScreenBufferInfo")
@@ -59,6 +64,8 @@ var (
 	procSetConsoleCursorPosition   = kernel32.NewProc("SetConsoleCursorPosition")
 	procFillConsoleOutputCharacter = kernel32.NewProc("FillConsoleOutputCharacterW")
 	procFillConsoleOutputAttribute = kernel32.NewProc("FillConsoleOutputAttribute")
+	procGetConsoleCursorInfo       = kernel32.NewProc("GetConsoleCursorInfo")
+	procSetConsoleCursorInfo       = kernel32.NewProc("SetConsoleCursorInfo")
 )
 
 type Writer struct {
@@ -482,6 +489,7 @@ loop:
 			if err != nil {
 				continue
 			}
+			procGetConsoleScreenBufferInfo.Call(uintptr(w.handle), uintptr(unsafe.Pointer(&csbi)))
 			var cursor coord
 			switch n {
 			case 0:
@@ -500,6 +508,7 @@ loop:
 			if err != nil {
 				continue
 			}
+			procGetConsoleScreenBufferInfo.Call(uintptr(w.handle), uintptr(unsafe.Pointer(&csbi)))
 			var cursor coord
 			switch n {
 			case 0:
@@ -514,6 +523,7 @@ loop:
 			procFillConsoleOutputCharacter.Call(uintptr(w.handle), uintptr(' '), uintptr(count), *(*uintptr)(unsafe.Pointer(&cursor)), uintptr(unsafe.Pointer(&written)))
 			procFillConsoleOutputAttribute.Call(uintptr(w.handle), uintptr(csbi.attributes), uintptr(count), *(*uintptr)(unsafe.Pointer(&cursor)), uintptr(unsafe.Pointer(&written)))
 		case 'm':
+			procGetConsoleScreenBufferInfo.Call(uintptr(w.handle), uintptr(unsafe.Pointer(&csbi)))
 			attr := csbi.attributes
 			cs := buf.String()
 			if cs == "" {
@@ -536,7 +546,7 @@ loop:
 					case n == 27:
 						attr = ((attr & foregroundMask) << 4) | ((attr & backgroundMask) >> 4)
 					case 30 <= n && n <= 37:
-						attr = (attr & backgroundMask)
+						attr = (attr & backgroundMask) | (attr & foregroundIntensity)
 						if (n-30)&1 != 0 {
 							attr |= foregroundRed
 						}
@@ -563,7 +573,7 @@ loop:
 						attr &= backgroundMask
 						attr |= w.oldattr & foregroundMask
 					case 40 <= n && n <= 47:
-						attr = (attr & foregroundMask)
+						attr = (attr & backgroundMask) | (attr & backgroundIntensity)
 						if (n-40)&1 != 0 {
 							attr |= backgroundRed
 						}
@@ -616,6 +626,22 @@ loop:
 					}
 					procSetConsoleTextAttribute.Call(uintptr(w.handle), uintptr(attr))
 				}
+			}
+		case 'h':
+			cs := buf.String()
+			if cs == "?25" {
+				var ci consoleCursorInfo
+				procGetConsoleCursorInfo.Call(uintptr(w.handle), uintptr(unsafe.Pointer(&ci)))
+				ci.visible = 0
+				procSetConsoleCursorInfo.Call(uintptr(w.handle), uintptr(unsafe.Pointer(&ci)))
+			}
+		case 'l':
+			cs := buf.String()
+			if cs == "?25" {
+				var ci consoleCursorInfo
+				procGetConsoleCursorInfo.Call(uintptr(w.handle), uintptr(unsafe.Pointer(&ci)))
+				ci.visible = 1
+				procSetConsoleCursorInfo.Call(uintptr(w.handle), uintptr(unsafe.Pointer(&ci)))
 			}
 		}
 	}

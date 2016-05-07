@@ -39,8 +39,6 @@ package echo
 
 import (
 	"bytes"
-	"encoding/json"
-	"encoding/xml"
 	"errors"
 	"fmt"
 	"io"
@@ -48,7 +46,6 @@ import (
 	"path"
 	"reflect"
 	"runtime"
-	"strings"
 	"sync"
 
 	"github.com/labstack/echo/engine"
@@ -92,14 +89,6 @@ type (
 
 	// HTTPErrorHandler is a centralized HTTP error handler.
 	HTTPErrorHandler func(error, Context)
-
-	// Binder is the interface that wraps the Bind function.
-	Binder interface {
-		Bind(interface{}, Context) error
-	}
-
-	binder struct {
-	}
 
 	// Validator is the interface that wraps the Validate function.
 	Validator interface {
@@ -156,12 +145,16 @@ const (
 	HeaderContentEncoding               = "Content-Encoding"
 	HeaderContentLength                 = "Content-Length"
 	HeaderContentType                   = "Content-Type"
+	HeaderCookie                        = "Cookie"
+	HeaderSetCookie                     = "Set-Cookie"
 	HeaderIfModifiedSince               = "If-Modified-Since"
 	HeaderLastModified                  = "Last-Modified"
 	HeaderLocation                      = "Location"
 	HeaderUpgrade                       = "Upgrade"
 	HeaderVary                          = "Vary"
 	HeaderWWWAuthenticate               = "WWW-Authenticate"
+	HeaderXForwardedProto               = "X-Forwarded-Proto"
+	HeaderXHTTPMethodOverride           = "X-HTTP-Method-Override"
 	HeaderXForwardedFor                 = "X-Forwarded-For"
 	HeaderXRealIP                       = "X-Real-IP"
 	HeaderServer                        = "Server"
@@ -174,6 +167,13 @@ const (
 	HeaderAccessControlAllowCredentials = "Access-Control-Allow-Credentials"
 	HeaderAccessControlExposeHeaders    = "Access-Control-Expose-Headers"
 	HeaderAccessControlMaxAge           = "Access-Control-Max-Age"
+
+	// Security
+	HeaderStrictTransportSecurity = "Strict-Transport-Security"
+	HeaderXContentTypeOptions     = "X-Content-Type-Options"
+	HeaderXXSSProtection          = "X-XSS-Protection"
+	HeaderXFrameOptions           = "X-Frame-Options"
+	HeaderContentSecurityPolicy   = "Content-Security-Policy"
 )
 
 var (
@@ -192,12 +192,14 @@ var (
 
 // Errors
 var (
-	ErrUnsupportedMediaType  = NewHTTPError(http.StatusUnsupportedMediaType)
-	ErrNotFound              = NewHTTPError(http.StatusNotFound)
-	ErrUnauthorized          = NewHTTPError(http.StatusUnauthorized)
-	ErrMethodNotAllowed      = NewHTTPError(http.StatusMethodNotAllowed)
-	ErrRendererNotRegistered = errors.New("renderer not registered")
-	ErrInvalidRedirectCode   = errors.New("invalid redirect status code")
+	ErrUnsupportedMediaType        = NewHTTPError(http.StatusUnsupportedMediaType)
+	ErrNotFound                    = NewHTTPError(http.StatusNotFound)
+	ErrUnauthorized                = NewHTTPError(http.StatusUnauthorized)
+	ErrMethodNotAllowed            = NewHTTPError(http.StatusMethodNotAllowed)
+	ErrStatusRequestEntityTooLarge = NewHTTPError(http.StatusRequestEntityTooLarge)
+	ErrRendererNotRegistered       = errors.New("renderer not registered")
+	ErrInvalidRedirectCode         = errors.New("invalid redirect status code")
+	ErrCookieNotFound              = errors.New("cookie not found")
 )
 
 // Error handlers
@@ -290,6 +292,11 @@ func (e *Echo) SetHTTPErrorHandler(h HTTPErrorHandler) {
 // SetBinder registers a custom binder. It's invoked by `Context#Bind()`.
 func (e *Echo) SetBinder(b Binder) {
 	e.binder = b
+}
+
+// Binder returns the binder instance.
+func (e *Echo) Binder() Binder {
+	return e.binder
 }
 
 // SetRenderer registers an HTML template renderer. It's invoked by `Context#Render()`.
@@ -508,16 +515,26 @@ func (e *Echo) Routes() []Route {
 	return e.router.routes
 }
 
-// GetContext returns `Context` from the sync.Pool. You must return the context by
-// calling `PutContext()`.
+// AcquireContext returns an empty `Context` instance from the pool.
+// You must be return the context by calling `ReleaseContext()`.
+func (e *Echo) AcquireContext() Context {
+	return e.pool.Get().(Context)
+}
+
+// GetContext is deprecated, use `AcquireContext()` instead.
 func (e *Echo) GetContext() Context {
 	return e.pool.Get().(Context)
 }
 
-// PutContext returns `Context` instance back to the sync.Pool. You must call it after
-// `GetContext()`.
-func (e *Echo) PutContext(c Context) {
+// ReleaseContext returns the `Context` instance back to the pool.
+// You must call it after `AcquireContext()`.
+func (e *Echo) ReleaseContext(c Context) {
 	e.pool.Put(c)
+}
+
+// PutContext is deprecated, use `ReleaseContext()` instead.
+func (e *Echo) PutContext(c Context) {
+	e.ReleaseContext(c)
 }
 
 func (e *Echo) ServeHTTP(req engine.Request, res engine.Response) {
@@ -572,22 +589,6 @@ func NewHTTPError(code int, msg ...string) *HTTPError {
 // Error makes it compatible with `error` interface.
 func (e *HTTPError) Error() string {
 	return e.Message
-}
-
-func (b *binder) Bind(i interface{}, c Context) (err error) {
-	req := c.Request()
-	ct := req.Header().Get(HeaderContentType)
-	err = ErrUnsupportedMediaType
-	if strings.HasPrefix(ct, MIMEApplicationJSON) {
-		if err = json.NewDecoder(req.Body()).Decode(i); err != nil {
-			err = NewHTTPError(http.StatusBadRequest, err.Error())
-		}
-	} else if strings.HasPrefix(ct, MIMEApplicationXML) {
-		if err = xml.NewDecoder(req.Body()).Decode(i); err != nil {
-			err = NewHTTPError(http.StatusBadRequest, err.Error())
-		}
-	}
-	return
 }
 
 // WrapMiddleware wrap `echo.HandlerFunc` into `echo.MiddlewareFunc`.

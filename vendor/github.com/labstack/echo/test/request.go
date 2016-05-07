@@ -1,9 +1,12 @@
 package test
 
 import (
+	"errors"
 	"io"
+	"io/ioutil"
 	"mime/multipart"
 	"net/http"
+	"strings"
 
 	"github.com/labstack/echo/engine"
 )
@@ -14,6 +17,10 @@ type (
 		url     engine.URL
 		header  engine.Header
 	}
+)
+
+const (
+	defaultMemory = 32 << 20 // 32 MB
 )
 
 func NewRequest(method, url string, body io.Reader) engine.Request {
@@ -93,13 +100,25 @@ func (r *Request) Body() io.Reader {
 	return r.request.Body
 }
 
+func (r *Request) SetBody(reader io.Reader) {
+	r.request.Body = ioutil.NopCloser(reader)
+}
+
 func (r *Request) FormValue(name string) string {
 	return r.request.FormValue(name)
 }
 
 func (r *Request) FormParams() map[string][]string {
-	r.request.ParseForm()
-	return map[string][]string(r.request.PostForm)
+	if strings.HasPrefix(r.header.Get("Content-Type"), "multipart/form-data") {
+		if err := r.request.ParseMultipartForm(defaultMemory); err != nil {
+			panic(err)
+		}
+	} else {
+		if err := r.request.ParseForm(); err != nil {
+			panic(err)
+		}
+	}
+	return map[string][]string(r.request.Form)
 }
 
 func (r *Request) FormFile(name string) (*multipart.FileHeader, error) {
@@ -108,8 +127,26 @@ func (r *Request) FormFile(name string) (*multipart.FileHeader, error) {
 }
 
 func (r *Request) MultipartForm() (*multipart.Form, error) {
-	err := r.request.ParseMultipartForm(32 << 20) // 32 MB
+	err := r.request.ParseMultipartForm(defaultMemory)
 	return r.request.MultipartForm, err
+}
+
+func (r *Request) Cookie(name string) (engine.Cookie, error) {
+	c, err := r.request.Cookie(name)
+	if err != nil {
+		return nil, errors.New("cookie not found")
+	}
+	return &Cookie{c}, nil
+}
+
+// Cookies implements `engine.Request#Cookies` function.
+func (r *Request) Cookies() []engine.Cookie {
+	cs := r.request.Cookies()
+	cookies := make([]engine.Cookie, len(cs))
+	for i, c := range cs {
+		cookies[i] = &Cookie{c}
+	}
+	return cookies
 }
 
 func (r *Request) reset(req *http.Request, h engine.Header, u engine.URL) {
