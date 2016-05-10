@@ -74,4 +74,6 @@ Example above uses a `Format` which logs request method and request URI.
 
 *Sample Output*
 
-`method=GET, uri=/hello, status=200`
+```sh
+method=GET, uri=/hello, status=200
+```

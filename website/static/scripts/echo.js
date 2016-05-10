@@ -6,4 +6,7 @@
     t.classList.add('table');
     t.classList.add('is-narrow');
   }
+
+  // Prism
+  Prism.languages.sh = Prism.languages.bash;
 })();
