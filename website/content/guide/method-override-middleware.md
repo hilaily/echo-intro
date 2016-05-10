@@ -18,6 +18,7 @@ For security reasons, only `POST` method can be overridden.
 ```go
 MethodOverrideConfig struct {
   // Getter is a function that gets overridden method from the request.
+  // Optional. Default values MethodFromHeader(echo.HeaderXHTTPMethodOverride).
   Getter MethodOverrideGetter
 }
 ```

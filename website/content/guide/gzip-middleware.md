@@ -14,8 +14,8 @@ Gzip middleware compresses HTTP response using gzip compression scheme.
 
 ```go
 GzipConfig struct {
-  // Level is the gzip level.
-  // Optional, with default value as -1.
+  // Gzip compression level.
+  // Optional. Default value -1.
   Level int
 }
 ```

@@ -14,7 +14,7 @@ Logger middleware logs the information about each HTTP request.
 
 ```go
 LoggerConfig struct {
-  // Format is the log format which can be constructed using the following tags:
+  // Log format which can be constructed using the following tags:
   //
   // - time_rfc3339
   // - id (Request ID - Not implemented)
@@ -33,11 +33,11 @@ LoggerConfig struct {
   //
   // Example "${remote_ip} ${status}"
   //
-  // Optional, with default value as `DefaultLoggerConfig.Format`.
+  // Optional. Default value DefaultLoggerConfig.Format.
   Format string
 
-  // Output is the writer where logs are written.
-  // Optional with default value as os.Stdout.
+  // Output is a writer where logs are written.
+  // Optional. Default value os.Stdout.
   Output io.Writer
 }
 ```

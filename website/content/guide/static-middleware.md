@@ -15,17 +15,16 @@ Static middleware can be used to serve static files from the provided root direc
 ```go
 // StaticConfig defines the config for static middleware.
 StaticConfig struct {
-  // Root is the directory from where the static content is served.
-	// Required.
+  // Root directory from where the static content is served.
+  // Required.
   Root string `json:"root"`
 
-  // Index is the list of index files to be searched and used when serving
-  // a directory.
-  // Optional, with default value as []string{"index.html"}.
-  Index []string `json:"index"`
+  // Index file for serving a directory.
+  // Optional. Default value "index.html".
+  Index string `json:"index"`
 
-  // Browse is a flag to enable/disable directory browsing.
-  // Optional, with default value as false.
+  // Enable/disable directory browsing.
+  // Optional. Default value false.
   Browse bool `json:"browse"`
 }
 ```
@@ -34,7 +33,7 @@ StaticConfig struct {
 
 ```go
 DefaultStaticConfig = StaticConfig{
-  Index:  []string{"index.html"},
+  Index:  "index.html",
   Browse: false,
 }
 ```
