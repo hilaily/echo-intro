@@ -21,6 +21,8 @@ protocol used by the World Wide Web
 
 ## How to run an HTTP/2 server?
 
+> Only supported in `standard` engine.
+
 ### Generate a self-signed X.509 TLS certificate (HTTP/2 requires TLS to operate)
 
 ```sh
@@ -29,8 +31,8 @@ go run $GOROOT/src/crypto/tls/generate_cert.go --host localhost
 
 This will generate `cert.pem` and `key.pem` files.
 
-> For demo purpose we are using a self-signed certificate. Ideally, you should obtain
-the certificate from [CA](https://en.wikipedia.org/wiki/Certificate_authority).
+> For demo purpose, we are using a self-signed certificate. Ideally you should obtain
+a certificate from [CA](https://en.wikipedia.org/wiki/Certificate_authority).
 
 ### Configure a server with `engine.Config`
 

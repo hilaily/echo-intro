@@ -40,8 +40,10 @@ LoggerConfig struct {
 
 ```go
 DefaultLoggerConfig = LoggerConfig{
-  Format: "time=${time_rfc3339}, remote_ip=${remote_ip}, method=${method}, " +
-    "uri=${uri}, status=${status}, took=${response_time}, sent=${response_size} bytes\n",
+  Format: `{"time": "${time_rfc3339}", "remote_ip": "${remote_ip}", ` +
+    `"method": "${method}", "uri": "${uri}", "status": ${status}, ` +
+    `"response_time": "${response_time}", "response_size": "${response_size}B"}` +
+    "\n",
   color:  color.New(),
   Output: os.Stdout,
 }
@@ -53,7 +55,9 @@ DefaultLoggerConfig = LoggerConfig{
 
 *Sample Output*
 
-`time=2016-03-22T10:33:59-07:00, remote_ip=::1, method=GET, uri=/hello, status=200, took=54.957µs, sent=20 bytes`
+```js
+{"time": "2016-05-09T19:19:42-07:00", "remote_ip": "::1", "method": "GET", "uri": "/", "status": 200, "response_time": "63.82µs", "response_size": "13B"}
+```
 
 ### Custom Configuration
 
