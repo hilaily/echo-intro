@@ -17,21 +17,27 @@ LoggerConfig struct {
   // Format is the log format which can be constructed using the following tags:
   //
   // - time_rfc3339
+  // - id (Request ID - Not implemented)
   // - remote_ip
   // - uri
+  // - host
   // - method
   // - path
+  // - referer
+  // - user_agent
   // - status
-  // - response_time
-  // - response_size
+  // - latency (In microseconds)
+  // - latency_human (Human readable)
+  // - rx_bytes (Bytes received)
+  // - tx_bytes (Bytes sent)
   //
-  // Example "${remote_id} ${status}"
+  // Example "${remote_ip} ${status}"
   //
   // Optional, with default value as `DefaultLoggerConfig.Format`.
   Format string
 
   // Output is the writer where logs are written.
-  // Optional, with default value as os.Stdout.
+  // Optional with default value as os.Stdout.
   Output io.Writer
 }
 ```
@@ -40,10 +46,10 @@ LoggerConfig struct {
 
 ```go
 DefaultLoggerConfig = LoggerConfig{
-  Format: `{"time": "${time_rfc3339}", "remote_ip": "${remote_ip}", ` +
-    `"method": "${method}", "uri": "${uri}", "status": ${status}, ` +
-    `"response_time": "${response_time}", "response_size": "${response_size}B"}` +
-    "\n",
+  Format: `{"time":"${time_rfc3339}","remote_ip":"${remote_ip}",` +
+    `"method":"${method}","uri":"${uri}","status":${status}, "latency":${latency},` +
+    `"latency_human":"${latency_human}","rx_bytes":${rx_bytes},` +
+    `"tx_bytes":${tx_bytes}}` + "\n",
   color:  color.New(),
   Output: os.Stdout,
 }
@@ -56,7 +62,7 @@ DefaultLoggerConfig = LoggerConfig{
 *Sample Output*
 
 ```js
-{"time": "2016-05-09T19:19:42-07:00", "remote_ip": "::1", "method": "GET", "uri": "/", "status": 200, "response_time": "63.82µs", "response_size": "13B"}
+{"time":"2016-05-10T07:02:25-07:00","remote_ip":"::1","method":"GET","uri":"/","status":200, "latency":55653,"latency_human":"55.653µs","rx_bytes":0,"tx_bytes":13}
 ```
 
 ### Custom Configuration
