@@ -19,7 +19,7 @@ protocol used by the World Wide Web
 - Uses header compression to reduce overhead.
 - Allows servers to "push" responses proactively into client caches.
 
-## How to run an HTTP/2 server?
+## How to run an HTTP/2 and HTTPS server?
 
 > Only supported in `standard` engine.
 

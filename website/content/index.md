@@ -234,6 +234,7 @@ Middleware | Description
 [JWTAuth]({{< ref "guide/jwt-middleware.md">}}) | JWT authentication
 [Secure]({{< ref "guide/secure-middleware.md">}}) | Protection against attacks
 [CORS]({{< ref "guide/cors-middleware.md">}}) | Cross-Origin Resource Sharing
+[CSRF]({{< ref "guide/csrf-middleware.md">}}) | Cross-Site Request Forgery
 [Static]({{< ref "guide/static-middleware.md">}}) | Serve static files
 [AddTrailingSlash]({{< ref "guide/add-trailing-slash-middleware.md">}}) | Add trailing slash to the request URI
 [RemoveTrailingSlash]({{< ref "guide/remove-trailing-slash-middleware.md">}}) | Remove trailing slash from the request URI
