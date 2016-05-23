@@ -56,11 +56,11 @@ a:link {
 
 /* Gitter */
 .gitter-open-chat-button {
-    background-color: #2196F3;
+    background-color: #1FBBA6;
     transition: all .2s ease;
 }
 .gitter-open-chat-button:hover {
-    background-color: #1E88E5;
+    background-color: #34D6B6;
 }
 ul {
     padding: 8px;
@@ -80,16 +80,16 @@ ul {
   border-color: #DDD;
 }
 .algolia-docsearch-suggestion--category-header {
-    background-color: #2196F3;
+    background-color: #1FBBA6;
 }
 .algolia-docsearch-suggestion--highlight {
-    color: #1E88E5;
+    color: #19A17D;
 }
 .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--highlight {
-    background-color: #64B5F6;
+    background-color: #34D6B6;
 }
 .aa-cursor .algolia-docsearch-suggestion--content {
-    color: #E91E63;
+    color: #D44C70;
 }
 .aa-cursor .algolia-docsearch-suggestion {
     background: #F5F5F5;
@@ -109,7 +109,7 @@ ul {
 
 /* Bulma */
 .menu-list a.is-active {
-  background-color: #2196F3;
+  background-color: #1FBBA6;
 }
 
 html  {
@@ -138,4 +138,7 @@ code[class*="language-"] .token.number {
   display: inline-block;
   font-size: 1em;
   vertical-align: top;
+}
+.hero-echo {
+  background: #1FBBA6;
 }

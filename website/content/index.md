@@ -2,7 +2,7 @@
 title: Index
 ---
 
-## Echo is a fast and unfancy HTTP server framework for Go (Golang). Up to 10x faster than the rest.
+## Fast and unfancy HTTP server framework for Go (Golang). Up to 10x faster than the rest.
 
 ## Features
 
