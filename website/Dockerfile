@@ -1,7 +1,9 @@
-FROM reg.lab.st/argo
+FROM reg.lab.st/armor
 MAINTAINER Vishal Rana <vr@labstack.com>
 
-ADD argo.json /etc
-ADD public /www
+ADD armor.json /etc/
+ADD public /www/
 
-CMD ["-c", "/etc/argo.json"]
+EXPOSE 80
+
+CMD ["-c", "/etc/armor.json"]

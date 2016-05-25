@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>
-        {{ .Site.Title }} - {{ .Site.Params.description }}{{ if ne .URL "/" }} - {{ .Title }} {{ end }}
+        {{ if ne .URL "/" }}{{ .Title }} - {{ end }}{{ .Site.Title }}
     </title>
     <meta name="description" content="{{ .Site.Params.description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">

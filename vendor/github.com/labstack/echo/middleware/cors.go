@@ -12,35 +12,35 @@ type (
 	// CORSConfig defines the config for CORS middleware.
 	CORSConfig struct {
 		// AllowOrigin defines a list of origins that may access the resource.
-		// Optional, with default value as []string{"*"}.
-		AllowOrigins []string
+		// Optional. Default value []string{"*"}.
+		AllowOrigins []string `json:"allow_origins"`
 
 		// AllowMethods defines a list methods allowed when accessing the resource.
 		// This is used in response to a preflight request.
-		// Optional, with default value as `DefaultCORSConfig.AllowMethods`.
-		AllowMethods []string
+		// Optional. Default value DefaultCORSConfig.AllowMethods.
+		AllowMethods []string `json:"allow_methods"`
 
 		// AllowHeaders defines a list of request headers that can be used when
 		// making the actual request. This in response to a preflight request.
-		// Optional, with default value as []string{}.
-		AllowHeaders []string
+		// Optional. Default value []string{}.
+		AllowHeaders []string `json:"allow_headers"`
 
 		// AllowCredentials indicates whether or not the response to the request
 		// can be exposed when the credentials flag is true. When used as part of
 		// a response to a preflight request, this indicates whether or not the
 		// actual request can be made using credentials.
-		// Optional, with default value as false.
-		AllowCredentials bool
+		// Optional. Default value false.
+		AllowCredentials bool `json:"allow_credentials"`
 
 		// ExposeHeaders defines a whitelist headers that clients are allowed to
 		// access.
-		// Optional, with default value as []string{}.
-		ExposeHeaders []string
+		// Optional. Default value []string{}.
+		ExposeHeaders []string `json:"expose_headers"`
 
 		// MaxAge indicates how long (in seconds) the results of a preflight request
 		// can be cached.
-		// Optional, with default value as 0.
-		MaxAge int
+		// Optional. Default value 0.
+		MaxAge int `json:"max_age"`
 	}
 )
 
@@ -53,13 +53,13 @@ var (
 )
 
 // CORS returns a Cross-Origin Resource Sharing (CORS) middleware.
-// See https://developer.mozilla.org/en/docs/Web/HTTP/Access_control_CORS
+// See: https://developer.mozilla.org/en/docs/Web/HTTP/Access_control_CORS
 func CORS() echo.MiddlewareFunc {
 	return CORSWithConfig(DefaultCORSConfig)
 }
 
 // CORSWithConfig returns a CORS middleware from config.
-// See `CORS()`.
+// See: `CORS()`.
 func CORSWithConfig(config CORSConfig) echo.MiddlewareFunc {
 	// Defaults
 	if len(config.AllowOrigins) == 0 {
@@ -78,6 +78,7 @@ func CORSWithConfig(config CORSConfig) echo.MiddlewareFunc {
 			req := c.Request()
 			res := c.Response()
 			origin := req.Header().Get(echo.HeaderOrigin)
+			originSet := req.Header().Contains(echo.HeaderOrigin) // Issue #517
 
 			// Check allowed origins
 			allowedOrigin := ""
@@ -91,7 +92,7 @@ func CORSWithConfig(config CORSConfig) echo.MiddlewareFunc {
 			// Simple request
 			if req.Method() != echo.OPTIONS {
 				res.Header().Add(echo.HeaderVary, echo.HeaderOrigin)
-				if origin == "" || allowedOrigin == "" {
+				if !originSet || allowedOrigin == "" {
 					return next(c)
 				}
 				res.Header().Set(echo.HeaderAccessControlAllowOrigin, allowedOrigin)
@@ -108,7 +109,7 @@ func CORSWithConfig(config CORSConfig) echo.MiddlewareFunc {
 			res.Header().Add(echo.HeaderVary, echo.HeaderOrigin)
 			res.Header().Add(echo.HeaderVary, echo.HeaderAccessControlRequestMethod)
 			res.Header().Add(echo.HeaderVary, echo.HeaderAccessControlRequestHeaders)
-			if origin == "" || allowedOrigin == "" {
+			if !originSet || allowedOrigin == "" {
 				return next(c)
 			}
 			res.Header().Set(echo.HeaderAccessControlAllowOrigin, allowedOrigin)

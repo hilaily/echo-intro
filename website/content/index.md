@@ -190,9 +190,9 @@ Server any file from static directory for path `/static/*`.
 e.Static("/static", "static")
 ```
 
-##### [More...](https://labstack.com/echo/guide/static-files)
+##### [More...](https://echo.labstack.com/guide/static-files)
 
-### [Template Rendering](https://labstack.com/echo/guide/templates)
+### [Template Rendering](https://echo.labstack.com/guide/templates)
 
 ### Middleware
 
@@ -246,12 +246,12 @@ Middleware | Description
 :--- | :---
 [echoperm](https://github.com/xyproto/echoperm) | Keeping track of users, login states and permissions.
 
-##### [More...](https://labstack.com/echo/guide/middleware)
+##### [More...](https://echo.labstack.com/guide/middleware)
 
 ### Next
 
-- Head over to [guide](https://labstack.com/echo/guide/installation)
-- Browse [recipes](https://labstack.com/echo/recipes/hello-world)
+- Head over to [guide](https://echo.labstack.com/guide/installation)
+- Browse [recipes](https://echo.labstack.com/recipes/hello-world)
 
 ### Need help?
 

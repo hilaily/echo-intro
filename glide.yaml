@@ -5,8 +5,10 @@ import:
 - package: github.com/facebookgo/grace
   subpackages:
   - gracehttp
+- package: github.com/gorilla/websocket
 - package: github.com/labstack/echo
   subpackages:
+  - engine
   - engine/standard
   - middleware
 - package: github.com/rs/cors

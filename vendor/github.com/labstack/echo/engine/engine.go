@@ -47,12 +47,20 @@ type (
 		// Header returns `engine.Header`.
 		Header() Header
 
-		// Proto() string
-		// ProtoMajor() int
-		// ProtoMinor() int
+		// Referer returns the referring URL, if sent in the request.
+		Referer() string
+
+		// Protocol returns the protocol version string of the HTTP request.
+		// Protocol() string
+
+		// ProtocolMajor returns the major protocol version of the HTTP request.
+		// ProtocolMajor() int
+
+		// ProtocolMinor returns the minor protocol version of the HTTP request.
+		// ProtocolMinor() int
 
 		// ContentLength returns the size of request's body.
-		ContentLength() int
+		ContentLength() int64
 
 		// UserAgent returns the client's `User-Agent`.
 		UserAgent() string
@@ -138,8 +146,11 @@ type (
 		// no values associated with the key, Get returns "".
 		Get(string) string
 
-		// Keys returns header keys.
+		// Keys returns the header keys.
 		Keys() []string
+
+		// Contains checks if the header is set.
+		Contains(string) bool
 	}
 
 	// URL defines the interface for HTTP request url.

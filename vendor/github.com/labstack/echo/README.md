@@ -1,7 +1,7 @@
 # *NOTICE*
 
 - Master branch, website and godoc now points to Echo v2.
-- Echo v2 is in beta but if you want to try it out here is the migrating [guide] (https://labstack.com/echo/guide/migrating)
+- Echo v2 is in beta but if you want to try it out here is the migrating [guide] (https://echo.labstack.com/guide/migrating)
 - Looking for v1?
 	- Installation: Use a package manager (https://github.com/Masterminds/glide, it's nice!) to get stable v1 release/commit or use `go get gopkg.in/labstack/echo.v1`.
 	- Godoc: https://godoc.org/gopkg.in/labstack/echo.v1
@@ -9,7 +9,7 @@
 
 # [Echo](http://labstack.com/echo) [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/labstack/echo) [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/labstack/echo/master/LICENSE) [![Build Status](http://img.shields.io/travis/labstack/echo.svg?style=flat-square)](https://travis-ci.org/labstack/echo) [![Coverage Status](http://img.shields.io/coveralls/labstack/echo.svg?style=flat-square)](https://coveralls.io/r/labstack/echo) [![Join the chat at https://gitter.im/labstack/echo](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg?style=flat-square)](https://gitter.im/labstack/echo)
 
-#### Echo is a fast and unfancy HTTP server framework for Go (Golang). Up to 10x faster than the rest.
+#### Fast and unfancy HTTP server framework for Go (Golang). Up to 10x faster than the rest.
 
 ## Features
 
@@ -198,9 +198,9 @@ Server any file from static directory for path `/static/*`.
 e.Static("/static", "static")
 ```
 
-##### [More...](https://labstack.com/echo/guide/static-files)
+##### [More...](https://echo.labstack.com/guide/static-files)
 
-### [Template Rendering](https://labstack.com/echo/guide/templates)
+### [Template Rendering](https://echo.labstack.com/guide/templates)
 
 ### Middleware
 
@@ -234,20 +234,21 @@ e.GET("/users", func(c echo.Context) error {
 
 Middleware | Description
 :--- | :---
-[BodyLimit](https://labstack.com/echo/guide/body-limit-middleware) | Limit request body
-[Logger](https://labstack.com/echo/guide/logger-middleware) | Log HTTP requests
-[Recover](https://labstack.com/echo/guide/recover-middleware) | Recover from panics
-[Gzip](https://labstack.com/echo/guide/gzip-middleware) | Send gzip HTTP response
-[BasicAuth](https://labstack.com/echo/guide/basic-auth-middleware) | HTTP basic authentication
-[JWTAuth](https://labstack.com/echo/guide/jwt-middleware) | JWT authentication
-[Secure](https://labstack.com/echo/guide/secure-middleware) | Protection against attacks
-[CORS](https://labstack.com/echo/guide/cors-middleware) | Cross-Origin Resource Sharing
-[Static](https://labstack.com/echo/guide/static-middleware) | Serve static files
-[AddTrailingSlash](https://labstack.com/echo/guide/add-trailing-slash-middleware) | Add trailing slash to the request URI
-[RemoveTrailingSlash](https://labstack.com/echo/guide/remove-trailing-slash-middleware) | Remove trailing slash from the request URI
-[MethodOverride](https://labstack.com/echo/guide/method-override-middleware) | Override request method
+[BodyLimit](https://echo.labstack.com/guide/body-limit-middleware) | Limit request body
+[Logger](https://echo.labstack.com/guide/logger-middleware) | Log HTTP requests
+[Recover](https://echo.labstack.com/guide/recover-middleware) | Recover from panics
+[Gzip](https://echo.labstack.com/guide/gzip-middleware) | Send gzip HTTP response
+[BasicAuth](https://echo.labstack.com/guide/basic-auth-middleware) | HTTP basic authentication
+[JWTAuth](https://echo.labstack.com/guide/jwt-middleware) | JWT authentication
+[Secure](https://echo.labstack.com/guide/secure-middleware) | Protection against attacks
+[CORS](https://echo.labstack.com/guide/cors-middleware) | Cross-Origin Resource Sharing
+[CSRF](https://echo.labstack.com/guide/csrf-middleware) | Cross-Site Request Forgery
+[Static](https://echo.labstack.com/guide/static-middleware) | Serve static files
+[AddTrailingSlash](https://echo.labstack.com/guide/add-trailing-slash-middleware) | Add trailing slash to the request URI
+[RemoveTrailingSlash](https://echo.labstack.com/guide/remove-trailing-slash-middleware) | Remove trailing slash from the request URI
+[MethodOverride](https://echo.labstack.com/guide/method-override-middleware) | Override request method
 
-##### [More...](https://labstack.com/echo/guide/middleware)
+##### [More...](https://echo.labstack.com/guide/middleware)
 
 #### Third-party Middleware
 
@@ -257,8 +258,8 @@ Middleware | Description
 
 ### Next
 
-- Head over to [guide](https://labstack.com/echo/guide/installation)
-- Browse [recipes](https://labstack.com/echo/recipes/hello-world)
+- Head over to [guide](https://echo.labstack.com/guide/installation)
+- Browse [recipes](https://echo.labstack.com/recipes/hello-world)
 
 ### Need help?
 

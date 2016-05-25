@@ -1,7 +1,7 @@
 {
-  "baseurl": "https://labstack.com/echo",
+  "baseurl": "https://echo.labstack.com",
   "languageCode": "en-us",
-  "title": "Echo",
+  "title": "Fast and unfancy HTTP server framework for Go (Golang) - LabStack Echo",
   "canonifyurls": true,
   "permalinks": {
     "guide": "/guide/:title",

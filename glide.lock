@@ -1,5 +1,5 @@
-hash: ab5308063bdd5c4110420876eb25eb23f55cfbbf3c590275e4cde314d4801c3e
-updated: 2016-05-09T15:27:44.390118355-07:00
+hash: 3d58ff809b9216cb6b415f7b4fddfae44c37f7ec721c05a9583387bdff3a852c
+updated: 2016-05-25T08:49:13.038728192-07:00
 imports:
 - name: github.com/daaku/go.zipexe
   version: a5fe2436ffcb3236e175e5149162b41cd28bd27d
@@ -21,25 +21,27 @@ imports:
   subpackages:
   - embedded
 - name: github.com/golang/protobuf
-  version: 7cc19b78d562895b13596ddce7aafb59dd789318
+  version: 9e6977f30c91c78396e719e164e57f9287fff42c
   subpackages:
   - proto
+- name: github.com/gorilla/websocket
+  version: 1f512fc3f05332ba7117626cdfb4e07474e58e60
 - name: github.com/kardianos/osext
   version: 29ae4ffbc9a6fe9fb2bc5029050ce6996ea1d3bc
 - name: github.com/labstack/echo
-  version: e943ed24be65c0716769b88318309c845b7b144c
+  version: 7a66f226f2651f03dda0aaad9f3486bdf08247f6
   subpackages:
+  - engine
   - engine/standard
   - middleware
-  - engine
 - name: github.com/labstack/gommon
-  version: 2e62be24dbb1ceb226554aaccfe5a89ec71043b3
+  version: b5f03e345acd2096591b6f738cb8d2b9b3231c50
   subpackages:
   - log
   - bytes
   - color
 - name: github.com/mattn/go-colorable
-  version: 45ce6a6f60010487dd0dbab368b5fbbed1c14ef0
+  version: e8a10ddc7d2a7fe255f6fd7f501070a4cb62c183
 - name: github.com/mattn/go-isatty
   version: 56b76bdf51f7708750eac80fa38b952bb9f32639
 - name: github.com/rs/cors
@@ -53,23 +55,22 @@ imports:
 - name: github.com/valyala/fasttemplate
   version: 3b874956e03f1636d171bda64b130f9135f42cff
 - name: golang.org/x/net
-  version: 2a35e686583654a1b89ca79c4ac78cb3d6529ca3
+  version: 0c607074acd38c5f23d1344dfe74c977464d1257
   subpackages:
   - websocket
   - context
   - netutil
 - name: golang.org/x/sys
-  version: b776ec39b3e54652e09028aaaaac9757f4f8211a
+  version: d4feaf1a7e61e1d9e79e6c4e76c6349e9cab0a03
   subpackages:
   - unix
 - name: google.golang.org/appengine
-  version: e234e71924d4aa52444bc76f2f831f13fa1eca60
+  version: 7f59a8c76b8594d06044bfe0bcbe475cb2020482
   subpackages:
   - internal
   - internal/app_identity
   - internal/modules
   - internal/base
   - internal/datastore
-  - internal/log
   - internal/remote_api
 devImports: []

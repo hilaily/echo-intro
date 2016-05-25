@@ -1,0 +1,13 @@
+{
+  "address": ":80",
+  "plugins": [{
+    "name": "logger"
+  }],
+  "services": [{
+    "path": "*",
+    "plugins": [{
+      "name": "static",
+      "root": "/www"
+    }]
+  }]
+}

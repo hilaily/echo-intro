@@ -15,9 +15,9 @@ import (
 type (
 	// GzipConfig defines the config for gzip middleware.
 	GzipConfig struct {
-		// Level is the gzip level.
-		// Optional, with default value as -1.
-		Level int
+		// Gzip compression level.
+		// Optional. Default value -1.
+		Level int `json:"level"`
 	}
 
 	gzipResponseWriter struct {
@@ -40,7 +40,7 @@ func Gzip() echo.MiddlewareFunc {
 }
 
 // GzipWithConfig return gzip middleware from config.
-// See `Gzip()`.
+// See: `Gzip()`.
 func GzipWithConfig(config GzipConfig) echo.MiddlewareFunc {
 	// Defaults
 	if config.Level == 0 {

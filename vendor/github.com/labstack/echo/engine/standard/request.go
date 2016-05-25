@@ -64,6 +64,11 @@ func (r *Request) Header() engine.Header {
 	return r.header
 }
 
+// Referer implements `engine.Request#Referer` function.
+func (r *Request) Referer() string {
+	return r.Request.Referer()
+}
+
 // func Proto() string {
 // 	return r.request.Proto()
 // }
@@ -77,8 +82,8 @@ func (r *Request) Header() engine.Header {
 // }
 
 // ContentLength implements `engine.Request#ContentLength` function.
-func (r *Request) ContentLength() int {
-	return int(r.Request.ContentLength)
+func (r *Request) ContentLength() int64 {
+	return r.Request.ContentLength
 }
 
 // UserAgent implements `engine.Request#UserAgent` function.

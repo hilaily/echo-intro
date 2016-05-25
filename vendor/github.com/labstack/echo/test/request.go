@@ -56,6 +56,10 @@ func (r *Request) Header() engine.Header {
 	return r.header
 }
 
+func (r *Request) Referer() string {
+	return r.request.Referer()
+}
+
 // func Proto() string {
 // 	return r.request.Proto()
 // }
@@ -68,8 +72,8 @@ func (r *Request) Header() engine.Header {
 // 	return r.request.ProtoMinor()
 // }
 
-func (r *Request) ContentLength() int {
-	return int(r.request.ContentLength)
+func (r *Request) ContentLength() int64 {
+	return r.request.ContentLength
 }
 
 func (r *Request) UserAgent() string {

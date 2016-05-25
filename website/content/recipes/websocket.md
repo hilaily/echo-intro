@@ -8,11 +8,21 @@ menu:
 
 ## WebSocket Recipe
 
-### Server
+### Using `net` WebSocket
+
+#### Server
 
 `server.go`
 
-{{< embed "websocket/server.go" >}}
+{{< embed "websocket/net/server.go" >}}
+
+### Using `gorilla` WebSocket
+
+#### Server
+
+`server.go`
+
+{{< embed "websocket/gorilla/server.go" >}}
 
 ### Client
 
@@ -41,6 +51,8 @@ Hello, Server!
 Hello, Server!
 Hello, Server!
 ```
+
+> Only supported in `standard` engine.
 
 ### Maintainers
 

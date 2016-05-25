@@ -11,18 +11,18 @@ import (
 type (
 	// RecoverConfig defines the config for recover middleware.
 	RecoverConfig struct {
-		// StackSize is the stack size to be printed.
-		// Optional, with default value as 4 KB.
-		StackSize int
+		// Size of the stack to be printed.
+		// Optional. Default value 4KB.
+		StackSize int `json:"stack_size"`
 
 		// DisableStackAll disables formatting stack traces of all other goroutines
 		// into buffer after the trace for the current goroutine.
-		// Optional, with default value as false.
-		DisableStackAll bool
+		// Optional. Default value false.
+		DisableStackAll bool `json:"disable_stack_all"`
 
 		// DisablePrintStack disables printing stack trace.
-		// Optional, with default value as false.
-		DisablePrintStack bool
+		// Optional. Default value as false.
+		DisablePrintStack bool `json:"disable_print_stack"`
 	}
 )
 
@@ -42,7 +42,7 @@ func Recover() echo.MiddlewareFunc {
 }
 
 // RecoverWithConfig returns a recover middleware from config.
-// See `Recover()`.
+// See: `Recover()`.
 func RecoverWithConfig(config RecoverConfig) echo.MiddlewareFunc {
 	// Defaults
 	if config.StackSize == 0 {

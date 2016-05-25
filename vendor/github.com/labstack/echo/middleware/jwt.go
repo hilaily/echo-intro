@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
 
@@ -11,21 +12,20 @@ import (
 type (
 	// JWTConfig defines the config for JWT auth middleware.
 	JWTConfig struct {
-		// SigningKey is the key to validate token.
+		// Signing key to validate token.
 		// Required.
-		SigningKey []byte
+		SigningKey []byte `json:"signing_key"`
 
-		// SigningMethod is used to check token signing method.
-		// Optional, with default value as `HS256`.
-		SigningMethod string
+		// Signing method, used to check token signing method.
+		// Optional. Default value HS256.
+		SigningMethod string `json:"signing_method"`
 
-		// ContextKey is the key to be used for storing user information from the
-		// token into context.
-		// Optional, with default value as `user`.
-		ContextKey string
+		// Context key to store user information from the token into context.
+		// Optional. Default value "user".
+		ContextKey string `json:"context_key"`
 
 		// Extractor is a function that extracts token from the request.
-		// Optional, with default values as `JWTFromHeader`.
+		// Optional. Default value JWTFromHeader.
 		Extractor JWTExtractor
 	}
 
@@ -58,7 +58,7 @@ var (
 // For invalid token, it sends "401 - Unauthorized" response.
 // For empty or invalid `Authorization` header, it sends "400 - Bad Request".
 //
-// See https://jwt.io/introduction
+// See: https://jwt.io/introduction
 func JWT(key []byte) echo.MiddlewareFunc {
 	c := DefaultJWTConfig
 	c.SigningKey = key
@@ -66,7 +66,7 @@ func JWT(key []byte) echo.MiddlewareFunc {
 }
 
 // JWTWithConfig returns a JWT auth middleware from config.
-// See `JWT()`.
+// See: `JWT()`.
 func JWTWithConfig(config JWTConfig) echo.MiddlewareFunc {
 	// Defaults
 	if config.SigningKey == nil {
@@ -114,13 +114,17 @@ func JWTFromHeader(c echo.Context) (string, error) {
 	if len(auth) > l+1 && auth[:l] == bearer {
 		return auth[l+1:], nil
 	}
-	return "", echo.NewHTTPError(http.StatusBadRequest, "empty or invalid authorization header="+auth)
+	return "", errors.New("empty or invalid jwt in authorization header")
 }
 
 // JWTFromQuery returns a `JWTExtractor` that extracts token from the provided query
 // parameter.
 func JWTFromQuery(param string) JWTExtractor {
 	return func(c echo.Context) (string, error) {
-		return c.QueryParam(param), nil
+		token := c.QueryParam(param)
+		if token == "" {
+			return "", errors.New("empty jwt in query param")
+		}
+		return token, nil
 	}
 }

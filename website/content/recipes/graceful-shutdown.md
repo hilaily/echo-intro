@@ -8,13 +8,13 @@ menu:
 
 ## Graceful Shutdown Recipe
 
-### With [grace](https://github.com/facebookgo/grace)
+### Using [grace](https://github.com/facebookgo/grace)
 
 `server.go`
 
 {{< embed "graceful-shutdown/grace/server.go" >}}
 
-### With [graceful](https://github.com/tylerb/graceful)
+### Using [graceful](https://github.com/tylerb/graceful)
 
 `server.go`
 
