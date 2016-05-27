@@ -8,6 +8,8 @@ menu:
 
 ## WebSocket Recipe
 
+> Only supported in `standard` engine.
+
 ### Using `net` WebSocket
 
 #### Server
@@ -51,8 +53,6 @@ Hello, Server!
 Hello, Server!
 Hello, Server!
 ```
-
-> Only supported in `standard` engine.
 
 ### Maintainers
 

@@ -9,12 +9,15 @@
 				<div class="column is-3">
 					{{ partial "menu.html" . }}
 				</div>
-				<div class="column is-9">
+				<div class="column is-7">
 					<div class="content">
 						{{ range where .Data.Pages "Title" "Index" }}
 							{{ .Content }}
 						{{ end }}
 					</div>
+				</div>
+				<div class="column is-2">
+					{{ partial "promotion.html" }}
 				</div>
 			</div>
 		</div>

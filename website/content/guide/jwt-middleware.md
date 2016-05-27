@@ -20,19 +20,23 @@ JWT provides a JSON Web Token (JWT) authentication middleware.
 JWTConfig struct {
   // Signing key to validate token.
   // Required.
-  SigningKey []byte
+  SigningKey []byte `json:"signing_key"`
 
   // Signing method, used to check token signing method.
   // Optional. Default value HS256.
-  SigningMethod string
+  SigningMethod string `json:"signing_method"`
 
   // Context key to store user information from the token into context.
   // Optional. Default value "user".
-  ContextKey string
+  ContextKey string `json:"context_key"`
 
-  // Extractor is a function that extracts token from the request.
-  // Optional. Default value JWTFromHeader.
-  Extractor JWTExtractor
+  // TokenLookup is a string in the form of "<source>:<name>" that is used
+  // to extract token from the request.
+  // Optional. Default value "header:Authorization".
+  // Possible values:
+  // - "header:<name>"
+  // - "form:<name>"
+  TokenLookup string `json:"token_lookup"`
 }
 ```
 
@@ -40,9 +44,9 @@ JWTConfig struct {
 
 ```go
 DefaultJWTConfig = JWTConfig{
-	SigningMethod: AlgorithmHS256,
-	ContextKey:    "user",
-	Extractor:     JWTFromHeader,
+  SigningMethod: AlgorithmHS256,
+  ContextKey:    "user",
+  TokenLookup:   "header:" + echo.HeaderAuthorization,
 }
 ```
 
@@ -58,7 +62,7 @@ DefaultJWTConfig = JWTConfig{
 e := echo.New()
 e.Use(middleware.JWTWithConfig(middleware.JWTConfig{
   SigningKey: []byte("secret"),
-  Extractor: JWTFromQuery,
+  TokenLookup: "query:token",
 }))
 ```
 

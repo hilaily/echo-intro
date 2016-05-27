@@ -17,40 +17,45 @@ the website trusts.
 
 ```go
 CSRFConfig struct {
-	// Key to create CSRF token.
-	Secret []byte
+  // Key to create CSRF token.
+  Secret []byte `json:"secret"`
 
-	// Context key to store generated CSRF token into context.
-	// Optional. Default value "csrf".
-	ContextKey string
+  // TokenLookup is a string in the form of "<source>:<key>" that is used
+  // to extract token from the request.
+  // Optional. Default value "header:X-CSRF-Token".
+  // Possible values:
+  // - "header:<name>"
+  // - "form:<name>"
+  // - "header:<name>"
+  TokenLookup string `json:"token_lookup"`
 
-	// Extractor is a function that extracts token from the request.
-	// Optional. Default value CSRFTokenFromHeader(echo.HeaderXCSRFToken).
-	Extractor CSRFTokenExtractor
+  // Context key to store generated CSRF token into context.
+  // Optional. Default value "csrf".
+  ContextKey string `json:"context_key"`
 
-	// Name of the CSRF cookie. This cookie will store CSRF token.
-	// Optional. Default value "csrf".
-	CookieName string
+  // Name of the CSRF cookie. This cookie will store CSRF token.
+  // Optional. Default value "csrf".
+  CookieName string `json:"cookie_name"`
 
-	// Domain of the CSRF cookie.
-	// Optional. Default value none.
-	CookieDomain string
+  // Domain of the CSRF cookie.
+  // Optional. Default value none.
+  CookieDomain string `json:"cookie_domain"`
 
-	// Path of the CSRF cookie.
-	// Optional. Default value none.
-	CookiePath string
+  // Path of the CSRF cookie.
+  // Optional. Default value none.
+  CookiePath string `json:"cookie_path"`
 
-	// Expiration time of the CSRF cookie.
-	// Optional. Default value 24H.
-	CookieExpires time.Time
+  // Expiration time of the CSRF cookie.
+  // Optional. Default value 24H.
+  CookieExpires time.Time `json:"cookie_expires"`
 
-	// Indicates if CSRF cookie is secure.
-	CookieSecure bool
-	// Optional. Default value false.
+  // Indicates if CSRF cookie is secure.
+  CookieSecure bool `json:"cookie_secure"`
+  // Optional. Default value false.
 
-	// Indicates if CSRF cookie is HTTP only.
-	// Optional. Default value false.
-	CookieHTTPOnly bool
+  // Indicates if CSRF cookie is HTTP only.
+  // Optional. Default value false.
+  CookieHTTPOnly bool `json:"cookie_http_only"`
 }
 ```
 
@@ -58,10 +63,10 @@ CSRFConfig struct {
 
 ```go
 DefaultCSRFConfig = CSRFConfig{
-	ContextKey:    "csrf",
-	Extractor:     CSRFTokenFromHeader(echo.HeaderXCSRFToken),
-	CookieName:    "csrf",
-	CookieExpires: time.Now().Add(24 * time.Hour),
+  TokenLookup:   "header:" + echo.HeaderXCSRFToken,
+  ContextKey:    "csrf",
+  CookieName:    "csrf",
+  CookieExpires: time.Now().Add(24 * time.Hour),
 }
 ```
 
@@ -76,7 +81,7 @@ DefaultCSRFConfig = CSRFConfig{
 ```go
 e := echo.New()
 e.Use(middleware.CSRFWithConfig(middleware.CSRFConfig{
-  Extractor: CSRFTokenFromHeader("X-XSRF-TOKEN"),
+  TokenLookup: "header:X-XSRF-TOKEN",
 }))
 ```
 
