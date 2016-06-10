@@ -4,7 +4,7 @@ title: Index
 
 ## Fast and unfancy HTTP server framework for Go (Golang). Up to 10x faster than the rest.
 
-## Features
+## Feature Overview
 
 - Optimized HTTP router which smartly prioritize routes.
 - Build robust and scalable RESTful APIs.
@@ -226,19 +226,19 @@ e.GET("/users", func(c echo.Context) error {
 
 Middleware | Description
 :--- | :---
-[BodyLimit]({{< ref "guide/body-limit-middleware.md">}}) | Limit request body
-[Logger]({{< ref "guide/logger-middleware.md">}}) | Log HTTP requests
-[Recover]({{< ref "guide/recover-middleware.md">}}) | Recover from panics
-[Gzip]({{< ref "guide/gzip-middleware.md">}}) | Send gzip HTTP response
-[BasicAuth]({{< ref "guide/basic-auth-middleware.md">}}) | HTTP basic authentication
-[JWTAuth]({{< ref "guide/jwt-middleware.md">}}) | JWT authentication
-[Secure]({{< ref "guide/secure-middleware.md">}}) | Protection against attacks
-[CORS]({{< ref "guide/cors-middleware.md">}}) | Cross-Origin Resource Sharing
-[CSRF]({{< ref "guide/csrf-middleware.md">}}) | Cross-Site Request Forgery
-[Static]({{< ref "guide/static-middleware.md">}}) | Serve static files
-[AddTrailingSlash]({{< ref "guide/add-trailing-slash-middleware.md">}}) | Add trailing slash to the request URI
-[RemoveTrailingSlash]({{< ref "guide/remove-trailing-slash-middleware.md">}}) | Remove trailing slash from the request URI
-[MethodOverride]({{< ref "guide/method-override-middleware.md">}}) | Override request method
+[BodyLimit]({{< ref "middleware/body-limit.md">}}) | Limit request body
+[Logger]({{< ref "middleware/logger.md">}}) | Log HTTP requests
+[Recover]({{< ref "middleware/recover.md">}}) | Recover from panics
+[Gzip]({{< ref "middleware/gzip.md">}}) | Send gzip HTTP response
+[BasicAuth]({{< ref "middleware/basic-auth.md">}}) | HTTP basic authentication
+[JWTAuth]({{< ref "middleware/jwt.md">}}) | JWT authentication
+[Secure]({{< ref "middleware/secure.md">}}) | Protection against attacks
+[CORS]({{< ref "middleware/cors.md">}}) | Cross-Origin Resource Sharing
+[CSRF]({{< ref "middleware/csrf.md">}}) | Cross-Site Request Forgery
+[Static]({{< ref "middleware/static.md">}}) | Serve static files
+[AddTrailingSlash]({{< ref "middleware/add-trailing-slash.md">}}) | Add trailing slash to the request URI
+[RemoveTrailingSlash]({{< ref "middleware/remove-trailing-slash.md">}}) | Remove trailing slash from the request URI
+[MethodOverride]({{< ref "middleware/method-override.md">}}) | Override request method
 
 #### Third-party Middleware
 

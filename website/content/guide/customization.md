@@ -23,23 +23,34 @@ and message `HTTPError.Message`.
 
 `Echo#SetDebug(on bool)` enable/disable debug mode.
 
-### Log Prefix
+### Logging
 
-`Echo#SetLogPrefix(prefix string)` sets the prefix for the logger. Default value
-is `echo`.
+#### Custom Logger
 
-### Log Output
+`Echo#SetLogger(l log.Logger)`
+
+SetLogger defines a custom logger.
+
+#### Log Output
 
 `Echo#SetLogOutput(w io.Writer)` sets the output destination for the logger. Default
 value is `os.Stdout`
 
 To completely disable logs use `Echo#SetLogOutput(io.Discard)`
 
-### Log Level
+#### Log Level
 
 `Echo#SetLogLevel(l log.Level)`
 
-SetLogLevel sets the log level for the logger. Default value is `log.ERROR`.
+SetLogLevel sets the log level for the logger. Default value `3` (ERROR).
+Possible values:
+
+- `0` (DEBUG)
+- `1` (INFO)
+- `2` (WARN)
+- `3`	(ERROR)
+- `4`	(FATAL)
+- `5` (OFF)
 
 ### HTTP Engine
 

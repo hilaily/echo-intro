@@ -8,9 +8,9 @@ menu:
 
 Images, JavaScript, CSS, PDF, Fonts and so on...
 
-## Static Files 
+## Static Files
 
-### [Using Static Middleware]({{< ref "guide/static-middleware.md">}})
+### [Using Static Middleware]({{< ref "middleware/static.md">}})
 
 ### Using `Echo#Static()`
 

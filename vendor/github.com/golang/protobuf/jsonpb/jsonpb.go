@@ -53,10 +53,6 @@ import (
 	"github.com/golang/protobuf/proto"
 )
 
-var (
-	byteArrayType = reflect.TypeOf([]byte{})
-)
-
 // Marshaler is a configurable object for converting between
 // protocol buffer objects and a JSON representation for them.
 type Marshaler struct {
@@ -317,8 +313,14 @@ func (m *Marshaler) marshalAny(out *errWriter, any proto.Message, indent string)
 			return err
 		}
 		m.writeSep(out)
-		out.write(`"value":`)
-		if err := m.marshalObject(out, msg, indent, ""); err != nil {
+		if m.Indent != "" {
+			out.write(indent)
+			out.write(m.Indent)
+			out.write(`"value": `)
+		} else {
+			out.write(`"value":`)
+		}
+		if err := m.marshalObject(out, msg, indent+m.Indent, ""); err != nil {
 			return err
 		}
 		if m.Indent != "" {
@@ -374,7 +376,7 @@ func (m *Marshaler) marshalValue(out *errWriter, prop *proto.Properties, v refle
 	v = reflect.Indirect(v)
 
 	// Handle repeated elements.
-	if v.Type() != byteArrayType && v.Kind() == reflect.Slice {
+	if v.Kind() == reflect.Slice && v.Type().Elem().Kind() != reflect.Uint8 {
 		out.write("[")
 		comma := ""
 		for i := 0; i < v.Len(); i++ {
@@ -386,7 +388,9 @@ func (m *Marshaler) marshalValue(out *errWriter, prop *proto.Properties, v refle
 				out.write(m.Indent)
 				out.write(m.Indent)
 			}
-			m.marshalValue(out, prop, sliceVal, indent+m.Indent)
+			if err := m.marshalValue(out, prop, sliceVal, indent+m.Indent); err != nil {
+				return err
+			}
 			comma = ","
 		}
 		if m.Indent != "" {
@@ -684,7 +688,7 @@ func unmarshalValue(target reflect.Value, inputValue json.RawMessage, prop *prot
 	}
 
 	// Handle arrays (which aren't encoded bytes)
-	if targetType != byteArrayType && targetType.Kind() == reflect.Slice {
+	if targetType.Kind() == reflect.Slice && targetType.Elem().Kind() != reflect.Uint8 {
 		var slc []json.RawMessage
 		if err := json.Unmarshal(inputValue, &slc); err != nil {
 			return err
