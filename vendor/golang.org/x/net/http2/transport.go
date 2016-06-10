@@ -77,6 +77,10 @@ type Transport struct {
 	// uncompressed.
 	DisableCompression bool
 
+	// AllowHTTP, if true, permits HTTP/2 requests using the insecure,
+	// plain-text "http" scheme. Note that this does not enable h2c support.
+	AllowHTTP bool
+
 	// MaxHeaderListSize is the http2 SETTINGS_MAX_HEADER_LIST_SIZE to
 	// send in the initial settings frame. It is how many bytes
 	// of response headers are allow. Unlike the http2 spec, zero here
@@ -192,6 +196,7 @@ type clientStream struct {
 	done chan struct{} // closed when stream remove from cc.streams map; close calls guarded by cc.mu
 
 	// owned by clientConnReadLoop:
+	firstByte    bool // got the first response byte
 	pastHeaders  bool // got first MetaHeadersFrame (actual headers)
 	pastTrailers bool // got optional second MetaHeadersFrame (trailers)
 
@@ -275,20 +280,24 @@ func (t *Transport) RoundTrip(req *http.Request) (*http.Response, error) {
 
 // authorityAddr returns a given authority (a host/IP, or host:port / ip:port)
 // and returns a host:port. The port 443 is added if needed.
-func authorityAddr(authority string) (addr string) {
+func authorityAddr(scheme string, authority string) (addr string) {
 	if _, _, err := net.SplitHostPort(authority); err == nil {
 		return authority
 	}
-	return net.JoinHostPort(authority, "443")
+	port := "443"
+	if scheme == "http" {
+		port = "80"
+	}
+	return net.JoinHostPort(authority, port)
 }
 
 // RoundTripOpt is like RoundTrip, but takes options.
 func (t *Transport) RoundTripOpt(req *http.Request, opt RoundTripOpt) (*http.Response, error) {
-	if req.URL.Scheme != "https" {
+	if !(req.URL.Scheme == "https" || (req.URL.Scheme == "http" && t.AllowHTTP)) {
 		return nil, errors.New("http2: unsupported scheme")
 	}
 
-	addr := authorityAddr(req.URL.Host)
+	addr := authorityAddr(req.URL.Scheme, req.URL.Host)
 	for {
 		cc, err := t.connPool().GetClientConn(req, addr)
 		if err != nil {
@@ -1245,17 +1254,20 @@ func (rl *clientConnReadLoop) processHeaders(f *MetaHeadersFrame) error {
 		// was just something we canceled, ignore it.
 		return nil
 	}
+	if !cs.firstByte {
+		if cs.trace != nil {
+			// TODO(bradfitz): move first response byte earlier,
+			// when we first read the 9 byte header, not waiting
+			// until all the HEADERS+CONTINUATION frames have been
+			// merged. This works for now.
+			traceFirstResponseByte(cs.trace)
+		}
+		cs.firstByte = true
+	}
 	if !cs.pastHeaders {
 		cs.pastHeaders = true
 	} else {
 		return rl.processTrailers(cs, f)
-	}
-	if cs.trace != nil {
-		// TODO(bradfitz): move first response byte earlier,
-		// when we first read the 9 byte header, not waiting
-		// until all the HEADERS+CONTINUATION frames have been
-		// merged. This works for now.
-		traceFirstResponseByte(cs.trace)
 	}
 
 	res, err := rl.handleResponse(cs, f)
@@ -1447,8 +1459,12 @@ func (b transportResponseBody) Read(p []byte) (n int, err error) {
 		cc.inflow.add(connAdd)
 	}
 	if err == nil { // No need to refresh if the stream is over or failed.
-		if v := cs.inflow.available(); v < transportDefaultStreamFlow-transportDefaultStreamMinRefresh {
-			streamAdd = transportDefaultStreamFlow - v
+		// Consider any buffered body data (read from the conn but not
+		// consumed by the client) when computing flow control for this
+		// stream.
+		v := int(cs.inflow.available()) + cs.bufPipe.Len()
+		if v < transportDefaultStreamFlow-transportDefaultStreamMinRefresh {
+			streamAdd = int32(transportDefaultStreamFlow - v)
 			cs.inflow.add(streamAdd)
 		}
 	}

@@ -1,17 +1,8 @@
-# *NOTICE*
-
-- Master branch, website and godoc now points to Echo v2.
-- Echo v2 is in beta but if you want to try it out here is the migrating [guide] (https://echo.labstack.com/guide/migrating)
-- Looking for v1?
-	- Installation: Use a package manager (https://github.com/Masterminds/glide, it's nice!) to get stable v1 release/commit or use `go get gopkg.in/labstack/echo.v1`.
-	- Godoc: https://godoc.org/gopkg.in/labstack/echo.v1
-	- Docs: https://github.com/labstack/echo/tree/v1.4/website/content
-
 # [Echo](http://labstack.com/echo) [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/labstack/echo) [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/labstack/echo/master/LICENSE) [![Build Status](http://img.shields.io/travis/labstack/echo.svg?style=flat-square)](https://travis-ci.org/labstack/echo) [![Coverage Status](http://img.shields.io/coveralls/labstack/echo.svg?style=flat-square)](https://coveralls.io/r/labstack/echo) [![Join the chat at https://gitter.im/labstack/echo](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg?style=flat-square)](https://gitter.im/labstack/echo)
 
 #### Fast and unfancy HTTP server framework for Go (Golang). Up to 10x faster than the rest.
 
-## Features
+## Feature Overview
 
 - Optimized HTTP router which smartly prioritize routes.
 - Build robust and scalable RESTful APIs.
@@ -234,21 +225,21 @@ e.GET("/users", func(c echo.Context) error {
 
 Middleware | Description
 :--- | :---
-[BodyLimit](https://echo.labstack.com/guide/body-limit-middleware) | Limit request body
-[Logger](https://echo.labstack.com/guide/logger-middleware) | Log HTTP requests
-[Recover](https://echo.labstack.com/guide/recover-middleware) | Recover from panics
-[Gzip](https://echo.labstack.com/guide/gzip-middleware) | Send gzip HTTP response
-[BasicAuth](https://echo.labstack.com/guide/basic-auth-middleware) | HTTP basic authentication
-[JWTAuth](https://echo.labstack.com/guide/jwt-middleware) | JWT authentication
-[Secure](https://echo.labstack.com/guide/secure-middleware) | Protection against attacks
-[CORS](https://echo.labstack.com/guide/cors-middleware) | Cross-Origin Resource Sharing
-[CSRF](https://echo.labstack.com/guide/csrf-middleware) | Cross-Site Request Forgery
-[Static](https://echo.labstack.com/guide/static-middleware) | Serve static files
-[AddTrailingSlash](https://echo.labstack.com/guide/add-trailing-slash-middleware) | Add trailing slash to the request URI
-[RemoveTrailingSlash](https://echo.labstack.com/guide/remove-trailing-slash-middleware) | Remove trailing slash from the request URI
-[MethodOverride](https://echo.labstack.com/guide/method-override-middleware) | Override request method
+[BodyLimit](https://echo.labstack.com/middleware/body-limit) | Limit request body
+[Logger](https://echo.labstack.com/middleware/logger) | Log HTTP requests
+[Recover](https://echo.labstack.com/middleware/recover) | Recover from panics
+[Gzip](https://echo.labstack.com/middleware/gzip) | Send gzip HTTP response
+[BasicAuth](https://echo.labstack.com/middleware/basic-auth) | HTTP basic authentication
+[JWTAuth](https://echo.labstack.com/middleware/jwt) | JWT authentication
+[Secure](https://echo.labstack.com/middleware/secure) | Protection against attacks
+[CORS](https://echo.labstack.com/middleware/cors) | Cross-Origin Resource Sharing
+[CSRF](https://echo.labstack.com/middleware/csrf) | Cross-Site Request Forgery
+[Static](https://echo.labstack.com/middleware/static) | Serve static files
+[AddTrailingSlash](https://echo.labstack.com/middleware/add-trailing-slash) | Add trailing slash to the request URI
+[RemoveTrailingSlash](https://echo.labstack.com/middleware/remove-trailing-slash) | Remove trailing slash from the request URI
+[MethodOverride](https://echo.labstack.com/middleware/method-override) | Override request method
 
-##### [More...](https://echo.labstack.com/guide/middleware)
+##### [More...](https://echo.labstack.com/middleware)
 
 #### Third-party Middleware
 

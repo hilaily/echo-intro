@@ -5,6 +5,7 @@
   "canonifyurls": true,
   "permalinks": {
     "guide": "/guide/:title",
+    "middleware": "/middleware/:title",
     "recipes": "/recipes/:title"
   },
 
@@ -15,6 +16,12 @@
       "weight": 1,
       "identifier": "guide",
       "url": "guide"
+    },{
+      "name": "Middleware",
+      "pre": "<i class='fa fa-filter'></i>",
+      "weight": 1,
+      "identifier": "middleware",
+      "url": "middleware"
     }, {
       "name": "Recipes",
       "pre": "<i class='fa fa-code'></i>",

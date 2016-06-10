@@ -39,16 +39,16 @@ A. Only if you need to...
 c.Request().(*standard.Request).Request
 
 // `*http.URL`
-c.Request().(*standard.URL).URL
+c.Request().URL().(*standard.URL).URL
 
 // Request `http.Header`
-c.Request().(*standard.Header).Header
+c.Request().Header().(*standard.Header).Header
 
 // `http.ResponseWriter`
 c.Response().(*standard.Response).ResponseWriter
 
 // Response `http.Header`
-c.Response().(*standard.Header).Header
+c.Response().Header().(*standard.Header).Header
 ```
 
 Q. How to use standard handler and middleware?

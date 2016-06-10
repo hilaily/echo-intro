@@ -1,4 +1,5 @@
 build:
+	rm -rf public
 	hugo
 	docker build -t reg.lab.st/echo .
 

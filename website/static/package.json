@@ -9,6 +9,6 @@
   "author": "Vishal Rana",
   "license": "CC-BY-4.0",
   "dependencies": {
-    "bulma": "0.0.26"
+    "bulma": "0.0.28"
   }
 }
