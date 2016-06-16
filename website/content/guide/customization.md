@@ -75,7 +75,7 @@ your preference.
 
 `e.Run(<engine>.WithConfig(<config>))`
 
-#### Configuration
+##### Configuration
 
 ```go
 Config struct {
@@ -86,4 +86,12 @@ Config struct {
   ReadTimeout  time.Duration // Maximum duration before timing out read of the request.
   WriteTimeout time.Duration // Maximum duration before timing out write of the response.
 }
+```
+
+#### Access internal server instance and configure its properties
+
+```go
+s := standard.New(":1323")
+s.MaxHeaderBytes = 1 << 20
+e.Run(s)
 ```
