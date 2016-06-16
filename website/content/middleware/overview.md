@@ -76,6 +76,4 @@ e := echo.New()
 e.GET("/", <Handler>, <Middleware...>)
 ```
 
-Example above uses a `Level` 5 for gzip compression.
-
 ### [Writing Custom Middleware]({{< ref "recipes/middleware.md">}})
