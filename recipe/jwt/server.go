@@ -19,9 +19,10 @@ func login(c echo.Context) error {
 		token := jwt.New(jwt.SigningMethodHS256)
 
 		// Set claims
-		token.Claims["name"] = "Jon Snow"
-		token.Claims["admin"] = true
-		token.Claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
+		claims := token.Claims.(jwt.MapClaims)
+		claims["name"] = "Jon Snow"
+		claims["admin"] = true
+		claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
 
 		// Generate encoded token and send it as response.
 		t, err := token.SignedString([]byte("secret"))
@@ -42,7 +43,8 @@ func accessible(c echo.Context) error {
 
 func restricted(c echo.Context) error {
 	user := c.Get("user").(*jwt.Token)
-	name := user.Claims["name"].(string)
+	claims := user.Claims.(jwt.MapClaims)
+	name := claims["name"].(string)
 	return c.String(http.StatusOK, "Welcome "+name+"!")
 }
 
