@@ -1,10 +1,10 @@
 hash: 3d58ff809b9216cb6b415f7b4fddfae44c37f7ec721c05a9583387bdff3a852c
-updated: 2016-06-10T11:47:46.351383783-07:00
+updated: 2016-06-21T07:52:47.438801332-07:00
 imports:
 - name: github.com/daaku/go.zipexe
   version: a5fe2436ffcb3236e175e5149162b41cd28bd27d
 - name: github.com/dgrijalva/jwt-go
-  version: c04502f106d7c5b3fae17c5da49a1bbdd3006b3c
+  version: f0777076321ab64f6efc15a82d9d23b98539b943
 - name: github.com/facebookgo/clock
   version: 600d898af40aa09a7a93ecb9265d87b0504b6f03
 - name: github.com/facebookgo/grace
@@ -21,7 +21,7 @@ imports:
   subpackages:
   - embedded
 - name: github.com/golang/protobuf
-  version: 8616e8ee5e20a1704615e6c8d7afcdac06087a67
+  version: 0c1f6d65b5a189c2250d10e71a5506f06f9fa0a0
   subpackages:
   - proto
 - name: github.com/gorilla/websocket
@@ -29,7 +29,7 @@ imports:
 - name: github.com/kardianos/osext
   version: 29ae4ffbc9a6fe9fb2bc5029050ce6996ea1d3bc
 - name: github.com/labstack/echo
-  version: 98f86dfc172203f30e52f7ab404d3f4075167acb
+  version: fbcdf70c52c155ae9aa58e72ee0532fa2f1cad2e
   subpackages:
   - engine
   - engine/standard
@@ -46,32 +46,33 @@ imports:
 - name: github.com/mattn/go-isatty
   version: 56b76bdf51f7708750eac80fa38b952bb9f32639
 - name: github.com/rs/cors
-  version: 3ca2b550f6a4333b63c845850f760a7d00412cd6
+  version: a62a804a8a009876ca59105f7899938a1349f4b3
 - name: github.com/rs/xhandler
-  version: d9d9599b6aaf6a058cb7b1f48291ded2cbd13390
+  version: ed27b6fd65218132ee50cd95f38474a3d8a2cd12
 - name: github.com/thoas/stats
   version: 69e3c072eec2df2df41afe6214f62eb940e4cd80
 - name: github.com/tylerb/graceful
-  version: 84177357ab104029f9237abcb52339a7b80760ef
+  version: ecde8c8f16df93a994dda8936c8f60f0c26c28ab
 - name: github.com/valyala/fasttemplate
   version: 3b874956e03f1636d171bda64b130f9135f42cff
 - name: golang.org/x/net
-  version: 3f122ce3dbbe488b7e6a8bdb26f41edec852a40b
+  version: 7c71ca708c71bcbd0e6c856b01468ee07fe24557
   subpackages:
   - websocket
   - context
   - netutil
 - name: golang.org/x/sys
-  version: b44883b474ffefa37335017174e397412b633a4f
+  version: 62bee037599929a6e9146f29d10dd5208c43507d
   subpackages:
   - unix
 - name: google.golang.org/appengine
-  version: 7f59a8c76b8594d06044bfe0bcbe475cb2020482
+  version: 267c27e7492265b84fc6719503b14a1e17975d79
   subpackages:
   - internal
   - internal/app_identity
   - internal/modules
   - internal/base
   - internal/datastore
+  - internal/log
   - internal/remote_api
 devImports: []
