@@ -1,0 +1,14 @@
+{
+  "name": "echo",
+  "version": "2.0.0",
+  "description": "Website for Echo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vishal Rana",
+  "license": "CC-BY-4.0",
+  "dependencies": {
+    "bulma": "0.0.28"
+  }
+}

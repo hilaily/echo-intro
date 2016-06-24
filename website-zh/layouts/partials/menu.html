@@ -1,0 +1,29 @@
+<aside class="menu">
+  {{ $currentNode := . }}
+  {{ range .Site.Menus.side }}
+    <p class="menu-label">
+      {{ .Pre }}
+      {{ .Name }}
+    </p>
+    <ul class="menu-list">
+      {{ range .Children }}
+        <li>
+          <a{{ if $currentNode.IsMenuCurrent "side" . }} class="is-active"{{ end }} href="{{ .URL }}">
+            {{ .Name }}
+          </a>
+          {{ if .HasChildren }}
+            <ul class="menu-list">
+              <li>
+                {{ range .Children }}
+                  <a {{ if $currentNode.IsMenuCurrent "side" . }} class="is-active"{{ end }} href="{{ .URL }}">
+                    {{ .Name }}
+                  </a>
+                {{ end }}
+              </li>
+            </ul>
+          {{ end }}
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+</aside>

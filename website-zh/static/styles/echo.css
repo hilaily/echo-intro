@@ -1,0 +1,144 @@
+/*footer {
+    background-color: inherit !important;
+    border-top: 2px solid #E0E0E0;
+}
+.facebook a:hover {
+    color: #3B5998;
+}
+.twitter a:hover {
+    color: #55ACEE;
+}
+.google a:hover {
+    color: #DC4E41;
+}
+.github a:hover {
+    color: #333;
+}
+:not(pre) > code {
+    padding: 0 4px;
+    background: #EEE;
+    color: #424242;
+    font-size: .95em;
+    font-family: Source Code Pro, Monaco, Menlo, Consolas, monospace;
+    border: 1px solid #E0E0E0;
+    border-radius: 2px;
+}
+a:link {
+    text-decoration: none;
+}
+.page-content {
+    padding: 20px 0;
+    max-width: 1200px;
+    margin: auto;
+}
+.page-content header {
+    padding-bottom: 16px;
+}
+.menu {
+    margin-right: 40px;
+}
+.menu a {
+    display: block;
+    color: #757575;
+    padding: 5px;
+    border-left: 4px #F06292 solid;
+}
+.menu a:hover:not(.active) {
+    background-color: #E0E0E0;
+}
+.menu .active {
+    color: #FFF;
+    background-color: #F06292;
+}
+.search-box {
+    margin-right: 8px;
+}*/
+
+/* Gitter */
+.gitter-open-chat-button {
+    background-color: #1FBBA6;
+    transition: all .2s ease;
+}
+.gitter-open-chat-button:hover {
+    background-color: #34D6B6;
+}
+ul {
+    padding: 8px;
+    list-style-type: none;
+}
+
+/* Algolia */
+/*http://vuejs.org/css/page.css*/
+.aa-dropdown-menu {
+  margin-top: 40px;
+  border-color: #999;
+}
+.algolia-docsearch-footer {
+  border-color: #DDD;
+}
+.algolia-docsearch-suggestion--subcategory-column {
+  border-color: #DDD;
+}
+.algolia-docsearch-suggestion--category-header {
+    background-color: #1FBBA6;
+}
+.algolia-docsearch-suggestion--highlight {
+    color: #19A17D;
+}
+.algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--highlight {
+    background-color: #34D6B6;
+}
+.aa-cursor .algolia-docsearch-suggestion--content {
+    color: #D44C70;
+}
+.aa-cursor .algolia-docsearch-suggestion {
+    background: #F5F5F5;
+}
+
+/*#TableOfContents {
+  font-size: .8em;
+}
+
+#TableOfContents .menu-list a {
+  padding: 2px 4px;
+}
+
+#TableOfContents .menu-list li ul {
+
+}*/
+
+/* Bulma */
+.menu-list a.is-active {
+  background-color: #1FBBA6;
+}
+
+html  {
+  background-color: #FFF;
+}
+.header {
+  background-color: #282C37;
+}
+.section {
+  margin-top: 40px;
+}
+.footer {
+  margin-top: 40px;
+}
+/* Resolve conflict with prism */
+code[class*="language-"] .tag {
+  display: inline;
+  padding: 0;
+  vertical-align: baseline;
+  background: none;
+  border-radius: 0;
+}
+code[class*="language-"] .token.number {
+  background: none;
+  border-radius: 0;
+  display: inline-block;
+  font-size: 1em;
+  vertical-align: top;
+}
+.hero-echo {
+  background: #1FBBA6;
+}

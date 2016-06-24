@@ -1,0 +1,25 @@
+{{ partial "head.html" . }}
+
+<body>
+	{{ partial "header.html" . }}
+  {{ partial "search-menu.html" . }}
+	<section style="margin-top: 40px;">
+		<div class="container">
+			<div class="columns">
+				<div class="column is-3">
+					{{ partial "menu.html" . }}
+				</div>
+				<div class="column is-9">
+					<div class="content">
+						{{ range where .Data.Pages "Title" "Index" }}
+							{{ .Content }}
+						{{ end }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{{ partial "footer.html" . }}
+</body>
+
+</html>
