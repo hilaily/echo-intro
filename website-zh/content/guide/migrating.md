@@ -1,19 +1,20 @@
 ---
-title: Migrating
+title: 迁移
 menu:
   side:
     parent: guide
     weight: 2
 ---
 
-## Migrating from v1
+## 从 v1 迁移
 
-### Change Log
+### 更新日志
 
-- Good news, 85% of the API remains the same.
+- 85%的API都保持和以前一样
 - `Engine` interface to abstract `HTTP` server implementation, allowing
 us to use HTTP servers beyond Go standard library. It currently supports standard and [fasthttp](https://github.com/valyala/fasthttp) server.
-- Context, Request and Response are converted to interfaces. [More...](https://github.com/labstack/echo/issues/146)
+- Context, Request 和 Response 转换成了 interface [详细...](https://github.com/labstack/echo/issues/146)
+
 - Handler signature is changed to `func (c echo.Context) error`.
 - Dropped auto wrapping of handler and middleware to enforce compile time check.
 - APIs to run middleware before or after the router, which doesn't require `Echo#Hook` API now.

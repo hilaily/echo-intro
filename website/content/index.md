@@ -2,11 +2,11 @@
 title: Index
 ---
 
-## 简易高效的 Go(Golang) 语言 HTTP 框架。比其他框架快速10倍。
+## Fast and unfancy HTTP server framework for Go (Golang). Up to 10x faster than the rest.
 
-## 功能概览
+## Feature Overview
 
-- 优化的 HTTP 路由
+- Optimized HTTP router which smartly prioritize routes.
 - Build robust and scalable RESTful APIs.
 - Run with standard HTTP server or FastHTTP server.
 - Group APIs.
@@ -19,28 +19,28 @@ title: Index
 - Define your format for the logger.
 - Highly customizable.
 
-## 性能
+## Performance
 
-- 环境:
+- Environment:
 	- Go 1.6
 	- wrk 4.0.0
 	- 2 GB, 2 Core (DigitalOcean)
-- 测试方案: https://github.com/vishr/web-framework-benchmark
-- 日期: 4/4/2016
+- Test Suite: https://github.com/vishr/web-framework-benchmark
+- Date: 4/4/2016
 
-<img width="600" height="371" src="https://o8l6oohcu.qnssl.com/go-echo/echo.png">
+<iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1phsG_NPmEOaTVTw6lasK3CeEwBlbkhzAWPiyrBznm1g/pubchart?oid=107271028&amp;format=interactive"></iframe>
 
-## 快速开始
+## Quick Start
 
-### 安装
+### Installation
 
 ```sh
 $ go get github.com/labstack/echo/...
 ```
 
-### 编写 Hello, World!
+### Hello, World!
 
-创建 `server.go` 文件
+Create `server.go`
 
 ```go
 package main
@@ -60,15 +60,16 @@ func main() {
 }
 ```
 
-开启服务
+Start server
 
 ```sh
 $ go run server.go
 ```
 
-在浏览器访问 [http://localhost:1323](http://localhost:1323) 然后你就能在页面上看到 
-Hello, World! 
-### 路由
+Browse to [http://localhost:1323](http://localhost:1323) and you should see
+Hello, World! on the page.
+
+### Routing
 
 ```go
 e.POST("/users", saveUser)
@@ -77,7 +78,7 @@ e.PUT("/users/:id", updateUser)
 e.DELETE("/users/:id", deleteUser)
 ```
 
-### URL路径参数
+### Path Parameters
 
 ```go
 func getUser(c echo.Context) error {
@@ -86,7 +87,7 @@ func getUser(c echo.Context) error {
 }
 ```
 
-### 请求参数
+### Query Parameters
 
 `/show?team=x-men&member=wolverine`
 
@@ -98,7 +99,7 @@ func show(c echo.Context) error {
 }
 ```
 
-### 表单 `application/x-www-form-urlencoded`
+### Form `application/x-www-form-urlencoded`
 
 `POST` `/save`
 
@@ -115,7 +116,7 @@ func save(c echo.Context) error {
 }
 ```
 
-### 表单 `multipart/form-data`
+### Form `multipart/form-data`
 
 `POST` `/save`
 
@@ -159,7 +160,7 @@ func save(c echo.Context) error {
 }
 ```
 
-### 处理请求
+### Handling Request
 
 - Bind `JSON` or `XML` or `form` payload into Go struct based on `Content-Type` request header.
 - Render response as `JSON` or `XML` with status code.
@@ -181,19 +182,19 @@ e.POST("/users", func(c echo.Context) error {
 })
 ```
 
-### 静态资源
+### Static Content
 
-定义`/static/*`目录为静态资源文件目录
+Server any file from static directory for path `/static/*`.
 
 ```go
 e.Static("/static", "static")
 ```
 
-##### [更多...](https://echo.labstack.com/guide/static-files)
+##### [More...](https://echo.labstack.com/guide/static-files)
 
-### [模板渲染](https://echo.labstack.com/guide/templates)
+### [Template Rendering](https://echo.labstack.com/guide/templates)
 
-### 中间件
+### Middleware
 
 ```go
 // Root level middleware
@@ -221,9 +222,9 @@ e.GET("/users", func(c echo.Context) error {
 }, track)
 ```
 
-#### echo 自带的中间件
+#### Built-in Middleware
 
-中间件| 描述
+Middleware | Description
 :--- | :---
 [BodyLimit]({{< ref "middleware/body-limit.md">}}) | Limit request body
 [Logger]({{< ref "middleware/logger.md">}}) | Log HTTP requests
@@ -239,47 +240,46 @@ e.GET("/users", func(c echo.Context) error {
 [RemoveTrailingSlash]({{< ref "middleware/remove-trailing-slash.md">}}) | Remove trailing slash from the request URI
 [MethodOverride]({{< ref "middleware/method-override.md">}}) | Override request method
 
-#### 第三方中间件
+#### Third-party Middleware
 
-中间件 | 描述
+Middleware | Description
 :--- | :---
 [echoperm](https://github.com/xyproto/echoperm) | Keeping track of users, login states and permissions.
 [echopprof](https://github.com/mtojek/echopprof) | Adapt net/http/pprof to labstack/echo.
 
-##### [更多...](https://echo.labstack.com/guide/middleware)
+##### [More...](https://echo.labstack.com/guide/middleware)
 
-### 接下来
+### Next
 
 - Head over to [guide](https://echo.labstack.com/guide/installation)
 - Browse [recipes](https://echo.labstack.com/recipes/hello-world)
 
-### 帮助
+### Need help?
 
 - [Hop on to chat](https://gitter.im/labstack/echo)
 - [Open an issue](https://github.com/labstack/echo/issues/new)
 
-## 支持我们
+## Support Us
 
 - ☆ the project
 - [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JD5R56K84A8G4&lc=US&item_name=LabStack&item_number=echo&currency_code=USD&bn=PP-DonationsBF:btn_donate_LG.gif:NonHosted)
 - 🌐 spread the word
 - [Contribute](#contribute:d680e8a854a7cbad6d490c445cba2eba) to the project
 
-## 贡献
+## Contribute
 
-**用 issues 完成所有工作**
+**Use issues for everything**
 
+- Report issues
+- Discuss on chat before sending a pull request
+- Suggest new features or enhancements
+- Improve/fix documentation
 
-- 提交 issues
-- 发 PR 前的讨论
-- 提出新功能或者优化的建议
-- 完善／修复 文档
+## Credits
 
-## 开发人员
-
-- [Vishal Rana](https://github.com/vishr) - 作者
-- [Nitin Rana](https://github.com/nr17) - 顾问
-- [其他贡献者](https://github.com/labstack/echo/graphs/contributors)
+- [Vishal Rana](https://github.com/vishr) - Author
+- [Nitin Rana](https://github.com/nr17) - Consultant
+- [Contributors](https://github.com/labstack/echo/graphs/contributors)
 
 ## License
 

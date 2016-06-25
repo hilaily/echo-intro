@@ -1,49 +1,46 @@
 ---
-title: Customization
+title: 自定义
 menu:
   side:
     parent: guide
     weight: 3
 ---
 
-## Customization
+## 自定义
 
-### HTTP Error Handler
+### HTTP 错误处理
 
-`Echo#SetHTTPErrorHandler(h HTTPErrorHandler)` registers a custom `Echo#HTTPErrorHandler`.
+`Echo#SetHTTPErrorHandler(h HTTPErrorHandler)` 注册了一个自定义的 `Echo#HTTPErrorHandler`.
 
-Default HTTP error handler rules:
+默认的 HTTP 错误处理规则如下：
 
-- If error is of type `Echo#HTTPError` it sends HTTP response with status code `HTTPError.Code`
-and message `HTTPError.Message`.
-- Else it sends `500 - Internal Server Error`.
-- If debug mode is enabled, it uses `error.Error()` as status message.
+- 如果错误是`Echo#HTTPError`类型则发送一个状态码为 `HTTPError.Code`，内容为 `HTTPError.Message` 的HTTP 响应。
+- 否则返回 `500 - Internal Server Error`。
+- 如果开启了 debug 模式，则使用 `error.Error()` 返回消息。
 
 ### Debug
 
-`Echo#SetDebug(on bool)` enable/disable debug mode.
+`Echo#SetDebug(on bool)` 开启/关闭 debug 模式。
 
-### Logging
+### 日志
 
-#### Custom Logger
+#### 自定义日志
 
 `Echo#SetLogger(l log.Logger)`
 
-SetLogger defines a custom logger.
+SetLogger 用来定义一个 自定义日志。
 
-#### Log Output
+#### 日志输出
 
-`Echo#SetLogOutput(w io.Writer)` sets the output destination for the logger. Default
-value is `os.Stdout`
+`Echo#SetLogOutput(w io.Writer)` 设置日志输出的位置，默认是 `os.Stdout`。
+使用 `Echo#SetLogOutput(io.Discard)` 完全禁用日志。
 
-To completely disable logs use `Echo#SetLogOutput(io.Discard)`
-
-#### Log Level
+#### 日志级别
 
 `Echo#SetLogLevel(l log.Level)`
 
-SetLogLevel sets the log level for the logger. Default value `3` (ERROR).
-Possible values:
+SetLogLevel 用于设置日志级别，默认是 `3` (ERROR).
+可以使用的值：
 
 - `0` (DEBUG)
 - `1` (INFO)
@@ -54,28 +51,26 @@ Possible values:
 
 ### HTTP Engine
 
-Echo currently supports standard and [fasthttp](https://github.com/valyala/fasthttp)
-server engines. Echo utilizes interfaces to abstract the internal implementation
-of these servers so you can seamlessly switch from one engine to another based on
-your preference.
+Echo 现在支持使用 standard 和 [fasthttp](https://github.com/valyala/fasthttp) 提供 HTTP 服务。
+Echo 内部实现了这两个引擎的接口，可以根据需要无缝的切换这两种 HTTP 服务。
 
-#### Running a standard HTTP server
+#### 运行一个 standard HTTP server
 
 `e.Run(standard.New(":1323"))`
 
-#### Running a fasthttp server
+#### 运行一个 fasthttp server
 
 `e.Run(fasthttp.New(":1323"))`
 
-#### Running a server with TLS configuration
+#### 运行一个带有 TLS 配置的 HTTP 服务
 
 `e.Run(<engine>.WithTLS(":1323", "<certFile>", "<keyFile>"))`
 
-#### Running a server with engine configuration
+#### 运行一个带有服务配置文件的 HTTP 服务
 
 `e.Run(<engine>.WithConfig(<config>))`
 
-##### Configuration
+##### 配置
 
 ```go
 Config struct {
@@ -88,7 +83,7 @@ Config struct {
 }
 ```
 
-#### Access internal server instance and configure its properties
+#### 服务实例自己配置属性
 
 ```go
 s := standard.New(":1323")
