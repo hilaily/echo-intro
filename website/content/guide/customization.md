@@ -1,14 +1,14 @@
 ---
-title: Customization
+title: 自定义
 menu:
   side:
     parent: guide
     weight: 3
 ---
 
-## Customization
+## 自定义
 
-### HTTP Error Handler
+### HTTP 错误处理
 
 `Echo#SetHTTPErrorHandler(h HTTPErrorHandler)` registers a custom `Echo#HTTPErrorHandler`.
 

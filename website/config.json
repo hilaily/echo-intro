@@ -39,6 +39,6 @@
 
   "params": {
     "description": "Golang微型框架, 高性能, 简单高性能, echo, Golang micro web framework, High performance, Minimalistic and Fast.",
-    //"googleAnayticsId": "UA-51208124-3"
+    "googleAnayticsId": ""
   }
 }

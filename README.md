@@ -1,12 +1,12 @@
-# EchoX
+## Echo-intro
+本页面主要用于Golang Echo 框架官方首页的汉化
+作为中文版的Echo的使用介绍
 
-Echo Extra
+## 使用
+网页使用hugo运行，如果没有安装hugo，请前去安装[hugo](https://gohugo.io/)
 
-### Running Recipes
+## 声明
+网页主要由Echo官方仓库的Echox中的内容翻译而来
 
-- Go into any recipe folder and run `go run server.go`
-
-### Running Website Locally
-
-- If you don't have hugo, get it [`hugo`](https://gohugo.io).
-- From terminal, go to website folder and run `hugo serve`.
+## License
+MIT
