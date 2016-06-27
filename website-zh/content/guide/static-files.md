@@ -1,58 +1,54 @@
 ---
-title: Static Files
+title: 静态文件
 menu:
   side:
     parent: guide
     weight: 3
 ---
 
-Images, JavaScript, CSS, PDF, Fonts and so on...
+图片，JavaScript，CSS，PDF，字体文件等等...
 
-## Static Files
+## 静态文件
 
-### [Using Static Middleware]({{< ref "middleware/static.md">}})
+### [使用 Static 中间件]({{< ref "middleware/static.md">}})
 
-### Using `Echo#Static()`
+### 使用`Echo#Static()`
 
-`Echo#Static(prefix, root string)` registers a new route with path prefix to serve
-static files from the provided root directory.
+`Echo#Static(prefix, root string)` 用一个路径前缀注册了一个新的路由来提供静态文件的访问服务。改路径前缀作为根目录。
 
-*Usage 1*
+*用法 1*
 
 ```go
 e := echo.New()
 e.Static("/static", "assets")
 ```
 
-This will serve any file from the assets directory for path `/static/*`. For example,
-a request to `/static/js/main.js` will fetch and serve `assets/js/main.js` file.
+这样会将所有访问`/static/*`的请求去 访问`assets`目录。例如，一个访问`/static/js/main.js`的请求会匹配到`assets/js/main.js`这个文件。
 
-*Usage 2*
+*用法 2*
 
 ```go
 e := echo.New()
 e.Static("/", "assets")
 ```
 
-This will serve any file from the assets directory for path `/*`. For example,
-a request to `/js/main.js` will fetch and serve `assets/js/main.js` file.
+这样会将所有`assets`目录的文件使用`/*`去访问。例如，一个访问`/js/main.js`的请求将会匹配到`assets/js/main.js`文件。
 
-### Using `Echo#File()`
+### 使用`Echo#File()`
 
-`Echo#File(path, file string)` registers a new route with path to serve a static
-file.
+`Echo#File(path, file string)` 使用一个路径注册一个新的路由去访问某个静态文件。
 
-*Usage 1*
+*用法 1*
 
-Serving an index page from `public/index.html`
+将`public/index.html`作为主页。
 
 ```go
 e.File("/", "public/index.html")
 ```
 
-*Usage 2*
+*用法 2*
 
-Serving a favicon from `images/favicon.ico`
+给`images/favicon.ico`一个静态路径。
 
 ```go
 e.File("/favicon.ico", "images/favicon.ico")

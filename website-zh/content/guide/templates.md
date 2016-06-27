@@ -1,22 +1,20 @@
 ---
-title: Templates
+title: 模板
 menu:
   side:
     parent: guide
     weight: 3
 ---
 
-## Templates
+## 模板
 
-### Template Rendering
+### 模板渲染
 
-`Context#Render(code int, name string, data interface{}) error` renders a template
-with data and sends a text/html response with status code. Templates can be registered
-using `Echo.SetRenderer()`, allowing us to use any template engine.
+`Context#Render(code int, name string, data interface{}) error` 用于渲染一个模板，然后发送一个 text/html 的状态响应。我们可以使用任何模板引擎，只要使用`Echo.SetRenderer()`注册。
 
-Example below shows how to use Go `html/template`:
+下面是使用Go `html/template`的示例：
 
-1. Implement `echo.Render` interface
+1. 实现 `echo.Render` 接口
 
     ```go
     type Template struct {
@@ -28,7 +26,7 @@ Example below shows how to use Go `html/template`:
     }
     ```
 
-2. Pre-compile templates
+2. 预编译模板
 
     `public/views/hello.html`
 
@@ -42,7 +40,7 @@ Example below shows how to use Go `html/template`:
     }
     ```
 
-3. Register templates
+3. 注册模板
 
     ```go
     e := echo.New()
@@ -50,7 +48,7 @@ Example below shows how to use Go `html/template`:
     e.GET("/hello", Hello)
     ```
 
-4. Render a template inside your handler
+4. 在action中渲染模板
 
     ```go
     func Hello(c echo.Context) error {

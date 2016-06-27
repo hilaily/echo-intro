@@ -1,17 +1,16 @@
 ---
-title: Routing
+title: 路由
 menu:
   side:
     parent: guide
     weight: 4
 ---
 
-## Routing
+## 路由
 
-Echo's router is [fast, optimized]({{< ref "index.md#performance">}}) and
-flexible. It's based on [radix tree](http://en.wikipedia.org/wiki/Radix_tree) data
-structure which makes route lookup really fast. Router leverages [sync pool](https://golang.org/pkg/sync/#Pool)
-to reuse memory and achieve zero dynamic memory allocation with no GC overhead.
+Echo 的路由[性能非常高]({{< ref "index.md#performance">}}) 而且扩展性强。
+该路由基于 [radix tree](http://en.wikipedia.org/wiki/Radix_tree) 这个数据结构。它让路由的查询非常快。路由使用了
+ [sync pool](https://golang.org/pkg/sync/#Pool) 来重复利用内存并且几乎达到了零内存占用。
 
 Routes can be registered by specifying HTTP method, path and a matching handler.
 For example, code below registers a route for method `GET`, path `/hello` and a
