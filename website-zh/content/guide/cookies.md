@@ -8,17 +8,11 @@ title = "Cookies"
 
 ## Cookies
 
-Cookie is a small piece of data sent from a website and stored in the user's web
-browser while the user is browsing. Every time the user loads the website, the browser
-sends the cookie back to the server to notify the user's previous activity.
-Cookies were designed to be a reliable mechanism for websites to remember stateful
-information (such as items added in the shopping cart in an online store) or to
-record the user's browsing activity (including clicking particular buttons, logging
-in, or recording which pages were visited in the past). Cookies can also store
-passwords and form content a user has previously entered, such as a credit card
-number or an address.
+Cookie 是用户在访问网站时服务器发送过来存储在浏览器上的一小段数据。每次用户访问网页，浏览器都把 Cookies 发送回服务器以提醒服务器这个用户以前干过什么。
+Cookie 用来提供一个可靠的途径让服务器记住一些状态信息（比如在线商城中添加物品到购物车）或者记录用户的浏览器行为（比如点击了某个按钮，登录，哪个页面被访问过）。
+Cookie 也可以用来存储用户输入过的表单内容像电话号码，地址等等。
 
-### Cookie Attributes
+### Cookie 属性
 
 Attribute | Optional
 :--- | :---
@@ -30,7 +24,7 @@ Attribute | Optional
 `Secure` | Yes
 `HTTPOnly` | Yes
 
-### Create a Cookie
+### 创建一个 Cookie
 
 ```go
 func writeCookie(c echo.Context) error {
@@ -47,7 +41,7 @@ func writeCookie(c echo.Context) error {
 - Attributes for the cookie are set using `Setter` functions.
 - Finally `c.SetCookie(cookies)` adds a `Set-Cookie` header in HTTP response.
 
-### Read a Cookie
+### 读取 Cookie
 
 ```go
 func readCookie(c echo.Context) error {
@@ -64,7 +58,7 @@ func readCookie(c echo.Context) error {
 - Cookie is read by name using `c.Cookie("username")` from the HTTP request.
 - Cookie attributes are accessed using `Getter` function.
 
-### Read all Cookies
+### 读取所有 Cookies
 
 ```go
 func readAllCookies(c echo.Context) error {
