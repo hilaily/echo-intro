@@ -1,4 +1,5 @@
 ## Echo-intro
+[![Gitter](https://badges.gitter.im/Laily123/echo-intro.svg)](https://gitter.im/Laily123/echo-intro?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 本页面主要用于Golang Echo 框架官方首页的汉化  
 作为中文版的Echo的使用介绍
 
