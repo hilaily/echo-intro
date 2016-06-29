@@ -1,4 +1,5 @@
 .DS_Store
 website/public
 node_modules
+website-zh/hugo.exe
 
