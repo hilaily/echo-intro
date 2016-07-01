@@ -1,21 +1,20 @@
 ---
-title: Error Handling
+title: 错误处理
 menu:
   side:
     parent: guide
     weight: 8
 ---
 
-## Error Handling
+## 错误处理
 
-Echo advocates centralized HTTP error handling by returning error from middleware
-or handlers.
+Echo 支持从中间件或者action返回 HTTP 错误 集中处理。
 
-- Log errors from a unified location
-- Send customized HTTP responses
+- 在统一的地方记录日志
+- 返回自定义的 HTTP 响应
 
-For example, when basic auth middleware finds invalid credentials it returns
-`401 - Unauthorized` error, aborting the current HTTP request.
+例如 一个基本的身份验证中间件验证失败返回 
+`401 - Unauthorized` 错误, 终止了当前的 HTTP 请求。
 
 ```go
 package main
@@ -44,4 +43,4 @@ func welcome(c echo.Context) error {
 }
 ```
 
-See how [HTTPErrorHandler](/guide/customization#http-error-handler) handles it.
+查看 [HTTPErrorHandler](/guide/customization#http-error-handler) 怎样处理的。

@@ -1,22 +1,21 @@
 +++
-title = "Overview"
+title = "概述"
 [menu.side]
   name = "Overview"
   parent = "middleware"
   weight = 1
 +++
 
-## Middleware Overview
+## 中间件
 
-Middleware is a function chained in the HTTP request-response cycle with access
-to `Echo#Context` which it uses to perform a specific action, for example, logging
-every request or limiting the number of requests.
+中间件是一个函数，嵌入在HTTP 的请求和响应之间。它可以获得 `Echo#Context` 对象用来进行一些特殊的操作，
+比如记录每个请求或者统计请求数。
 
-Handler is processed in the end after all middleware are finished executing.
+Action的处理在所有的中间件运行完成之后。
 
-### Middleware Levels
+### 中间件级别
 
-#### Root Level (Before router)
+#### Root 级 (Before router)
 
 `Echo#Pre()` can be used to register a middleware which is executed before router
 processes the request. It is helpful to make any changes to the request properties,
