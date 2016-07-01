@@ -1,19 +1,18 @@
 ---
-title: Request
+title: HTTP 请求
 menu:
   side:
     parent: guide
     weight: 6
 ---
 
-## HTTP Request
+## HTTP 请求
 
-### Handler path
+### Action 路径处理
 
-`Context#Path()` returns the registered path for the handler, it can be used in the
-middleware for logging purpose.
+`Context#Path()` 返回在路由注册的Action的路径，它可以被中间件使用来得到访问的目的地址。
 
-*Example*
+*例如*
 
 ```go
 e.Use(func(c echo.Context) error {
@@ -25,12 +24,11 @@ e.GET("/users/:name", func(c echo.Context) error) {
 })
 ```
 
-### golang.org/x/net/context
+### golang.org/x/net/context 对象
 
-`echo.Context` embeds `context.Context` interface, so all it's functions
-are available right from `echo.Context`.
+`echo.Context` 内嵌了 `context.Context` 接口，所以`context.Context` 的所有方法`echo.Context`都支持。
 
-*Example*
+*例如*
 
 ```go
 e.GET("/users/:name", func(c echo.Context) error) {
@@ -42,13 +40,11 @@ e.GET("/users/:name", func(c echo.Context) error) {
 })
 ```
 
-### Path parameter
+### URL 参数
 
-Path parameter can be retrieved either by name `Context#Param(name string) string`
-or by index `Context#P(i int) string`. Getting parameter by index gives a slightly
-better performance.
+URL 参数可以用参数名 `Context#Param(name string) string` 和参数索引(序号) `Context#P(i int) string` 取得。通过参数索引的方式性能会稍微好一点。
 
-*Example*
+*例如*
 
 ```go
 e.GET("/users/:name", func(c echo.Context) error {
@@ -66,11 +62,11 @@ e.GET("/users/:name", func(c echo.Context) error {
 $ curl http://localhost:1323/users/joe
 ```
 
-### Query parameter
+### 请求参数
 
-Query parameter can be retrieved by name using `Context#QueryParam(name string)`.
+请求参数可以通过参数名获取 `Context#QueryParam(name string)`。
 
-*Example*
+*例如*
 
 ```go
 e.GET("/users", func(c echo.Context) error {
@@ -83,11 +79,11 @@ e.GET("/users", func(c echo.Context) error {
 $ curl -G -d "name=joe" http://localhost:1323/users
 ```
 
-### Form parameter
+### 表单参数
 
-Form parameter can be retrieved by name using `Context#FormValue(name string)`.
+表单参数可以使用参数名获取 `Context#FormValue(name string)`。
 
-*Example*
+*例如*
 
 ```go
 e.POST("/users", func(c echo.Context) error {
