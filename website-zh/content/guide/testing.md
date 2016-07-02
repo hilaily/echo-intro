@@ -3,7 +3,7 @@ title: 测试
 menu:
   side:
     parent: guide
-    weight: 9
+    weight: 10
 ---
 
 ## Testing

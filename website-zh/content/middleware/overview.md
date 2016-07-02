@@ -1,7 +1,7 @@
 +++
 title = "概述"
 [menu.side]
-  name = "Overview"
+  name = "概述"
   parent = "middleware"
   weight = 1
 +++
@@ -15,29 +15,24 @@ Action的处理在所有的中间件运行完成之后。
 
 ### 中间件级别
 
-#### Root 级 (Before router)
+#### Root Level (Before router)
 
-`Echo#Pre()` can be used to register a middleware which is executed before router
-processes the request. It is helpful to make any changes to the request properties,
-for example, adding or removing a trailing slash from the path so it matches the
-route.
+`Echo#Pre()` 用于注册一个在路由执行之前运行的中间件，可以用来修改请求的一些属性。比如在请求路径结尾添加或者删除一个'/'来使之能与路由匹配。
 
-The following built-in middleware should be registered at this level:
+下面的这几个内建中间件应该被注册在这一级别：
 
 - AddTrailingSlash
 - RemoveTrailingSlash
 - MethodOverride
 
-*Note*: As router has not processed the request, middleware at this level won't
-have access to any path related API from `echo.Context`.
+*注意*: 由于在这个级别路由还没有执行，所以这个级别的中间件不能调用任何 `echo.Context` 的 API。
 
 #### Root Level (After router)
 
-Most of the time you will register a middleware at this level using `Echo#Use()`.
-This middleware is executed after router processes the request and has full access
-to `echo.Context` API.
+大部分时间你将用到 `Echo#Use()` 在这个级别注册中间件。
+这个级别的中间件运行在路由处理完请求之后，可以调用所有的 `echo.Context` API。
 
-The following built-in middleware should be registered at this level:
+下面的这几个内建中间件应该被注册在这一级别：
 
 - BodyLimit
 - Logger
@@ -51,24 +46,22 @@ The following built-in middleware should be registered at this level:
 
 #### Group Level
 
-When creating a new group, you can register middleware just for that group. For
-example, you can have an admin group which is secured by registering a BasicAuth
-middleware for it.
+当在路由中创建一个组的时候，可以为这个组注册一个中间件。例如，给 admin 这个组注册一个 BasicAuth 中间件。
 
-*Usage*
+*用法*
 
 ```go
 e := echo.New()
 admin := e.Group("/admin", middleware.BasicAuth())
 ```
 
-You can also add a middleware after creating a group via `admin.Use()`.
+也可以在创建组之后用 `admin.Use()`注册该中间件。
 
 #### Route Level
 
-When defining a new route, you can optionally register middleware just for it.
+当你创建了一个新的路由，可以选择性的给这个路由注册一个中间件。
 
-*Usage*
+*用法*
 
 ```go
 e := echo.New()

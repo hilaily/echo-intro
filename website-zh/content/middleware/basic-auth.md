@@ -3,7 +3,7 @@ title = "Basic Auth"
 [menu.side]
   name = "BasicAuth"
   parent = "middleware"
-  weight = 5
+  weight = 3
 +++
 
 ## BasicAuth Middleware

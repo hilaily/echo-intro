@@ -3,7 +3,7 @@ title: 静态文件
 menu:
   side:
     parent: guide
-    weight: 3
+    weight: 4
 ---
 
 图片，JavaScript，CSS，PDF，字体文件等等...

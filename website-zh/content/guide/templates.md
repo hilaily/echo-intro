@@ -3,7 +3,7 @@ title: 模板
 menu:
   side:
     parent: guide
-    weight: 3
+    weight: 5
 ---
 
 ## 模板

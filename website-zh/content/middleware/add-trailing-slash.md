@@ -1,16 +1,16 @@
 +++
-title = "Add Trailing Slash"
+title = "添加结尾斜杠"
 [menu.side]
-  name = "AddTrailingSlash"
+  name = "AddTrailingSlash(添加结尾斜杠)"
   parent = "middleware"
-  weight = 5
+  weight = 2
 +++
 
-## AddTrailingSlash Middleware
+## AddTrailingSlash(添加结尾斜杠) 中间件
 
-AddTrailingSlash middleware adds a trailing slash to the request URI.
+AddTrailingSlash 中间件用语在请求 URI 后添加一个斜杠。
 
-### Configuration
+### 配置
 
 ```go
 TrailingSlashConfig struct {
@@ -20,16 +20,16 @@ TrailingSlashConfig struct {
 }
 ```
 
-*Usage*
+*用法*
 
 ```go
 e := echo.New()
 e.Pre(middleware.AddTrailingSlash())
 ```
 
-### Custom Configuration
+### 自定义配置
 
-*Usage*
+*用法*
 
 ```go
 e := echo.New()
@@ -38,4 +38,4 @@ e.Use(middleware.AddTrailingSlashWithConfig(TrailingSlashConfig{
 }))
 ```
 
-This will add a trailing slash to the request URI and redirect with `StatusMovedPermanently`.
+这将添加一个'/'在请求的 URI 末尾并且做 `StatusMovedPermanenty` 跳转。

@@ -3,7 +3,7 @@ title = "Cookies"
 [menu.side]
   name = "Cookies"
   parent = "guide"
-  weight = 5
+  weight = 7
 +++
 
 ## Cookies

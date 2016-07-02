@@ -3,7 +3,7 @@ title: 路由
 menu:
   side:
     parent: guide
-    weight: 4
+    weight: 6
 ---
 
 ## 路由
