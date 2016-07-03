@@ -1,18 +1,17 @@
 +++
-title = "CORS"
+title = "CORS(访问控制)"
 [menu.side]
-  name = "CORS"
+  name = "CORS(访问控制)"
   parent = "middleware"
   weight = 5
 +++
 
-## CORS Middleware
+## CORS(访问控制) 中间件
 
-CORS middleware implements [CORS](http://www.w3.org/TR/cors) specification.
-CORS gives web servers cross-domain access controls, which enable secure cross-domain
-data transfers.
+CORS 中间件实现了 [CORS](http://www.w3.org/TR/cors) 的规格
+CORS 提供给 web 服务器跨站的访问控制，使得跨站的数据传输更安全。
 
-### Configuration
+### 配置
 
 ```go
 CORSConfig struct {

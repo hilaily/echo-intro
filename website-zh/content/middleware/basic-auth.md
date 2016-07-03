@@ -1,20 +1,20 @@
 +++
 title = "Basic Auth"
 [menu.side]
-  name = "BasicAuth"
+  name = "BasicAuth(基本认证)"
   parent = "middleware"
   weight = 3
 +++
 
-## BasicAuth Middleware
+## BasicAuti(基本认证) 中间件
 
-BasicAuth middleware provides an HTTP basic authentication.
+BasicAuth 中间件提供了 HTTP 的基本认证方式。
 
-- For valid credentials it calls the next handler.
-- For invalid credentials, it sends "401 - Unauthorized" response.
-- For empty or invalid `Authorization` header, it sends "400 - Bad Request" response.
+- 对于有效的请求则继续执行后面的处理。
+- 对于无效的请求，返回"401 - Unauthorized"响应。
+- 对于请求头中"Authorization"无效或者为空的，返回"400 - Bad Request" 响应。
 
-*Usage*
+*用法*
 
 ```go
 e := echo.New()

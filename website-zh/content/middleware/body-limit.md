@@ -1,22 +1,19 @@
 +++
 title = "Body Limit"
 [menu.side]
-  name = "BodyLimit"
+  name = "BodyLimit(请求体限制)"
   parent = "middleware"
-  weight = 5
+  weight = 4
 +++
 
-## BodyLimit Middleware
+## BodyLimit(请求体限制) 中间件
 
-BodyLimit middleware sets the maximum allowed size for a request body, if the
-size exceeds the configured limit, it sends "413 - Request Entity Too Large"
-response. The body limit is determined based on both `Content-Length` request
-header and actual content read, which makes it super secure.
+BodyLimit 中间件用于设置允许的请求体的最大长度，如果请求的大小超过了该值，则返回"413 － Request Entity Too Large"响应。
+这个限制的判断取决于请求头的`Content-Length`和实际读取到的请求体内容两方面，是非常安全的。
 
-Limit can be specified as `4x` or `4xB`, where x is one of the multiple from K, M,
-G, T or P.
+限制可以指定`4x`或者`4xB`，x是"K, M, G, T, P"中的一个。
 
-*Usage*
+*用法*
 
 ```go
 e := echo.New()
