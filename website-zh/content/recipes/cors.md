@@ -7,15 +7,15 @@ menu:
     weight: 3
 ---
 
-## CORS Recipe
+## CORS 示例
 
-### Server
+### 服务端
 
 `server.go`
 
 {{< embed "cors/server.go" >}}
 
-### Maintainers
+### 中间件
 
 - [vishr](https://github.com/vishr)
 

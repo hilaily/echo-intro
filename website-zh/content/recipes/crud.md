@@ -6,19 +6,19 @@ menu:
     weight: 2
 ---
 
-## CRUD Recipe
+## CRUD 示例
 
-### Server
+### 服务端
 
 `server.go`
 
 {{< embed "crud/server.go" >}}
 
-### Client
+### 客户端
 
 `curl`
 
-#### Create User
+#### 创建 User
 
 ```sh
 curl -X POST \
@@ -36,7 +36,7 @@ curl -X POST \
 }
 ```
 
-#### Get User
+#### 获取 User
 
 ```sh
 curl localhost:1323/users/1
@@ -51,7 +51,7 @@ curl localhost:1323/users/1
 }
 ```
 
-#### Update User
+#### 更新 User
 
 ```sh
 curl -X PUT \
@@ -69,7 +69,7 @@ curl -X PUT \
 }
 ```
 
-#### Delete User
+#### 删除 User
 
 ```sh
 curl -X DELETE localhost:1323/users/1
@@ -79,7 +79,7 @@ curl -X DELETE localhost:1323/users/1
 
 `NoContent - 204`
 
-### Maintainers
+### 维护者
 
 - [vishr](https://github.com/vishr)
 

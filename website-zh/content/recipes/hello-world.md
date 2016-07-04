@@ -6,16 +6,16 @@ menu:
     weight: 1
 ---
 
-## Hello World Recipe
+## Hello World 示例
 
-### Server
+### 服务器
 
 `server.go`
 
 {{< embed "hello-world/server.go" >}}
 
-### Maintainers
+### 维护者
 
 - [vishr](https://github.com/vishr)
 
-### [Source Code]({{< source "hello-world" >}})
+### [源码]({{< source "hello-world" >}})
