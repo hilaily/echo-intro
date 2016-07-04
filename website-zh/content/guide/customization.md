@@ -1,11 +1,11 @@
-+++
-title = "自定义"
+---
+title : 自定义
 menu:
   side:
     name: 自定义
     parent: guide
     weight: 3
-+++
+---
 
 ## 自定义
 
