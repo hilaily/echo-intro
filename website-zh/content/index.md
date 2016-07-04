@@ -6,18 +6,18 @@ title: Index
 
 ## 功能概览
 
-- 优化的 HTTP 路由
-- Build robust and scalable RESTful APIs.
-- Run with standard HTTP server or FastHTTP server.
-- Group APIs.
-- Extensible middleware framework.
+- 优化的 HTTP 路由。
+- 创建可靠并可伸缩的RESTful API。
+- 行于标准的HTTP服务器或FastHTTP服务器。
+- 组 APIs.
+- 可扩展的middleware框架。
 - Define middleware at root, group or route level.
-- Data binding for JSON, XML and form payload.
-- Handy functions to send variety of HTTP responses.
-- Centralized HTTP error handling.
+- 为JSON, XML进行数据绑定，产生负荷。
+- 提供便捷的方法来发送各种HTTP相应。
+- 对HTTP错误进行集中处理。
 - Template rendering with any template engine.
-- Define your format for the logger.
-- Highly customizable.
+- 定义属于你的日志格式。
+- 高度个性化。
 
 ## 性能
 
@@ -161,8 +161,8 @@ func save(c echo.Context) error {
 
 ### 处理请求
 
-- Bind `JSON` or `XML` or `form` payload into Go struct based on `Content-Type` request header.
-- Render response as `JSON` or `XML` with status code.
+- Bind `JSON` or `XML` or `form` payload into Go struct based on `Content-Type` request header.（基于 `Content-Type` 将 `JSON` 或 `XML` 或 `form` 负载到struct中）
+- Render response as `JSON` or `XML` with status code.（利用 `JSON` 或 `XML` 将响应状态用静态代码呈现）
 
 ```go
 type User struct {
@@ -225,45 +225,44 @@ e.GET("/users", func(c echo.Context) error {
 
 中间件| 描述
 :--- | :---
-[BodyLimit]({{< ref "middleware/body-limit.md">}}) | Limit request body
-[Logger]({{< ref "middleware/logger.md">}}) | Log HTTP requests
+[BodyLimit]({{< ref "middleware/body-limit.md">}}) | Limit request body（限制请求体）
+[Logger]({{< ref "middleware/logger.md">}}) | HTTP请求日志
 [Recover]({{< ref "middleware/recover.md">}}) | Recover from panics
-[Gzip]({{< ref "middleware/gzip.md">}}) | Send gzip HTTP response
-[BasicAuth]({{< ref "middleware/basic-auth.md">}}) | HTTP basic authentication
-[JWTAuth]({{< ref "middleware/jwt.md">}}) | JWT authentication
-[Secure]({{< ref "middleware/secure.md">}}) | Protection against attacks
-[CORS]({{< ref "middleware/cors.md">}}) | Cross-Origin Resource Sharing
+[Gzip]({{< ref "middleware/gzip.md">}}) | Send gzip HTTP response（发送gzip HTTP 响应）
+[BasicAuth]({{< ref "middleware/basic-auth.md">}}) | HTTP基本身份认证
+[JWTAuth]({{< ref "middleware/jwt.md">}}) | JWT身份认证
+[Secure]({{< ref "middleware/secure.md">}}) | 防止攻击
+[CORS]({{< ref "middleware/cors.md">}}) | Cross-Origin Resource Sharing（跨源资源共享）
 [CSRF]({{< ref "middleware/csrf.md">}}) | Cross-Site Request Forgery
-[Static]({{< ref "middleware/static.md">}}) | Serve static files
+[Static]({{< ref "middleware/static.md">}}) | 提供静态文件
 [AddTrailingSlash]({{< ref "middleware/add-trailing-slash.md">}}) | Add trailing slash to the request URI
 [RemoveTrailingSlash]({{< ref "middleware/remove-trailing-slash.md">}}) | Remove trailing slash from the request URI
-[MethodOverride]({{< ref "middleware/method-override.md">}}) | Override request method
-
+[MethodOverride]({{< ref "middleware/method-override.md">}}) | 覆盖请求方法
 #### 第三方中间件
 
 中间件 | 描述
 :--- | :---
-[echoperm](https://github.com/xyproto/echoperm) | Keeping track of users, login states and permissions.
+[echoperm](https://github.com/xyproto/echoperm) | Keeping track of users, login states and permissions.（对用户、登陆状态与权限进行追踪。）
 [echopprof](https://github.com/mtojek/echopprof) | Adapt net/http/pprof to labstack/echo.
 
-##### [更多...](https://echo.labstack.com/guide/middleware)
+##### [学习更多...](https://echo.labstack.com/guide/middleware)
 
 ### 接下来
 
-- Head over to [guide](https://echo.labstack.com/guide/installation)
-- Browse [recipes](https://echo.labstack.com/recipes/hello-world)
+- 回到 [guide](https://echo.labstack.com/guide/installation)
+- 浏览 [recipes](https://echo.labstack.com/recipes/hello-world)
 
 ### 帮助
 
-- [Hop on to chat](https://gitter.im/labstack/echo)
-- [Open an issue](https://github.com/labstack/echo/issues/new)
+- [在线询问](https://gitter.im/labstack/echo)
+- [Open an issue（网页失效）](https://github.com/labstack/echo/issues/new)
 
 ## 支持我们
 
-- ☆ the project
-- [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JD5R56K84A8G4&lc=US&item_name=LabStack&item_number=echo&currency_code=USD&bn=PP-DonationsBF:btn_donate_LG.gif:NonHosted)
+- ☆ 点赞
+- [打赏](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JD5R56K84A8G4&lc=US&item_name=LabStack&item_number=echo&currency_code=USD&bn=PP-DonationsBF:btn_donate_LG.gif:NonHosted)
 - 🌐 spread the word
-- [Contribute](#contribute:d680e8a854a7cbad6d490c445cba2eba) to the project
+- [改进](#contribute:d680e8a854a7cbad6d490c445cba2eba) 这个程序
 
 ## 贡献
 

@@ -7,9 +7,9 @@ title = "安装"
 
 ## 安装
 
-Echo 在Go`1.5.x`和`1.6.x`环境下开发和测试
+Echo 在Go `1.5.x` 和 `1.6.x` 环境下开发和测试
 
-### 使用`go get`安装最新稳定版 Echo
+### 使用 `go get` 安装最新稳定版 Echo
 
 ```sh
 $ go get github.com/labstack/echo/...

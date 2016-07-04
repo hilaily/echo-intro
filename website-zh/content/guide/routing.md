@@ -12,9 +12,7 @@ Echo 的路由[性能非常高]({{< ref "index.md#performance">}}) 而且扩展�
 该路由基于 [radix tree](http://en.wikipedia.org/wiki/Radix_tree) 这个数据结构。它让路由的查询非常快。路由使用了
  [sync pool](https://golang.org/pkg/sync/#Pool) 来重复利用内存并且几乎达到了零内存占用。
 
-Routes can be registered by specifying HTTP method, path and a matching handler.
-For example, code below registers a route for method `GET`, path `/hello` and a
-handler which sends `Hello, World!` HTTP response.
+路由线路可以通过制定的HTTP方法，路径和一个匹配的handler来注册。例如，下面的代码则展示了一个路由线路的注册的例子（方法为 `GET` ，路径为 `/hello` handler能够发送 `Hello, World!` HTTP 响应的）。
 
 ```go
 // Handler
@@ -26,16 +24,14 @@ func hello(c echo.Context) error {
 e.GET("/hello", hello)
 ```
 
-You can use `Echo.Any(path string, h Handler)` to register a handler for all HTTP methods.
-If you want to register it for some methods use `Echo.Match(methods []string, path string, h Handler)`.
+你可以用 `Echo.Any(path string, h Handler)` 来为所有的HTTP方法发送注册handler；如果只想为某些方法注册的话则需要用 `Echo.Match(methods []string, path string, h Handler)`。
 
-Echo defines handler function as `func(echo.Context) error` where `echo.Context` primarily
-holds HTTP request and response interfaces.
+Echo 通过 `func(echo.Context) error` 定义handler方法， `echo.Context` 主要
+holds HTTP 请求和响应接口.（holds怎么翻译？？？？？）
 
-### Match-any
+### Match-any（任意匹配）
 
-Matches zero or more characters in the path. For example, pattern `/users/*` will
-match:
+匹配零个或多个字符的路径。例如， `/users/*` 将会匹配:
 
 - `/users/`
 - `/users/1`

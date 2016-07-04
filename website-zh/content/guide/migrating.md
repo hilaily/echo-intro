@@ -15,7 +15,7 @@ menu:
 us to use HTTP servers beyond Go standard library. It currently supports standard and [fasthttp](https://github.com/valyala/fasthttp) server.
 - Context, Request 和 Response 转换成了 interface [详细...](https://github.com/labstack/echo/issues/146)
 
-- Handler signature is changed to `func (c echo.Context) error`.
+- Handler signature is changed to `func (c echo.Context) error`.（处理程序签名改为了 `func (c echo.Context) error`）
 - Dropped auto wrapping of handler and middleware to enforce compile time check.
 - APIs to run middleware before or after the router, which doesn't require `Echo#Hook` API now.
 - Ability to define middleware at route level.
@@ -29,11 +29,11 @@ v1 | v2
 `Context#Query()` | `Context#QueryParam()`
 `Context#Form()`  | `Context#FormValue()`
 
-### FAQ
+### FAQ（常见问题）
 
-Q. How to access original objects from interfaces?
+Q. How to access original objects from interfaces?（如何通过接口访问原始对象）
 
-A. Only if you need to...
+A. Only if you need to...（如果你需要的话……）
 
 ```go
 // `*http.Request`
@@ -52,9 +52,9 @@ c.Response().(*standard.Response).ResponseWriter
 c.Response().Header().(*standard.Header).Header
 ```
 
-Q. How to use standard handler and middleware?
+Q. 如何使用标准的handler和middleware
 
-A.
+A.如下所示
 
 ```go
 package main
@@ -87,7 +87,7 @@ func main() {
 }
 ```
 
-### Next?
+### 继续?
 
-- Browse through [recipes](/recipes/hello-world) freshly converted to v2.
-- Read documentation and dig into test cases.
+- Browse through [recipes](/recipes/hello-world) freshly converted to v2.（浏览[recipes](/recipes/hello-world)）
+- 阅读文档，深入理解测试实例。
