@@ -81,7 +81,7 @@ e.DELETE("/users/:id", deleteUser)
 
 ```go
 func getUser(c echo.Context) error {
-	// User ID from path `users/:id`
+	// User ID 来自于url `users/:id`
 	id := c.Param("id")
 }
 ```
@@ -92,7 +92,7 @@ func getUser(c echo.Context) error {
 
 ```go
 func show(c echo.Context) error {
-	// Get team and member from the query string
+	// 从请求参数里获取 team 和 member 的值
 	team := c.QueryParam("team")
 	member := c.QueryParam("member")
 }
@@ -109,7 +109,7 @@ email | joe@labstack.com
 
 ```go
 func save(c echo.Context) error {
-	// Get name and email
+	// 获取 name 和 email 的值
 	name := c.FormValue("name")
 	email := c.FormValue("email")
 }
@@ -161,8 +161,8 @@ func save(c echo.Context) error {
 
 ### 处理请求
 
-- Bind `JSON` or `XML` or `form` payload into Go struct based on `Content-Type` request header.（基于 `Content-Type` 将 `JSON` 或 `XML` 或 `form` 负载到struct中）
-- Render response as `JSON` or `XML` with status code.（利用 `JSON` 或 `XML` 将响应状态用静态代码呈现）
+- 在数据结构体里设置`JSON` 或 `XML` 或 `form` 直接匹配请求头的 `Content-Type`。 
+- 结合响应状态将响应渲染为`JSON` 或者 `XML`。
 
 ```go
 type User struct {
@@ -176,7 +176,7 @@ e.POST("/users", func(c echo.Context) error {
 		return err
 	}
 	return c.JSON(http.StatusCreated, u)
-	// or
+	// 或者
 	// return c.XML(http.StatusCreated, u)
 })
 ```
@@ -225,15 +225,15 @@ e.GET("/users", func(c echo.Context) error {
 
 中间件| 描述
 :--- | :---
-[BodyLimit]({{< ref "middleware/body-limit.md">}}) | Limit request body（限制请求体）
+[BodyLimit]({{< ref "middleware/body-limit.md">}}) | 限制请求体
 [Logger]({{< ref "middleware/logger.md">}}) | HTTP请求日志
 [Recover]({{< ref "middleware/recover.md">}}) | Recover from panics
-[Gzip]({{< ref "middleware/gzip.md">}}) | Send gzip HTTP response（发送gzip HTTP 响应）
+[Gzip]({{< ref "middleware/gzip.md">}}) | 发送gzip压缩的 HTTP 响应
 [BasicAuth]({{< ref "middleware/basic-auth.md">}}) | HTTP基本身份认证
 [JWTAuth]({{< ref "middleware/jwt.md">}}) | JWT身份认证
 [Secure]({{< ref "middleware/secure.md">}}) | 防止攻击
-[CORS]({{< ref "middleware/cors.md">}}) | Cross-Origin Resource Sharing（跨源资源共享）
-[CSRF]({{< ref "middleware/csrf.md">}}) | Cross-Site Request Forgery
+[CORS]({{< ref "middleware/cors.md">}}) | 跨源资源共享
+[CSRF]({{< ref "middleware/csrf.md">}}) | 跨站请求伪造
 [Static]({{< ref "middleware/static.md">}}) | 提供静态文件
 [AddTrailingSlash]({{< ref "middleware/add-trailing-slash.md">}}) | Add trailing slash to the request URI
 [RemoveTrailingSlash]({{< ref "middleware/remove-trailing-slash.md">}}) | Remove trailing slash from the request URI
@@ -242,7 +242,7 @@ e.GET("/users", func(c echo.Context) error {
 
 中间件 | 描述
 :--- | :---
-[echoperm](https://github.com/xyproto/echoperm) | Keeping track of users, login states and permissions.（对用户、登陆状态与权限进行追踪。）
+[echoperm](https://github.com/xyproto/echoperm) | 对用户、登陆状态与权限进行追踪。
 [echopprof](https://github.com/mtojek/echopprof) | Adapt net/http/pprof to labstack/echo.
 
 ##### [学习更多...](https://echo.labstack.com/guide/middleware)
@@ -255,7 +255,7 @@ e.GET("/users", func(c echo.Context) error {
 ### 帮助
 
 - [在线询问](https://gitter.im/labstack/echo)
-- [Open an issue（网页失效）](https://github.com/labstack/echo/issues/new)
+- [新建一个issue](https://github.com/labstack/echo/issues/new)
 
 ## 支持我们
 
