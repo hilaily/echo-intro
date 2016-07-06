@@ -1,4 +1,5 @@
 {
+  "staticdir": "static",
   "baseurl": "https://echo.labstack.com",
   "languageCode": "en-us",
   "title": "Fast and unfancy HTTP server framework for Go (Golang) - LabStack Echo",
@@ -38,7 +39,7 @@
   },
 
   "params": {
-    "description": "Golang微型框架, 高性能, 简单高性能, echo, Golang micro web framework, High performance, Minimalistic and Fast.",
+    "description": "golang, go, echo, echo 框架, Golang框架, 高性能, 简单高性能.",
     "googleAnayticsId": ""
   }
 }
