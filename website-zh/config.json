@@ -1,7 +1,7 @@
 {
   "staticdir": "static",
-  "baseurl": "https://echo.labstack.com",
-  "languageCode": "en-us",
+  "baseurl": "http://echo.laily.net",
+  "languageCode": "zh-cn",
   "title": "Go/Golang 框架 Echo 文档",
   "canonifyurls": true,
   "permalinks": {
