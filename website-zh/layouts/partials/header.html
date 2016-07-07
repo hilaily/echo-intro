@@ -1,11 +1,30 @@
+<style>
+.new-nav{
+    margin-left: 220px;
+    height:50px;
+}
+.new-nav a{
+    font-size: 19px;
+    color: white;
+    font-weight: bold;
+    line-height: 50px;
+    margin-right: 30px;
+}
+</style>
 <section class="hero hero-echo">
   <div class="hero-head">
     <header class="nav">
       <div class="container">
-        <div class="nav-left">
-          <a class="nav-item title" href="{{ .Site.BaseURL }}">
+        <div class="nav-left head-logo">
+          <a class="nav-item " href="{{ .Site.BaseURL }}">
             <img src="/images/echo.svg" alt="Echo">
           </a>
+          <div class="new-nav">
+            <a href="/">中文文档</a>
+            <a target="_blank" href="https://echo.labstack.com">英文文档</a>
+            <a target="_blank" href="https://github.com/labstack/echo">源码</a>
+            <a target="_blank" href="https://github.com/eurie-inc/echo-sample">示例</a>
+          </div>  
         </div>
         <div class="nav-right nav-menu">
             <!--<div class="nav-item">
