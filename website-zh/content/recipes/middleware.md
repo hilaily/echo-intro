@@ -7,20 +7,20 @@ menu:
     weight: 3
 ---
 
-## Middleware Recipe
+## 中间件示例
 
-### How to write a custom middleware?
+### 如何写一个自定义中间件？
 
-- Middleware to collect request count, statuses and uptime.
-- Middleware to write custom `Server` header to the response.
+- 使用中间件收集请求数、状态和正常运行时间。
+- 使用中间件来写自定义服务器响应头。
 
-#### Server
+#### 服务端
 
 `server.go`
 
 {{< embed "middleware/server.go" >}}
 
-#### Response
+#### 响应
 
 *Headers*
 ```sh
@@ -43,7 +43,7 @@ Server:Echo/2.0
 }
 ```
 
-### Maintainers
+### 维护者
 
 - [vishr](https://github.com/vishr)
 
