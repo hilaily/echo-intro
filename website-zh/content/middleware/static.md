@@ -6,34 +6,34 @@ title = "Static"
   weight = 5
 +++
 
-## Static Middleware
+## Static 中间件
 
-Static middleware can be used to serve static files from the provided root directory.
+Static 中间件用于从给定的根目录提供静态资源服务。
 
-### Configuration
+### 配置
 
 ```go
 StaticConfig struct {
-  // Root directory from where the static content is served.
-  // Required.
+  // Root 目录是静态资源所在的目录。
+  // 必须配置。
   Root string `json:"root"`
 
   // Index file for serving a directory.
-  // Optional. Default value "index.html".
+  // 目录的默认索引文件(index file)
+  // 可选。默认为 "index.html"。
   Index string `json:"index"`
 
-  // Enable HTML5 mode by forwarding all not-found requests to root so that
-  // SPA (single-page application) can handle the routing.
-  // Optional. Default value false.
+  // 开启 HTML5 模式，所有无法匹配的请求都重定向到root目录使单页面应用可以处理该请求。
+  // 可选。默认为 "false"。
   HTML5 bool `json:"html5"`
 
-  // Enable directory browsing.
-  // Optional. Default value false.
+  // 允许浏览目录。
+  // 可选。默认为 false。
   Browse bool `json:"browse"`
 }
 ```
 
-### Default Configuration
+### 默认配置
 
 ```go
 DefaultStaticConfig = StaticConfig{
@@ -41,19 +41,18 @@ DefaultStaticConfig = StaticConfig{
 }
 ```
 
-*Usage*
+*用法*
 
 ```go
 e := echo.New()
 e.Use(middleware.Static("/static"))
 ```
 
-This serves static files from `static` directory. For example, a request to `/js/main.js`
-will fetch and serve `static/js/main.js` file.
+这里将`static`作为静态资源目录。例如，一个访问`/js/main.js`的请求将匹配到`static/js/main.js`文件。
 
-### Custom Configuration
+### 自定义配置
 
-*Usage*
+*用法*
 
 ```go
 e := echo.New()
@@ -63,4 +62,4 @@ e.Use(middleware.StaticWithConfig(middleware.StaticConfig{
 }))
 ```
 
-This serves static files from `static` directory and enables directory browsing.
+这里从`static`目录提供静态资源访问。并且允许浏览该目录。
