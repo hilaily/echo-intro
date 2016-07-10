@@ -1,6 +1,6 @@
 {
   "staticdir": "static",
-  "baseurl": "http://echo.laily.net",
+  "baseurl": "http://go-echo.org",
   "languageCode": "zh-cn",
   "title": "Go/Golang 框架 Echo 文档",
   "canonifyurls": true,
@@ -40,6 +40,5 @@
 
   "params": {
     "description": "golang, go, echo, echo 框架, Golang框架, 使用, 教程, 文档,  指南, 高性能, 简单高性能.",
-    "googleAnayticsId": ""
   }
 }
