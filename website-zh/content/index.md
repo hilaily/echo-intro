@@ -189,9 +189,9 @@ e.POST("/users", func(c echo.Context) error {
 e.Static("/static", "static")
 ```
 
-##### [更多...](https://echo.labstack.com/guide/static-files)
+##### [更多...](http://go-echo.org/guide/static-files)
 
-### [模板渲染](https://echo.labstack.com/guide/templates)
+### [模板渲染](http://go-echo.org/guide/templates)
 
 ### 中间件
 
@@ -245,12 +245,12 @@ e.GET("/users", func(c echo.Context) error {
 [echoperm](https://github.com/xyproto/echoperm) | 对用户、登陆状态与权限进行追踪。
 [echopprof](https://github.com/mtojek/echopprof) | Adapt net/http/pprof to labstack/echo.
 
-##### [学习更多...](https://echo.labstack.com/guide/middleware)
+##### [学习更多...](http://go-echo.org/guide/middleware)
 
 ### 接下来
 
-- 回到 [guide](https://echo.labstack.com/guide/installation)
-- 浏览 [recipes](https://echo.labstack.com/recipes/hello-world)
+- 回到 [guide](http://go-echo.org/guide/installation)
+- 浏览 [recipes](http://go-echo.org/recipes/hello-world)
 
 ### 帮助
 
