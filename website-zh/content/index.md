@@ -191,7 +191,7 @@ e.Static("/static", "static")
 
 ##### [更多...](http://go-echo.org/guide/static-files)
 
-### [模板渲染](http:/go-echo.org/guide/templates)
+### [模板渲染](http://go-echo.org/guide/templates)
 
 ### 中间件
 
