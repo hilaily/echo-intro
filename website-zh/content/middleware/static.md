@@ -1,7 +1,7 @@
 +++
-title = "Static"
+title = "Static(静态资源)"
 [menu.side]
-  name = "Static"
+  name = "Static(静态资源)"
   parent = "middleware"
   weight = 5
 +++
