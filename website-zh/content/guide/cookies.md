@@ -37,9 +37,9 @@ func writeCookie(c echo.Context) error {
 }
 ```
 
-- Cookie is created using `new(echo.Cookie)`.
-- Attributes for the cookie are set using `Setter` functions.
-- Finally `c.SetCookie(cookies)` adds a `Set-Cookie` header in HTTP response.
+- 使用 `new(echo.Cookie)` 创建Cookie。
+- 使用 `Setter` 方法设置 cookie 的属性。
+- 最后，使用 `c.SetCookie(cookies)` 来给响应添加 `Set-Cookie` 头。
 
 ### 读取 Cookie
 
