@@ -16,7 +16,7 @@ menu:
 
 ```go
 e.Use(func(c echo.Context) error {
-    println(c.Path()) // Prints `/users/:name`
+    println(c.Path()) // 输出 `/users/:name`
     return nil
 })
 e.GET("/users/:name", func(c echo.Context) error) {
@@ -33,8 +33,8 @@ e.GET("/users/:name", func(c echo.Context) error) {
 ```go
 e.GET("/users/:name", func(c echo.Context) error) {
     c.SetNetContext(context.WithValue(nil, "key", "val"))
-    // Pass it down...
-    // Use it...
+    // 向后传递...
+    // 使用它...
     val := c.Value("key").(string)
     return c.String(http.StatusOK, name)
 })
@@ -48,10 +48,10 @@ URL 参数可以用参数名 `Context#Param(name string) string` 和参数索引
 
 ```go
 e.GET("/users/:name", func(c echo.Context) error {
-	// By name
+	// 通过名称
 	name := c.Param("name")
 
-	// By index
+	// 通过索引值
 	name := c.P(0)
 
 	return c.String(http.StatusOK, name)
