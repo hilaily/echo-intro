@@ -14,7 +14,7 @@ Cookie 也可以用来存储用户输入过的表单内容像电话号码，地�
 
 ### Cookie 属性
 
-Attribute | Optional
+属性 | 可选
 :--- | :---
 `Name` | No
 `Value` | No
@@ -37,9 +37,9 @@ func writeCookie(c echo.Context) error {
 }
 ```
 
-- Cookie is created using `new(echo.Cookie)`.
-- Attributes for the cookie are set using `Setter` functions.
-- Finally `c.SetCookie(cookies)` adds a `Set-Cookie` header in HTTP response.
+- 使用 `new(echo.Cookie)` 创建Cookie。
+- 使用 `Setter` 方法设置 cookie 的属性。
+- 最后，使用 `c.SetCookie(cookies)` 来给响应添加 `Set-Cookie` 头。
 
 ### 读取 Cookie
 
@@ -55,8 +55,8 @@ func readCookie(c echo.Context) error {
 }
 ```
 
-- Cookie is read by name using `c.Cookie("username")` from the HTTP request.
-- Cookie attributes are accessed using `Getter` function.
+- Cookie 通过名称从 HTTP 请求里读取 `c.Cookie("name")`。
+- Cookie 的属性使用`Getter` 方法获取。
 
 ### 读取所有 Cookies
 

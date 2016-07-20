@@ -28,10 +28,9 @@ import (
 func main() {
 	e := echo.New()
 	e.Use(func(c echo.Context) error {
-		// Extract the credentials from HTTP request header and perform a security
-		// check
+		// 从 HTTP 请求中取出 credentials(一般为cookie)然后验证
 
-		// For invalid credentials
+		// 验证失败
 		return echo.NewHTTPError(http.StatusUnauthorized)
 	})
 	e.GET("/welcome", welcome)

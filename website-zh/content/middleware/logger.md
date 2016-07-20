@@ -1,20 +1,20 @@
 +++
-title = "Logger"
+title = "Logger(日志)"
 [menu.side]
-  name = "Logger"
+  name = "Logger(日志)"
   parent = "middleware"
   weight = 5
 +++
 
-## Logger Middleware
+## Logger(日志) 中间件
 
-Logger middleware logs the information about each HTTP request.
+Logger 中间件记录了每一个请求的信息。
 
-### Configuration
+### 配置
 
 ```go
 LoggerConfig struct {
-  // Log format which can be constructed using the following tags:
+  // 日志的格式可以使用下面的标签定义。:
   //
   // - time_rfc3339
   // - id (Request ID - Not implemented)
@@ -31,18 +31,18 @@ LoggerConfig struct {
   // - rx_bytes (Bytes received)
   // - tx_bytes (Bytes sent)
   //
-  // Example "${remote_ip} ${status}"
+  // 例如 "${remote_ip} ${status}"
   //
-  // Optional. Default value DefaultLoggerConfig.Format.
+  // 可选。默认值是 DefaultLoggerConfig.Format.
   Format string
 
-  // Output is a writer where logs are written.
-  // Optional. Default value os.Stdout.
+  // Output 是记录日志的位置。
+  // 可选。默认值是 os.Stdout.
   Output io.Writer
 }
 ```
 
-### Default Configuration
+### 默认配置
 
 ```go
 DefaultLoggerConfig = LoggerConfig{
@@ -55,19 +55,19 @@ DefaultLoggerConfig = LoggerConfig{
 }
 ```
 
-*Usage*
+*用法*
 
 `e.Use(middleware.Logger())`
 
-*Sample Output*
+*输出样例*
 
 ```js
 {"time":"2016-05-10T07:02:25-07:00","remote_ip":"::1","method":"GET","uri":"/","status":200, "latency":55653,"latency_human":"55.653µs","rx_bytes":0,"tx_bytes":13}
 ```
 
-### Custom Configuration
+### 自定义配置
 
-*Usage*
+*用法*
 
 ```go
 e := echo.New()
@@ -76,9 +76,7 @@ e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
 }))
 ```
 
-Example above uses a `Format` which logs request method and request URI.
-
-*Sample Output*
+*输出样例*
 
 ```sh
 method=GET, uri=/hello, status=200

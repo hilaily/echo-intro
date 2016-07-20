@@ -1,35 +1,35 @@
 +++
-title = "Remove Trailing Slash"
+title = "Remove Trailing Slash(移除结尾斜杠)"
 [menu.side]
-  name = "RemoveTrailingSlash"
+  name = "RemoveTrailingSlash(移除结尾斜杠)"
   parent = "middleware"
   weight = 5
 +++
 
-## RemoveTrailingSlash Middleware
+## RemoveTrailingSlash(移除结尾斜杠) 中间件
 
-RemoveTrailingSlash middleware removes a trailing slash from the request URI.
+RemoveTrailingSlash 中间件 会从请求 URI 里移除到最后的斜杠。
 
-### Configuration
+### 配置
 
 ```go
 TrailingSlashConfig struct {
-  // Status code to be used when redirecting the request.
-  // Optional, but when provided the request is redirected using this code.
+  // 当重定向一个请求的时候会用到状态码
+  // 可选，但是当提供的请求需要跳转则要使用到。
   RedirectCode int
 }
 ```
 
-*Usage*
+*用法*
 
 ```go
 e := echo.New()
 e.Pre(middleware.RemoveTrailingSlash())
 ```
 
-### Custom Configuration
+### 自定义配置
 
-*Usage*
+*用法*
 
 ```go
 e := echo.New()
@@ -38,4 +38,5 @@ e.Use(middleware.RemoveTrailingSlashWithConfig(TrailingSlashConfig{
 }))
 ```
 
-This will remove a trailing slash from the request URI and redirect with `StatusMovedPermanently`.
+这样会移除掉最后的斜杠，同时带上`StatusMovedPermanently`(即301)重定向。
+

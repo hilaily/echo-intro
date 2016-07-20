@@ -75,12 +75,12 @@ Echo 内部实现了这两个引擎的接口，可以根据需要无缝的切换
 
 ```go
 Config struct {
-  Address      string        // TCP address to listen on.
-  Listener     net.Listener  // Custom `net.Listener`. If set, server accepts connections on it.
-  TLSCertFile  string        // TLS certificate file path.
-  TLSKeyFile   string        // TLS key file path.
-  ReadTimeout  time.Duration // Maximum duration before timing out read of the request.
-  WriteTimeout time.Duration // Maximum duration before timing out write of the response.
+  Address      string        // 监听的 TCP 地址。
+  Listener     net.Listener  // 自定义 `net.Listener`. 如果设置了，服务器通过它接受连接。
+  TLSCertFile  string        // TLS 证书文件地址。
+  TLSKeyFile   string        // TLS key 文件地址。
+  ReadTimeout  time.Duration // 读取请求的最大时长。
+  WriteTimeout time.Duration // 返回响应的最大时长。
 }
 ```
 
