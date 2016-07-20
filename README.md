@@ -8,7 +8,7 @@
 接着去浏览器访问`loalhost:1313`就可以了  
 
 ## 参与翻译
-fork 该项目，修改后提交pr即可。
+fork 该项目，修改后提交pr即可。  
 汉化版文件在`website-zh`目录里，`content` 目录下的文件为网站内容，均为 Markdown 文件。
 
 ## 声明
