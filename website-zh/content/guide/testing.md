@@ -6,29 +6,28 @@ menu:
     weight: 10
 ---
 
-## Testing
+## 测试
 
-### Testing Handler
+### 测试业务逻辑
 
 `GET` `/users/:id`
 
-Handler below retrieves user by id from the database. If user is not found it returns
-`404` error with a message.
+这个业务是根据用户的 id 从数据库取到该用户数据，如果用户不存在则返回`404`和提示语句。
 
-#### CreateUser
+#### 创建 User
 
 `POST` `/users`
 
-- Accepts JSON payload
-- On success `201 - Created`
-- On error `500 - Internal Server Error`
+- 接受 JSON 格式的数据。
+- 创建成功返回 `201 - Created`。
+- 发生错误返回 `500 - Internal Server Error`。
 
-#### GetUser
+#### 获取 User
 
 `GET` `/users/:email`
 
-- On success `200 - OK`
-- On error `404 - Not Found` if user is not found otherwise `500 - Internal Server Error`
+- 获取成功返回 `200 - OK`
+- 发生错误返回 `404 - Not Found` if user is not found otherwise `500 - Internal Server Error`
 
 `handler.go`
 
@@ -93,7 +92,7 @@ var (
 )
 
 func TestCreateUser(t *testing.T) {
-	// Setup
+	// 设置
 	e := echo.New()
 	req, err := http.NewRequest(echo.POST, "/users", strings.NewReader(userJSON))
 	if assert.NoError(t, err) {
@@ -102,7 +101,7 @@ func TestCreateUser(t *testing.T) {
 		c := e.NewContext(standard.NewRequest(req, e.Logger()), standard.NewResponse(rec, e.Logger()))
 		h := &handler{mockDB}
 
-		// Assertions
+		// 断言
 		if assert.NoError(t, h.createUser(c)) {
 			assert.Equal(t, http.StatusCreated, rec.Code)
 			assert.Equal(t, userJSON, rec.Body.String())
@@ -111,7 +110,7 @@ func TestCreateUser(t *testing.T) {
 }
 
 func TestGetUser(t *testing.T) {
-	// Setup
+	// 设置
 	e := echo.New()
 	req := new(http.Request)
 	rec := httptest.NewRecorder()
@@ -121,7 +120,7 @@ func TestGetUser(t *testing.T) {
 	c.SetParamValues("jon@labstack.com")
 	h := &handler{mockDB}
 
-	// Assertions
+	// 断言
 	if assert.NoError(t, h.getUser(c)) {
 		assert.Equal(t, http.StatusOK, rec.Code)
 		assert.Equal(t, userJSON, rec.Body.String())
@@ -129,7 +128,7 @@ func TestGetUser(t *testing.T) {
 }
 ```
 
-#### Using Form Payload
+#### 使用 Form 表单提交
 
 ```go
 f := make(url.Values)
@@ -138,14 +137,14 @@ f.Set("email", "jon@labstack.com")
 req, err := http.NewRequest(echo.POST, "/", strings.NewReader(f.Encode()))
 ```
 
-#### Setting Path Params
+#### 设置 URL 参数 
 
 ```go
 c.SetParamNames("id", "email")
 c.SetParamValues("1", "jon@labstack.com")
 ```
 
-#### Setting Query Params
+#### 设置请求参数
 
 ```go
 q := make(url.Values)
@@ -153,8 +152,8 @@ q.Set("email", "jon@labstack.com")
 req, err := http.NewRequest(echo.POST, "/?"+q.Encode(), nil)
 ```
 
-### Testing Middleware
+### 测试中间件
 
-*TBD*
+*待更新*
 
-You can looking to built-in middleware [test cases](https://github.com/labstack/echo/tree/master/middleware).
+你可以在[这里](https://github.com/labstack/echo/tree/master/middleware)查看框架自带中间件的测试代码。
