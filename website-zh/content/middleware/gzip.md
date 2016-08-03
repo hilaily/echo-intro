@@ -8,9 +8,9 @@ title = "Gzip"
 
 ## Gzip Middleware
 
-Gzip middleware compresses HTTP response using gzip compression scheme.
+Gzip 中间件使用 gzip 压缩方案来对HTTP响应进行压缩。 
 
-### Configuration
+### 配置
 
 ```go
 GzipConfig struct {
@@ -20,7 +20,7 @@ GzipConfig struct {
 }
 ```
 
-### Default Configuration
+### 默认配置
 
 ```go
 DefaultGzipConfig = GzipConfig{
@@ -32,7 +32,7 @@ DefaultGzipConfig = GzipConfig{
 
 `e.Use(middleware.Gzip())`
 
-### Custom Configuration
+### 自定义配置
 
 *Usage*
 

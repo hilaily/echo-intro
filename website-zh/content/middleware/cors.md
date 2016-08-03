@@ -48,7 +48,7 @@ CORSConfig struct {
 }
 ```
 
-### Default Configuration
+### 默认配置
 
 ```go
 DefaultCORSConfig = CORSConfig{
@@ -61,7 +61,7 @@ DefaultCORSConfig = CORSConfig{
 
 `e.Use(middleware.CORS())`
 
-### Custom Configuration
+### 自定义配置
 
 *Usage*
 
