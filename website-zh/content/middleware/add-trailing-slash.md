@@ -38,4 +38,4 @@ e.Use(middleware.AddTrailingSlashWithConfig(TrailingSlashConfig{
 }))
 ```
 
-这将添加一个'/'在请求的 URI 末尾并且做 `StatusMovedPermanenty` 跳转。
+这将在请求的 URI 的末尾添加一个'/'并且做 `StatusMovedPermanenty` 跳转。

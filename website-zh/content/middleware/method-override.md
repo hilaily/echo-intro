@@ -6,14 +6,13 @@ title = "Method Override"
   weight = 5
 +++
 
-## MethodOverride Middleware
+## MethodOverride 中间件
 
-MethodOverride middleware checks for the overridden method from the request and
-uses it instead of the original method.
+MethodOverride中间件检查从请求中重写的方法，并使用它来代替原来的方法。
 
-For security reasons, only `POST` method can be overridden.
+出于安全原因，只有`POST`方法可以被重写。
 
-### Configuration
+### 配置
 
 ```go
 MethodOverrideConfig struct {
@@ -23,7 +22,7 @@ MethodOverrideConfig struct {
 }
 ```
 
-### Default Configuration
+### 默认配置
 
 ```go
 DefaultMethodOverrideConfig = MethodOverrideConfig{
@@ -35,7 +34,7 @@ DefaultMethodOverrideConfig = MethodOverrideConfig{
 
 `e.Pre(middleware.MethodOverride())`
 
-### Custom Configuration
+### 自定义配置
 
 *Usage*
 

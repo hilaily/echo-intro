@@ -23,5 +23,5 @@ $ go get -u github.com/labstack/echo/...
 
 ### [从 v1 迁移](/guide/migrating)
 
-Echo 使用 GitHub releases 按照 [semantic versioning](http://semver.org) 管理版本。
+基于 [semantic versioning](http://semver.org) 的管理版本，Echo 使用 GitHub releases 。
 特别的版本可以使用 [package manager](https://github.com/avelino/awesome-go#package-management) 安装。

@@ -1,19 +1,16 @@
 +++
-title = "CSRF"
+title = "CSRF(跨站请求伪造)"
 [menu.side]
-  name = "CSRF"
+  name = "CSRF(跨站请求伪造)"
   parent = "middleware"
   weight = 5
 +++
 
-## CSRF Middleware
+## CSRF Middleware(跨站请求伪造)
 
-Cross-site request forgery, also known as one-click attack or session riding and
-abbreviated as CSRF (sometimes pronounced sea-surf) or XSRF, is a type of malicious
-exploit of a website where unauthorized commands are transmitted from a user that
-the website trusts.
+CSRF（Cross-site request forgery跨站请求伪造，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF，是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。 跟跨网站脚本（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。
 
-### Configuration
+### 配置
 
 ```go
 CSRFConfig struct {
@@ -59,7 +56,7 @@ CSRFConfig struct {
 }
 ```
 
-### Default Configuration
+### 默认配置
 
 ```go
 DefaultCSRFConfig = CSRFConfig{
@@ -74,7 +71,7 @@ DefaultCSRFConfig = CSRFConfig{
 
 `e.Use(middleware.CSRF("secret"))`
 
-### Custom Configuration
+### 自定义配置
 
 *Usage*
 
