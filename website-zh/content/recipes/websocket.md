@@ -1,5 +1,6 @@
 ---
 title: WebSocket
+url: websocket
 menu:
   side:
     parent: recipes

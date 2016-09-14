@@ -1,5 +1,6 @@
 ---
 title : 自定义
+url: customization
 menu:
   side:
     name: 自定义

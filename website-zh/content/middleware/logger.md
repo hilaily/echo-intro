@@ -1,5 +1,6 @@
 +++
 title = "Logger(日志)"
+url = "logger"
 [menu.side]
   name = "Logger(日志)"
   parent = "middleware"

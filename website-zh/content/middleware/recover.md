@@ -1,5 +1,6 @@
 +++
 title = "Recover"
+url = "recover"
 [menu.side]
   name = "Recover"
   parent = "middleware"

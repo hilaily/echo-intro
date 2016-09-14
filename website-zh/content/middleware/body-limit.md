@@ -1,5 +1,6 @@
 +++
 title = "Body Limit"
+url="body-limit"
 [menu.side]
   name = "BodyLimit(请求体限制)"
   parent = "middleware"

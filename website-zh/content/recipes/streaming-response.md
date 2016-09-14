@@ -1,5 +1,6 @@
 ---
 title: Streaming Response
+url: streaming-response
 menu:
   side:
     parent: recipes

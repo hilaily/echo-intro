@@ -1,5 +1,6 @@
 ---
 title: 路由
+url: routing
 menu:
   side:
     parent: guide

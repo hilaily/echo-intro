@@ -1,5 +1,6 @@
 ---
 title: Index
+url: index
 ---
 
 ## 简易高效的 Go(Golang) 语言 HTTP 框架。比其他框架快速10倍。

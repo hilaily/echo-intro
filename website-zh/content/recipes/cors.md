@@ -1,5 +1,6 @@
 ---
 title: CORS
+url : cors
 menu:
   side:
     identifier: cors-middleware

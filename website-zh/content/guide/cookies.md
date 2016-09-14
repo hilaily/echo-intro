@@ -1,5 +1,6 @@
 +++
 title = "Cookies"
+url= "Cookies"
 [menu.side]
   name = "Cookies"
   parent = "guide"

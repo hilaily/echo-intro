@@ -1,5 +1,6 @@
 ---
 title: JWT
+url: jwt
 menu:
   side:
     identifier: jwt-recipe

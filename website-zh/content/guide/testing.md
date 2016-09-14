@@ -1,5 +1,6 @@
 ---
 title: 测试
+url: testing
 menu:
   side:
     parent: guide

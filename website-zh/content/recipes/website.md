@@ -1,5 +1,6 @@
 ---
 title: Website
+url: website
 draft: true
 menu:
   side:

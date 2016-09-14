@@ -1,5 +1,6 @@
 ---
 title: JSONP
+url:jsonp
 menu:
   side:
     parent: recipes

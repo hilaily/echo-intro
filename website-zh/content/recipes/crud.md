@@ -1,5 +1,6 @@
 ---
 title: CRUD
+url: crud
 menu:
   side:
     parent: recipes

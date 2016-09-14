@@ -1,5 +1,6 @@
 +++
 title = "Secure(安全)"
+url = "secure"
 [menu.side]
   name = "Secure(安全)"
   parent = "middleware"

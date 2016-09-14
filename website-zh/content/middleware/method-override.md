@@ -1,5 +1,6 @@
 +++
 title = "Method Override"
+url = "method-override"
 [menu.side]
   name = "MethodOverride"
   parent = "middleware"

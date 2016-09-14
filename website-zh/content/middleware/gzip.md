@@ -1,5 +1,6 @@
 +++
 title = "Gzip"
+url = "gzip"
 [menu.side]
   name = "Gzip"
   parent = "middleware"

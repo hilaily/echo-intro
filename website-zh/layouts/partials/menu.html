@@ -15,7 +15,7 @@
             <ul class="menu-list">
               <li>
                 {{ range .Children }}
-                  <a {{ if $currentNode.IsMenuCurrent "side" . }} class="is-active"{{ end }} href="{{ .URL }}">
+                  <a {{ if $currentNode.IsMenuCurrent "side" . }} class="is-active"{{ end }} href="{{ .Url }}">
                     {{ .Name }}
                   </a>
                 {{ end }}

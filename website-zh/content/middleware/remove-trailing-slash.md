@@ -1,5 +1,6 @@
 +++
 title = "Remove Trailing Slash(移除结尾斜杠)"
+url = "remove-trailing-slash"
 [menu.side]
   name = "RemoveTrailingSlash(移除结尾斜杠)"
   parent = "middleware"

@@ -1,5 +1,6 @@
 ---
 title: Middleware
+url: middleware
 menu:
   side:
     identifier: "recipes-middleware"

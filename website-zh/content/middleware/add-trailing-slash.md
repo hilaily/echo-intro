@@ -1,5 +1,6 @@
 +++
 title = "添加结尾斜杠"
+url = "add-trailing-slash"
 [menu.side]
   name = "AddTrailingSlash(添加结尾斜杠)"
   parent = "middleware"

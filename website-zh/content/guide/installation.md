@@ -1,5 +1,6 @@
 +++
 title = "安装"
+url = "installation"
 [menu.side]
   parent = "guide"
   weight = 1

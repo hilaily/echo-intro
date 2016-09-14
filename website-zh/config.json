@@ -5,9 +5,9 @@
   "title": "Go/Golang 框架 Echo 文档",
   "canonifyurls": true,
   "permalinks": {
-    "guide": "/guide/:title",
-    "middleware": "/middleware/:title",
-    "recipes": "/recipes/:title"
+    "guide": "/guide/:url",
+    "middleware": "/middleware/:url",
+    "recipes": "/recipes/:url"
   },
 
   "menu": {

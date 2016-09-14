@@ -1,5 +1,6 @@
 +++
 title = "CSRF(跨站请求伪造)"
+url = "csrf"
 [menu.side]
   name = "CSRF(跨站请求伪造)"
   parent = "middleware"

@@ -1,5 +1,6 @@
 ---
 title: HTTP 请求
+url: request
 menu:
   side:
     parent: guide
