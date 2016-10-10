@@ -1,6 +1,7 @@
 +++
 title = "Middleware Recipe"
 description = "Middleware recipe / example for Echo"
+url="recipes/middleware"
 [menu.side]
   name = "Middleware"
   parent = "recipes"
