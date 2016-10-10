@@ -1,6 +1,6 @@
 ---
 title: 静态文件
-url : static-files
+url : guide/static-files
 menu:
   side:
     parent: guide

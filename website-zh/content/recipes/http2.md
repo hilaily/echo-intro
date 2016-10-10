@@ -1,6 +1,6 @@
 ---
 title: HTTP2
-url : http2
+url : /recipes/http2
 menu:
   side:
     identifier: http2

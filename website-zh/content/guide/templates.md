@@ -1,6 +1,6 @@
 ---
 title: 模板
-url : templates
+url : guide/templates
 menu:
   side:
     parent: guide

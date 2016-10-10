@@ -1,6 +1,6 @@
 +++
 title = "JWT"
-url = "jwt"
+url = "/middleware/jwt"
 [menu.side]
   name = "JWT"
   parent = "middleware"

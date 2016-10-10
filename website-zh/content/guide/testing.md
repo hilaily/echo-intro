@@ -1,6 +1,6 @@
 ---
 title: 测试
-url: testing
+url: guide/testing
 menu:
   side:
     parent: guide

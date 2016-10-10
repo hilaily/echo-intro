@@ -1,6 +1,6 @@
 ---
 title: Embed Resources
-url: embed-resources
+url: /recipes/embed-resources
 menu:
   side:
     parent: recipes

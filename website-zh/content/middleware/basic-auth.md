@@ -1,6 +1,6 @@
 +++
 title = "Basic Auth"
-url="basic-auth"
+url="/middleware/basic-auth"
 [menu.side]
   name = "BasicAuth(基本认证)"
   parent = "middleware"

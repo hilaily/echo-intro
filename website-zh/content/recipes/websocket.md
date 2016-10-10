@@ -1,39 +1,40 @@
----
-title: WebSocket
-url: websocket
-menu:
-  side:
-    parent: recipes
-    weight: 5
----
++++
+title = "WebSocket Recipe"
+description = "WebSocket recipe / example for Echo"
+url="/recipes/websocket"
+[menu.side]
+  name = "WebSocket"
+  parent = "recipes"
+  weight = 5
++++
 
 ## WebSocket Recipe
 
-> Only supported in `standard` engine.
+> 只支持 `standard` 引擎
 
-### Using `net` WebSocket
+### 使用 `net` 库的 WebSocket
 
-#### Server
+#### 服务端
 
 `server.go`
 
 {{< embed "websocket/net/server.go" >}}
 
-### Using `gorilla` WebSocket
+### 使用 `gorilla` 的 WebSocket
 
-#### Server
+#### 服务端
 
 `server.go`
 
 {{< embed "websocket/gorilla/server.go" >}}
 
-### Client
+### 客户端
 
 `index.html`
 
 {{< embed "websocket/public/index.html" >}}
 
-### Output
+### 输出示例
 
 `Client`
 
@@ -55,8 +56,10 @@ Hello, Server!
 Hello, Server!
 ```
 
-### Maintainers
+### 维护者
 
 - [vishr](https://github.com/vishr)
 
-### [Source Code]({{< source "websocket" >}})
+### [Source Code]({{< source "websocket" >}}
+
+

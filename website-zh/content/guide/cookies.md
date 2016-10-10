@@ -1,6 +1,6 @@
 +++
 title = "Cookies"
-url= "Cookies"
+url= "/guide/cookies"
 [menu.side]
   name = "Cookies"
   parent = "guide"

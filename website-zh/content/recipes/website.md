@@ -1,6 +1,6 @@
 ---
 title: Website
-url: website
+url: /recipes/website
 draft: true
 menu:
   side:

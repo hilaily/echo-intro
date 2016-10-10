@@ -5,7 +5,7 @@
   "title": "Go/Golang 框架 Echo 文档",
   "canonifyurls": true,
   "permalinks": {
-    "guide": "/guide/:url",
+    "guide": "/guide/:slug",
     "middleware": "/middleware/:url",
     "recipes": "/recipes/:url"
   },

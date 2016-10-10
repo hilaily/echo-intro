@@ -1,6 +1,6 @@
 ---
 title: File Upload
-url: file-upload
+url: /recipes/file-upload
 menu:
   side:
     parent: recipes

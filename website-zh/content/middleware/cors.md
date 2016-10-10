@@ -1,6 +1,6 @@
 +++
 title = "CORS(访问控制)"
-url = "cors"
+url = "/middleware/cors"
 [menu.side]
   name = "CORS(访问控制)"
   parent = "middleware"

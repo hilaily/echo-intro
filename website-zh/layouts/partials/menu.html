@@ -8,14 +8,14 @@
     <ul class="menu-list">
       {{ range .Children }}
         <li>
-          <a{{ if $currentNode.IsMenuCurrent "side" . }} class="is-active"{{ end }} href="{{ .URL }}">
+          <a{{ if $currentNode.IsMenuCurrent "side" . }} class="is-active"{{ end }} href="{{ .URL }}/">
             {{ .Name }}
           </a>
           {{ if .HasChildren }}
             <ul class="menu-list">
               <li>
                 {{ range .Children }}
-                  <a {{ if $currentNode.IsMenuCurrent "side" . }} class="is-active"{{ end }} href="{{ .Url }}">
+                  <a {{ if $currentNode.IsMenuCurrent "side" . }} class="is-active"{{ end }} href="{{ .permalinks }}/">
                     {{ .Name }}
                   </a>
                 {{ end }}

@@ -1,6 +1,6 @@
 +++
 title = "Secure(安全)"
-url = "secure"
+url = "/middleware/secure"
 [menu.side]
   name = "Secure(安全)"
   parent = "middleware"

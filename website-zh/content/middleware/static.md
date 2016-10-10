@@ -1,6 +1,6 @@
 +++
 title = "Static(静态资源)"
-url = "static"
+url = "/middleware/static"
 [menu.side]
   name = "Static(静态资源)"
   parent = "middleware"

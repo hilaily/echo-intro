@@ -1,6 +1,6 @@
 ---
 title: Graceful Shutdown
-url : graceful-shutdown
+url : /recipes/graceful-shutdown
 menu:
   side:
     parent: recipes

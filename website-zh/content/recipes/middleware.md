@@ -1,27 +1,26 @@
----
-title: Middleware
-url: middleware
-menu:
-  side:
-    identifier: "recipes-middleware"
-    parent: recipes
-    weight: 3
----
++++
+title = "Middleware Recipe"
+description = "Middleware recipe / example for Echo"
+[menu.side]
+  name = "Middleware"
+  parent = "recipes"
+  weight = 3
++++
 
-## 中间件示例
+## Middleware Recipe
 
-### 如何写一个自定义中间件？
+### How to write a custom middleware?
 
-- 使用中间件收集请求数、状态和正常运行时间。
-- 使用中间件来写自定义服务器响应头。
+- Middleware to collect request count, statuses and uptime.
+- Middleware to write custom `Server` header to the response.
 
-#### 服务端
+#### Server
 
 `server.go`
 
 {{< embed "middleware/server.go" >}}
 
-#### 响应
+#### Response
 
 *Headers*
 ```sh
@@ -44,8 +43,9 @@ Server:Echo/2.0
 }
 ```
 
-### 维护者
+### Maintainers
 
 - [vishr](https://github.com/vishr)
 
-### [源码]({{< source "middleware" >}})
+### [Source Code]({{< source "middleware" >}})
+

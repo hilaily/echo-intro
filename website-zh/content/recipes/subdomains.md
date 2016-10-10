@@ -1,6 +1,6 @@
 ---
 title: Subdomains
-url: subdomains
+url: /recipes/subdomains
 menu:
   side:
     parent: recipes

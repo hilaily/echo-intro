@@ -1,6 +1,6 @@
 ---
 title: 迁移
-url : migrating
+url : guide/migrating
 menu:
   side:
     parent: guide

@@ -1,6 +1,6 @@
 ---
 title: Streaming Response
-url: streaming-response
+url: /recipes/streaming-response
 menu:
   side:
     parent: recipes

@@ -1,6 +1,6 @@
 ---
 title : 自定义
-url: customization
+url: guide/customization
 menu:
   side:
     name: 自定义

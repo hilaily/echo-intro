@@ -1,6 +1,6 @@
 +++
 title = "Context"
-url= "context"
+url= "/guide/context"
 [menu.side]
   name= "Context"
   parent = "guide"
@@ -9,14 +9,14 @@ url= "context"
 
 ## Context
 
-echo.Context represents the context of the current HTTP request. 
-It holds request and response reference, path, path parameters, data, registered handler and APIs to read request and write response. 
-Context is 100% compatible with standard context.Context. 
-As Context is an interface, it is easy to extend it with custom APIs.
+echo.Context 代表了当前 HTTP 请求的context（上下文？这里看个人理解吧，就不翻译了）。
+它含有请求和相应的引用，路径，路径参数，数据，注册的业务处理方法和 读取请求和输出响应的API。
+Context 100% 和标准的 context.Context 兼容。
+由于 Context 是一个借口，所以也可以很方便的使用自定义的 API 扩展。
 
-### Extending Context
+### 扩展 Context
 
-**Define a custom context**
+**自定义一个 context**
 ```go
     type CustomContext struct {
 	echo.Context
@@ -30,7 +30,7 @@ As Context is an interface, it is easy to extend it with custom APIs.
         println("bar")
     }
 ```
-**Create a middleware to extend default context**
+**创建一个中间件来扩展默认的 context**
 
 ```go
     e.Use(func(h echo.HandlerFunc) echo.HandlerFunc {
@@ -40,9 +40,9 @@ As Context is an interface, it is easy to extend it with custom APIs.
         }
     })
 ```
-> This middleware should be registered before any other middleware.
+> 这个中间件要在所有其它中间件之前注册到路由上。
 
-**Use in handler**
+**在业务处理中使用**
 
 ```go
 e.Get("/", func(c echo.Context) error {
@@ -52,10 +52,10 @@ e.Get("/", func(c echo.Context) error {
 	return cc.String(200, "OK")
 })
 ```
-### Standard Context
-echo.Context embeds standard context.Context interface, so all it’s functions are available right from echo.Context.
+### 标准的 Context
+echo.Context 内嵌了标准的 context.Context 接口，所以 context.Context 的所有方法 echo.Context 都可以使用。
 
-*Example*
+*示例*
 
 ```go
 e.GET("/users/:name", func(c echo.Context) error) {

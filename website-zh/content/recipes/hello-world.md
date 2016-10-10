@@ -1,6 +1,6 @@
 ---
 title: Hello World
-url : hello-world
+url : /recipes/hello-world
 menu:
   side:
     parent: recipes

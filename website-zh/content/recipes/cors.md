@@ -1,6 +1,6 @@
 ---
 title: CORS
-url : cors
+url : /recipes/cors
 menu:
   side:
     identifier: cors-middleware
