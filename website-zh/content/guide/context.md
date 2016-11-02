@@ -12,7 +12,7 @@ url= "/guide/context"
 echo.Context 代表了当前 HTTP 请求的context（上下文？这里看个人理解吧，就不翻译了）。
 它含有请求和相应的引用，路径，路径参数，数据，注册的业务处理方法和 读取请求和输出响应的API。
 Context 100% 和标准的 context.Context 兼容。
-由于 Context 是一个借口，所以也可以很方便的使用自定义的 API 扩展。
+由于 Context 是一个接口，所以也可以很方便的使用自定义的 API 扩展。
 
 ### 扩展 Context
 
