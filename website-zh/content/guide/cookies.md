@@ -15,15 +15,15 @@ Cookie 也可以用来存储用户输入过的表单内容像电话号码，地�
 
 ### Cookie 属性
 
-属性 | 可选
-:--- | :---
-`Name` | No
-`Value` | No
-`Path` | Yes
-`Domain` | Yes
-`Expires` | Yes
-`Secure` | Yes
-`HTTPOnly` | Yes
+| 属性       | 可选   |
+| :------- | :--- |
+| Name     | No   |
+| Value    | No   |
+| Path     | Yes  |
+| Domain   | Yes  |
+| Expires  | Yes  |
+| Secure   | Yes  |
+| HTTPOnly | Yes  |
 
 ### 创建一个 Cookie
 

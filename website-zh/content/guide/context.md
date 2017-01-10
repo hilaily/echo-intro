@@ -9,10 +9,9 @@ url= "/guide/context"
 
 ## Context
 
-echo.Context 代表了当前 HTTP 请求的context（上下文？这里看个人理解吧，就不翻译了）。
-它含有请求和相应的引用，路径，路径参数，数据，注册的业务处理方法和 读取请求和输出响应的API。
-Context 100% 和标准的 context.Context 兼容。
-由于 Context 是一个借口，所以也可以很方便的使用自定义的 API 扩展。
+echo.Context 代表了当前 HTTP 请求的 context（上下文？这里看个人理解吧，就不翻译了）。
+它含有请求和相应的引用，路径，路径参数，数据，注册的业务处理方法和读取请求和输出响应的API。
+由于 Context 是一个接口，所以也可以很方便的使用自定义的 API 扩展。
 
 ### 扩展 Context
 
@@ -50,19 +49,5 @@ e.Get("/", func(c echo.Context) error {
 	cc.Foo()
 	cc.Bar()
 	return cc.String(200, "OK")
-})
-```
-### 标准的 Context
-echo.Context 内嵌了标准的 context.Context 接口，所以 context.Context 的所有方法 echo.Context 都可以使用。
-
-*示例*
-
-```go
-e.GET("/users/:name", func(c echo.Context) error) {
-    c.SetContext(context.WithValue(nil, "key", "val"))
-    // Pass it down...
-    // Use it...
-    val := c.Value("key").(string)
-    return c.String(http.StatusOK, name)
 })
 ```

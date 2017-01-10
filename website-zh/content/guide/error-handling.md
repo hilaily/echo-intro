@@ -9,13 +9,9 @@ menu:
 
 ## 错误处理
 
-Echo 支持从中间件或者action返回 HTTP 错误 集中处理。
+Echo 倾向于从中间件或者action返回 HTTP 错误集中处理。它也允许我们去在统一的地方记录日志或者返回自定义的 HTTP 响应给其他的服务。
 
-- 在统一的地方记录日志
-- 返回自定义的 HTTP 响应
-
-例如 一个基本的身份验证中间件验证失败返回 
-`401 - Unauthorized` 错误, 终止了当前的 HTTP 请求。
+例如 一个基本的身份验证中间件验证失败返回 `401 - Unauthorized` 错误, 终止了当前的 HTTP 请求。
 
 ```go
 package main
@@ -28,14 +24,20 @@ import (
 
 func main() {
 	e := echo.New()
-	e.Use(func(c echo.Context) error {
-		// 从 HTTP 请求中取出 credentials(一般为cookie)然后验证
+	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			// Extract the credentials from HTTP request header and perform a security
+			// check
 
-		// 验证失败
-		return echo.NewHTTPError(http.StatusUnauthorized)
+			// For invalid credentials
+			return echo.NewHTTPError(http.StatusUnauthorized)
+
+			// For valid credentials call next
+			// return next(c)
+		}
 	})
-	e.GET("/welcome", welcome)
-	e.Run(":1323")
+	e.GET("/", welcome)
+	e.Logger.Fatal(e.Start(":1323"))
 }
 
 func welcome(c echo.Context) error {
@@ -43,4 +45,4 @@ func welcome(c echo.Context) error {
 }
 ```
 
-查看 [HTTPErrorHandler](/guide/customization#http-error-handler) 怎样处理的。
+查看 [HTTPErrorHandler](https://echo.labstack.com/guide/customization#http-error-handler) 怎样处理的。
