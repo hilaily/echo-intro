@@ -11,13 +11,33 @@ url = "/middleware/gzip"
 
 Gzip 中间件使用 gzip 压缩方案来对HTTP响应进行压缩。 
 
+*使用*
+
+```go
+e.Use(middleware.Gzip())
+```
+
+### 自定义配置
+
+*使用*
+
+```go
+e := echo.New()
+e.Use(middleware.GzipWithConfig(middleware.GzipConfig{
+  Level: 5,
+}))
+```
+
 ### 配置
 
 ```go
 GzipConfig struct {
+  // Skipper defines a function to skip middleware.
+  Skipper Skipper
+
   // Gzip compression level.
   // Optional. Default value -1.
-  Level int
+  Level int `json:"level"`
 }
 ```
 
@@ -25,21 +45,7 @@ GzipConfig struct {
 
 ```go
 DefaultGzipConfig = GzipConfig{
-  Level: -1,
+  Skipper: defaultSkipper,
+  Level:   -1,
 }
-```
-
-*Usage*
-
-`e.Use(middleware.Gzip())`
-
-### 自定义配置
-
-*Usage*
-
-```go
-e := echo.New()
-e.Use(middleware.GzipWithConfig(middleware.GzipConfig{
-  Level: 5
-}))
 ```

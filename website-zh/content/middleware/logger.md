@@ -11,13 +11,47 @@ url = "/middleware/logger"
 
 Logger 中间件记录了每一个请求的信息。
 
+*用法*
+
+```go
+e.Use(middleware.Logger())
+```
+
+*输出样例*
+
+```js
+{"time":"2017-01-12T08:58:07.372015644-08:00","remote_ip":"::1","host":"localhost:1323","method":"GET","uri":"/","status":200, "latency":14743,"latency_human":"14.743µs","bytes_in":0,"bytes_out":2}
+```
+
+### 自定义配置
+
+*用法*
+
+```go
+e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+  Format: "method=${method}, uri=${uri}, status=${status}\n",
+}))
+```
+
+*输出样例*
+
+```sh
+method=GET, uri=/, status=200
+```
+
 ### 配置
 
 ```go
 LoggerConfig struct {
+  // Skipper 定义了一个跳过中间件的函数.
+  Skipper Skipper
+  
   // 日志的格式可以使用下面的标签定义。:
   //
+  // - time_unix
+  // - time_unix_nano
   // - time_rfc3339
+  // - time_rfc3339_nano
   // - id (Request ID - Not implemented)
   // - remote_ip
   // - uri
@@ -29,13 +63,16 @@ LoggerConfig struct {
   // - status
   // - latency (In microseconds)
   // - latency_human (Human readable)
-  // - rx_bytes (Bytes received)
-  // - tx_bytes (Bytes sent)
+  // - bytes_in (Bytes received)
+  // - bytes_out (Bytes sent)
+  // - header:<name>
+  // - query:<name>
+  // - form:<name>
   //
   // 例如 "${remote_ip} ${status}"
   //
   // 可选。默认值是 DefaultLoggerConfig.Format.
-  Format string
+  Format string `json:"format"`
 
   // Output 是记录日志的位置。
   // 可选。默认值是 os.Stdout.
@@ -47,38 +84,16 @@ LoggerConfig struct {
 
 ```go
 DefaultLoggerConfig = LoggerConfig{
-  Format: `{"time":"${time_rfc3339}","remote_ip":"${remote_ip}",` +
+  Skipper: defaultSkipper,
+  Format: `{"time":"${time_rfc3339_nano}","remote_ip":"${remote_ip}","host":"${host}",` +
     `"method":"${method}","uri":"${uri}","status":${status}, "latency":${latency},` +
-    `"latency_human":"${latency_human}","rx_bytes":${rx_bytes},` +
-    `"tx_bytes":${tx_bytes}}` + "\n",
-  color:  color.New(),
-  Output: os.Stdout,
+    `"latency_human":"${latency_human}","bytes_in":${bytes_in},` +
+    `"bytes_out":${bytes_out}}` + "\n",
+  Output: os.Stdout
 }
 ```
 
-*用法*
 
-`e.Use(middleware.Logger())`
 
-*输出样例*
 
-```js
-{"time":"2016-05-10T07:02:25-07:00","remote_ip":"::1","method":"GET","uri":"/","status":200, "latency":55653,"latency_human":"55.653µs","rx_bytes":0,"tx_bytes":13}
-```
 
-### 自定义配置
-
-*用法*
-
-```go
-e := echo.New()
-e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
-  Format: "method=${method}, uri=${uri}, status=${status}\n",
-}))
-```
-
-*输出样例*
-
-```sh
-method=GET, uri=/hello, status=200
-```
