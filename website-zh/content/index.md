@@ -235,9 +235,6 @@ e.GET("/users", func(c echo.Context) error {
 [Secure]({{< ref "middleware/secure.md">}}) | 防止攻击
 [CORS]({{< ref "middleware/cors.md">}}) | 跨源资源共享
 [CSRF]({{< ref "middleware/csrf.md">}}) | 跨站请求伪造
-[Static]({{< ref "middleware/static.md">}}) | 提供静态文件
-[AddTrailingSlash]({{< ref "middleware/add-trailing-slash.md">}}) | Add trailing slash to the request URI
-[RemoveTrailingSlash]({{< ref "middleware/remove-trailing-slash.md">}}) | Remove trailing slash from the request URI
 [MethodOverride]({{< ref "middleware/method-override.md">}}) | 覆盖请求方法
 #### 第三方中间件
 

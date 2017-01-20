@@ -6,7 +6,7 @@ menu:
     name: 资源嵌入
     parent: cookbook
     weight: 17
---
+---
 
 ## 资源嵌入
 
