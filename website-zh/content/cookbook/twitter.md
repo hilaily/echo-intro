@@ -1,9 +1,11 @@
 ---
 title: Twitter
 url: /cookbook/twitter
+
 draft: true
 menu:
   side:
+    name: twitter
     parent: cookbook
     weight: 4
 ---

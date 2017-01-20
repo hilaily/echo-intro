@@ -7,7 +7,7 @@
   "permalinks": {
     "guide": "/guide/:slug",
     "middleware": "/middleware/:url",
-    "recipes": "/recipes/:url"
+    "cookbook": "/cookbook/:url"
   },
 
   "menu": {
@@ -24,11 +24,11 @@
       "identifier": "middleware",
       "url": "middleware"
     }, {
-      "name": "Recipes",
+      "name": "Cookbook",
       "pre": "<i class='fa fa-code'></i>",
       "weight": 2,
-      "identifier": "recipes",
-      "url": "recipes"
+      "identifier": "cookbook",
+      "url": "cookbook"
     }, {
       "name": "Godoc",
       "pre": "<i class='fa fa-file-text-o'></i>",

@@ -4,7 +4,7 @@ url= "/guide/cookies"
 [menu.side]
   name = "Cookies"
   parent = "guide"
-  weight = 7
+  weight = 8
 +++
 
 ## Cookies

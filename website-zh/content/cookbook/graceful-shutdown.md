@@ -1,10 +1,10 @@
 ---
 title: Graceful Shutdown
-url : /recipes/graceful-shutdown
+url : /cookbook/graceful-shutdown
 menu:
   side:
-    parent: recipes
-    weight: 13
+    parent: cookbook
+    weight: 16
 ---
 
 ## 平滑关闭

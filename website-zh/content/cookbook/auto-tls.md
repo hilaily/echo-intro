@@ -1,10 +1,10 @@
 ---
 title: Auto TLS
-url : /recipes/auto-tls
+url : /cookbook/auto-tls
 menu:
   side:
     parent: cookbook
-    weight: 1
+    weight: 2
 ---
 
 ## Auto TLS

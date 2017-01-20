@@ -1,10 +1,10 @@
 ---
 title: JSONP
-url : /recipes/jsonp
+url : /cookbook/jsonp
 menu:
   side:
-    parent: recipes
-    weight: 6
+    parent: cookbook
+    weight: 11
 ---
 
 ## JSONP

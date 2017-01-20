@@ -1,11 +1,11 @@
 ---
 title: CORS
-url : /recipes/cors
+url : /cookbook/cors
 menu:
   side:
     identifier: cors-middleware
-    parent: recipes
-    weight: 3
+    parent: cookbook
+    weight: 5
 ---
 
 ## CORS 示例

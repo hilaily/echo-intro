@@ -1,11 +1,11 @@
 +++
 title = "WebSocket Recipe"
 description = "WebSocket recipe / example for Echo"
-url="/recipes/websocket"
+url="/cookbook/websocket"
 [menu.side]
   name = "WebSocket"
-  parent = "recipes"
-  weight = 5
+  parent = "cookbook"
+  weight = 10
 +++
 
 ## WebSocket

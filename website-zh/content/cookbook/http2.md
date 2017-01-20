@@ -1,11 +1,11 @@
 ---
 title: HTTP2
-url : /recipes/http2
+url : /cookbook/http2
 menu:
   side:
     identifier: http2
-    parent: recipes
-    weight: 3
+    parent: cookbook
+    weight: 6
 ---
 
 ## HTTP2

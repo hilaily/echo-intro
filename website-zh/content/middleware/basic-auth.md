@@ -7,7 +7,7 @@ url="/middleware/basic-auth"
   weight = 3
 +++
 
-## BasicAuti(基本认证) 中间件
+## BasicAuth (基本认证) 中间件
 
 BasicAuth 中间件提供了 HTTP 的基本认证方式。
 

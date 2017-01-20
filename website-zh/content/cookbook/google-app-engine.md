@@ -1,10 +1,10 @@
 ---
 title: Google App Engine
-url : /recipes/google-app-engine
+url : /cookbook/google-app-engine
 menu:
   side:
-    parent: recipes
-    weight: 12
+    parent: cookbook
+    weight: 15
 ---
 
 ## Google App Engine Recipe

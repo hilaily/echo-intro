@@ -1,10 +1,10 @@
 ---
 title: File Upload
-url: /recipes/file-upload
+url: /cookbook/file-upload
 menu:
   side:
-    parent: recipes
-    weight: 7
+    parent: cookbook
+    weight: 12
 ---
 
 ## 文件上传

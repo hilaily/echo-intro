@@ -4,7 +4,7 @@ url= "/guide/context"
 [menu.side]
   name= "Context"
   parent = "guide"
-  weight = 5
+  weight = 7
 +++
 
 ## Context

@@ -68,5 +68,3 @@ admin := e.Group("/admin", middleware.BasicAuth())
 e := echo.New()
 e.GET("/", <Handler>, <Middleware...>)
 ```
-
-### [Writing Custom Middleware]({{< ref "recipes/middleware.md">}})

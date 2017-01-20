@@ -1,9 +1,9 @@
 ---
 title: Streaming Response
-url: /recipes/streaming-response
+url: /cookbook/streaming-response
 menu:
   side:
-    parent: recipes
+    parent: cookbook
     weight: 9
 ---
 

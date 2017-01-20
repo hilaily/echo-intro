@@ -1,10 +1,11 @@
 ---
 title: Subdomains
-url: /recipes/subdomains
+url: /cookbook/subdomains
 menu:
   side:
-    parent: recipes
-    weight: 10
+    name: 子域名
+    parent: cookbook
+    weight: 13
 ---
 
 ## 子域名

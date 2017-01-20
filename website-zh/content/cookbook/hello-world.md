@@ -1,9 +1,9 @@
 ---
 title: Hello World
-url : /recipes/hello-world
+url : /cookbook/hello-world
 menu:
   side:
-    parent: recipes
+    parent: cookbook
     weight: 1
 ---
 

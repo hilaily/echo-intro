@@ -2,9 +2,9 @@
 title = "Key 验证"
 url = "/middleware/key-auth"
 [menu.side]
-  name = "key-auth"
+  name = "Key Auth"
   parent = "middleware"
-  weight = 6
+  weight = 5
 +++
 
 ## Key Auth 中间件

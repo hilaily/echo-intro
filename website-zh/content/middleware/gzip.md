@@ -7,7 +7,7 @@ url = "/middleware/gzip"
   weight = 5
 +++
 
-## Gzip Middleware
+## Gzip 中间件
 
 Gzip 中间件使用 gzip 压缩方案来对HTTP响应进行压缩。 
 

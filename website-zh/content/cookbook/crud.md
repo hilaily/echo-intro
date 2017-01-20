@@ -1,10 +1,10 @@
 ---
 title: CRUD
-url: /recipes/crud
+url: /cookbook/crud
 menu:
   side:
-    parent: recipes
-    weight: 2
+    parent: cookbook
+    weight: 3
 ---
 
 ## CRUD 示例

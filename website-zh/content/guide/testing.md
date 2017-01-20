@@ -4,7 +4,7 @@ url: guide/testing
 menu:
   side:
     parent: guide
-    weight: 10
+    weight: 12
 ---
 
 ## 测试

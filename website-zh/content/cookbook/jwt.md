@@ -1,11 +1,11 @@
 ---
 title: JWT
-url: /recipes/jwt
+url: /cookbook/jwt
 menu:
   side:
     identifier: jwt-recipe
-    parent: recipes
-    weight: 11
+    parent: cookbook
+    weight: 14
 ---
 
 ## JWT
