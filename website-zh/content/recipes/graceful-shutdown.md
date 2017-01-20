@@ -7,25 +7,59 @@ menu:
     weight: 13
 ---
 
-## Graceful Shutdown Recipe
+## 平滑关闭
 
-### Using [grace](https://github.com/facebookgo/grace)
-
-`server.go`
-
-{{< embed "graceful-shutdown/grace/server.go" >}}
-
-### Using [graceful](https://github.com/tylerb/graceful)
+### 使用 [grace](https://github.com/facebookgo/grace)
 
 `server.go`
 
-{{< embed "graceful-shutdown/graceful/server.go" >}}
+```go
+package main
 
-### Maintainers
+import (
+	"net/http"
 
-- [mertenvg](https://github.com/mertenvg)
+	"github.com/facebookgo/grace/gracehttp"
+	"github.com/labstack/echo"
+)
 
-### Source Code
+func main() {
+	// Setup
+	e := echo.New()
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Six sick bricks tick")
+	})
+	e.Server.Addr = ":1323"
 
-- [graceful]({{< source "graceful-shutdown/graceful" >}})
-- [grace]({{< source "graceful-shutdown/grace" >}})
+	// Serve it like a boss
+	e.Logger.Fatal(gracehttp.Serve(e.Server))
+}
+```
+
+### 使用 [graceful](https://github.com/tylerb/graceful)
+
+`server.go`
+
+```go
+package main
+
+import (
+	"net/http"
+	"time"
+
+	"github.com/labstack/echo"
+	"github.com/tylerb/graceful"
+)
+
+func main() {
+	// Setup
+	e := echo.New()
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Sue sews rose on slow joe crows nose")
+	})
+	e.Server.Addr = ":1323"
+
+	// Serve it like a boss
+	graceful.ListenAndServe(e.Server, 5*time.Second)
+}
+```

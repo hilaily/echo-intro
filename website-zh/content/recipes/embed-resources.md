@@ -7,17 +7,32 @@ menu:
     weight: 14
 ---
 
-## Embed Resources Recipe
+## 资源嵌入
 
-### With go.rice
+### 使用 go.rice
 
 `server.go`
 
-{{< embed "embed-resources/server.go" >}}
+```go
+package main
 
-### Maintainers
+import (
+	"net/http"
 
-- [caarlos0](https://github.com/caarlos0)
-- [maddie](https://github.com/maddie)
+	rice "github.com/GeertJohan/go.rice"
+	"github.com/labstack/echo"
+)
 
-### [Source Code]({{< source "embed-resources" >}})
+func main() {
+	e := echo.New()
+	// the file server for rice. "app" is the folder where the files come from.
+	assetHandler := http.FileServer(rice.MustFindBox("app").HTTPBox())
+	// serves the index.html from rice
+	e.GET("/", echo.WrapHandler(assetHandler))
+
+	// servers other static files
+	e.GET("/static/*", echo.WrapHandler(http.StripPrefix("/static/", assetHandler)))
+
+	e.Logger.Fatal(e.Start(":1323"))
+}
+```
