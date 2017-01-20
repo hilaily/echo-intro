@@ -3,9 +3,10 @@ title: Embed Resources
 url: /cookbook/embed-resources
 menu:
   side:
+    name: 资源嵌入
     parent: cookbook
     weight: 17
----
+--
 
 ## 资源嵌入
 

@@ -3,6 +3,7 @@ title: File Upload
 url: /cookbook/file-upload
 menu:
   side:
+    name: 文件上传
     parent: cookbook
     weight: 12
 ---

@@ -1,8 +1,8 @@
 +++
-title = "Secure(安全)"
+title = "Secure 安全"
 url = "/middleware/secure"
 [menu.side]
-  name = "Secure(安全)"
+  name = "Secure 安全"
   parent = "middleware"
   weight = 5
 +++

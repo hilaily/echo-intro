@@ -1,8 +1,8 @@
 +++
-title = "Recover"
+title = "Recover 恢复"
 url = "/middleware/recover"
 [menu.side]
-  name = "Recover"
+  name = "Recover 恢复"
   parent = "middleware"
   weight = 5
 +++

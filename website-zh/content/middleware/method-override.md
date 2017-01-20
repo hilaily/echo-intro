@@ -1,8 +1,8 @@
 +++
-title = "Method Override"
+title = "Method Override 方法重写"
 url = "/middleware/method-override"
 [menu.side]
-  name = "MethodOverride"
+  name = "MethodOverride 方法重写"
   parent = "middleware"
   weight = 5
 +++

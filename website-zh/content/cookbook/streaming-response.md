@@ -3,6 +3,7 @@ title: Streaming Response
 url: /cookbook/streaming-response
 menu:
   side:
+    name: 流式响应
     parent: cookbook
     weight: 9
 ---

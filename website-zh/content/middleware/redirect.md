@@ -1,8 +1,8 @@
 +++
-title = "Redirect"
+title = "Redirect 重定向"
 url = "/middleware/redirect"
 [menu.side]
-  name = "Redirect"
+  name = "Redirect 重定向"
   parent = "middleware"
   weight = 5
 +++

@@ -3,7 +3,7 @@ title = "Middleware Recipe"
 description = "Middleware recipe / example for Echo"
 url="cookbook/middleware"
 [menu.side]
-  name = "Middleware"
+  name = "中间件"
   parent = "cookbook"
   weight = 7
 +++

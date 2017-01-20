@@ -1,8 +1,8 @@
 +++
-title = "CSRF(跨站请求伪造)"
+title = "CSRF 跨站请求伪造"
 url = "/middleware/ecsrf"
 [menu.side]
-  name = "CSRF(跨站请求伪造)"
+  name = "CSRF 跨站请求伪造"
   parent = "middleware"
   weight = 5
 +++

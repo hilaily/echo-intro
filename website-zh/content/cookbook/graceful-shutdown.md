@@ -3,6 +3,7 @@ title: Graceful Shutdown
 url : /cookbook/graceful-shutdown
 menu:
   side:
+    name: 平滑关闭
     parent: cookbook
     weight: 16
 ---

@@ -1,8 +1,8 @@
 +++
-title = "Gzip"
+title = "Gzip 压缩"
 url = "/middleware/gzip"
 [menu.side]
-  name = "Gzip"
+  name = "Gzip 压缩"
   parent = "middleware"
   weight = 5
 +++

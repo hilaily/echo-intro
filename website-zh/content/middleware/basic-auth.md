@@ -1,8 +1,8 @@
 +++
-title = "Basic Auth"
+title = "BasicAuth 基本认证"
 url="/middleware/basic-auth"
 [menu.side]
-  name = "BasicAuth(基本认证)"
+  name = "BasicAuth 基本认证"
   parent = "middleware"
   weight = 3
 +++
