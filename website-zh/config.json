@@ -29,12 +29,6 @@
       "weight": 2,
       "identifier": "cookbook",
       "url": "cookbook"
-    }, {
-      "name": "Godoc",
-      "pre": "<i class='fa fa-file-text-o'></i>",
-      "weight": 3,
-      "identifier": "godoc",
-      "url": "godoc"
     }]
   },
 
