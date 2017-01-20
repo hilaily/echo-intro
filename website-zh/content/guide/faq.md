@@ -1,18 +1,18 @@
 +++
-title = "FAQ"
-description = "Frequently asked questions in Echo"
-[menu.main]
-  name = "FAQ"
+title = "FAQ 常见问题"
+url = "guide/faq"
+[menu.side]
+  name = "FAQ 常见问题"
   parent = "guide"
   weight = 20
 +++
 
-Q: How to retrieve `*http.Request` and `http.ResponseWriter` from `echo.Context`?
+Q: 怎样从 `echo.Context` 获取  `*http.Request` 和 `http.ResponseWriter`  ?
 
 - `http.Request` > `c.Request()`
 - `http.ResponseWriter` > `c.Response()`
 
-Q: How to use standard handler `func(http.ResponseWriter, *http.Request)` with Echo?
+Q: 在 Echo 中怎么使用 go 的标准控制器 `func(http.ResponseWriter, *http.Request)` ?
 
 ```go
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -26,7 +26,7 @@ func main() {
 }
 ```
 
-Q: How to use standard middleware `func(http.Handler) http.Handler` with Echo?
+Q: 在 Echo 中怎么使用标准的中间件 `func(http.Handler) http.Handler` ?
 
 ```go
 func middleware(h http.Handler) http.Handler {
@@ -46,13 +46,13 @@ func main() {
 }
 ```
 
-Q: How to run Echo on a specific IP address?
+Q: 怎样在指定的 ip 地址运行 Echo ?
 
 ```go
 e.Start("<ip>:<port>")
 ```
 
-Q: How to run Echo on a random port?
+Q: 怎么在一个随机的端口运行 Echo ?
 
 ```go
 e.Start(":0")
