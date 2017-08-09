@@ -6,8 +6,8 @@
   "canonifyurls": true,
   "permalinks": {
     "guide": "/guide/:slug",
-    "middleware": "/middleware/:url",
-    "cookbook": "/cookbook/:url"
+    "middleware": "/middleware/:slug",
+    "cookbook": "/cookbook/:slug"
   },
 
   "menu": {
