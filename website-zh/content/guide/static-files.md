@@ -4,7 +4,7 @@ url : guide/static-files
 menu:
   side:
     parent: guide
-    weight: 4
+    weight: 10
 ---
 
 ## 静态文件

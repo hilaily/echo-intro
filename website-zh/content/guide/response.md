@@ -4,7 +4,7 @@ url: guide/response
 menu:
   side:
     parent: guide
-    weight: 11
+    weight: 8
 ---
 
 ## HTTP 响应

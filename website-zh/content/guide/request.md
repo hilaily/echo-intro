@@ -4,7 +4,7 @@ url: guide/request
 menu:
   side:
     parent: guide
-    weight: 9
+    weight: 7
 ---
 
 ## HTTP 请求

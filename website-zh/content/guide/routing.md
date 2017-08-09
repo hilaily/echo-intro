@@ -4,7 +4,7 @@ url: guide/routing
 menu:
   side:
     parent: guide
-    weight: 6
+    weight: 9
 ---
 
 ## 路由
@@ -87,6 +87,21 @@ g.Use(middleware.BasicAuth(func(username, password string) bool {
 }))
 ```
 
+### 路由命名
+每个注册路由返回一个 `Route` 对象。它可以在注册了之后用来给路由命名。比如：
+```go
+routeInfo := e.GET("/users/:id", func(c echo.Context) error {
+	return c.String(http.StatusOK, "/users/:id")
+})
+routeInfo.Name = "user"
+
+// 或者这样写
+e.GET("/users/new", func(c echo.Context) error {
+	return c.String(http.StatusOK, "/users/new")
+}).Name = "newuser"
+```
+当你需要在模版生成 uri 但是又无法获取路由的引用或者多个路由使用的相同的处理器(handler)的时候，使用命名路由就会比较方便。
+
 ### 构造URI 
 
 `Echo.URI` 可以用来在任何业务处理代码里生成带有特殊参数的URI。
@@ -103,4 +118,72 @@ h := func(c echo.Context) error {
 // 路由
 e.GET("/users/:id", h)
 ```
+除了 `Echo#URI`，还有 `Echo#Reverse(name string, params ...interface{})` 方法用来根据路由名生成 uri。
+比如下面的代码中使用 `Echo#Reverse("foobar", 1234)` 就会生成 `/users/1234`。
+```go
+// Handler
+h := func(c echo.Context) error {
+	return c.String(http.StatusOK, "OK")
+}
+
+// Route
+e.GET("/users/:id", h).Name = "foobar"
+```
+
+### 路由列表
+`Echo#Routes() []*Route` 会根据定义的顺序列出所有已经注册的路由。每一个路由包含 http 方法，路径和对应的处理器。
+示例
+```go
+// Handlers
+func createUser(c echo.Context) error {
+}
+
+func findUser(c echo.Context) error {
+}
+
+func updateUser(c echo.Context) error {
+}
+
+func deleteUser(c echo.Context) error {
+}
+
+// Routes
+e.POST("/users", createUser)
+e.GET("/users", findUser)
+e.PUT("/users", updateUser)
+e.DELETE("/users", deleteUser)
+```
+用下面的代码你可以输出所有的路由信息到 json 文件。
+```go
+data, err := json.MarshalIndent(e.Routes(), "", "  ")
+if err != nil {
+	return err
+}
+ioutil.WriteFile("routes.json", data, 0644)
+```
+```json
+[
+  {
+    "method": "POST",
+    "path": "/users",
+    "handler": "main.createUser"
+  },
+  {
+    "method": "GET",
+    "path": "/users",
+    "handler": "main.findUser"
+  },
+  {
+    "method": "PUT",
+    "path": "/users",
+    "handler": "main.updateUser"
+  },
+  {
+    "method": "DELETE",
+    "path": "/users",
+    "handler": "main.deleteUser"
+  }
+]
+```
+
 

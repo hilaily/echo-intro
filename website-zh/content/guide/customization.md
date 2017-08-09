@@ -5,7 +5,7 @@ menu:
   side:
     name: 自定义
     parent: guide
-    weight: 3
+    weight: 2
 ---
 
 ## 自定义
@@ -53,23 +53,20 @@ s := &http.Server{
 e.Logger.Fatal(e.StartServer(s))
 ```
 
-#### 使用 http.ListenAndServe*()
+#### 启动横幅
+可以使用 `Echo#HideBanner` 关闭启动时候的横幅LOGO。
 
+#### 自定义监听器
+可以使用 `Echo#*Listener`启动一个自定义的 listener。
 示例：
-
 ```go
-e := echo.New()
-e.GET("/", func(c echo.Context) error {
-  return c.JSON(http.StatusOK, "OK")
-})
-s := &http.Server{
-  Handler: e,
-  Addr:    ":1323",
+l, err := net.Listen("tcp", ":1323")
+if err != nil {
+  e.Logger.Fatal(l)
 }
-e.Logger.Fatal(s.ListenAndServe())
+e.Listener = l
+e.Logger.Fatal(e.Start(""))
 ```
-
-> 这个设置会绕过 auto-tls 和 graceful shutdown 设置
 
 ### 禁用 HTTP/2
 
@@ -77,15 +74,11 @@ e.Logger.Fatal(s.ListenAndServe())
 
 ### 读取超时
 
-`Echo#ReadTimeout` 用于设置读取请求的最大时间。
+`Echo#*Server#ReadTimeout` 用于设置读取请求的最大时间。
 
 ### 写入超时
 
-`Echo#WriteTimeout` 用于设置写入响应的最大时间。
-
-### 关闭超时
-
-`Echo#ShutdownTimeout` 用于设置关闭服务器前等待断开活跃的请求的时间，如果设置为 0，则不会超时，一直等到所有请求被断开之后再关闭服务器。
+`Echo#*Server#WriteTimeout` 用于设置写入响应的最大时间。
 
 ### 验证
 
