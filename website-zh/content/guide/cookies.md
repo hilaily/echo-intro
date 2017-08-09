@@ -27,19 +27,20 @@ Cookie 也可以用来存储用户输入过的表单内容像电话号码，地�
 
 ### 创建一个 Cookie
 
+Echo 使用 golang 自带的 `http.Cookie` 对象来从处理函数的上下文里写入／读取 cookies。
 ```go
 func writeCookie(c echo.Context) error {
-	cookie := new(echo.Cookie)
-	cookie.SetName("username")
-	cookie.SetValue("jon")
-	cookie.SetExpires(time.Now().Add(24 * time.Hour))
+	cookie := new(http.Cookie)
+	cookie.Name = "username"
+	cookie.Value = "jon"
+	cookie.Expires = time.Now().Add(24 * time.Hour)
 	c.SetCookie(cookie)
 	return c.String(http.StatusOK, "write a cookie")
 }
 ```
 
-- 使用 `new(echo.Cookie)` 创建Cookie。
-- 使用 `Setter` 方法设置 cookie 的属性。
+- 使用 `new(http.Cookie)` 创建Cookie。
+- cookie 的属性值会被赋值给 `http.Cookie` 的可导出属性。
 - 最后，使用 `c.SetCookie(cookies)` 来给响应添加 `Set-Cookie` 头。
 
 ### 读取 Cookie
@@ -50,22 +51,22 @@ func readCookie(c echo.Context) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println(cookie.Name())
-	fmt.Println(cookie.Value())
+	fmt.Println(cookie.Name)
+	fmt.Println(cookie.Value)
 	return c.String(http.StatusOK, "read a cookie")
 }
 ```
 
-- Cookie 通过名称从 HTTP 请求里读取 `c.Cookie("name")`。
-- Cookie 的属性使用`Getter` 方法获取。
+- Cookie 通过名称从 HTTP 请求里读取: `c.Cookie("name")`。
+- Cookie 的属性可以使用`Getter` 方法获取。
 
 ### 读取所有 Cookies
 
 ```go
 func readAllCookies(c echo.Context) error {
 	for _, cookie := range c.Cookies() {
-		fmt.Println(cookie.Name())
-		fmt.Println(cookie.Value())
+		fmt.Println(cookie.Name)
+		fmt.Println(cookie.Value)
 	}
 	return c.String(http.StatusOK, "read all cookie")
 }
