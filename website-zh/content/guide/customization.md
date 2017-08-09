@@ -1,5 +1,6 @@
 ---
 title : 自定义
+slug: aaa
 url: guide/customization
 menu:
   side:
