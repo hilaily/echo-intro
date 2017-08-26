@@ -17,11 +17,11 @@ BasicAuth 中间件提供了 HTTP 的基本认证方式。
 *用法*
 
 ```go
-e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) bool {
+e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (bool, error) {
 	if username == "joe" && password == "secret" {
-		return true
+		return true, nil
 	}
-	return false
+	return false, nil
 }))
 ```
 
@@ -30,7 +30,7 @@ e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) bool 
 *用法*
 
 ```go
-e.Use(middleware.BasicAuthWithConfig(middleware.BasicAuthConfig{}}))
+e.Use(middleware.BasicAuthWithConfig(middleware.BasicAuthConfig{}))
 ```
 
 *配置*
@@ -43,6 +43,10 @@ BasicAuthConfig struct {
   // Validator 是一个用来验证 BasicAuth 是否合法的函数
   // Validator 是必须的.
   Validator BasicAuthValidator
+
+  // Realm 是一个用来定义 BasicAuth 的 Realm 属性的字符串
+  // 默认是 "Restricted"
+  Realm string
 }
 ```
 
