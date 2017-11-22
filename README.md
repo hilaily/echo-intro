@@ -22,6 +22,8 @@ fork 该项目，修改后提交pr即可。
 
 [aheizi](https://github.com/aheizi)
 
+[3zhen](https://github.com/3zheng)
+
 ### 声明
 
 网页主要由Echo官方仓库的Echox中的内容翻译而来

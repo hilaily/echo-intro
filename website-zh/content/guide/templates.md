@@ -13,9 +13,9 @@ menu:
 
 `Context#Render(code int, name string, data interface{}) error` 用于渲染一个模板，然后发送一个 text/html 的状态响应。我们可以使用任何模板引擎，只要赋值给 `Echo.Renderer`。
 
-下面是使用Go  `html/template`的示例：
+下面是使用Go `html/template` 的示例：
 
-1. 实现  `echo.Renderer`  接口
+1.实现 `echo.Renderer` 接口
 
 ```go
 type Template struct {
@@ -27,21 +27,21 @@ func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Con
 }
 ```
 
-2. 预编译模板
+2.预编译模板
 
-    `public/views/hello.html`
+`public/views/hello.html`
 
-   ```html
-    {{define "hello"}}Hello, {{.}}!{{end}}
-   ```
+```html
+{{define "hello"}}Hello, {{.}}!{{end}}
+```
 
-   ```go
-    t := &Template{
-        templates: template.Must(template.ParseGlob("public/views/*.html")),
-    }
-   ```
+```go
+t := &Template{
+	templates: template.Must(template.ParseGlob("public/views/*.html")),
+}
+```
 
-3. 注册模板
+3.注册模板
 
 ```go
 e := echo.New()
@@ -49,12 +49,14 @@ e.Renderer = t
 e.GET("/hello", Hello)
 ```
 
-4. 在 action 中渲染模板
+4.在 action 中渲染模板
+
 ```go
  func Hello(c echo.Context) error {
  	return c.Render(http.StatusOK, "hello", "World")
  }
 ```
+
 ### 高级 - 在模版中调用 Echo
 在某些情况下可能需要从模版生成 uri。这样你需要在模版中调用 `Echo#Reverse`。Golang 的 `html/template` 包不太适合于这种情况，但是我们可以通过两种方法实现它：给所有的传递到模版的对象提供一个公用的方法或者将 `map[string]interface{}` 作为参数传递给自定义模版。
 下面的代码展示后者的处理方式：
