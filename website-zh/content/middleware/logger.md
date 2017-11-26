@@ -93,6 +93,7 @@ DefaultLoggerConfig = LoggerConfig{
 }
 ```
 
+更多细节见：[laily.net](https://laily.net/article/golang%20echo%20%e4%bb%a3%e7%a0%81%e8%af%a6%e8%a7%a3%e4%b9%8b%20log%20%e7%af%87)
 
 
 

@@ -3,4 +3,5 @@ website/public
 website-zh/public
 node_modules
 website-zh/hugo.exe
+.history/
 
