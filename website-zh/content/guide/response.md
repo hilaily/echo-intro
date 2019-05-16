@@ -76,7 +76,7 @@ func(c echo.Context) error {
 
 ### JSON Pretty
 
-`Context#JSONPretty(code int, i interface{}, indent string)` 也是用于发送 json 数据。不过它打印出的 json 数据带有锁进（可以使用空格和 tab），更为好看。
+`Context#JSONPretty(code int, i interface{}, indent string)` 也是用于发送 json 数据。不过它打印出的 json 数据带有缩进（可以使用空格和 tab），更为好看。
 
 发送带有空格锁进的 json 数据。
 
