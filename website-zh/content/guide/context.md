@@ -10,11 +10,12 @@ url= "/guide/context"
 
 ## Context
 
-echo.Context 表示当前 HTTP 请求的上下文。通过路径、路径参数、数据、注册处理程序和相关 API 进行请求的读取与响应的输出。由于 Context 是一个接口，也可以轻松地使用自定义 API 进行扩展。
+echo.Context 表示当前 HTTP 请求的上下文。通过路径、路径参数、数据、注册处理器和相关 API 进行请求的读取与响应的输出。由于 Context 是一个接口，也可以轻松地使用自定义 API 进行扩展。
 
 ### 扩展 Context
 
-**自定义一个 context**
+**定义一个自定义 context**
+
 ```go
 type CustomContext struct {
 	echo.Context
@@ -38,9 +39,9 @@ e.Use(func(h echo.HandlerFunc) echo.HandlerFunc {
 	}
 })
 ```
-> 这个中间件要在所有其它中间件之前注册到路由上。
+> 此中间件应在任何其他中间件之前注册。
 
-**在业务处理中使用**
+**在处理器中使用**
 
 ```go
 e.Get("/", func(c echo.Context) error {
