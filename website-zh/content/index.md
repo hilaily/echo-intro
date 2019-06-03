@@ -8,7 +8,7 @@ url: index
 ### 安装
 
 ```sh
-$ go get github.com/labstack/echo/...
+$ go get -u github.com/labstack/echo/...
 ```
 
 ### 编写 Hello, World!
@@ -20,6 +20,7 @@ package main
 
 import (
 	"net/http"
+    
 	"github.com/labstack/echo"
 )
 
@@ -36,7 +37,7 @@ func main() {
 ```sh
 $ go run server.go
 ```
-用在浏览器访问 [http://localhost:1323](http://localhost:1323) 然后你就能在页面上看到 `Hello, World!` 
+用浏览器访问 [http://localhost:1323](http://localhost:1323) 然后就能在页面上看到 `Hello, World!` 
 ### 路由
 
 ```go
@@ -56,6 +57,8 @@ func getUser(c echo.Context) error {
 	return c.String(http.StatusOK, id)
 }
 ```
+
+用浏览器访问 [http://localhost:1323/users/Joe](http://localhost:1323) 然后就能在页面上看到 `Joe` 
 
 ### 请求参数
 
@@ -103,7 +106,6 @@ $ curl -F "name=Joe Smith" -F "email=joe@labstack.com" http://localhost:1323/sav
 name | value
 :--- | :---
 name | Joe Smith
-email | joe@labstack.com
 avatar | avatar
 
 ```go
@@ -143,12 +145,18 @@ func save(c echo.Context) error {
 $ curl -F "name=Joe Smith" -F "avatar=@/path/to/your/avatar.png" http://localhost:1323/save
 //output => <b>Thank you! Joe Smith</b>
 ```
-同时在项目目录下可以看到刚刚上传的图片。
+使用以下命令查看刚刚上传的图片
+
+```bash
+cd <project directory>
+ls avatar.png
+// => avatar.png
+```
 
 ### 处理请求
 
-- 在数据结构体里设置 `JSON` 或 `XML` 或 `form` 标签直接匹配请求头的 `Content-Type`。 
-- 结合响应状态将响应渲染为 `JSON` 或者 `XML`。
+- 根据 Content-Type 请求标头将 `json`，`xml`，`form` 或 `query` 负载绑定到 Go 结构中。
+- 通过状态码将响应渲染为 `json` 或者 `xml` 格式。
 
 ```go
 type User struct {
@@ -175,7 +183,7 @@ e.POST("/users", func(c echo.Context) error {
 e.Static("/static", "static")
 ```
 
-##### [了解更多...](http://go-echo.org/guide/static-files)
+##### [了解更多](http://go-echo.org/guide/static-files)
 
 ### [模板渲染](http://go-echo.org/guide/templates)
 
@@ -206,4 +214,4 @@ e.GET("/users", func(c echo.Context) error {
 	return c.String(http.StatusOK, "/users")
 }, track)
 ```
-#####[了解更多](https://echo.labstack.com/middleware)
+##### [了解更多](https://echo.labstack.com/middleware)
