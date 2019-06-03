@@ -1,13 +1,12 @@
 ## Echo-intro 
 
-本页面主要用于Golang Echo 框架官方首页的汉化  
-作为中文版的Echo的使用介绍
+本项目为 Golang Echo 框架官方文档的汉化文档  
 
 ### 使用
 
-网页使用hugo运行，如果没有安装hugo，请前去安装[hugo](https://gohugo.io/)  
-然后在`website-zh`目录运行 `./hugo serve`  
-接着去浏览器访问`loalhost:1313`就可以了  
+1. 网页使用hugo运行，如果没有安装hugo，请前去安装[hugo](https://gohugo.io/)  
+2. 在`website-zh`目录运行 `./hugo serve`  
+3. 在浏览器访问`loalhost:1313`即可打开项目
 
 ### 参与翻译
 
@@ -18,7 +17,7 @@ fork 该项目，修改后提交pr即可。
 
 [Laily](https://github.com/Laily123)
 
-[ryanpro8278](https://github.com/ryanpro8278)
+[Ryan](https://github.com/ryanpro8278)
 
 [aheizi](https://github.com/aheizi)
 
