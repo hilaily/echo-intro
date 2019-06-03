@@ -5,13 +5,12 @@ url= "/guide/context"
   name= "Context"
   parent = "guide"
   weight = 3
+
 +++
 
 ## Context
 
-echo.Context 代表了当前 HTTP 请求的 context（上下文？这里看个人理解吧，就不翻译了）。
-它含有请求和相应的引用，路径，路径参数，数据，注册的业务处理方法和读取请求和输出响应的API。
-由于 Context 是一个接口，所以也可以很方便的使用自定义的 API 扩展。
+echo.Context 表示当前 HTTP 请求的上下文。通过路径、路径参数、数据、注册处理程序和相关 API 进行请求的读取与响应的输出。由于 Context 是一个接口，也可以轻松地使用自定义 API 进行扩展。
 
 ### 扩展 Context
 
