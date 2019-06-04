@@ -7,12 +7,13 @@ menu:
     weight: 5
 ---
 
-## 错误处理
+## 错误处理程序
 
-Echo 支持从中间件或者action返回 HTTP 错误集中处理。这样可以允许我们在统一的地方记录日志提供给第三方或者返回自定义的 HTTP 响应给客户端。
-你可以返回一个标准的 `error` 或者 `echo.*HTTPError`
+Echo 提倡通过中间件或处理程序(handler)返回 HTTP 错误集中处理。集中式错误处理程序允许我们从统一位置将错误记录到外部服务，并向客户端发送自定义 HTTP 响应。
 
-例如 一个基本的身份验证中间件验证失败返回 `401 - Unauthorized` 错误, 终止了当前的 HTTP 请求。
+你可以返回一个标准的 `error` 或者 `echo.*HTTPError`。
+
+例如，当基本身份验证中间件找到无效凭据时，会返回 401未授权错误(401-Unauthorized)，并终止当前的 HTTP 请求。
 
 ```go
 	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
@@ -29,24 +30,24 @@ Echo 支持从中间件或者action返回 HTTP 错误集中处理。这样可以
 	})
 }
 ```
-也可以不带消息内容调用 `echo.NewHTTPError()`，这样就会使用 error 带的错误信息，比如 `Unauthorized`。
+你也可以不带消息内容调用 `echo.NewHTTPError()`，这种情况下状态文本会被用作错误信息，例如 `Unauthorized`。
 
-## 默认的 http 错误处理
-Echo 提供了默认的 http 错误处理，它以 json 格式发送数据。
+## 默认 HTTP 错误处理程序
+Echo 提供了默认的 HTTP 错误处理程序，它用 JSON 格式发送错误。
 ```
 {
   "message": "error connecting to redis"
 }
 ```
-一个错误是 golang 标准的 error，响应是 `500 - Internal Server Error`。当然，如果是在 debug 模式，原始的错误信息会被发送。如果错误是 `*HTTPError`,
-响应会有提供的错误码和错误内容。如果日志打开了，错误信息也会被日志记录。
+标准错误 `error` 的响应是 `500 - Internal Server Error`。然而在调试(debug)模式模式下，原始的错误信息会被发送。如果错误是 `*HTTPError`，则使用设置的状态代码和消息发送响应。如果启用了日志记录，则还会记录错误消息。
 
-## 自定义 http 错误处理
-通过 `e.HTTPErrorHandler` 可以设置自定义的 http 错误处理。
-在大部分情况下，默认的 http 错误处理已经够用了，当时如果想根据不同的错误做不同的处理的时候就需要自定义错误处理了。比如发送提醒邮件或者记录日志到应用中心。还可以发送自定义的错误响应给客户端，比如定义错误页面或者返回一段 json 数据。
+## 自定义 HTTP 错误处理程序
+通过 `e.HTTPErrorHandler` 可以设置自定义的 HTTP 错误处理程序(error handler)。
 
-## 错误页
-下面的自定义 http 错误处理器展示了怎么根据不同的错误显示不一样的错误页面和记录日志。错误页的名字应该类似 `<CODE>.html`，比如 `500.html`。你可以在[这里](https://github.com/AndiDittrich/HttpErrorPages)看到 Echo 内置的错误页。
+通常默认的 HTTP 错误处理程序已经够用；然而如果要获取不同类型的错误并采取相应的操作，则可以使用自定义 HTTP 错误处理程序，例如发送通知邮件或记录日志到应用中心的场景。最后，你还可以发送自定义的错误页面或 JSON 响应给客户端。
+
+### 错误页
+利用自定义 HTTP 错误处理程序，可以在显示不同种类的错误页面的同时，记录错误日志。错误页的名称可写作 `<CODE>.html`，例如 `500.html`。你可以在[https://github.com/AndiDittrich/HttpErrorPages](https://github.com/AndiDittrich/HttpErrorPages)看到 Echo 内置的错误页。
 ```go
 func customHTTPErrorHandler(err error, c echo.Context) {
 	code := http.StatusInternalServerError
@@ -62,4 +63,4 @@ func customHTTPErrorHandler(err error, c echo.Context) {
 
 e.HTTPErrorHandler = customHTTPErrorHandler
 ```
-> 除了记录日志到 logger，你也可以将日志记录到 Elasticsearch 或者 Splunk。
+> 日志除了记录到 logger，也可以记录到第三方服务，例如 Elasticsearch 或者 Splunk。
