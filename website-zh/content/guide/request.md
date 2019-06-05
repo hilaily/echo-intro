@@ -1,5 +1,5 @@
 ---
-title: HTTP 请求
+title: 请求
 url: guide/request
 menu:
   side:
@@ -7,13 +7,13 @@ menu:
     weight: 7
 ---
 
-## HTTP 请求
+## 请求
 
 ### 数据绑定
 
-使用 `Context#Bind(i interface{})` 绑定一个请求内容体到 go 的结构体。默认的绑定器支持解析 Content-Type 是 application/json，application/xml 和 application/x-www-form-urlencoded 的数据。
+可以使用 `Context#Bind(i interface{})` 将请求内容体绑定至 go 的结构体。默认绑定器支持基于 Content-Type 标头包含 application/json，application/xml 和 application/x-www-form-urlencoded 的数据。
 
-下面是绑定请求数据到 User 结构体的例子
+下面是绑定请求数据到 `User` 结构体的例子
 
 ```go
 // User
@@ -44,7 +44,7 @@ curl \
   -d '{"name":"Joe","email":"joe@labstack"}'
 ```
 
-#### From 表单数据
+#### Form 表单数据
 
 ```go
 curl \
@@ -54,7 +54,7 @@ curl \
   -d 'email=joe@labstack.com'
 ```
 
-### url 请求数据 (Query Parameters)
+### 查询参数 (Query Parameters)
 
 ```go
 curl \
@@ -64,7 +64,7 @@ curl \
 
 ### 自定义绑定器
 
-可以通过 `Echo#Binder`自定义绑定器。
+可以通过 `Echo#Binder` 注册自定义绑定器。
 
 示例
 
@@ -84,11 +84,11 @@ func (cb *CustomBinder) Bind(i interface{}, c echo.Context) (err error) {
 }
 ```
 
-### 读取数据
+### 检索数据
 
-#### Form 表达数据
+#### Form 表单数据
 
-表单数据可以通过名称读取，使用这个方法 `Context#FormValue(name string)`。
+表单数据可以通过名称检索，使用 `Context#FormValue(name string)` 方法。
 
 示例
 
@@ -107,7 +107,7 @@ curl \
   -d 'name=Joe'
 ```
 
-你可以实现 `Echo#BindUnmarshaler` 接口去去绑定自己的数据结构。
+当然，你也可以通过实现 `Echo#BindUnmarshaler` 接口来绑定自定义数据类型。
 
 ```go
 type Timestamp time.Time
@@ -119,9 +119,9 @@ func (t *Timestamp) UnmarshalParam(src string) error {
 }
 ```
 
-### url 请求数据 (Query Parameters)
+### 查询参数 (Query Parameters)
 
-url 请求参数可以通过名称获取，使用 `Context#QueryParam(name string)` 方法。
+查询参数可以通过名称获取，使用 `Context#QueryParam(name string)` 方法。
 
 示例
 
@@ -139,11 +139,11 @@ curl \
   http://localhost:1323\?name\=Joe
 ```
 
-和表单数据一样，自定义数据也可以通过 `Context#QueryParam(name string)` 绑定。
+和表单数据一样，自定义数据类型依然通过 `Context#QueryParam(name string)` 进行绑定。
 
-### url 请求参数 (Path Parameters)
+### 路径参数 (Path Parameters)
 
-url 请求参数可以通过 `Context#Param(name string) string` 获取。
+路径参数可以通过 `Context#Param(name string) string` 进行检索。
 
 示例
 
@@ -160,9 +160,9 @@ $ curl http://localhost:1323/users/Joe
 
 ### 数据验证
 
-Echo 没有内置数据验证功能，但是可以通过 `Echo#Validator` 和[第三方库](https://github.com/avelino/awesome-go#validation)自己注册一个数据验证器。
+Echo 没有内置的数据验证功能，但是可以通过 `Echo#Validator` 和[第三方库](https://github.com/avelino/awesome-go#validation)来注册一个数据验证器。
 
-下面例子  [https://github.com/go-playground/validator](https://github.com/go-playground/validator)  使用做验证
+下面例子使用  [https://github.com/go-playground/validator](https://github.com/go-playground/validator)  所展示的框架来做验证：
 
 ```go
 type (
