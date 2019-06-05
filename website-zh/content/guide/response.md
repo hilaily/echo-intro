@@ -1,5 +1,5 @@
 ---
-title: HTTP 响应
+title: 响应
 url: guide/response
 menu:
   side:
@@ -7,11 +7,13 @@ menu:
     weight: 8
 ---
 
-## HTTP 响应
+## 响应
 
 ### 发送 string 数据
 
 `Context#String(code int, s string)` 用于发送一个带有状态码的纯文本响应。
+
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -19,9 +21,11 @@ func(c echo.Context) error {
 }
 ```
 
-### 发送 HTML 响应
+### 发送 HTML 响应（参考模板）
 
-`Context#HTML(code int, html string)` 用于发送一个带状态码的简单 html 响应。如果你需要动态生成 html 内容请查看[模版](https://echo.labstack.com/guide/templates)。
+`Context#HTML(code int, html string)` 用于发送一个带有状态码的简单 HTML 响应。如果你需要动态生成 HTML 内容请查看[模版](https://echo.labstack.com/guide/templates)。
+
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -29,9 +33,9 @@ func(c echo.Context) error {
 }
 ```
 
-### 发送 HTML Blog
+#### 发送 HTML Blob
 
-`Context#HTMLBlob(code int, b []byte)` 用于发送一个带状态码的 html blob(二进制大对象)响应。它和输出 []byte 类型内容的模版引擎配合使用非常方便。
+`Context#HTMLBlob(code int, b []byte)` 用于发送一个带状态码的 HTML blob（二进制长对象）响应。可以发现，使用输出 `[]byte` 的模版引擎很方便。
 
 ###  模版引擎渲染
 
@@ -39,7 +43,9 @@ func(c echo.Context) error {
 
 ### 发送 JSON 数据
 
-`Context#JSON(code int, i interface{})` 用于发送一个带状态码的 json 对象。它会将 golang 的对象转换成 json 字符串。
+`Context#JSON(code int, i interface{})` 用于发送一个带状态码的 JSON 对象，它会将 Golang 的对象转换成 JSON 字符串。
+
+*示例*
 
 ```go
 // User
@@ -58,9 +64,11 @@ func(c echo.Context) error {
 }
 ```
 
-### JSON 流
+#### JSON 流
 
-`Context#JSON()` 内部使用 `json.Marshl` 来转换 json 数据，对于多大的数据来说性能不够好，这种情况你可以直接使用 json 流。
+`Context#JSON()` 内部使用 `json.Marshal` 来转换 JSON 数据，但该方法面对大量的 JSON 数据会显得效率不足，对于这种情况可以直接使用 JSON 流。
+
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -74,11 +82,11 @@ func(c echo.Context) error {
 }
 ```
 
-### JSON Pretty
+#### JSON 美化（JSON Pretty）
 
-`Context#JSONPretty(code int, i interface{}, indent string)` 也是用于发送 json 数据。不过它打印出的 json 数据带有缩进（可以使用空格和 tab），更为好看。
+`Context#JSONPretty(code int, i interface{}, indent string)` 可以发送带有缩进（可以使用空格和 tab）的更为好看的 JSON 数据。
 
-发送带有空格锁进的 json 数据。
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -97,9 +105,20 @@ func(c echo.Context) error {
 }
 ```
 
-### JSON Blob
+> 通过在请求URL查询字符串中附加 `pretty` ，你也可以使用 `Context#JSON()` 来输出带有缩进的 JSON 数据。
 
-`Context#JSONBlob(code int, b []byte)` 用来直接发送一个已经转换好的 json 对象。
+*示例*
+
+```bash
+curl http://localhost:1323/users/1?pretty
+```
+
+
+#### JSON Blob
+
+`Context#JSONBlob(code int, b []byte)` 可用来从外部源（例如数据库）直接发送预编码的 JSON 对象。
+
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -110,13 +129,15 @@ func(c echo.Context) error {
 
 ### 发送 JSONP 数据
 
-`Context#JSONP(code int, callback string, i interface{})`  用来把 golang 的数据类型转换成 json 并通过回调以 jsonp 的结构发送出去。
+`Context#JSONP(code int, callback string, i interface{})`  可以将 Golang 的数据类型转换成 JSON 类型，并通过回调以带有状态码的 JSONNP 结构发送。
 
-[示例](https://echo.labstack.com/examples/jsonp)
+[查看示例](https://echo.labstack.com/cookbook/jsonp)
 
 ### 发送 XML 数据
 
-`Context#XML(code int, i interface{})` 用来转换 golang 对象为 xml 数据发送响应。
+`Context#XML(code int, i interface{})` 可以将 Golang 对象转换成 XML 类型，并带上状态码发送响应。
+
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -128,7 +149,11 @@ func(c echo.Context) error {
 }
 ```
 
-### Stream XML
+#### XML 流
+
+`Context#XML` 内部使用 `xml.Marshal` 来转换 XML 数据，但该方法面对大量的 XML 数据会显得效率不足，对于这种情况可以直接使用 XML 流。
+
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -142,9 +167,11 @@ func(c echo.Context) error {
 }
 ```
 
-### XML Pretty
+#### XML 美化（XML Pretty）
 
-`Context#XMLPretty(code int, i interface{}, indent string)`
+`Context#XMLPretty(code int, i interface{}, indent string)` 可以发送带有缩进（可以使用空格和 tab）的更为好看的  XML 数据。
+
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -164,9 +191,19 @@ func(c echo.Context) error {
 </User>
 ```
 
-### XML Blob
+> 通过在请求URL查询字符串中附加 `pretty` ，你也可以使用 `Context#XML()` 来输出带有缩进的 XML 数据。
 
-`Context#XMLBlob(code int, b []byte)` 
+*示例*
+
+```bash
+curl http://localhost:1323/users/1?pretty
+```
+
+#### XML Blob
+
+`Context#XMLBlob(code int, b []byte)` 可用来从外部源（例如数据库）直接发送预编码的 XML 对象。
+
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -177,7 +214,9 @@ func(c echo.Context) error {
 
 ### 发送文件
 
-`Context#File(file string)` 用来发送一个文件为内容的响应。
+`Context#File(file string)` 可用来发送内容为文件的响应，并且它能自动设置正确的内容类型、优雅地处理缓存。
+
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -187,7 +226,9 @@ func(c echo.Context) error {
 
 ### 发送附件
 
-`Context#Attachment(file, name string)` 和发送文件的方法类似，只是它会多提供一个名称。
+`Context#Attachment(file, name string)` 和发送文件 `File()` 的方法类似，只是它的方法名称不同。
+
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -195,9 +236,11 @@ func(c echo.Context) error {
 }
 ```
 
-### Send Inline
+### 发送内嵌（Inline）
 
-`Context#Inline(file, name string)` 
+`Context#Inline(file, name string)` 和发送文件 `File()` 的方法类似，只是它的方法名称不同。
+
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -205,9 +248,11 @@ func(c echo.Context) error {
 }
 ```
 
-### Send Blob
+### 发送二进制长文件（Blob）
 
-``Context#Blob(code int, contentType string, b []byte)`  用来发送任意类型的数据。需要提供 content type。
+``Context#Blob(code int, contentType string, b []byte)`  可用于发送带有内容类型(content type)和状态代码的任意类型数据。
+
+*示例*
 
 ```go
 func(c echo.Context) (err error) {
@@ -217,9 +262,11 @@ func(c echo.Context) (err error) {
 }
 ```
 
-### 发送流数据
+### 发送流（Stream）
 
-`Context#Stream(code int, contentType string, r io.Reader)` 用来发送任意数据流响应。需要提供 content type，io.Reader 和状态码。
+`Context#Stream(code int, contentType string, r io.Reader)` 可用于发送带有内容类型(content type)、状态代码、`io.Reader` 的任意类型数据流。
+
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -231,9 +278,11 @@ func(c echo.Context) error {
 }
 ```
 
-### 发送空内容
+### 发送空内容（No Content）
 
-`Context#NoContent(code int)`
+`Context#NoContent(code int)` 可用于发送带有状态码的空内容。
+
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -243,7 +292,9 @@ func(c echo.Context) error {
 
 ### 重定向
 
-`Context#Redirect(code int, url string)`，提供一个 url 用于重定向。
+`Context#Redirect(code int, url string)` 可用于重定向至一个带有状态码的 URL。
+
+*示例*
 
 ```go
 func(c echo.Context) error {
@@ -251,3 +302,28 @@ func(c echo.Context) error {
 }
 ```
 
+### Hooks
+
+#### 响应之前
+
+`Context#Response#Before(func())` 可以用来注册在写入响应之前调用的函数。
+
+#### 响应之后
+
+`Context#Response#After(func())` 可以用来注册在写入响应之后调用的函数。但是如果“Content-Length”是未知状态，则不会有任何方法会被执行。
+
+*示例*
+
+```go
+func(c echo.Context) error {
+  c.Response().Before(func() {
+    println("before response")
+  })
+  c.Response().After(func() {
+    println("after response")
+  })
+  return c.NoContent(http.StatusNoContent)
+}
+```
+
+> 可以在响应之前与之后注册多个方法

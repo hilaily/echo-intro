@@ -46,3 +46,5 @@ menu:
 - `Logger` 接口移至 root 级别
 - 将网站和示例移至主仓库
 - 更新文档以及修复了大量问题(issues)
+
+## [Cookbook](https://echo.labstack.com/cookbook)

@@ -54,7 +54,7 @@ curl \
   -d 'email=joe@labstack.com'
 ```
 
-### 查询参数 (Query Parameters)
+#### 查询参数 (Query Parameters)
 
 ```go
 curl \
@@ -66,7 +66,7 @@ curl \
 
 可以通过 `Echo#Binder` 注册自定义绑定器。
 
-示例
+*示例*
 
 ```go
 type CustomBinder struct {}
@@ -90,7 +90,7 @@ func (cb *CustomBinder) Bind(i interface{}, c echo.Context) (err error) {
 
 表单数据可以通过名称检索，使用 `Context#FormValue(name string)` 方法。
 
-示例
+*示例*
 
 ```go
 // Handler
@@ -119,11 +119,11 @@ func (t *Timestamp) UnmarshalParam(src string) error {
 }
 ```
 
-### 查询参数 (Query Parameters)
+#### 查询参数 (Query Parameters)
 
 查询参数可以通过名称获取，使用 `Context#QueryParam(name string)` 方法。
 
-示例
+*示例*
 
 ```go
 // Handler
@@ -141,11 +141,11 @@ curl \
 
 和表单数据一样，自定义数据类型依然通过 `Context#QueryParam(name string)` 进行绑定。
 
-### 路径参数 (Path Parameters)
+#### 路径参数 (Path Parameters)
 
 路径参数可以通过 `Context#Param(name string) string` 进行检索。
 
-示例
+*示例*
 
 ```go
 e.GET("/users/:name", func(c echo.Context) error {

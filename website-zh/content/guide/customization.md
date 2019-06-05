@@ -88,10 +88,10 @@ s := &http.Server{
 e.Logger.Fatal(e.StartServer(s))
 ```
 
-#### 启动横幅
+### 启动横幅
 使用 `Echo#HideBanner` 隐藏启动横幅。
 
-#### 自定义监听器
+### 自定义监听器
 使用 `Echo#*Listener`启动一个自定义的 listener。
 *示例*
 
