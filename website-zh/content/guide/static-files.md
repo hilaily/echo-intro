@@ -9,11 +9,13 @@ menu:
 
 ## 静态文件
 
-图片，JavaScript，CSS，PDF，字体文件等等...
+例如图片，JavaScript，CSS，PDF，字体文件等等...
+
+### [使用静态中间件](https://echo.labstack.com/middleware/static/)
 
 ### 使用 Echo#Static()
 
-`Echo#Static(prefix, root string)` 用一个 url 路径注册一个新的路由来提供静态文件的访问服务。root 为文件根目录。
+`Echo#Static(prefix, root string)` 使用路径前缀注册一个新路由，以便由根目录提供静态文件。
 
 *用法 1*
 
@@ -22,7 +24,7 @@ e := echo.New()
 e.Static("/static", "assets")
 ```
 
-这样会将所有访问`/static/*`的请求去访问`assets`目录。例如，一个访问`/static/js/main.js`的请求会匹配到`assets/js/main.js`这个文件。
+如上所示， assets 目录中 `/static/*` 路径下的任何文件都会被访问。例如，一个访问 `/static/js/main.js` 的请求会匹配到 `assets/js/main.js` 这个文件。
 
 *用法 2*
 
@@ -31,15 +33,15 @@ e := echo.New()
 e.Static("/", "assets")
 ```
 
-这样会将所有`assets`目录的文件使用`/*`去访问。例如，一个访问`/js/main.js`的请求将会匹配到`assets/js/main.js`文件。
+如上所示，  assets 目录中 `/*` 路径下的任何文件都会被访问。例如，一个访问 `/js/main.js` 的请求将会匹配到 `assets/js/main.js` 文件。
 
 ### 使用 Echo#File()
 
-`Echo#File(path, file string)` 使用 url 路径注册一个新的路由去访问某个静态文件。
+`Echo#File(path, file string)` 使用路径注册新路由以提供静态文件。
 
 *用法 1*
 
-将 `public/index.html` 作为主页。
+使用 `public/index.html` 提供索引页面
 
 ```go
 e.File("/", "public/index.html")
@@ -47,7 +49,7 @@ e.File("/", "public/index.html")
 
 *用法 2*
 
-给 `images/favicon.ico` 一个静态路径。
+使用 `images/favicon.ico` 提供一个图标
 
 ```go
 e.File("/favicon.ico", "images/favicon.ico")
