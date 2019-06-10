@@ -9,26 +9,27 @@ menu:
 
 ## 测试
 
-### 测试业务逻辑
+### 测试处理程序（Testing handler）
 
 `GET` `/users/:id`
 
-这个业务是根据用户的 id 从数据库取到该用户数据，如果用户不存在则返回`404`和提示语句。
+下面的处理程序是根据用户的 id 从数据库取到该用户数据，如果用户不存在则返回`404`和提示语句。
 
 #### 创建 User
 
 `POST` `/users`
 
-- 接受 JSON 格式的数据。
-- 创建成功返回 `201 - Created`。
-- 发生错误返回 `500 - Internal Server Error`。
+- 接受 JSON 格式的关键信息
+- 创建成功返回 `201 - Created`
+- 发生错误返回 `500 - Internal Server Error`
 
 #### 获取 User
 
 `GET` `/users/:email`
 
 - 获取成功返回 `200 - OK`
-- 发生错误返回 `404 - Not Found` if user is not found otherwise `500 - Internal Server Error`
+- 未获取 User 返回 `404 - Not Found` 
+- 发生其它错误返回 `500 - Internal Server Error`
 
 `handler.go`
 
@@ -126,7 +127,7 @@ func TestGetUser(t *testing.T) {
 }
 ```
 
-#### 使用 Form 表单提交
+#### 使用 Form 表单作为关键信息
 
 ```go
 f := make(url.Values)
@@ -136,14 +137,14 @@ req := httptest.NewRequest(echo.POST, "/", strings.NewReader(f.Encode()))
 req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationForm)
 ```
 
-#### 设置 URL 参数 
+#### 设置路径(Path)参数 
 
 ```go
 c.SetParamNames("id", "email")
 c.SetParamValues("1", "jon@labstack.com")
 ```
 
-#### 设置请求参数
+#### 设置查询(Query)参数
 
 ```go
 q := make(url.Values)
@@ -153,5 +154,5 @@ req := http.NewRequest(echo.POST, "/?"+q.Encode(), nil)
 
 ### 测试中间件
 
-*TBD*
+*待定*
 你可以在[这里](https://github.com/labstack/echo/tree/master/middleware)查看框架自带中间件的测试代码。
