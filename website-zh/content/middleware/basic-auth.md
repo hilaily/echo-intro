@@ -11,8 +11,8 @@ url="/middleware/basic-auth"
 
 BasicAuth 中间件提供了 HTTP 的基本认证方式。
 
-- 对于有效的请求则继续执行后面的处理。
-- 对于无效的请求，返回"401 - Unauthorized"响应。
+- 对于有效的请求，则继续调用下一个处理程序(handler)。
+- 对于丢失或无效的请求，则返回 "401 - Unauthorized" 响应。
 
 *用法*
 
@@ -25,7 +25,7 @@ e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (bool
 }))
 ```
 
-## 自定义配置
+### 自定义配置
 
 *用法*
 
@@ -33,7 +33,7 @@ e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (bool
 e.Use(middleware.BasicAuthWithConfig(middleware.BasicAuthConfig{}))
 ```
 
-*配置*
+### 配置
 
 ```go
 BasicAuthConfig struct {
@@ -45,7 +45,7 @@ BasicAuthConfig struct {
   Validator BasicAuthValidator
 
   // Realm 是一个用来定义 BasicAuth 的 Realm 属性的字符串
-  // 默认是 "Restricted"
+  // 默认值是 "Restricted"
   Realm string
 }
 ```
