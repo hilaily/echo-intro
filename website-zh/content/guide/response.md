@@ -21,7 +21,7 @@ func(c echo.Context) error {
 }
 ```
 
-### 发送 HTML 响应（参考模板）
+### 发送 HTML 响应 (参考模板)
 
 `Context#HTML(code int, html string)` 用于发送一个带有状态码的简单 HTML 响应。如果你需要动态生成 HTML 内容请查看[模版](https://echo.labstack.com/guide/templates)。
 
@@ -82,7 +82,7 @@ func(c echo.Context) error {
 }
 ```
 
-#### JSON 美化（JSON Pretty）
+#### JSON 美化 (JSON Pretty)
 
 `Context#JSONPretty(code int, i interface{}, indent string)` 可以发送带有缩进（可以使用空格和 tab）的更为好看的 JSON 数据。
 
@@ -167,7 +167,7 @@ func(c echo.Context) error {
 }
 ```
 
-#### XML 美化（XML Pretty）
+#### XML 美化 (XML Pretty)
 
 `Context#XMLPretty(code int, i interface{}, indent string)` 可以发送带有缩进（可以使用空格和 tab）的更为好看的  XML 数据。
 
@@ -236,7 +236,7 @@ func(c echo.Context) error {
 }
 ```
 
-### 发送内嵌（Inline）
+### 发送内嵌 (Inline)
 
 `Context#Inline(file, name string)` 和发送文件 `File()` 的方法类似，只是它的方法名称不同。
 
@@ -248,9 +248,9 @@ func(c echo.Context) error {
 }
 ```
 
-### 发送二进制长文件（Blob）
+### 发送二进制长文件 (Blob)
 
-``Context#Blob(code int, contentType string, b []byte)`  可用于发送带有内容类型(content type)和状态代码的任意类型数据。
+``Context#Blob(code int, contentType string, b []byte)`  可用于发送带有内容类型 (content type) 和状态代码的任意类型数据。
 
 *示例*
 
@@ -262,9 +262,9 @@ func(c echo.Context) (err error) {
 }
 ```
 
-### 发送流（Stream）
+### 发送流 (Stream)
 
-`Context#Stream(code int, contentType string, r io.Reader)` 可用于发送带有内容类型(content type)、状态代码、`io.Reader` 的任意类型数据流。
+`Context#Stream(code int, contentType string, r io.Reader)` 可用于发送带有内容类型 (content type) 、状态代码、`io.Reader` 的任意类型数据流。
 
 *示例*
 
@@ -278,7 +278,7 @@ func(c echo.Context) error {
 }
 ```
 
-### 发送空内容（No Content）
+### 发送空内容 (No Content)
 
 `Context#NoContent(code int)` 可用于发送带有状态码的空内容。
 
@@ -310,7 +310,7 @@ func(c echo.Context) error {
 
 #### 响应之后
 
-`Context#Response#After(func())` 可以用来注册在写入响应之后调用的函数。但是如果“Content-Length”是未知状态，则不会有任何方法会被执行。
+`Context#Response#After(func())` 可以用来注册在写入响应之后调用的函数。但是如果 “Content-Length” 是未知状态，则不会有任何方法会被执行。
 
 *示例*
 

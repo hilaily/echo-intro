@@ -6,7 +6,7 @@
 
 1. 网页使用hugo运行，如果没有安装hugo，请前去安装[hugo](https://gohugo.io/)  
 2. 在 `website-zh` 目录运行 `./hugo server`  
-3. 在浏览器访问`lcoalhost:1313` 或 `127.0.0.1:1313` 即可打开项目
+3. 在浏览器访问 `lcoalhost:1313` 或 `127.0.0.1:1313` 即可打开项目
 
 ### 参与翻译
 

@@ -40,7 +40,7 @@ $ cd <PROJECT IN $GOPATH>
 $ govendor fetch github.com/labstack/echo@v3.1
 ```
 
-Echo 使用 Go `1.10.x`开发，并通过了 `1.9.x` 和 `1.10.x` 的测试。
+Echo 使用 Go `1.10.x` 开发，并通过了 `1.9.x` 和 `1.10.x` 的测试。
 
 Echo 通过 GitHub releases 进行 [语义化版本(semantic versioning)](http://semver.org) 控制，特定的版本可以使用 [package manager](https://github.com/avelino/awesome-go#package-management) 安装。
 

@@ -1,19 +1,20 @@
----
++++
 title: 错误处理
 url : guide/error-handling
 menu:
   side:
     parent: guide
     weight: 5
----
+
++++
 
 ## 错误处理程序
 
-Echo 提倡通过中间件或处理程序(handler)返回 HTTP 错误集中处理。集中式错误处理程序允许我们从统一位置将错误记录到外部服务，并向客户端发送自定义 HTTP 响应。
+Echo 提倡通过中间件或处理程序 (handler) 返回 HTTP 错误集中处理。集中式错误处理程序允许我们从统一位置将错误记录到外部服务，并向客户端发送自定义 HTTP 响应。
 
 你可以返回一个标准的 `error` 或者 `echo.*HTTPError`。
 
-例如，当基本身份验证中间件找到无效凭据时，会返回 401未授权错误(401-Unauthorized)，并终止当前的 HTTP 请求。
+例如，当基本身份验证中间件找到无效凭据时，会返回 401未授权错误 (401-Unauthorized)，并终止当前的 HTTP 请求。
 
 ```go
 	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
@@ -39,10 +40,10 @@ Echo 提供了默认的 HTTP 错误处理程序，它用 JSON 格式发送错误
   "message": "error connecting to redis"
 }
 ```
-标准错误 `error` 的响应是 `500 - Internal Server Error`。然而在调试(debug)模式模式下，原始的错误信息会被发送。如果错误是 `*HTTPError`，则使用设置的状态代码和消息发送响应。如果启用了日志记录，则还会记录错误消息。
+标准错误 `error` 的响应是 `500 - Internal Server Error`。然而在调试 (debug) 模式模式下，原始的错误信息会被发送。如果错误是 `*HTTPError`，则使用设置的状态代码和消息发送响应。如果启用了日志记录，则还会记录错误消息。
 
 ## 自定义 HTTP 错误处理程序
-通过 `e.HTTPErrorHandler` 可以设置自定义的 HTTP 错误处理程序(error handler)。
+通过 `e.HTTPErrorHandler` 可以设置自定义的 HTTP 错误处理程序 (error handler) 。
 
 通常默认的 HTTP 错误处理程序已经够用；然而如果要获取不同类型的错误并采取相应的操作，则可以使用自定义 HTTP 错误处理程序，例如发送通知邮件或记录日志到应用中心的场景。最后，你还可以发送自定义的错误页面或 JSON 响应给客户端。
 
