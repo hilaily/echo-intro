@@ -5,13 +5,14 @@ url="/middleware/basic-auth"
   name = "BasicAuth 基本认证"
   parent = "middleware"
   weight = 3
+
 +++
 
 ## BasicAuth (基本认证) 中间件
 
 BasicAuth 中间件提供了 HTTP 的基本认证方式。
 
-- 对于有效的请求，则继续调用下一个处理程序(handler)。
+- 对于有效的请求，则继续调用下一个处理程序 (handler) 。
 - 对于丢失或无效的请求，则返回 "401 - Unauthorized" 响应。
 
 *用法*
@@ -37,7 +38,7 @@ e.Use(middleware.BasicAuthWithConfig(middleware.BasicAuthConfig{}))
 
 ```go
 BasicAuthConfig struct {
-  // Skipper 定义了一个跳过中间间的函数
+  // Skipper 定义了一个跳过中间件的函数
   Skipper Skipper
 
   // Validator 是一个用来验证 BasicAuth 是否合法的函数
@@ -57,14 +58,3 @@ DefaultBasicAuthConfig = BasicAuthConfig{
 	Skipper: defaultSkipper,
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
