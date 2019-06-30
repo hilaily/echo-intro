@@ -9,11 +9,11 @@ menu:
 
 ## 测试
 
-### 测试处理程序（Testing handler）
+### 测试处理程序 (Testing handler)
 
 `GET` `/users/:id`
 
-下面的处理程序是根据用户的 id 从数据库取到该用户数据，如果用户不存在则返回`404`和提示语句。
+下面的处理程序是根据用户的 id 从数据库取到该用户数据，如果用户不存在则返回 `404` 和提示语句。
 
 #### 创建 User
 
@@ -137,14 +137,14 @@ req := httptest.NewRequest(echo.POST, "/", strings.NewReader(f.Encode()))
 req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationForm)
 ```
 
-#### 设置路径(Path)参数 
+#### 设置路径 (Path) 参数 
 
 ```go
 c.SetParamNames("id", "email")
 c.SetParamValues("1", "jon@labstack.com")
 ```
 
-#### 设置查询(Query)参数
+#### 设置查询 (Query) 参数
 
 ```go
 q := make(url.Values)

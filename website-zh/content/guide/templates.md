@@ -13,7 +13,7 @@ menu:
 
 使用 `Context#Render(code int, name string, data interface{}) error` 命令渲染带有数据的模板，并发送带有状态代码的 text / html 响应。通过  `Echo.Renderer` 的设置我们可以使用任何模板引擎。
 
-下面是使用Go `html/template` 的示例：
+下面是使用 Go `html/template` 的示例：
 
 1. 实现 `echo.Renderer` 接口
 
@@ -58,7 +58,7 @@ menu:
    ```
 
 #### 高级 - 在模版中调用 Echo
-在某些情况下，从模板生成 uri 可能很有用，为此，您需要从模板本身调用  `Echo#Reverse`。此时，Golang 的 `html/template` 包并不一定合适这种情况，但我们可以通过两种方法实现它：第一种，给所有的传递到模版的对象提供一个公用的方法；第二种，将 `map[string]interface{}` 作为参数传递并在自定义渲染器中扩充此模版。鉴于后一种方法的灵活性，这里有一个示例程序：
+在某些情况下，从模板生成 uri 可能很有用，为此，您需要从模板本身调用  `Echo#Reverse`。此时，Golang 的 `html/template` 包并不一定合适这种情况，但我们可以通过两种方法实现它：第一种，给所有的传递到模版的对象提供一个公用的方法；第二种，将  `map[string]interface{}` 作为参数传递并在自定义渲染器中扩充此模版。鉴于后一种方法的灵活性，这里有一个示例程序：
 `template.html`
 
 ```html
