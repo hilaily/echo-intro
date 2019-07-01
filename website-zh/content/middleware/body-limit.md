@@ -1,10 +1,10 @@
 +++
-title = "BodyLimit 请求体限制"
+title = "请求体限制"
 url="/middleware/body-limit"
 [menu.side]
-  name = "BodyLimit 请求体限制"
+  name = "请求体限制"
   parent = "middleware"
-  weight = 5
+  weight = 4
 
 +++
 
@@ -50,12 +50,4 @@ DefaultBodyLimitConfig = BodyLimitConfig{
   Skipper: defaultSkipper,
 }
 ```
-
-
-
-
-
-
-
-
 

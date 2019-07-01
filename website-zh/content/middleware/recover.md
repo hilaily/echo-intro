@@ -4,7 +4,7 @@ url = "/middleware/recover"
 [menu.side]
   name = "Recover 恢复"
   parent = "middleware"
-  weight = 5
+  weight = 14
 +++
 
 ## Recover 中间件

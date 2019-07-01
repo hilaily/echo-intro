@@ -4,7 +4,7 @@ url = "/middleware/logger"
 [menu.side]
   name = "Logger 日志"
   parent = "middleware"
-  weight = 5
+  weight = 11
 +++
 
 ## Logger(日志) 中间件

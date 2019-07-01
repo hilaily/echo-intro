@@ -4,7 +4,7 @@ url = "/middleware/gzip"
 [menu.side]
   name = "Gzip 压缩"
   parent = "middleware"
-  weight = 5
+  weight = 8
 +++
 
 ## Gzip 中间件

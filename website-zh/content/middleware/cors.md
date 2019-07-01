@@ -1,21 +1,20 @@
 +++
-title = "CORS 访问控制"
+title = "CORS "
 url = "/middleware/cors"
 [menu.side]
-  name = "CORS 访问控制"
+  name = "CORS "
   parent = "middleware"
   weight = 5
+
 +++
 
-## CORS(访问控制) 中间件
+## CORS (跨域资源共享) 中间件
 
-CORS 中间件实现了 [CORS](http://www.w3.org/TR/cors) 的标准。CORS 提供给 web 服务器跨站的访问控制，使得跨站的数据传输更安全。
+CORS (Cross-origin resource sharing) 中间件实现了 [CORS](http://www.w3.org/TR/cors) 的标准。CORS为Web服务器提供跨域访问控制，从而实现安全的跨域数据传输。
 
 *使用*
 
-```go
-e.Use(middleware.CORS())
-```
+`e.Use(middleware.CORS())`
 
 ### 自定义配置
 
@@ -70,7 +69,7 @@ CORSConfig struct {
 }
 ```
 
-### 默认配置
+*默认配置*
 
 ```go
 DefaultCORSConfig = CORSConfig{
@@ -79,3 +78,4 @@ DefaultCORSConfig = CORSConfig{
   AllowMethods: []string{echo.GET, echo.HEAD, echo.PUT, echo.PATCH, echo.POST, echo.DELETE},
 }
 ```
+

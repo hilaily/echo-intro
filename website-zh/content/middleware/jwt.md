@@ -4,7 +4,7 @@ url = "/middleware/jwt"
 [menu.side]
   name = "JWT"
   parent = "middleware"
-  weight = 5
+  weight = 9
 +++
 
 ## JWT 中间件

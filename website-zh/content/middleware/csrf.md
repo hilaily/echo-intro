@@ -1,21 +1,20 @@
 +++
-title = "CSRF 跨站请求伪造"
-url = "/middleware/ecsrf"
+title = "CSRF "
+url = "/middleware/csrf"
 [menu.side]
-  name = "CSRF 跨站请求伪造"
+  name = "CSRF "
   parent = "middleware"
-  weight = 5
+  weight = 6
+
 +++
 
-## CSRF Middleware(跨站请求伪造)
+## CSRF (跨域请求伪造) 中间件
 
-CSRF（Cross-site request forgery 跨站请求伪造，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF，是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。 跟跨网站脚本（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。
+CSRF (Cross-site request forgery) 跨域请求伪造，也被称为 **one-click attack** 或者 **session riding**，通常缩写为 **CSRF** 或者 **XSRF**， 是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。[[1\]](https://zh.wikipedia.org/wiki/跨站请求伪造#cite_note-Ristic-1) 跟[跨网站脚本](https://zh.wikipedia.org/wiki/跨網站指令碼) (XSS) 相比，**XSS** 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。
 
 *使用*
 
-```go
-e.Use(middleware.CSRF())
-```
+`e.Use(middleware.CSRF())`
 
 ### 自定义配置
 
@@ -28,13 +27,13 @@ e.Use(middleware.CSRFWithConfig(middleware.CSRFConfig{
 }))
 ```
 
-上面例子将使用`X-XSRF-TOKEN` 请求头取出 CSRF 的 token 值。
+上面的例子使用 `X-XSRF-TOKEN` 请求头取出 CSRF 的 token 值。
 
 ### 获取 CSRF Token
 
 #### 服务器端
 
-服务器端可以使用 `ContextKey `从 `Echo#Context` 拿到 CSRF token 然后通过模版传给客户端。
+服务器端可以使用 `ContextKey ` 从 `Echo#Context` 拿到 CSRF token 然后通过模版传给客户端。
 
 #### 客户端
 
@@ -91,7 +90,7 @@ CSRFConfig struct {
 }
 ```
 
-### 默认配置
+*默认配置*
 
 ```go
 DefaultCSRFConfig = CSRFConfig{

@@ -4,7 +4,7 @@ url = "/middleware/redirect"
 [menu.side]
   name = "Redirect 重定向"
   parent = "middleware"
-  weight = 5
+  weight = 15
 +++
 
 ## Redirect 中间件

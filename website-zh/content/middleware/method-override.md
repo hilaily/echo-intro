@@ -4,7 +4,7 @@ url = "/middleware/method-override"
 [menu.side]
   name = "MethodOverride 方法重写"
   parent = "middleware"
-  weight = 5
+  weight = 12
 +++
 
 ## MethodOverride 中间件

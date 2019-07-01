@@ -4,7 +4,7 @@ url = "/middleware/trailing-slash"
 [menu.side]
   name = "Trailing Slash"
   parent = "middleware"
-  weight = 6
+  weight = 20
 +++
 
 # Trailing Slash 中间件

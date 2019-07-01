@@ -4,7 +4,7 @@ url = "/middleware/secure"
 [menu.side]
   name = "Secure 安全"
   parent = "middleware"
-  weight = 5
+  weight = 18
 +++
 
 ## Secure 中间件

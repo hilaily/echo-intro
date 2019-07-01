@@ -1,10 +1,10 @@
 +++
-title = "BodyDump 请求体转储"
+title = "请求体转储"
 url="/middleware/body-dump"
 [menu.side]
-  name = "BodyDump 请求体转储"
+  name = "请求体转储"
   parent = "middleware"
-  weight = 4
+  weight = 3
 
 +++
 
@@ -49,3 +49,4 @@ DefaultBodyDumpConfig = BodyDumpConfig{
   Skipper: DefaultSkipper,
 }
 ```
+
