@@ -1,25 +1,24 @@
 +++
-title = "Gzip 压缩"
+title = "Gzip"
 url = "/middleware/gzip"
 [menu.side]
-  name = "Gzip 压缩"
+  name = "Gzip"
   parent = "middleware"
   weight = 8
+
 +++
 
 ## Gzip 中间件
 
-Gzip 中间件使用 gzip 压缩方案来对HTTP响应进行压缩。 
+Gzip 中间件使用 gzip 方案来对 HTTP 响应进行压缩。 
 
-*使用*
+*用法*
 
-```go
-e.Use(middleware.Gzip())
-```
+`e.Use(middleware.Gzip())`
 
 ### 自定义配置
 
-*使用*
+*用法*
 
 ```go
 e := echo.New()

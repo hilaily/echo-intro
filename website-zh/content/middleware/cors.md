@@ -12,13 +12,13 @@ url = "/middleware/cors"
 
 CORS (Cross-origin resource sharing) 中间件实现了 [CORS](http://www.w3.org/TR/cors) 的标准。CORS为Web服务器提供跨域访问控制，从而实现安全的跨域数据传输。
 
-*使用*
+*用法*
 
 `e.Use(middleware.CORS())`
 
 ### 自定义配置
 
-*使用*
+*用法*
 
 ```go
 e := echo.New()

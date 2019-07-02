@@ -1,21 +1,22 @@
 +++
-title = "Key 验证"
+title = "密钥认证"
 url = "/middleware/key-auth"
 [menu.side]
-  name = "Key Auth 验证"
+  name = "密钥认证"
   parent = "middleware"
   weight = 10
+
 +++
 
-## Key Auth 中间件
+## Key Auth (密钥认证) 中间件
 
-Key Auth 中间件提供了一个基于 key 的验证方式。
+Key Auth 中间件提供了一个基于密钥的验证方式。
 
-- 对于有效的 key，它将调用下一个处理程序。
-- 对于无效的 key，它发送"401 - Unauthorized"的响应。
-- 对于空的 key，它发送"400 - Bad Request"。
+- 对于有效密钥，它将调用下一个处理程序。
+- 对于无效密钥，它会发送 “401 - Unauthorized” 响应。
+- 对于丢失密钥，它发送 “400 - Bad Request” 响应。
 
-*使用*
+*用法*
 
 ```go
 e.Use(middleware.KeyAuth(func(key string) bool {
@@ -25,7 +26,7 @@ e.Use(middleware.KeyAuth(func(key string) bool {
 
 ### 自定义配置
 
-*使用*
+*用法*
 
 ```go
 e := echo.New()
@@ -60,7 +61,7 @@ KeyAuthConfig struct {
 }
 ```
 
-### 默认配置
+*默认配置*
 
 ```go
 DefaultKeyAuthConfig = KeyAuthConfig{

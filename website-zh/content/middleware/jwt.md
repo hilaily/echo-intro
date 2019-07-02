@@ -9,21 +9,19 @@ url = "/middleware/jwt"
 
 ## JWT 中间件
 
-JSON Web Token(JWT) 是一个非常轻巧的规范。这个规范允许我们使用JWT在用户和服务器之间传递安全可靠的信息。
+JWT 提供了一个 JSON Web Token (JWT) 认证中间件。
 
-- 对于有效的令牌，它将用户存储进上下文，并调用下一个处理程序。
-- 对于无效的令牌，它发送"401 - Unauthorized"的响应。
-- 对于空的或无效的`Authorization`头，它发送"400 - Bad Request"。
+- 对于有效的 token，它将用户置于上下文中并调用下一个处理程序。
+- 对于无效的 token，它会发送 "401 - Unauthorized" 响应。
+- 对于丢失或无效的 `Authorization` 标头，它会发送 "400 - Bad Request" 。
 
-*使用*
+*用法*
 
-```go
-e.Use(middleware.JWT([]byte("secret"))
-```
+`e.Use(middleware.JWT([]byte("secret"))`
 
 ### 自定义配置
 
-*使用*
+*用法*
 
 ```go
 e.Use(middleware.JWTWithConfig(middleware.JWTConfig{
@@ -71,7 +69,7 @@ JWTConfig struct {
 }
 ```
 
-### 默认配置
+*默认配置*
 
 ```go
 DefaultJWTConfig = JWTConfig{
@@ -83,3 +81,5 @@ DefaultJWTConfig = JWTConfig{
   Claims:        jwt.MapClaims{},
 }
 ```
+
+### [示例](https://echo.labstack.com/cookbook/jwt)

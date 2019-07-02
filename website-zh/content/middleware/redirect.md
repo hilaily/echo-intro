@@ -1,19 +1,20 @@
 +++
-title = "Redirect 重定向"
+title = "重定向"
 url = "/middleware/redirect"
 [menu.side]
-  name = "Redirect 重定向"
+  name = "重定向"
   parent = "middleware"
   weight = 15
+
 +++
 
-## Redirect 中间件
+## Redirect (重定向) 中间件
 
 #### HTTPS 重定向
 
 HTTPS 重定向中间件将 http 请求重定向到 https。例如，http://laily.net 将被重定向到 https://laily.net。
 
-*使用*
+*用法*
 
 ```go
 e := echo.New()
@@ -22,9 +23,9 @@ e.Pre(middleware.HTTPSRedirect())
 
 #### HTTPS WWW 重定向
 
-HTTPS WWW 重定向将 http 请求重定向到带 www 的https 请求。例如，http://laily.net 将被重定向到 https://www.laily.net。
+HTTPS WWW 重定向将 http 请求重定向到带 www 的 https 请求。例如，http://laily.net 将被重定向到 https://www.laily.net。
 
-*使用*
+*用法*
 
 ```go
 e := echo.New()
@@ -35,7 +36,7 @@ e.Pre(middleware.HTTPSWWWRedirect())
 
 HTTPS NonWWW 将 http 请求重定向到不带 www 的 https 请求。例如，http://www.laily.net 将被重定向到 https://laily.net。
 
-*使用*
+*用法*
 
 ```go
 e := echo.New()
@@ -44,11 +45,11 @@ e.Pre(middleware.HTTPSNonWWWRedirect())
 
 ### WWW 重定向
 
-将不带 www 的请求重定向到带 www 的请求。
+WWW 重定向将不带 www 的请求重定向到带 www 的请求。
 
 例如，http://laily.net 重定向到 http://www.laily.net
 
-*使用*
+*用法*
 
 ```go
 e := echo.New()
@@ -57,11 +58,11 @@ e.Pre(middleware.WWWRedirect())
 
 ### NonWWW 重定向
 
-将带 www 的请求重定向到不带 www 的请求。
+NonWWW 重定向将带 www 的请求重定向到不带 www 的请求。
 
 例如，http://www.laily.net 重定向到 http://laily.net
 
-*使用*
+*用法*
 
 ```go
 e := echo.New()
@@ -70,7 +71,7 @@ e.Pre(middleware.NonWWWRedirect())
 
 ### 自定义配置
 
-*使用*
+*用法*
 
 ```go
 e := echo.New()

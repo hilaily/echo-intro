@@ -8,9 +8,9 @@ url="/middleware/body-limit"
 
 +++
 
-## BodyLimit (请求体限制) 中间件
+## Body Limit (请求体限制) 中间件
 
-BodyLimit 中间件用于设置请求体的最大长度，如果请求体的大小超过了限制值，则返回 "413 － Request Entity Too Large" 响应。该限制的判断是根据 `Content-Length` 请求标头和实际内容确定的，这使其尽可能的保证安全。
+Body Limit 中间件用于设置请求体的最大长度，如果请求体的大小超过了限制值，则返回 "413 － Request Entity Too Large" 响应。该限制的判断是根据 `Content-Length` 请求标头和实际内容确定的，这使其尽可能的保证安全。
 
 限制可以指定 `4x` 或者 `4xB`，x是 "K, M, G, T, P" 计算机单位的倍数之一。
 

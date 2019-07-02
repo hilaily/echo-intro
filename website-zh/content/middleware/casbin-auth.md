@@ -7,6 +7,8 @@ url = "/middleware/casbin-auth"
   weight = 7
 +++
 
+## Casbin Auth 中间件
+
 [Casbin](https://github.com/casbin/casbin) 是 Go 下的强大而高效的开源访问控制库，它为基于各种模型的授权提供支持。到目前为止，Casbin 支持的访问控制模型如下：
 
 - ACL (访问控制列表)
@@ -22,29 +24,29 @@ url = "/middleware/casbin-auth"
 
 > Echo 社区贡献
 
-## 依赖
+### 依赖
 
-```
+```go
 import (
   "github.com/casbin/casbin"
   casbin_mw "github.com/labstack/echo-contrib/casbin"
 )
 ```
 
-*Usage*
+*用法*
 
-```
+```go
 e := echo.New()
 e.Use(casbin_mw.Middleware(casbin.NewEnforcer("casbin_auth_model.conf", "casbin_auth_policy.csv")))
 ```
 
 有关语法，请参阅：[Model.md](https://github.com/casbin/casbin/blob/master/Model.md)。
 
-## 自定义配置
+### 自定义配置
 
 *用法*
 
-```
+```go
 e := echo.New()
 ce := casbin.NewEnforcer("casbin_auth_model.conf", "")
 ce.AddRoleForUser("alice", "admin")
@@ -54,9 +56,9 @@ e.Use(casbin_mw.MiddlewareWithConfig(casbin_mw.Config{
 }))
 ```
 
-## 配置
+### 配置
 
-```
+```go
 // Config defines the config for CasbinAuth middleware.
 Config struct {
   // Skipper defines a function to skip middleware.
@@ -70,7 +72,7 @@ Config struct {
 
 *Default Configuration*
 
-```
+```go
 // DefaultConfig is the default CasbinAuth middleware config.
 DefaultConfig = Config{
   Skipper: middleware.DefaultSkipper,

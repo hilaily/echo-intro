@@ -8,9 +8,9 @@ url="/middleware/basic-auth"
 
 +++
 
-## BasicAuth (基本认证) 中间件
+## Basic Auth (基本认证) 中间件
 
-BasicAuth 中间件提供了 HTTP 的基本认证方式。
+Basic Auth 中间件提供了 HTTP 的基本认证方式。
 
 - 对于有效的请求，则继续调用下一个处理程序 (handler) 。
 - 对于丢失或无效的请求，则返回 "401 - Unauthorized" 响应。
