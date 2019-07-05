@@ -4,7 +4,7 @@ url = "/middleware/trailing-slash"
 [menu.side]
   name = "尾部斜杠"
   parent = "middleware"
-  weight = 20
+  weight = 21
 
 +++
 
