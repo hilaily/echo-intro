@@ -1,19 +1,20 @@
 +++
-title = "Trailing Slash"
+title = "尾部斜杠"
 url = "/middleware/trailing-slash"
 [menu.side]
-  name = "Trailing Slash"
+  name = "尾部斜杠"
   parent = "middleware"
   weight = 20
+
 +++
 
-# Trailing Slash 中间件
+# Trailing Slash (尾部斜杠) 中间件
 
 ### 添加尾部斜杠
 
-在请求的 uri 后加上反斜杠
+Add trailing slash 中间件会在在请求的 URI 后加上反斜杠
 
-*使用*
+*用法*
 
 ```go
 e := echo.New()
@@ -22,7 +23,7 @@ e.Pre(middleware.AddTrailingSlash())
 
 ### 去除尾部斜杠
 
-在请求的 uri 后去除反斜杠
+Remove trailing slash 中间件在请求的 uri 后去除反斜杠
 
 *用法*
 
@@ -33,7 +34,7 @@ e.Pre(middleware.RemoveTrailingSlash())
 
 ### 自定义配置
 
-*使用*
+*用法*
 
 ```go
 e := echo.New()
@@ -42,7 +43,7 @@ e.Use(middleware.AddTrailingSlashWithConfig(middleware.TrailingSlashConfig{
 }))
 ```
 
-这个示例将会加上反斜杠，并且使用 `308 - StatusMovedPermanently` 重定向。
+这个示例将向请求 URI 添加一个尾部斜杠，并使用 `301 - StatusMovedPermanently` 重定向。
 
 ###  配置
 

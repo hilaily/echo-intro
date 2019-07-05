@@ -1,13 +1,14 @@
 +++
-title = "Secure 安全"
+title = "安全"
 url = "/middleware/secure"
 [menu.side]
-  name = "Secure 安全"
+  name = "安全"
   parent = "middleware"
   weight = 18
+
 +++
 
-## Secure 中间件
+## Secure (安全) 中间件
 
 Secure 中间件用于阻止跨站脚本攻击(XSS)，内容嗅探，点击劫持，不安全链接等其他代码注入攻击。
 

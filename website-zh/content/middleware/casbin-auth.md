@@ -70,7 +70,7 @@ Config struct {
 }
 ```
 
-*Default Configuration*
+*默认配置*
 
 ```go
 // DefaultConfig is the default CasbinAuth middleware config.

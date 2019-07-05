@@ -14,7 +14,9 @@ CORS (Cross-origin resource sharing) 中间件实现了 [CORS](http://www.w3.org
 
 *用法*
 
-`e.Use(middleware.CORS())`
+```go
+e.Use(middleware.CORS())
+```
 
 ### 自定义配置
 

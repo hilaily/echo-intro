@@ -40,7 +40,7 @@ GzipConfig struct {
 }
 ```
 
-### 默认配置
+*默认配置*
 
 ```go
 DefaultGzipConfig = GzipConfig{

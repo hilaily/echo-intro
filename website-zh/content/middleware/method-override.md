@@ -16,7 +16,9 @@ Method Override 中间件检查从请求中重写的方法，并使用它来代�
 
 *用法*
 
-`e.Pre(middleware.MethodOverride())`
+```go
+e.Pre(middleware.MethodOverride())
+```
 
 ### 自定义配置
 

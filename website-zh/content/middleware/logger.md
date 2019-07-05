@@ -14,7 +14,9 @@ Logger 中间件记录有关每个 HTTP 请求的信息。
 
 *用法*
 
-`e.Use(middleware.Logger())`
+```go
+e.Use(middleware.Logger())
+```
 
 *输出样例*
 

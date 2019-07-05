@@ -17,7 +17,9 @@ JWT 提供了一个 JSON Web Token (JWT) 认证中间件。
 
 *用法*
 
-`e.Use(middleware.JWT([]byte("secret"))`
+```go
+e.Use(middleware.JWT([]byte("secret"))
+```
 
 ### 自定义配置
 

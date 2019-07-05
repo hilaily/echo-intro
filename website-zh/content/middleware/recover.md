@@ -15,7 +15,9 @@ Recover 中间件从 panic 链中的任意位置恢复程序， 打印堆栈的�
 
 *用法*
 
-`e.Use(middleware.Recover())`
+```go
+e.Use(middleware.Recover())
+```
 
 ### 自定义配置
 

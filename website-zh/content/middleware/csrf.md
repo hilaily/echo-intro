@@ -14,7 +14,9 @@ CSRF (Cross-site request forgery) 跨域请求伪造，也被称为 **one-click 
 
 *用法*
 
-`e.Use(middleware.CSRF())`
+```go
+e.Use(middleware.CSRF())
+```
 
 ### 自定义配置
 
