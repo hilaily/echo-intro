@@ -15,7 +15,7 @@ fork 该项目，修改后提交pr即可。
 
 ### 维护人员
 
-[Laily](https://github.com/Laily123)
+[Laily](https://github.com/hilaily)
 
 [Ryan](https://github.com/ryanpro8278)
 
